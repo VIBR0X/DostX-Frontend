@@ -1,5 +1,6 @@
 import 'package:dostx/palette.dart';
 import 'package:dostx/sign_in.dart';
+import 'package:dostx/sign_up_first_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/bloc/bloc_provider.dart';
 import 'package:dostx/bloc/mainbloc.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(bloc,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const SignIn(),
+        home: const SignUpFirst(),
         theme: ThemeData(
           textSelectionTheme: const TextSelectionThemeData(
             selectionHandleColor: ColorOptions.lightblue,

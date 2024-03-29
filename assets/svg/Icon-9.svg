@@ -1,0 +1,6 @@
+<svg id="Icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22.002" viewBox="0 0 22 22.002">
+  <path id="Shape" d="M.525,21.928A.92.92,0,0,1,0,21.084V4.383A4.668,4.668,0,0,1,1.277,1.242,3.969,3.969,0,0,1,4.231,0H17.769a3.969,3.969,0,0,1,2.954,1.241A4.663,4.663,0,0,1,22,4.383v8.654a4.659,4.659,0,0,1-1.277,3.14,3.969,3.969,0,0,1-2.954,1.241H5.423L1.447,21.735a.817.817,0,0,1-.6.266H.83A.669.669,0,0,1,.525,21.928Z" transform="translate(0 0)" fill="#204267"/>
+  <ellipse id="Oval" cx="1.269" cy="1.375" rx="1.269" ry="1.375" transform="translate(9.731 7.335)" fill="#204267"/>
+  <ellipse id="Oval-2" data-name="Oval" cx="1.269" cy="1.375" rx="1.269" ry="1.375" transform="translate(14.385 7.335)" fill="#204267"/>
+  <ellipse id="Oval-3" data-name="Oval" cx="1.269" cy="1.375" rx="1.269" ry="1.375" transform="translate(5.077 7.335)" fill="#204267"/>
+</svg>

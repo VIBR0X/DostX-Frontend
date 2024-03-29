@@ -7,7 +7,7 @@ class GradientOptions {
         0xFFFFFFFF,
       ),
       Color(
-        0xFFFEBEB1,
+        0xFFE5A194,
       ),
     ],
     begin: Alignment.topCenter,
@@ -36,5 +36,8 @@ class ColorOptions {
   );
   static const Color skin = Color(
     0xFFE4A194,
+  );
+  static const Color whitish = Color(
+    0xFFFFF2E3,
   );
 }

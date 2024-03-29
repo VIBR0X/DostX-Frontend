@@ -49,7 +49,7 @@ class CustomRadioButton extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: ColorOptions.skin,
               fontFamily: 'JostMedium',
               fontSize: font,
             ),
