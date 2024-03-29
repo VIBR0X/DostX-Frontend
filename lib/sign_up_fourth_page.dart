@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'consent_page.dart';
 import 'translations.dart';
 import 'language_manager.dart';
+import 'globals.dart ';
 class SignUpFourth extends StatefulWidget {
   const SignUpFourth({super.key});
 
@@ -17,26 +18,33 @@ class _SignUpFourthState extends State<SignUpFourth> {
   String? status;
   String? diagnosis;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) {final fontSize =(screenHeight(context)/896)*13;
+ return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: GradientOptions.backgroundGradient,
+          color: ColorOptions.skin,
         ),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Stack(
-            children: [Image.asset("assets/image/dostxbg2.png",fit: BoxFit.cover,width: MediaQuery.of(context).size.width,),
+            children: [ Center(
+              child: Image.asset(
+                "assets/image/dostxbg2.png",
+                height: 0.3827232142857143 * screenHeight(context),
+              ),
+            ),
               Column(
                 children: [
                   Container(
-                    height: 380,
+                    height: 0.3627232142857143 * screenHeight(context),
                     color: Colors.transparent,
                   ),
                   Container(
                     width: double.infinity,
+                    height: MediaQuery.of(context).size.height -
+                        (0.3627232142857143) * screenHeight(context),
                     decoration: const BoxDecoration(
-                      color: ColorOptions.skin,
+                      color: ColorOptions.whitish,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(
                           30,
@@ -48,12 +56,12 @@ class _SignUpFourthState extends State<SignUpFourth> {
                     ),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 22,
+                         SizedBox(
+                          height: (22/869)*screenHeight(context)
                         ),
                         SizedBox(
                           width: 299,
-                          height: 47,
+                          height: (47/869)*screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -62,24 +70,25 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                   Text(
                                     translations[LanguageManager().currentLanguage]!['job_loss']! + ":",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13,
+                                      fontSize: fontSize,
                                     ),
                                   ),
                                   Spacer(),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 11,
+                               SizedBox(
+                                height:(11/869)*screenHeight(context),
                               ),
                               SizedBox(
-                                height: 17,
+                                height: (17/869)*screenHeight(context),
                                 width: 299,
                                 child: Row(
                                   children: [
                                     CustomRadioButton(
-                                      text: translations[LanguageManager().currentLanguage]!['yes']!,
+                                      font: fontSize*(14/13),
+                                    text: translations[LanguageManager().currentLanguage]!['yes']!,
                                       value: 'Yes',
                                       selected: jobLoss == 'Yes',
                                       onSelect: () {
@@ -92,6 +101,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                       width: 35,
                                     ),
                                     CustomRadioButton(
+                                      font: fontSize*(14/13),
                                       text: translations[LanguageManager().currentLanguage]!['no']!,
                                       value: 'No',
                                       selected: jobLoss == 'No',
@@ -107,12 +117,12 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 15,
+                         SizedBox(
+                          height:(15/869)*screenHeight(context),
                         ),
                         SizedBox(
                           width: 299,
-                          height: 47,
+                          height: (47/869)*screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -121,23 +131,24 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                   Text(
                                     translations[LanguageManager().currentLanguage]!['income_inadequacy']! + ":",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13,
+                                      fontSize: fontSize
                                     ),
                                   ),
                                   Spacer(),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 11,
+                               SizedBox(
+                                height:(11/869)*screenHeight(context),
                               ),
                               SizedBox(
-                                height: 17,
+                                height: (17/869)*screenHeight(context),
                                 width: 299,
                                 child: Row(
                                   children: [
                                     CustomRadioButton(
+                                      font: fontSize*(14/13),
                                       text: translations[LanguageManager().currentLanguage]!['yes']!,
                                       value: 'Yes',
                                       selected: income == 'Yes',
@@ -151,6 +162,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                       width: 35,
                                     ),
                                     CustomRadioButton(
+                                      font: fontSize*(14/13),
                                       text: translations[LanguageManager().currentLanguage]!['no']!,
                                       value: 'No',
                                       selected: income == 'No',
@@ -166,8 +178,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 15,
+                         SizedBox(
+                          height:(15/869)*screenHeight(context),
                         ),
                         SizedBox(
                           width: 299,
@@ -175,7 +187,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             children: [
                               SizedBox(
                                 width: 299,
-                                height: 90,
+                                height: (90/869)*screenHeight(context),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -184,25 +196,26 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                         Text(
                                           translations[LanguageManager().currentLanguage]!['status_of_person']! + ":",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
-                                            fontSize: 13,
+                                            fontSize: fontSize
                                           ),
                                         ),
                                         Spacer(),
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 11,
+                                     SizedBox(
+                                      height:(11/869)*screenHeight(context),
                                     ),
                                     SizedBox(
-                                      height: 60,
+                                      height: (60/869)*screenHeight(context),
                                       width: 299,
                                       child: Column(
                                         children: [
                                           Row(
                                             children: [
                                               CustomRadioButton(
+                                                font: fontSize*(14/13),
                                                 text: translations[LanguageManager().currentLanguage]!['at_home']!,
                                                 value: 'At home',
                                                 selected: status == 'At home',
@@ -216,6 +229,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                 width: 60,
                                               ),
                                               CustomRadioButton(
+                                                font: fontSize*(14/13),
                                                 text: translations[LanguageManager().currentLanguage]!['institution']!,
                                                 value: 'Institution',
                                                 selected:
@@ -228,12 +242,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                               ),
                                             ],
                                           ),
-                                          const SizedBox(
-                                            height: 10,
+                                           SizedBox(
+                                            height: (10/869)*screenHeight(context),
                                           ),
                                           Row(
                                             children: [
                                               CustomRadioButton(
+                                                font: fontSize*(14/13),
                                                 text:
                                                     translations[LanguageManager().currentLanguage]!['intermittent_institution']!,
                                                 value:
@@ -249,8 +264,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                               ),
                                             ],
                                           ),
-                                          const SizedBox(
-                                            height: 10,
+                                           SizedBox(
+                                            height:(10/869)*screenHeight(context),
                                           ),
                                         ],
                                       ),
@@ -258,12 +273,12 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                   ],
                                 ),
                               ),
-                              const Spacer(),
+
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
+                         SizedBox(
+                          height:(20/869)*screenHeight(context),
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
@@ -273,7 +288,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               children: [
                                 SizedBox(
                                   width: 325,
-                                  height: 160,
+                                  height: (160/869)*screenHeight(context),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
@@ -282,25 +297,26 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                           Text(
                                             translations[LanguageManager().currentLanguage]!['diagnosis_of_person']! + ":",
                                             style: TextStyle(
-                                              color: Colors.white,
+                                              color: ColorOptions.skin,
                                               fontFamily: 'JostMedium',
-                                              fontSize: 13,
+                                              fontSize: fontSize
                                             ),
                                           ),
                                           Spacer(),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 14,
+                                       SizedBox(
+                                        height:(14/869)*screenHeight(context),
                                       ),
                                       SizedBox(
-                                        height: 127,
+                                        height: (127/869)*screenHeight(context),
                                         width: 325,
                                         child: Column(
                                           children: [
                                             Row(
                                               children: [
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text: translations[LanguageManager().currentLanguage]!['neurological_disorder']!,
                                                   value:
                                                       'Neurological disorder',
@@ -317,6 +333,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   width: 15,
                                                 ),
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text: translations[LanguageManager().currentLanguage]!['depression']!,
                                                   value: 'depression',
                                                   selected:
@@ -329,12 +346,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(
-                                              height: 10,
+                                             SizedBox(
+                                              height: (10/869)*screenHeight(context),
                                             ),
                                             Row(
                                               children: [
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text: translations[LanguageManager().currentLanguage]!['substance_abuse']!,
                                                   value: 'Substance abuse',
                                                   selected: diagnosis ==
@@ -350,6 +368,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   width: 49,
                                                 ),
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text: translations[LanguageManager().currentLanguage]!['schizophrenia']!,
                                                   value: 'Schizophrenia',
                                                   selected: diagnosis ==
@@ -363,12 +382,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(
-                                              height: 10,
+                                             SizedBox(
+                                              height: (10/869)*screenHeight(context),
                                             ),
                                             Row(
                                               children: [
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text: translations[LanguageManager().currentLanguage]!['multiple_disorders']!,
                                                   value: 'Multiple disorders',
                                                   selected: diagnosis ==
@@ -384,6 +404,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   width: 40,
                                                 ),
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text: translations[LanguageManager().currentLanguage]!['bipolar_disorder']!,
                                                   value: 'Bipolar disorder',
                                                   selected: diagnosis ==
@@ -397,12 +418,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(
-                                              height: 10,
+                                             SizedBox(
+                                              height: (10/869)*screenHeight(context),
                                             ),
                                             Row(
                                               children: [
                                                 CustomRadioButton(
+                                                  font: fontSize*(14/13),
                                                   text:
                                                       translations[LanguageManager().currentLanguage]!['chronic_physical_disorders']!,
                                                   value:
@@ -430,11 +452,11 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 46,
+                         SizedBox(
+                          height:(25/869)*screenHeight(context)
                         ),
                         SizedBox(
-                          height: 43,
+                          height:(43/869)*screenHeight(context),
                           width: 261,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -461,7 +483,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               child:  Text(
                                 translations[LanguageManager().currentLanguage]!['submit']!,
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize:(fontSize/13)*14,
                                   fontFamily: "JostBold",
                                   color: Colors.white,
                                 ),
@@ -469,9 +491,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 100,
-                        )
+
                       ],
                     ),
                   ),

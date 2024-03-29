@@ -8,3 +8,8 @@ double screenHeight(BuildContext context) {
   else{
     return MediaQuery.of(context).size.height;}
 }
+
+double fontHelper(BuildContext context){
+  final aspectRatio = 414 / 896;
+  return (screenWidth(context) / aspectRatio)/896;
+}

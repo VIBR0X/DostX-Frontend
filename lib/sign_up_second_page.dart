@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
 import 'globals.dart';
+
 class SignUpSecond extends StatefulWidget {
   const SignUpSecond({super.key});
 
@@ -20,13 +21,16 @@ class _SignUpSecondState extends State<SignUpSecond> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-        color: ColorOptions.skin
-        ),
+        decoration: const BoxDecoration(color: ColorOptions.skin),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Stack(
-            children: [Center(child: Image.asset("assets/image/dostxbg2.png",height: 0.3827232142857143*screenHeight(context) ,)),
+            children: [
+              Center(
+                  child: Image.asset(
+                "assets/image/dostxbg2.png",
+                height: 0.3827232142857143 * screenHeight(context),
+              )),
               Column(
                 children: [
                   Container(
@@ -53,8 +57,8 @@ class _SignUpSecondState extends State<SignUpSecond> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         SizedBox(
-                          height: (11/896)*screenHeight(context),
+                        SizedBox(
+                          height: (11 / 896) * screenHeight(context),
                         ),
                         Center(
                           child: SizedBox(
@@ -93,8 +97,9 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                           });
                                         } else {}
                                       },
-                                      child:  Text(
-                                        translations[LanguageManager().currentLanguage]!['upload_image']!,
+                                      child: Text(
+                                        translations[LanguageManager()
+                                            .currentLanguage]!['upload_image']!,
                                         style: TextStyle(
                                           fontSize: 10,
                                           fontFamily: "JostBold",
@@ -104,8 +109,8 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     ),
                                   ),
                                 ),
-                                 SizedBox(
-                                  width: (18/896)*screenHeight(context),
+                                SizedBox(
+                                  width: (18 / 896) * screenHeight(context),
                                 ),
                                 Container(
                                   height: 55,
@@ -123,10 +128,10 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             ),
                           ),
                         ),
-                         SizedBox(
-                          height: screenHeight(context)*(14/896),
+                        SizedBox(
+                          height: screenHeight(context) * (14 / 896),
                         ),
-                         Center(
+                        Center(
                           child: SizedBox(
                             width: 269.91,
                             height: 103,
@@ -136,7 +141,9 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 Row(
                                   children: [
                                     Text(
-                                     translations[LanguageManager().currentLanguage]!['address']! + ":",
+                                      translations[LanguageManager()
+                                              .currentLanguage]!['address']! +
+                                          ":",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
@@ -147,7 +154,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: (2/896)*screenHeight(context),
+                                  height: (2 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
                                   height: 82,
@@ -209,8 +216,8 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             ),
                           ),
                         ),
-                         SizedBox(
-                          height: (15/896)*screenHeight(context),
+                        SizedBox(
+                          height: (15 / 896) * screenHeight(context),
                         ),
                         Center(
                           child: SizedBox(
@@ -219,10 +226,13 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                 Row(
+                                Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager().currentLanguage]!['postal_code']! + ":",
+                                      translations[LanguageManager()
+                                                  .currentLanguage]![
+                                              'postal_code']! +
+                                          ":",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
@@ -232,8 +242,8 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     Spacer(),
                                   ],
                                 ),
-                                 SizedBox(
-                                  height: (2/896)*screenHeight(context),
+                                SizedBox(
+                                  height: (2 / 896) * screenHeight(context),
                                 ),
                                 Column(
                                   children: [
@@ -247,7 +257,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                               LengthLimitingTextInputFormatter(
                                                   6),
                                             ],
-                                            style:  TextStyle(
+                                            style: TextStyle(
                                               color: ColorOptions.skin,
                                               fontFamily: "JostMedium",
                                               fontSize: 14,
@@ -308,9 +318,9 @@ class _SignUpSecondState extends State<SignUpSecond> {
                           ),
                         ),
                         Container(
-                          height: (10/896)*screenHeight(context),
+                          height: (10 / 896) * screenHeight(context),
                         ),
-                         Center(
+                        Center(
                           child: SizedBox(
                             width: 267.91,
                             height: 61,
@@ -320,7 +330,9 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager().currentLanguage]!['state']! + ":",
+                                      translations[LanguageManager()
+                                              .currentLanguage]!['state']! +
+                                          ":",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
@@ -331,7 +343,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: (4/896)*screenHeight(context),
+                                  height: (4 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
                                   height: 38,
@@ -393,10 +405,10 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             ),
                           ),
                         ),
-                         SizedBox(
-                          height: (10/869)*screenHeight(context),
+                        SizedBox(
+                          height: (10 / 869) * screenHeight(context),
                         ),
-                         Center(
+                        Center(
                           child: SizedBox(
                             width: 269.91,
                             height: 61,
@@ -406,7 +418,9 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager().currentLanguage]!['country']! + ":",
+                                      translations[LanguageManager()
+                                              .currentLanguage]!['country']! +
+                                          ":",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
@@ -428,7 +442,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                       fontFamily: "JostMedium",
                                       fontSize: 18,
                                     ),
-                                    cursorColor:ColorOptions.skin,
+                                    cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
                                     decoration: InputDecoration(
                                       contentPadding:
@@ -479,12 +493,12 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             ),
                           ),
                         ),
-                         SizedBox(
-                          height: (25/869)*screenHeight(context),
+                        SizedBox(
+                          height: (25 / 869) * screenHeight(context),
                         ),
                         Center(
                           child: SizedBox(
-                            height: (40/869)*screenHeight(context),
+                            height: (40 / 869) * screenHeight(context),
                             width: 261,
                             child: DecoratedBox(
                               decoration: BoxDecoration(
@@ -509,7 +523,8 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   );
                                 },
                                 child: Text(
-                                 translations[LanguageManager().currentLanguage]!['submit']!,
+                                  translations[LanguageManager()
+                                      .currentLanguage]!['submit']!,
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontFamily: "JostBold",
@@ -520,7 +535,6 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ),

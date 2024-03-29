@@ -68,7 +68,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 'sign_up']!,
                             style: TextStyle(
                               fontFamily: 'JostBold',
-                              fontSize: 28,
+                              fontSize: 28*fontHelper(context),
                               color: ColorOptions.skin,
                             ),
                           ),
@@ -77,7 +77,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                           ),
                           SizedBox(
                             width: 265.96,
-                            height: 61,
+                            height:( 61/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -89,7 +89,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -99,13 +99,13 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   height: (4 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 38,
+                                  height: (38/ 896) * screenHeight(context),
                                   child: TextField(
                                     inputFormatters: [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
-                                      fontSize: 18,
+                                      fontSize: 18*fontHelper(context),
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
@@ -162,7 +162,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                           ),
                           SizedBox(
                             width: 265.96,
-                            height: 61,
+                            height: (61/896)*screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -174,7 +174,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -184,13 +184,13 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   height: (4 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 38,
+                                  height: (38/896)*screenHeight(context),
                                   child: TextField(
                                     inputFormatters: [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
-                                      fontSize: 18,
+                                      fontSize: 18*fontHelper(context),
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
@@ -247,7 +247,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                           ),
                           SizedBox(
                             width: 265.96,
-                            height: 41,
+                            height: (41/896)*screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -259,7 +259,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -269,7 +269,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   height: (5 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 17,
+                                  height: (17/896)*screenHeight(context),
                                   child: Row(
                                     children: [
                                       CustomRadioButton(
@@ -322,7 +322,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                           ),
                           SizedBox(
                             width: 265.96,
-                            height: 61,
+                            height:( 61/896)*screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -334,7 +334,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -344,13 +344,13 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   height: (4 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 38,
+                                  height: (38/896)*screenHeight(context),
                                   child: TextField(
                                     inputFormatters: [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
-                                      fontSize: 18,
+                                      fontSize: 18*fontHelper(context),
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.text,
@@ -406,7 +406,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                             height: (19 / 896) * screenHeight(context),
                           ),
                           SizedBox(
-                            height: 43,
+                            height: (43/896)*screenHeight(context),
                             width: 261,
                             child: DecoratedBox(
                               decoration: BoxDecoration(
@@ -435,7 +435,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   translations[LanguageManager()
                                       .currentLanguage]!['submit']!,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14*fontHelper(context),
                                     fontFamily: "JostBold",
                                     color: Colors.white,
                                   ),

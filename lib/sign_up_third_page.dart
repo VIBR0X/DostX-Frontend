@@ -4,6 +4,8 @@ import 'custom_widgets.dart';
 import 'sign_up_fourth_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
+import 'globals.dart';
+
 class SignUpThird extends StatefulWidget {
   const SignUpThird({super.key});
 
@@ -18,23 +20,30 @@ class _SignUpThirdState extends State<SignUpThird> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: GradientOptions.backgroundGradient,
-        ),
+        decoration: const BoxDecoration(color: ColorOptions.skin),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Stack(
-            children: [Image.asset("assets/image/dostxbg2.png",fit: BoxFit.cover,width: MediaQuery.of(context).size.width,),
+            children: [
+              Center(
+                child: Image.asset(
+                  "assets/image/dostxbg2.png",
+                  height: 0.3827232142857143 * screenHeight(context),
+                ),
+              ),
               Column(
                 children: [
                   Container(
-                    height: 380,
+                    height: (0.3627232142857143) * screenHeight(context) - 10,
                     color: Colors.transparent,
                   ),
                   Container(
                     width: double.infinity,
+                    height: MediaQuery.of(context).size.height -
+                        (0.3627232142857143) * screenHeight(context) +
+                        10,
                     decoration: const BoxDecoration(
-                      color: ColorOptions.skin,
+                      color: ColorOptions.whitish,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(
                           30,
@@ -46,8 +55,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                     ),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 29,
+                        SizedBox(
+                          height: (29 / 896) * screenHeight(context),
                         ),
                         SizedBox(
                           width: 299,
@@ -55,12 +64,15 @@ class _SignUpThirdState extends State<SignUpThird> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                               Row(
+                              Row(
                                 children: [
                                   Text(
-                                    translations[LanguageManager().currentLanguage]!['marital_status']! + ":",
+                                    translations[LanguageManager()
+                                                .currentLanguage]![
+                                            'marital_status']! +
+                                        ":",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
                                       fontSize: 13,
                                     ),
@@ -68,8 +80,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                   Spacer(),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 11,
+                              SizedBox(
+                                height: (11 / 896) * screenHeight(context),
                               ),
                               SizedBox(
                                 height: 47,
@@ -79,7 +91,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     Row(
                                       children: [
                                         CustomRadioButton(
-                                          text: translations[LanguageManager().currentLanguage]!['married']!,
+                                          text: translations[LanguageManager()
+                                              .currentLanguage]!['married']!,
                                           value: 'Married',
                                           selected: maritalStatus == 'Married',
                                           onSelect: () {
@@ -92,7 +105,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           width: 20,
                                         ),
                                         CustomRadioButton(
-                                          text: translations[LanguageManager().currentLanguage]!['unmarried']!,
+                                          text: translations[LanguageManager()
+                                              .currentLanguage]!['unmarried']!,
                                           value: 'Unmarried',
                                           selected:
                                               maritalStatus == 'Unmarried',
@@ -104,7 +118,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                         ),
                                         const Spacer(),
                                         CustomRadioButton(
-                                          text: translations[LanguageManager().currentLanguage]!['separated']!,
+                                          text: translations[LanguageManager()
+                                              .currentLanguage]!['separated']!,
                                           value: 'Seperated',
                                           selected:
                                               maritalStatus == 'Seperated',
@@ -122,7 +137,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     Row(
                                       children: [
                                         CustomRadioButton(
-                                          text: translations[LanguageManager().currentLanguage]!['widowed']!,
+                                          text: translations[LanguageManager()
+                                              .currentLanguage]!['widowed']!,
                                           value: 'Widowed',
                                           selected: maritalStatus == 'Widowed',
                                           onSelect: () {
@@ -135,7 +151,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           width: 10,
                                         ),
                                         CustomRadioButton(
-                                          text: translations[LanguageManager().currentLanguage]!['cohabitant']!,
+                                          text: translations[LanguageManager()
+                                              .currentLanguage]!['cohabitant']!,
                                           value: 'Co-habitant',
                                           selected:
                                               maritalStatus == 'Co-habitant',
@@ -145,8 +162,9 @@ class _SignUpThirdState extends State<SignUpThird> {
                                             });
                                           },
                                         ),
-                                        const SizedBox(
-                                          width: 16,
+                                        SizedBox(
+                                          width: (16 / 896) *
+                                              screenHeight(context),
                                         ),
                                       ],
                                     ),
@@ -156,8 +174,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 15,
+                        SizedBox(
+                          height: (15 / 896) * screenHeight(context),
                         ),
                         SizedBox(
                           width: 299,
@@ -169,12 +187,15 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                     Row(
+                                    Row(
                                       children: [
                                         Text(
-                                          translations[LanguageManager().currentLanguage]!['relation_of_carer']! + ":",
+                                          translations[LanguageManager()
+                                                      .currentLanguage]![
+                                                  'relation_of_carer']! +
+                                              ":",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
                                             fontSize: 13,
                                           ),
@@ -182,8 +203,9 @@ class _SignUpThirdState extends State<SignUpThird> {
                                         Spacer(),
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 11,
+                                    SizedBox(
+                                      height:
+                                          (11 / 896) * screenHeight(context),
                                     ),
                                     SizedBox(
                                       height: 80,
@@ -193,7 +215,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           Row(
                                             children: [
                                               CustomRadioButton(
-                                                text: translations[LanguageManager().currentLanguage]!['either_parents']!,
+                                                text: translations[
+                                                        LanguageManager()
+                                                            .currentLanguage]![
+                                                    'either_parents']!,
                                                 value: 'Either parent',
                                                 selected:
                                                     relation == 'Either parent',
@@ -204,10 +229,13 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                 },
                                               ),
                                               const SizedBox(
-                                                width: 24,
+                                                width: 19,
                                               ),
                                               CustomRadioButton(
-                                                text: translations[LanguageManager().currentLanguage]!['relative']!,
+                                                text: translations[
+                                                        LanguageManager()
+                                                            .currentLanguage]![
+                                                    'relative']!,
                                                 value: 'Relative',
                                                 selected:
                                                     relation == 'Relative',
@@ -225,7 +253,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           Row(
                                             children: [
                                               CustomRadioButton(
-                                                text: translations[LanguageManager().currentLanguage]!['spouse']!,
+                                                text: translations[
+                                                        LanguageManager()
+                                                            .currentLanguage]![
+                                                    'spouse']!,
                                                 value: 'Spouse',
                                                 selected: relation == 'Spouse',
                                                 onSelect: () {
@@ -238,7 +269,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                 width: 60,
                                               ),
                                               CustomRadioButton(
-                                                text: translations[LanguageManager().currentLanguage]!['friend']!,
+                                                text: translations[
+                                                        LanguageManager()
+                                                            .currentLanguage]![
+                                                    'friend']!,
                                                 value: 'Friend',
                                                 selected: relation == 'Friend',
                                                 onSelect: () {
@@ -255,7 +289,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           Row(
                                             children: [
                                               CustomRadioButton(
-                                                text: translations[LanguageManager().currentLanguage]!['sibling']!,
+                                                text: translations[
+                                                        LanguageManager()
+                                                            .currentLanguage]![
+                                                    'sibling']!,
                                                 value: 'Sibling',
                                                 selected: relation == 'Sibling',
                                                 onSelect: () {
@@ -268,7 +305,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                 width: 62,
                                               ),
                                               CustomRadioButton(
-                                                text: translations[LanguageManager().currentLanguage]!['non_relation']!,
+                                                text: translations[
+                                                        LanguageManager()
+                                                            .currentLanguage]![
+                                                    'non_relation']!,
                                                 value: 'Non relations',
                                                 selected:
                                                     relation == 'Non relations',
@@ -290,10 +330,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 14,
+                        SizedBox(
+                          height: (14 / 896) * screenHeight(context),
                         ),
-                         SizedBox(
+                        SizedBox(
                           width: 299,
                           height: 72,
                           child: Column(
@@ -302,9 +342,11 @@ class _SignUpThirdState extends State<SignUpThird> {
                               Row(
                                 children: [
                                   Text(
-                                    translations[LanguageManager().currentLanguage]!['mean_duration_of_illness']!,
+                                    translations[
+                                            LanguageManager().currentLanguage]![
+                                        'mean_duration_of_illness']!,
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
                                       fontSize: 13,
                                     ),
@@ -313,12 +355,12 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 ],
                               ),
                               SizedBox(
-                                height: 8,
+                                height: (8 / 896) * screenHeight(context),
                               ),
                               Row(
                                 children: [
                                   SizedBox(
-                                    height: 26,
+                                    height: (26 / 896) * screenHeight(context),
                                     width: 94.91,
                                     child: TextField(
                                       inputFormatters: [],
@@ -384,9 +426,9 @@ class _SignUpThirdState extends State<SignUpThird> {
                           ),
                         ),
                         Container(
-                          height: 10,
+                          height: (10 / 896) * screenHeight(context),
                         ),
-                         SizedBox(
+                        SizedBox(
                           width: 299,
                           height: 72,
                           child: Column(
@@ -395,9 +437,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                               Row(
                                 children: [
                                   Text(
-                                    translations[LanguageManager().currentLanguage]!['mean_hours_spent']!,
+                                    translations[LanguageManager()
+                                        .currentLanguage]!['mean_hours_spent']!,
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
                                       fontSize: 13,
                                     ),
@@ -406,12 +449,12 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 ],
                               ),
                               SizedBox(
-                                height: 8,
+                                height: (8 / 896) * screenHeight(context),
                               ),
                               Row(
                                 children: [
                                   SizedBox(
-                                    height: 26,
+                                    height: (26 / 896) * screenHeight(context),
                                     width: 94.91,
                                     child: TextField(
                                       inputFormatters: [],
@@ -476,11 +519,11 @@ class _SignUpThirdState extends State<SignUpThird> {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 26,
+                        SizedBox(
+                          height: (26 / 896) * screenHeight(context),
                         ),
                         SizedBox(
-                          height: 43,
+                          height: (43 / 896) * screenHeight(context),
                           width: 261,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -504,8 +547,9 @@ class _SignUpThirdState extends State<SignUpThird> {
                                   ),
                                 );
                               },
-                              child:  Text(
-                               translations[LanguageManager().currentLanguage]!['submit']!,
+                              child: Text(
+                                translations[LanguageManager()
+                                    .currentLanguage]!['submit']!,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "JostBold",
@@ -515,9 +559,6 @@ class _SignUpThirdState extends State<SignUpThird> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 100,
-                        )
                       ],
                     ),
                   ),
