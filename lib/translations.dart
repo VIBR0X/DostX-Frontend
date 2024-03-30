@@ -85,6 +85,10 @@ Map<String, Map<String, String>> translations = {
     'family_burden_scale_question_1': 'Loss of patient’s income and its effect on family income?',
     'family_burden_scale_question_2': 'Do you feel embarrassed your relative’s behavior?',
     'family_burden_scale_question_3': 'Expenditure incurred due to patients and treatments and its effects on family finances',
+
+    'bried-cope-intro': 'The Brief-COPE is a 28 item self-report questionnaire designed to measure effective and ineffective ways to cope with a stressful life event. “Coping” is defined broadly as an effort used to minimise distress associated with negative life experiences.\nThe following questions ask how you have sought to cope with a hardship in your life. Read the statements and indicate how much you have been using each coping style',
+    'brief-cope_question_1': '1. I’ve been turning to work or other activities to take my mind off things',
+
   },
   'hi': {
     'app_name': 'दोस्तएक्स ऐप',

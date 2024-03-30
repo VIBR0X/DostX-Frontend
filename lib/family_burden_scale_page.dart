@@ -15,8 +15,6 @@ class FamilyBurdenScalePage extends StatefulWidget {
 }
 
 class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
-  String? stressed;
-  String? embarrassed;
   @override
   Widget build(BuildContext context) {final fontSize =(screenHeight(context)/896)*13;
   return Scaffold(

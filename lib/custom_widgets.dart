@@ -627,12 +627,12 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                   children: [
                     CustomNumberedRadioButton(
                       font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['never']!,
-                      value: 'Never',
-                      selected: selectedValue == 'Never',
+                      text: translations[LanguageManager().currentLanguage]!['no_burden']!,
+                      value: 'No Burden',
+                      selected: selectedValue == 'No Burden',
                       onSelect: () {
                         setState(() {
-                          selectedValue = 'Never';
+                          selectedValue = 'No Burden';
                         });
                       },
                       number: 0,
@@ -641,12 +641,12 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                     Spacer(),
                     CustomNumberedRadioButton(
                       font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['rarely']!,
-                      value: 'Rarely',
-                      selected: selectedValue == 'Rarely',
+                      text: translations[LanguageManager().currentLanguage]!['moderate_burden']!,
+                      value: 'Moderate Burden',
+                      selected: selectedValue == 'Moderate Burden',
                       onSelect: () {
                         setState(() {
-                          selectedValue = 'Rarely';
+                          selectedValue = 'Moderate Burden';
                         });
                       },
                       number: 1,
@@ -655,12 +655,12 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                     Spacer(),
                     CustomNumberedRadioButton(
                       font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['sometimes']!,
-                      value: 'Sometimes',
-                      selected: selectedValue == 'Sometimes',
+                      text: translations[LanguageManager().currentLanguage]!['severe_burden']!,
+                      value: 'Severe Burden',
+                      selected: selectedValue == 'Severe Burden',
                       onSelect: () {
                         setState(() {
-                          selectedValue = 'Sometimes';
+                          selectedValue = 'Severe Burden';
                         });
                       },
                       number: 2,
