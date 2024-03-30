@@ -37,13 +37,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
               Column(
                 children: [
                   Container(
-                    height: 0.3627232142857143 * screenHeight(context),
+                    height: 0.3627232142857143 * screenHeight(context)-10,
                     color: Colors.transparent,
                   ),
                   Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height -
-                        (0.3627232142857143) * screenHeight(context),
+                        (0.3627232142857143) * screenHeight(context)+10,
                     decoration: const BoxDecoration(
                       color: ColorOptions.whitish,
                       borderRadius: BorderRadius.only(
@@ -452,9 +452,6 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               ],
                             ),
                           ),
-                        ),
-                         SizedBox(
-                          height:(8/869)*screenHeight(context)
                         ),
                         SizedBox(
                           height:(43/869)*screenHeight(context),

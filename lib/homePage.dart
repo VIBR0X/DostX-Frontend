@@ -1,4 +1,5 @@
 import 'package:dostx/cope.dart';
+import 'package:dostx/zarit_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'short12.dart';
@@ -11,7 +12,7 @@ class HomePageFirst extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(color: Color(0xFFFEBEB1),width: double.maxFinite,
+            child: Container(color: Color(0xFFFEBEB1), width: double.maxFinite,
               child: Text(
                 "How do you feel today?",
                 style: TextStyle(
@@ -32,7 +33,7 @@ class HomePageFirst extends StatelessWidget {
                   children: [
 
                     SizedBox(height: 20),
-                    _buildHorizontalScrollSection(),
+                    _buildHorizontalScrollSection(context),
                     SizedBox(height: 20),
                     Row(
                       children: [
@@ -43,7 +44,9 @@ class HomePageFirst extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF204267),
                           ),
-                        ),Spacer(),Text("See All",style: TextStyle(color: Colors.grey),)
+                        ),
+                        Spacer(),
+                        Text("See All", style: TextStyle(color: Colors.grey),)
                       ],
                     ),
                     SizedBox(height: 10),
@@ -59,7 +62,9 @@ class HomePageFirst extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF204267),
                           ),
-                        ),Spacer(),Text("See All",style: TextStyle(color: Colors.grey),)
+                        ),
+                        Spacer(),
+                        Text("See All", style: TextStyle(color: Colors.grey),)
                       ],
                     ),
                   ],
@@ -72,49 +77,85 @@ class HomePageFirst extends StatelessWidget {
     );
   }
 
-  Widget _buildHorizontalScrollSection() {
+
+  Widget _buildHorizontalScrollSection(BuildContext context) {
+
+
+    List<void Function(BuildContext)> routes = [
+          (BuildContext context) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ZerithScalePage(),
+          ),
+        );
+      },
+          (BuildContext context) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ZerithScalePage(),
+          ),
+        );
+      },
+          (BuildContext context) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ZerithScalePage(),
+          ),
+        );
+      },
+    ];
+
     return Container(
       height: 100,
       child: RawScrollbar(
         thumbColor: Color(0xff1A3858),
         thickness: 10,
-        // thumbVisibility: true,
-
-
         radius: Radius.circular(10),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 3,
+          itemCount: routes.length,
           itemBuilder: (context, index) {
-            return Container(
-
-              width: 100,
-              margin: EdgeInsets.only(right: 10),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xff0000000A).withOpacity(0.1), // You can adjust the color and opacity here
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 2), // changes the position of the shadow
+            return GestureDetector(
+              onTap: () => routes[index](context),
+              child: Container(
+                width: 100,
+                margin: EdgeInsets.only(right: 10),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xff0000000A).withOpacity(0.1),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: Image.asset("assets/image/Icon$index.png"),
+                      ),
+                      SizedBox(height: 5,),
+                      Text("Activities", style: TextStyle(color: Color(
+                          0xff323736), fontFamily: "JostSemi"),),
+                    ],
                   ),
-                ],
-                color: Colors.white, // Replace with your desired color
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: Column(children: [Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Image.asset("assets/image/Icon$index.png"),
-
-                ), SizedBox(height: 5,),Text("Activities",style: TextStyle(color: Color(0xff323736),fontFamily: "JostSemi"),)],),
+                ),
               ),
             );
           },
         ),
       ),
     );
-  }}
+  }
+}
 
 Widget _buildRescueSessions() {
   return Container(

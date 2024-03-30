@@ -15,6 +15,7 @@ Map<String, Map<String, String>> translations = {
     'others': 'Others',
     'abha_id': 'Abha ID',
     'submit': 'SUBMIT',
+    'proceed': 'PROCEED',
     'upload_image': 'Upload Image',
     'address': 'Address',
     'postal_code': 'Postal Code',
@@ -65,7 +66,14 @@ Map<String, Map<String, String>> translations = {
         'question10':"Do you feel uncertain about what to do about relative?",
         'question11':"Do you feel you should be doing more for your relative?",
         'question12':"Do you feel you could do a better job in caring for your relative?",
-      
+    'feel_stressed_about_responsibilities': 'Do you feel stressed between caring for your relative and trying to meet other responsibilities for your family or work?',
+    'feel_embarrassed_of_relative_behavior': 'Do you feel embarrassed your relative’s behavior?',
+    'never': "Never",
+    'rarely': "Rarely",
+    'sometimes': "Sometimes",
+    'frequently': "Frequently",
+    'nearly_always': "Nearly Always",
+    'zarit_scale_intro_text': 'The following is a list of statements that reflect how people sometimes feel when taking care of another person.\n\nAfter reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.',
   },
   'hi': {
     'app_name': 'दोस्तएक्स ऐप',

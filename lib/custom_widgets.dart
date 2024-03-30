@@ -1,6 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
+import 'language_manager.dart';
 import 'palette.dart';
 import 'globals.dart';
 
@@ -48,7 +50,7 @@ class CustomRadioButton extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 10,
+            width: 3,
           ),
           Text(
             text,
@@ -258,6 +260,125 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
   }
 }
 
+class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
+  final String question;
+
+  const QuestionWithFiveOptionsSingleLine({
+    Key? key,
+    required this.question,
+  }) : super(key: key);
+
+
+  @override
+  State<QuestionWithFiveOptionsSingleLine> createState() => _QuestionWithFiveOptionsSingleLineState();
+}
+
+class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOptionsSingleLine> {
+  String? selectedValue;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: (352/414)*screenWidth(context),
+      // height: (90/869)*screenHeight(context),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Flexible(
+                child: Text(
+                  widget.question,
+                  style: TextStyle(
+                    color: ColorOptions.skin,
+                    fontFamily: 'JostMedium',
+                    fontSize: (screenHeight(context)/896)*13,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height:(11/869)*screenHeight(context),),
+          SizedBox(
+            width: (352/414)*screenWidth(context),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CustomRadioButton(
+                      font: 11,
+                      text: translations[LanguageManager().currentLanguage]!['never']!,
+                      value: 'Never',
+                      selected: selectedValue == 'Never',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'Never';
+                        });
+                      },
+                    ),
+                    const Spacer(),
+                    CustomRadioButton(
+                      font: 11,
+                      text: translations[LanguageManager().currentLanguage]!['rarely']!,
+                      value: 'Rarely',
+                      selected:
+                      selectedValue == 'Rarely',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'Rarely';
+                        });
+                      },
+                    ),
+                    const Spacer(),
+                    CustomRadioButton(
+                      font: 11,
+                      text: translations[LanguageManager().currentLanguage]!['sometimes']!,
+                      value: 'Sometimes',
+                      selected:
+                      selectedValue == 'Sometimes',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'Sometimes';
+                        });
+                      },
+                    ),
+                    const Spacer(),
+                    CustomRadioButton(
+                      font: 11,
+                      text: translations[LanguageManager().currentLanguage]!['frequently']!,
+                      value: 'Frequently',
+                      selected:
+                      selectedValue == 'Frequently',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'Frequently';
+                        });
+                      },
+                    ),
+                    const Spacer(),
+                    CustomRadioButton(
+                      font: 11,
+                      text: 'Nearly Always',
+                      value: 'Nearly Always',
+                      selected: selectedValue == 'Nearly Always',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'Nearly Always';
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height:(10/869)*screenHeight(context),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 
 class QuestionsWithFourOptions extends StatefulWidget {

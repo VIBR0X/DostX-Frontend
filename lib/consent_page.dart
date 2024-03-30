@@ -32,7 +32,7 @@ class _ConsentFormState extends State<ConsentForm> {
              Padding(
               padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
               child: Center(
-                child: SvgPicture.asset("assets/svg/logo.svg"),
+                child: SvgPicture.asset("assets/svg/foo.svg.vec"),
               ),
             ),
             const Padding(
@@ -60,23 +60,27 @@ class _ConsentFormState extends State<ConsentForm> {
                   ),
                 ),
               ),
-              height: (403/896)*screenHeight(context),
               width: 286,
-              child:  Padding(
+              child: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text(
-                  translations[LanguageManager().currentLanguage]![
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      translations[LanguageManager().currentLanguage]![
                       'consent_text']!,
-                  style: TextStyle(
-                    color: Color(
-                      0xFF707070,
+                      style: TextStyle(
+                        color: Color(
+                          0xFF707070,
+                        ),
+                        fontSize: 9 * fontHelper(context),
+                      ),
                     ),
-                    fontSize: 7.8*fontHelper(context),
-                  ),
+                  ],
                 ),
               ),
             ),
-             SizedBox(
+            SizedBox(
               height: (23/896)*screenHeight(context),
             ),
             Center(
