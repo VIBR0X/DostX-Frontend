@@ -1,3 +1,4 @@
+import 'package:dostx/brief_cope_page.dart';
 import 'package:dostx/cope.dart';
 import 'package:dostx/family_burden_scale_page.dart';
 import 'package:dostx/zarit_scale_page.dart';
@@ -87,7 +88,7 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FamilyBurdenScalePage(),
+            builder: (context) => ZaritScalePage(),
           ),
         );
       },
@@ -99,11 +100,19 @@ class HomePageFirst extends StatelessWidget {
           ),
         );
       },
+      //     (BuildContext context) {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => EmotionalWheel(),
+      //     ),
+      //   );
+      // },
           (BuildContext context) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FamilyBurdenScalePage(),
+            builder: (context) => BriefCopePage(),
           ),
         );
       },

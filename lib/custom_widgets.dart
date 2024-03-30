@@ -458,13 +458,14 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
   }
 }
 
-
 class QuestionsWithFourOptions extends StatefulWidget {
   final String question;
+  final Color textColor;
 
   const QuestionsWithFourOptions({
     Key? key,
     required this.question,
+    this.textColor = Colors.white,
   }) : super(key: key);
 
   @override
@@ -478,107 +479,89 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 320,
-      child: Row(
+      width: screenWidth(context)*(350/414),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch children to fill the width
         children: [
-          SizedBox(
-            width: 320,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      widget.question,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'JostMedium',
-                        fontSize: 13,
-                      ),
-                    ),
-                    const Spacer(),
-                  ],
-                ),
-                const SizedBox(
-                  height: 11,
-                ),
-                SizedBox(
-                  height: 100,
-                  width: 299,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          CustomRadioButton(
-                            text: 'I haven\'t been doing\n this at all',
-                            value: 'I haven\'t been doing this at all',
-                            selected: selectedValue == 'I haven\'t been doing this at all',
-                            onSelect: () {
-                              setState(() {
-                                selectedValue = 'I haven\'t been doing this at all';
-                              });
-                            },
-                          ),
-                           SizedBox(
-                            width: 55,
-                          ),
-                          CustomRadioButton(
-                            text: 'A little bit',
-                            value: 'A little bit',
-                            selected: selectedValue == 'A little bit',
-                            onSelect: () {
-                              setState(() {
-                                selectedValue = 'A little bit';
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          CustomRadioButton(
-                            text: 'A medium amount',
-                            value: 'A medium amount',
-                            selected: selectedValue == 'A medium amount',
-                            onSelect: () {
-                              setState(() {
-                                selectedValue = 'A medium amount';
-                              });
-                            },
-                          ),
-                          const SizedBox(
-                            width: 24,
-                          ),
-                          CustomRadioButton(
-                            text: 'I’ve been doing\n this a lot',
-                            value: 'I’ve been doing this a lot',
-                            selected: selectedValue == 'I’ve been doing this a lot',
-                            onSelect: () {
-                              setState(() {
-                                selectedValue = 'I’ve been doing this a lot';
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 11),
+            child: Text(
+              widget.question,
+              style: TextStyle(
+                color: widget.textColor,
+                fontFamily: 'JostMedium',
+                fontSize: 13,
+              ),
             ),
           ),
-          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(width: 10,),
+              CustomRadioButton(
+                font: screenWidth(context)*(12/414),
+                text: 'I haven\'t been doing this at all',
+                value: 'I haven\'t been doing this at all',
+                selected: selectedValue == 'I haven\'t been doing this at all',
+                onSelect: () {
+                  setState(() {
+                    selectedValue = 'I haven\'t been doing this at all';
+                  });
+                },
+              ),
+              Spacer(),
+              CustomRadioButton(
+                font: screenWidth(context)*(12/414),
+                text: 'A medium amount',
+                value: 'A medium amount',
+                selected: selectedValue == 'A medium amount',
+                onSelect: () {
+                  setState(() {
+                    selectedValue = 'A medium amount';
+                  });
+                },
+              ),
+              Spacer(),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(width: 10,),
+              CustomRadioButton(
+                font: screenWidth(context)*(12/414),
+                text: 'A little bit',
+                value: 'A little bit',
+                selected: selectedValue == 'A little bit',
+                onSelect: () {
+                  setState(() {
+                    selectedValue = 'A little bit';
+                  });
+                },
+              ),
+              SizedBox(width: screenWidth(context)*(100/414),),
+              CustomRadioButton(
+                font: screenWidth(context)*(12/414),
+                text: 'I’ve been doing this a lot',
+                value: 'I’ve been doing this a lot',
+                selected: selectedValue == 'I’ve been doing this a lot',
+                onSelect: () {
+                  setState(() {
+                    selectedValue = 'I’ve been doing this a lot';
+                  });
+                },
+              ),
+              Spacer()
+            ],
+          ),
+          const SizedBox(height: 10),
         ],
       ),
     );
   }
 }
+
 
 
 class QuestionsWithThreeNumberedOptions extends StatefulWidget {
