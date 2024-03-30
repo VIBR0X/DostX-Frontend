@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'palette.dart';
 import 'custom_widgets.dart';
 import 'sign_up_fourth_page.dart';
@@ -26,10 +27,10 @@ class _SignUpThirdState extends State<SignUpThird> {
           child: Stack(
             children: [
               Center(
-                child: Image.asset(
-                  "assets/image/dostxbg2.png",
+                child: SvgPicture.asset(
+                  "assets/svg/grandfather.svg",
                   height: 0.3827232142857143 * screenHeight(context),
-                ),
+                )
               ),
               Column(
                 children: [
@@ -60,7 +61,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                         ),
                         SizedBox(
                           width: 299,
-                          height: 77,
+                          height: (77/ 896) * screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -74,7 +75,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13,
+                                      fontSize: 13*fontHelper(context),
                                     ),
                                   ),
                                   Spacer(),
@@ -84,8 +85,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 height: (11 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: 47,
-                                width: 299,
+                                height: (47/ 896) * screenHeight(context),
+                                width: 280,
                                 child: Column(
                                   children: [
                                     Row(
@@ -93,6 +94,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                         CustomRadioButton(
                                           text: translations[LanguageManager()
                                               .currentLanguage]!['married']!,
+                                          font: 13*fontHelper(context),
                                           value: 'Married',
                                           selected: maritalStatus == 'Married',
                                           onSelect: () {
@@ -105,6 +107,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           width: 20,
                                         ),
                                         CustomRadioButton(
+                                          font: 13*fontHelper(context),
                                           text: translations[LanguageManager()
                                               .currentLanguage]!['unmarried']!,
                                           value: 'Unmarried',
@@ -118,6 +121,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                         ),
                                         const Spacer(),
                                         CustomRadioButton(
+                                          font: 13*fontHelper(context),
                                           text: translations[LanguageManager()
                                               .currentLanguage]!['separated']!,
                                           value: 'Seperated',
@@ -131,12 +135,13 @@ class _SignUpThirdState extends State<SignUpThird> {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 7,
+                                     SizedBox(
+                                      height: (7/ 896) * screenHeight(context),
                                     ),
                                     Row(
                                       children: [
                                         CustomRadioButton(
+                                          font: 13*fontHelper(context),
                                           text: translations[LanguageManager()
                                               .currentLanguage]!['widowed']!,
                                           value: 'Widowed',
@@ -148,9 +153,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           },
                                         ),
                                         const SizedBox(
-                                          width: 10,
+                                          width: 12,
                                         ),
                                         CustomRadioButton(
+                                          font: 13*fontHelper(context),
                                           text: translations[LanguageManager()
                                               .currentLanguage]!['cohabitant']!,
                                           value: 'Co-habitant',
@@ -183,7 +189,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                             children: [
                               SizedBox(
                                 width: 247,
-                                height: 110,
+                                height: (110/ 896) * screenHeight(context),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -197,7 +203,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           style: TextStyle(
                                             color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
-                                            fontSize: 13,
+                                            fontSize: 13*fontHelper(context),
                                           ),
                                         ),
                                         Spacer(),
@@ -208,13 +214,14 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           (11 / 896) * screenHeight(context),
                                     ),
                                     SizedBox(
-                                      height: 80,
+                                      height:( 80/ 896) * screenHeight(context),
                                       width: 247,
                                       child: Column(
                                         children: [
                                           Row(
                                             children: [
                                               CustomRadioButton(
+                                                font: 13*fontHelper(context),
                                                 text: translations[
                                                         LanguageManager()
                                                             .currentLanguage]![
@@ -229,9 +236,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                 },
                                               ),
                                               const SizedBox(
-                                                width: 19,
+                                                width: 24,
                                               ),
                                               CustomRadioButton(
+                                                font: 13*fontHelper(context),
                                                 text: translations[
                                                         LanguageManager()
                                                             .currentLanguage]![
@@ -247,12 +255,13 @@ class _SignUpThirdState extends State<SignUpThird> {
                                               ),
                                             ],
                                           ),
-                                          const SizedBox(
-                                            height: 10,
+                                           SizedBox(
+                                            height: (10/ 896) * screenHeight(context),
                                           ),
                                           Row(
                                             children: [
                                               CustomRadioButton(
+                                                font: 13*fontHelper(context),
                                                 text: translations[
                                                         LanguageManager()
                                                             .currentLanguage]![
@@ -269,6 +278,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                 width: 60,
                                               ),
                                               CustomRadioButton(
+                                                font: 13*fontHelper(context),
                                                 text: translations[
                                                         LanguageManager()
                                                             .currentLanguage]![
@@ -283,12 +293,13 @@ class _SignUpThirdState extends State<SignUpThird> {
                                               ),
                                             ],
                                           ),
-                                          const SizedBox(
-                                            height: 10,
+                                           SizedBox(
+                                            height: (10/ 896) * screenHeight(context),
                                           ),
                                           Row(
                                             children: [
                                               CustomRadioButton(
+                                                font: 13*fontHelper(context),
                                                 text: translations[
                                                         LanguageManager()
                                                             .currentLanguage]![
@@ -305,6 +316,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                 width: 62,
                                               ),
                                               CustomRadioButton(
+                                                font:13*fontHelper(context),
                                                 text: translations[
                                                         LanguageManager()
                                                             .currentLanguage]![
@@ -335,7 +347,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                         ),
                         SizedBox(
                           width: 299,
-                          height: 72,
+                          height: (72/ 896) * screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -348,7 +360,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13,
+                                      fontSize: 13*fontHelper(context),
                                     ),
                                   ),
                                   Spacer(),
@@ -369,7 +381,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           0xFF707070,
                                         ),
                                         fontFamily: "JostMedium",
-                                        fontSize: 14,
+                                        fontSize: 14*fontHelper(context),
                                       ),
                                       cursorColor: Color(
                                         0xFF707070,
@@ -430,7 +442,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                         ),
                         SizedBox(
                           width: 299,
-                          height: 72,
+                          height: (72/ 896) * screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -442,7 +454,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13,
+                                      fontSize: 13*fontHelper(context),
                                     ),
                                   ),
                                   Spacer(),
@@ -463,7 +475,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                           0xFF707070,
                                         ),
                                         fontFamily: "JostMedium",
-                                        fontSize: 14,
+                                        fontSize: 14*fontHelper(context),
                                       ),
                                       cursorColor: Color(
                                         0xFF707070,
@@ -551,7 +563,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 translations[LanguageManager()
                                     .currentLanguage]!['submit']!,
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 14*fontHelper(context),
                                   fontFamily: "JostBold",
                                   color: Colors.white,
                                 ),

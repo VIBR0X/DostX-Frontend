@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'palette.dart';
 import 'globals.dart';
 
+
 class CustomRadioButton extends StatelessWidget {
   final String text;
   final String value;
   final bool selected;
   final VoidCallback onSelect;
   final double font;
+  final Color color;
 
   const CustomRadioButton({
     super.key,
@@ -18,6 +20,7 @@ class CustomRadioButton extends StatelessWidget {
     required this.selected,
     required this.onSelect,
     this.font = 14,
+    this.color = ColorOptions.skin,
   }) : assert(font > 0);
 
   @override
@@ -50,7 +53,7 @@ class CustomRadioButton extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              color: ColorOptions.skin,
+              color: this.color,
               fontFamily: 'JostMedium',
               fontSize: font,
             ),

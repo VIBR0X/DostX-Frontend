@@ -1,6 +1,7 @@
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'consent_page.dart';
 import 'translations.dart';
 import 'language_manager.dart';
@@ -28,10 +29,10 @@ class _SignUpFourthState extends State<SignUpFourth> {
           physics: const ClampingScrollPhysics(),
           child: Stack(
             children: [ Center(
-              child: Image.asset(
-                "assets/image/dostxbg2.png",
+              child: SvgPicture.asset(
+                "assets/svg/grandfather.svg",
                 height: 0.3827232142857143 * screenHeight(context),
-              ),
+              )
             ),
               Column(
                 children: [
@@ -330,7 +331,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   },
                                                 ),
                                                 const SizedBox(
-                                                  width: 15,
+                                                  width: 22,
                                                 ),
                                                 CustomRadioButton(
                                                   font: fontSize*(14/13),
@@ -401,7 +402,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   },
                                                 ),
                                                 const SizedBox(
-                                                  width: 40,
+                                                  width: 42,
                                                 ),
                                                 CustomRadioButton(
                                                   font: fontSize*(14/13),
@@ -453,7 +454,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                           ),
                         ),
                          SizedBox(
-                          height:(25/869)*screenHeight(context)
+                          height:(8/869)*screenHeight(context)
                         ),
                         SizedBox(
                           height:(43/869)*screenHeight(context),

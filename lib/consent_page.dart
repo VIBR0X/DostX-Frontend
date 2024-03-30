@@ -1,5 +1,7 @@
+import 'package:dostx/globals.dart%20';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'palette.dart';
 import 'custom_widgets.dart';
 import 'short12.dart';
@@ -21,140 +23,130 @@ class _ConsentFormState extends State<ConsentForm> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        height: double.infinity,
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           gradient: GradientOptions.backgroundGradient,
         ),
-        child: SingleChildScrollView(
-          physics: const ClampingScrollPhysics(),
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
-                child: Center(
+        child: Column(
+          children: [
+             Padding(
+              padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+              child: Center(
+                child: SvgPicture.asset("assets/svg/logo.svg"),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
+              child: Center(
+                child: SizedBox(
+                  height: 56,
                   child: Text(
-                    "DostX",
+                    "Consent Form",
                     style: TextStyle(
                       fontFamily: 'JostBold',
-                      fontSize: 28,
-                      color: ColorOptions.darkblue,
+                      fontSize: 25,
+                      color: ColorOptions.lightblue,
                     ),
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
-                child: Center(
-                  child: SizedBox(
-                    height: 56,
-                    child: Text(
-                      "Consent Form",
-                      style: TextStyle(
-                        fontFamily: 'JostBold',
-                        fontSize: 25,
-                        color: ColorOptions.lightblue,
-                      ),
-                    ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    20,
                   ),
                 ),
               ),
-              Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      20,
+              height: (403/896)*screenHeight(context),
+              width: 286,
+              child:  Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  translations[LanguageManager().currentLanguage]![
+                      'consent_text']!,
+                  style: TextStyle(
+                    color: Color(
+                      0xFF707070,
                     ),
-                  ),
-                ),
-                height: 470,
-                width: 286,
-                child:  Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    translations[LanguageManager().currentLanguage]![
-                        'consent_text']!,
-                    style: TextStyle(
-                      color: Color(
-                        0xFF707070,
-                      ),
-                      fontSize: 9,
-                    ),
+                    fontSize: 7.8*fontHelper(context),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 23,
-              ),
-              Center(
-                child: SizedBox(
-                  width: 320,
-                  height: 31,
-                  child: Row(children: [
-                    CustomRadioButton(
-                      font: 11,
-                      text:
-                          translations[LanguageManager().currentLanguage]![
-                              'accept_terms']!,
-                      value:
-                          'By accepting you are agreeing to all terms and conditions',
-                      selected: isSelected[0],
-                      onSelect: () {
-                        setState(() {
-                          isSelected[0] = !isSelected[0];
-                          consent = isSelected[0] ? '1' : null;
-                        });
-                      },
-                    ),
-                  ]),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              SizedBox(
-                height: 43,
-                width: 261,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: GradientOptions.signInGradient,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: null,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      if(isSelected[0]){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );}
+            ),
+             SizedBox(
+              height: (23/896)*screenHeight(context),
+            ),
+            Center(
+              child: SizedBox(
+                width: 320,
+                height: (31/896)*screenHeight(context),
+                child: Row(children: [
+                  CustomRadioButton(
+
+                    font: 11*fontHelper(context),
+                    color: Colors.white,
+                    text:
+                        translations[LanguageManager().currentLanguage]![
+                            'accept_terms']!,
+                    value:
+                        'By accepting you are agreeing to all terms and conditions',
+                    selected: isSelected[0],
+                    onSelect: () {
+                      setState(() {
+                        isSelected[0] = !isSelected[0];
+                        consent = isSelected[0] ? '1' : null;
+                      });
                     },
-                    child:  Text(
-                      translations[LanguageManager().currentLanguage]![
-                          'submit']!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "JostBold",
-                        color: Colors.white,
+                  ),
+                ]),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              height: 43,
+              width: 261,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: GradientOptions.signInGradient,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: null,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        20,
                       ),
+                    ),
+                  ),
+                  onPressed: () {
+                    if(isSelected[0]){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );}
+                  },
+                  child:  Text(
+                    translations[LanguageManager().currentLanguage]![
+                        'submit']!,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: "JostBold",
+                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 100,
-              )
-            ],
-          ),
+            ),
+
+          ],
         ),
       ),
     );

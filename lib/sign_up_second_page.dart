@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'palette.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,10 +28,10 @@ class _SignUpSecondState extends State<SignUpSecond> {
           child: Stack(
             children: [
               Center(
-                  child: Image.asset(
-                "assets/image/dostxbg2.png",
-                height: 0.3827232142857143 * screenHeight(context),
-              )),
+                  child: SvgPicture.asset(
+                    "assets/svg/grandfather.svg",
+                    height: 0.3827232142857143 * screenHeight(context),
+                  )),
               Column(
                 children: [
                   Container(
@@ -63,11 +64,11 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 250,
-                            height: 55,
+                            height: (55/ 896) * screenHeight(context),
                             child: Row(
                               children: [
                                 SizedBox(
-                                  height: 32,
+                                  height:( 32/ 896) * screenHeight(context),
                                   width: 170,
                                   child: DecoratedBox(
                                     decoration: BoxDecoration(
@@ -101,7 +102,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                         translations[LanguageManager()
                                             .currentLanguage]!['upload_image']!,
                                         style: TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 10*fontHelper(context),
                                           fontFamily: "JostBold",
                                           color: Colors.white,
                                         ),
@@ -113,7 +114,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   width: (18 / 896) * screenHeight(context),
                                 ),
                                 Container(
-                                  height: 55,
+                                  height: (55/ 896) * screenHeight(context),
                                   width: 62,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -134,7 +135,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 269.91,
-                            height: 103,
+                            height: (103/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -147,7 +148,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -157,13 +158,13 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   height: (2 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 82,
+                                  height: (82/ 896) * screenHeight(context),
                                   child: TextField(
                                     maxLines: 5,
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
-                                      fontSize: 14,
+                                      fontSize: 14*fontHelper(context),
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
@@ -221,7 +222,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         ),
                         Center(
                           child: SizedBox(
-                            height: 47,
+                            height:( 47/ 896) * screenHeight(context),
                             width: 269.91,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -236,7 +237,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -250,7 +251,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     Row(
                                       children: [
                                         SizedBox(
-                                          height: 26,
+                                          height:( 26/ 896) * screenHeight(context),
                                           width: 94.91,
                                           child: TextField(
                                             inputFormatters: [
@@ -260,7 +261,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                             style: TextStyle(
                                               color: ColorOptions.skin,
                                               fontFamily: "JostMedium",
-                                              fontSize: 14,
+                                              fontSize: 14*fontHelper(context),
                                             ),
                                             cursorColor: ColorOptions.skin,
                                             keyboardType: TextInputType.number,
@@ -323,7 +324,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 267.91,
-                            height: 61,
+                            height: (61/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -336,7 +337,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
@@ -346,13 +347,13 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   height: (4 / 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 38,
+                                  height: (38/ 896) * screenHeight(context),
                                   child: TextField(
                                     inputFormatters: [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
-                                      fontSize: 18,
+                                      fontSize: 18*fontHelper(context),
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
@@ -411,7 +412,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 269.91,
-                            height: 61,
+                            height: (61/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -424,23 +425,23 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: 13,
+                                        fontSize: 13*fontHelper(context),
                                       ),
                                     ),
                                     Spacer(),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 4,
+                                  height: (4/ 896) * screenHeight(context),
                                 ),
                                 SizedBox(
-                                  height: 38,
+                                  height: (38/ 896) * screenHeight(context),
                                   child: TextField(
                                     inputFormatters: [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
-                                      fontSize: 18,
+                                      fontSize: 18*fontHelper(context),
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
@@ -498,7 +499,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         ),
                         Center(
                           child: SizedBox(
-                            height: (40 / 869) * screenHeight(context),
+                            height: (43 / 869) * screenHeight(context),
                             width: 261,
                             child: DecoratedBox(
                               decoration: BoxDecoration(
@@ -526,7 +527,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   translations[LanguageManager()
                                       .currentLanguage]!['submit']!,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14*fontHelper(context),
                                     fontFamily: "JostBold",
                                     color: Colors.white,
                                   ),

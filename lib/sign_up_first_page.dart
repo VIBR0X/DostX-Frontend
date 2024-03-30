@@ -31,8 +31,9 @@ class _SignUpFirstState extends State<SignUpFirst> {
             child: Stack(
               children: [
                 Center(
-                    child: Image.asset(
-                  "assets/image/dostxbg2.png",
+
+                    child: SvgPicture.asset(
+                  "assets/svg/grandfather.svg",
                   height: 0.3827232142857143 * screenHeight(context),
                 )),
                 Column(
@@ -403,7 +404,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                             ),
                           ),
                           Container(
-                            height: (19 / 896) * screenHeight(context),
+                            height: (23/ 896) * screenHeight(context),
                           ),
                           SizedBox(
                             height: (43/896)*screenHeight(context),
