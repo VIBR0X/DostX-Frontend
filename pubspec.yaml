@@ -78,9 +78,9 @@ flutter:
     - assets/image/Icon3.png
     - assets/p1.png
     - assets/p2.png
+    - assets/svg/ppp.svg
     - assets/svg/grandfather.svg
     - assets/svg/logo.svg
-    - assets/svg/foo.svg.vec
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

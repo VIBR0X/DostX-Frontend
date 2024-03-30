@@ -1,4 +1,5 @@
 import 'package:dostx/cope.dart';
+import 'package:dostx/family_burden_scale_page.dart';
 import 'package:dostx/zarit_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
@@ -86,7 +87,7 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ZerithScalePage(),
+            builder: (context) => FamilyBurdenScalePage(),
           ),
         );
       },
@@ -94,7 +95,7 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ZerithScalePage(),
+            builder: (context) => FamilyBurdenScalePage(),
           ),
         );
       },
@@ -102,7 +103,7 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ZerithScalePage(),
+            builder: (context) => FamilyBurdenScalePage(),
           ),
         );
       },

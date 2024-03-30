@@ -66,6 +66,8 @@ Map<String, Map<String, String>> translations = {
         'question10':"Do you feel uncertain about what to do about relative?",
         'question11':"Do you feel you should be doing more for your relative?",
         'question12':"Do you feel you could do a better job in caring for your relative?",
+
+
     'feel_stressed_about_responsibilities': 'Do you feel stressed between caring for your relative and trying to meet other responsibilities for your family or work?',
     'feel_embarrassed_of_relative_behavior': 'Do you feel embarrassed your relative’s behavior?',
     'never': "Never",
@@ -74,6 +76,15 @@ Map<String, Map<String, String>> translations = {
     'frequently': "Frequently",
     'nearly_always': "Nearly Always",
     'zarit_scale_intro_text': 'The following is a list of statements that reflect how people sometimes feel when taking care of another person.\n\nAfter reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.',
+
+
+    'family_burden_scale_intro': 'The following is a list of statements that reflect how people sometimes feel when taking care of another person.',
+    'no_burden': 'No Burden',
+    'moderate_burden': 'Moderate Burden',
+    'severe_burden': 'Severe Burden',
+    'family_burden_scale_question_1': 'Loss of patient’s income and its effect on family income?',
+    'family_burden_scale_question_2': 'Do you feel embarrassed your relative’s behavior?',
+    'family_burden_scale_question_3': 'Expenditure incurred due to patients and treatments and its effects on family finances',
   },
   'hi': {
     'app_name': 'दोस्तएक्स ऐप',
