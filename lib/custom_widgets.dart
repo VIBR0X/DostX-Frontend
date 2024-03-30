@@ -14,6 +14,7 @@ class CustomRadioButton extends StatelessWidget {
   final VoidCallback onSelect;
   final double font;
   final Color color;
+  final double spacing;
 
   const CustomRadioButton({
     super.key,
@@ -22,6 +23,7 @@ class CustomRadioButton extends StatelessWidget {
     required this.selected,
     required this.onSelect,
     this.font = 14,
+    this.spacing = 10,
     this.color = ColorOptions.skin,
   }) : assert(font > 0);
 
@@ -49,8 +51,8 @@ class CustomRadioButton extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            width: 3,
+          SizedBox(
+            width: spacing,
           ),
           Text(
             text,
@@ -385,6 +387,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           selectedValue = 'Never';
                         });
                       },
+                      spacing: 3,
                     ),
                     const Spacer(),
                     CustomRadioButton(
@@ -398,6 +401,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           selectedValue = 'Rarely';
                         });
                       },
+                      spacing: 3,
                     ),
                     const Spacer(),
                     CustomRadioButton(
@@ -411,6 +415,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           selectedValue = 'Sometimes';
                         });
                       },
+                      spacing: 3,
                     ),
                     const Spacer(),
                     CustomRadioButton(
@@ -424,6 +429,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           selectedValue = 'Frequently';
                         });
                       },
+                      spacing: 3,
                     ),
                     const Spacer(),
                     CustomRadioButton(
@@ -436,6 +442,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           selectedValue = 'Nearly Always';
                         });
                       },
+                      spacing: 3,
                     ),
                   ],
                 ),

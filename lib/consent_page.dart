@@ -62,7 +62,7 @@ class _ConsentFormState extends State<ConsentForm> {
               ),
               width: 286,
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(18.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
