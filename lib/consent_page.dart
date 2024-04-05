@@ -30,58 +30,77 @@ class _ConsentFormState extends State<ConsentForm> {
         child: Column(
           children: [
              Padding(
-              padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+              padding: const EdgeInsets.fromLTRB(0, 75, 0, 45),
               child: Center(
-                child: SvgPicture.asset("assets/svg/foo.svg.vec"),
+                child: Image.asset(
+                    'assets/image/logo.png',
+                  height: screenHeight(context)*0.06,
+                )
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
-              child: Center(
-                child: SizedBox(
-                  height: 56,
-                  child: Text(
-                    "Consent Form",
-                    style: TextStyle(
-                      fontFamily: 'JostBold',
-                      fontSize: 25,
-                      color: ColorOptions.lightblue,
-                    ),
-                  ),
+            const Text(
+              "Consent Form",
+              style: TextStyle(
+                fontFamily: 'JostBold',
+                fontSize: 25,
+                color: ColorOptions.skin,
+              ),
+            ),
+            SizedBox(
+              height: (10 / 896) * screenHeight(context),
+            ),
+            Container(
+              width: 50,
+              height: 4,
+              decoration: BoxDecoration(
+                color: ColorOptions.skin,
+                border: Border.all(
+                    color: ColorOptions.skin,
+                    width: 1
                 ),
               ),
+            ),
+            SizedBox(
+              height: (20 / 896) * screenHeight(context),
             ),
             Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    20,
+                  Radius.circular(20,),
+                ),
+              ),
+              width: screenWidth(context) * 0.72,
+              height: screenHeight(context) * 0.46,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Scrollbar(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            translations[LanguageManager().currentLanguage]![
+                            'consent_text']!,
+                            style: TextStyle(
+                              color: Color(
+                                0xFF707070,
+                              ),
+                              fontSize: 10 * fontHelper(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-              width: 286,
-              child: Padding(
-                padding: EdgeInsets.all(18.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      translations[LanguageManager().currentLanguage]![
-                      'consent_text']!,
-                      style: TextStyle(
-                        color: Color(
-                          0xFF707070,
-                        ),
-                        fontSize: 9 * fontHelper(context),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
+
             SizedBox(
-              height: (23/896)*screenHeight(context),
+              height: (25/896)*screenHeight(context),
             ),
             Center(
               child: SizedBox(
@@ -89,9 +108,8 @@ class _ConsentFormState extends State<ConsentForm> {
                 height: (31/896)*screenHeight(context),
                 child: Row(children: [
                   CustomRadioButton(
-
                     font: 11*fontHelper(context),
-                    color: Colors.white,
+                    color: ColorOptions.darkblue,
                     text:
                         translations[LanguageManager().currentLanguage]![
                             'accept_terms']!,
@@ -109,7 +127,7 @@ class _ConsentFormState extends State<ConsentForm> {
               ),
             ),
             const SizedBox(
-              height: 8,
+              height: 40,
             ),
             SizedBox(
               height: 43,

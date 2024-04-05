@@ -81,6 +81,37 @@ flutter:
     - assets/svg/ppp.svg
     - assets/svg/grandfather.svg
     - assets/svg/logo.svg
+    - assets/image/logo.png
+    - assets/svg/Group1.svg
+    - assets/svg/Group2.svg
+    - assets/svg/Group4.svg
+    - assets/svg/dostX_logo.svg
+    - assets/svg/Icon-2.svg
+    - assets/svg/Icon-3.svg
+    - assets/svg/Icon-4.svg
+    - assets/svg/Icon-5.svg
+    - assets/svg/Icon-6.svg
+    - assets/svg/Icon-7.svg
+    - assets/svg/Icon-8.svg
+    - assets/svg/Icon-9.svg
+    - assets/svg/Icon-10.svg
+    - assets/svg/Icon-11.svg
+    - assets/svg/Icon-12.svg
+    - assets/svg/Image-1.svg
+    - assets/svg/Image-2.svg
+    - assets/svg/Image-3.svg
+    - assets/svg/Image-4.svg
+    - assets/svg/Image-5.svg
+    - assets/svg/Image-6.svg
+    - assets/svg/Image-7.svg
+    - assets/svg/Image-8.svg
+    - assets/svg/Image-9.svg
+    - assets/svg/Image-10.svg
+    - assets/svg/image-11.svg
+#    - assets/svg/Image-1.svg
+#    - assets/svg/Image-1.svg
+#    - assets/svg/Image-1.svg
+#    -
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -109,6 +140,12 @@ flutter:
     - family: SFProText
       fonts:
         - asset: fonts/SF_Pro/static/SF-Pro-Text-Regular.ttf
+    - family: SFProSemiBold
+      fonts:
+        - asset: fonts/SF_Pro/static/SF-Pro-Text-Semibold.ttf
+    - family: SFProMedium
+      fonts:
+        - asset: fonts/SF_Pro/static/SF-Pro-Text-Medium.ttf
           # style: italic
   #   - family: Trajan Pro
   #     fonts:

@@ -1,9 +1,12 @@
 import 'package:dostx/brief_cope_page.dart';
 import 'package:dostx/cope.dart';
+import 'package:dostx/emothional_wheeel_reults.dart';
 import 'package:dostx/family_burden_scale_page.dart';
+import 'package:dostx/svg_test.dart';
 import 'package:dostx/zarit_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
+import 'font_test.dart';
 import 'short12.dart';
 import 'emotional_wheel.dart';
 class HomePageFirst extends StatelessWidget {
@@ -96,7 +99,7 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FamilyBurdenScalePage(),
+            builder: (context) => SVGTest(),
           ),
         );
       },
@@ -112,7 +115,7 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BriefCopePage(),
+            builder: (context) => EmotionalWheelResultsPage(),
           ),
         );
       },

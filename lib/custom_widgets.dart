@@ -660,3 +660,111 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
     );
   }
 }
+
+
+
+// Define the ReusableTile class
+class ReusableTile extends StatelessWidget {
+  final String title;
+  final String author;
+  final String testDate;
+  final VoidCallback onPressed;
+  final String buttonText;
+
+  ReusableTile({
+    required this.title,
+    required this.author,
+    required this.testDate,
+    required this.onPressed,
+    required this.buttonText
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFFFFFFF), // Setting background color to white
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: ListTile(
+          contentPadding: EdgeInsets.zero,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 16, 8),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'SFProMedium',
+                      fontWeight: FontWeight.w600
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  author,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontFamily: 'SFProText',
+                    color: Color(0xFF9FA4A4),
+                  ),
+                ),
+              ),
+              SizedBox(height: 12),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 3),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      testDate,
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: Color(0xFF9FA4A4),
+                          fontFamily: 'SFProText',
+                          letterSpacing: 0.6
+                      ),
+                    ),
+                    SizedBox(
+                      height: 35,
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: GradientOptions.signInGradient,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: null,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          onPressed: onPressed,
+                          child: Text(
+                            buttonText,
+                            style: TextStyle(
+                                fontSize: 14,
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontFamily: 'SFProText'
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -21,13 +21,10 @@ class _SignUpFirstState extends State<SignUpFirst> {
     // Get the screen width
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: screenHeight(context),
-          width: screenWidth(context),
-          decoration: const BoxDecoration(color: ColorOptions.skin),
-          child: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
+      body: Container(
+        decoration: const BoxDecoration(color: ColorOptions.skin),
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
             child: Stack(
               children: [
                 Center(
@@ -74,7 +71,21 @@ class _SignUpFirstState extends State<SignUpFirst> {
                             ),
                           ),
                           SizedBox(
-                            height: (20 / 896) * screenHeight(context),
+                            height: (10 / 896) * screenHeight(context),
+                          ),
+                          Container(
+                            width: 45,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: ColorOptions.skin,
+                              border: Border.all(
+                                  color: ColorOptions.skin,
+                                  width: 1
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: (15 / 896) * screenHeight(context),
                           ),
                           SizedBox(
                             width: 265.96,
@@ -453,7 +464,6 @@ class _SignUpFirstState extends State<SignUpFirst> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
