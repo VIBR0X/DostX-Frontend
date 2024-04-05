@@ -92,8 +92,13 @@ Map<String, Map<String, String>> translations = {
     'retake': "RETAKE",
     'assessment-text': 'Your latest assessment result will be displayed here',
     'date': "Date",
+    'about': 'About',
+    'check-result': "Check Result",
+
     'emotional-wheel': "Emotional Wheel",
-    'check-result': "Check Result"
+    'zarit-burden': "The Zarit Burden Interview Assessing Caregiver Burden",
+    'family-burden': "The Family Burden Scale",
+    'brief-cope-result': "Coping Orientation to Problems Experienced Inventory (Brief-COPE)"
   },
   'hi': {
     'app_name': 'दोस्तएक्स ऐप',

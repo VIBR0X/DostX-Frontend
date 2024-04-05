@@ -76,6 +76,8 @@ flutter:
     - assets/image/Icon1.png
     - assets/image/Icon2.png
     - assets/image/Icon3.png
+    - assets/image/Image-1.png
+    - assets/image/Image-12.png
     - assets/p1.png
     - assets/p2.png
     - assets/svg/ppp.svg
@@ -83,6 +85,7 @@ flutter:
     - assets/svg/logo.svg
     - assets/image/logo.png
     - assets/svg/Group1.svg
+    - assets/svg/02.svg
     - assets/svg/Group2.svg
     - assets/svg/Group4.svg
     - assets/svg/dostX_logo.svg
@@ -108,7 +111,7 @@ flutter:
     - assets/svg/Image-9.svg
     - assets/svg/Image-10.svg
     - assets/svg/image-11.svg
-#    - assets/svg/Image-1.svg
+    - assets/svg/Image-12.svg
 #    - assets/svg/Image-1.svg
 #    - assets/svg/Image-1.svg
 #    -

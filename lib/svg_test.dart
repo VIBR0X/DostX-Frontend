@@ -16,8 +16,8 @@ class _SVGTestState extends State<SVGTest> {
     return Center(
       child: Container(
         child: SvgPicture.asset(
-          "assets/svg/Group2.svg",
-          height: 0.3827232142857143 * screenHeight(context),
+          "assets/svg/02.svg",
+          height: 0.9 * screenHeight(context),
         )
       ),
     );
