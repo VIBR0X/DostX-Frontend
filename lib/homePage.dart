@@ -1,4 +1,4 @@
-import 'package:dostx/bried_cope_results_page.dart';
+import 'package:dostx/brief_cope_results_page.dart';
 import 'package:dostx/brief_cope_page.dart';
 import 'package:dostx/cope.dart';
 import 'package:dostx/emothional_wheeel_reults.dart';
