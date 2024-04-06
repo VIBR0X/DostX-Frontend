@@ -10,6 +10,7 @@ import 'globals.dart';
 class BriefCopeResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
@@ -27,10 +28,10 @@ class BriefCopeResultsPage extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        title: const Text(
+        title: Text(
           'Brief-COPE Results',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: relFont * 18,
             fontFamily: 'SFProSemiBold',
             color: ColorOptions.darkblue,
             fontWeight: FontWeight.w600,
@@ -88,7 +89,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                                 Text(
                                   "${translations[LanguageManager().currentLanguage]!['date']!} :",
                                   style: TextStyle(
-                                      fontSize: 15.0,
+                                      fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
                                       color: Color(0xFF323736),
                                       letterSpacing: 1.1),
@@ -98,7 +99,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                                 Text(
                                   translations[LanguageManager().currentLanguage]!['zarit-burden']!,
                                   style: TextStyle(
-                                      fontSize: 15.0,
+                                      fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
                                       color: Color(0xFF323736),
                                       letterSpacing: 1.1),
@@ -117,7 +118,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                           translations[LanguageManager().currentLanguage]![
                           'assessment-text']!,
                           style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: relFont * 18.0,
                               fontFamily: 'SFProText',
                               fontWeight: FontWeight.w500,
                               color: Color(0xFF323736),
@@ -130,8 +131,8 @@ class BriefCopeResultsPage extends StatelessWidget {
                     SizedBox(height: 16.0),
                     Center(
                       child: SizedBox(
-                        height: 43,
-                        width: screenWidth(context) * 0.4,
+                        height: screenHeight(context) * (38 / 895),
+                        width: screenWidth(context) * (150 / 419),
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             gradient: GradientOptions.signInGradient,
@@ -151,7 +152,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: relFont * 14,
                                 fontFamily: "JostBold",
                                 color: Colors.white,
                               ),

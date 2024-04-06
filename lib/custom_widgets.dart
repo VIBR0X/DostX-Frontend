@@ -681,6 +681,7 @@ class ReusableTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double relFont = fontHelper(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Container(
@@ -694,45 +695,58 @@ class ReusableTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 16, 16, 8),
+                padding: EdgeInsets.fromLTRB((35/419) * screenWidth(context), 10, 16, 8),
                 child: Text(
                   title,
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: relFont * 16,
                       fontFamily: 'SFProMedium',
                       fontWeight: FontWeight.w600
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * (35 / 419)),
                 child: Text(
                   author,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: relFont * 13,
                     fontFamily: 'SFProText',
                     color: Color(0xFF9FA4A4),
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              // SizedBox(height: 12),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 3),
+                padding: EdgeInsets.fromLTRB(screenWidth(context) * (25 / 419), 10, 20, (20 / 896) * screenHeight(context)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      testDate,
-                      style: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFF9FA4A4),
-                          fontFamily: 'SFProText',
-                          letterSpacing: 0.6
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFF8FBFB), // Setting background color to white
+                        borderRadius: BorderRadius.circular(screenWidth(context) * (10 / 419)),
+                        // border: Border.all(
+                        //     color: ColorOptions.skin,
+                        //     width: 1
+                        // ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          testDate,
+                          style: TextStyle(
+                              fontSize: relFont * 12,
+                              color: Color(0xFF9FA4A4),
+                              fontFamily: 'SFProText',
+                              letterSpacing: 0.6
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: 35,
-                      width: MediaQuery.of(context).size.width * 0.35,
+                      height: screenHeight(context) * (32 / 896),
+                      width: MediaQuery.of(context).size.width * (125/ 419),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: GradientOptions.signInGradient,
@@ -749,7 +763,7 @@ class ReusableTile extends StatelessWidget {
                           child: Text(
                             buttonText,
                             style: TextStyle(
-                                fontSize: 14,
+                                fontSize: relFont * 11,
                                 // fontWeight: FontWeight.bold,
                                 color: Colors.white,
                                 fontFamily: 'SFProText'
