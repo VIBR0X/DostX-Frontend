@@ -26,11 +26,14 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Stack(
-          children: [ Center(
-              child: SvgPicture.asset(
-                "assets/svg/grandfather.svg",
-                height: 0.3827232142857143 * screenHeight(context),
-              )
+          children: [ Column(
+            children: [SizedBox(height: (15/896)* screenHeight(context,),),
+              Center(
+                child: SvgPicture.asset(
+                  "assets/svg/grandfather.svg",
+                  height: 0.3827232142857143 * screenHeight(context),
+                ),),
+            ],
           ),
             Column(
               children: [

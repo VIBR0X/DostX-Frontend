@@ -3,6 +3,7 @@ import 'package:dostx/sign_up_third_page.dart';
 import 'package:flutter/material.dart';
 import 'palette.dart';
 import 'short12.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -41,16 +42,18 @@ class _ProfilePageState extends State<ProfilePage> {
           'John Doe',
           style: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w800,
+              fontFamily: 'Poppins',
               color: Color(0xff204267)),
         ),
         Text(
           'johndoe@example.com',
-          style: TextStyle(fontSize: 14, color: Color(0xff204267)),
+          style: TextStyle(
+              fontSize: 14, fontFamily: 'Poppins', color: Color(0xff204267)),
         ),
         SizedBox(height: 20),
         Container(
-          width: 230,
+          width: 300,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -89,21 +92,15 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0,15,28.5,0),
+        padding: const EdgeInsets.fromLTRB(0, 15, 28.5, 0),
         child: RawScrollbar(
-
           thumbColor: Color(0xff1A3858),
-          thickness: 26.5,
+          thickness: 19.78,
           thumbVisibility: true,
-          trackVisibility: true,
-
           radius: Radius.circular(20),
-
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
-
           child: SingleChildScrollView(
-
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -111,7 +108,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   SizedBox(height: 10),
                   _buildSettingCard('Personal Details', () {
-                    // Navigate to personal details page
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -126,7 +122,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       MaterialPageRoute(
                         builder: (context) => const SignUpFirst(),
                       ),
-                    );;
+                    );
+                    ;
                   }),
                   _buildSettingCard('Cost Effectiveness', () {
                     // Navigate to cost effectiveness page
@@ -136,7 +133,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     // Navigate to medicine reminders page
                     Navigator.pushNamed(context, '/medicine_reminders');
                   }),
-
                   SizedBox(height: 10),
                 ],
               ),
@@ -148,35 +144,32 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildHistory() {
-    return Container( decoration: BoxDecoration(
-      color: Color(0xffFFF2E3),
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(40),
-        topRight: Radius.circular(40),
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xffFFF2E3),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+        ),
       ),
-    ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 26, 0),
         child: RawScrollbar(
           thumbColor: Color(0xff1A3858),
-          thickness: 26.5,
+          thickness: 19.78,
           thumbVisibility: true,
-          trackVisibility: true,
-        
           radius: Radius.circular(20),
-        
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: ListView(
               children: [
-                _buildHistoryCard('History 1',"Dr ABC","29 Aug 2022",(){}),
-                _buildHistoryCard('History 1',"Dr ABC","29 Aug 2022",(){}),
-                _buildHistoryCard('History 1',"Dr ABC","29 Aug 2022",(){}),
-                _buildHistoryCard('History 1',"Dr ABC","29 Aug 2022",(){}),
-                _buildHistoryCard('History 1',"Dr ABC","29 Aug 2022",(){}),
-        
+                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
+                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
+                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
+                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
+                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
               ],
             ),
           ),
@@ -185,11 +178,13 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildHistoryCard(String text,String doctor, String date,VoidCallback tap) {
-    return Padding(padding:  const EdgeInsets.fromLTRB(0,0,30,0),
+  Widget _buildHistoryCard(
+      String text, String doctor, String date, VoidCallback tap) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5,horizontal: 20),
-        padding: EdgeInsets.fromLTRB(10,10,20,10),
+        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        padding: EdgeInsets.fromLTRB(10, 10, 20, 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -206,29 +201,34 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Row(
               children: [
-                Text(text, style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                Text(
+                  text,
+                  style: TextStyle(fontSize: 14, fontFamily: 'SFProMedium'),
+                ),
               ],
-            ),Row(
+            ),
+            Row(
               children: [
-                Text(doctor),
+                Text(doctor,
+                    style: TextStyle(fontSize: 14, fontFamily: 'SFProText')),
               ],
-            ),Row(
+            ),
+            Row(
               children: [
-                Text(date),Spacer(), SizedBox(
+                Text(date,
+                    style: TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+                Spacer(),
+                SizedBox(
                   height: 43,
                   width: 100,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      gradient:
-                          GradientOptions.signInGradient,
-
+                      gradient: GradientOptions.signInGradient,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: TextButton(
                       style: TextButton.styleFrom(
-                        backgroundColor:  const Color(
-                          0xFF204267,
-                        ),
+                        backgroundColor: null,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                             20,
@@ -237,7 +237,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       onPressed: tap,
                       child: Text(
-                       "Check",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                        "Check Result",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontFamily: 'SFProText'),
                       ),
                     ),
                   ),
@@ -255,7 +259,7 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
   return GestureDetector(
     onTap: onTap,
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(0,0,30,0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 8),
         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -276,12 +280,13 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
           children: [
             Text(
               text,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14, fontFamily: 'SFProMedium'),
             ),
             SizedBox(height: 5),
             Text(
               "Click to Edit",
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+              style: TextStyle(
+                  fontSize: 12, color: Colors.grey, fontFamily: 'SFProText'),
             ),
           ],
         ),
@@ -289,7 +294,6 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
     ),
   );
 }
-
 
 class RoundedOptionsToggle extends StatefulWidget {
   final Function(String) onOptionSelected;
@@ -325,17 +329,18 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
         });
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 13, horizontal: 25),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 41),
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
         decoration: BoxDecoration(
-          gradient: isSelected ? GradientOptions.signInGradient:null,
+          gradient: isSelected ? GradientOptions.signInGradient : null,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           text,
           style: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 12,
             color: isSelected ? Colors.white : Colors.black,
-            fontWeight: FontWeight.bold,
           ),
         ),
       ),

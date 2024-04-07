@@ -112,6 +112,9 @@ flutter:
     - assets/svg/Image-10.svg
     - assets/svg/image-11.svg
     - assets/svg/Image-12.svg
+    - assets/svg/logo.svg
+    - assets/svg/logo2.svg
+    - assets/svg/lang.svg
 #    - assets/svg/Image-1.svg
 #    - assets/svg/Image-1.svg
 #    -
@@ -149,6 +152,9 @@ flutter:
     - family: SFProMedium
       fonts:
         - asset: fonts/SF_Pro/static/SF-Pro-Text-Medium.ttf
+    - family: Poppins
+      fonts:
+        - asset: fonts/poppins/Poppins-Regular_684471b5ff3c204b8d3b3da3bd4e082d.ttf
           # style: italic
   #   - family: Trajan Pro
   #     fonts:

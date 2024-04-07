@@ -27,11 +27,15 @@ class _SignUpSecondState extends State<SignUpSecond> {
           physics: const ClampingScrollPhysics(),
           child: Stack(
             children: [
-              Center(
-                  child: SvgPicture.asset(
-                    "assets/svg/grandfather.svg",
-                    height: 0.3827232142857143 * screenHeight(context),
-                  )),
+              Column(
+                children: [SizedBox(height: (15/896)* screenHeight(context,),),
+                  Center(
+                    child: SvgPicture.asset(
+                      "assets/svg/grandfather.svg",
+                      height: 0.3827232142857143 * screenHeight(context),
+                    ),),
+                ],
+              ),
               Column(
                 children: [
                   Container(
