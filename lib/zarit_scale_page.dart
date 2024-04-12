@@ -57,7 +57,7 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                       SizedBox(height: (22/869)*screenHeight(context)),
                       Center(
                         child: Text(
-                          "Zarit Scale",
+                          translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
                           style: TextStyle(
                             color: ColorOptions.skin,
                             fontFamily: 'JostBold',
@@ -77,7 +77,7 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: (15/869)*screenHeight(context),),
+                      SizedBox(height: (25/869)*screenHeight(context),),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 45),
                         child: Text(
@@ -85,16 +85,16 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           style: TextStyle(
                             color: const Color(0xFF204267),
                             fontSize: fontSize * (14 / 13),
-                            fontFamily: 'SFProText',
+                            fontFamily: 'SFProMedium',
                             letterSpacing: 0.7,
                           ),
                         ),
                       ),
-                      SizedBox(height: (25/869)*screenHeight(context),),
+                      SizedBox(height: (40/869)*screenHeight(context),),
                       QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_stressed_about_responsibilities']!),
-                      SizedBox(height: (15/869)*screenHeight(context),),
-                      QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
-                      SizedBox(height: (35/869)*screenHeight(context),),
+                      // SizedBox(height: (15/869)*screenHeight(context),),
+                      // QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
+                      SizedBox(height: (45/869)*screenHeight(context),),
                       SizedBox(
                         height:(43/869)*screenHeight(context),
                         width: 261,

@@ -52,14 +52,14 @@ class CustomRadioButton extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: spacing,
+            width: spacing * 2,
           ),
           Text(
             text,
             style: TextStyle(
               color: this.color,
               fontFamily: 'JostMedium',
-              fontSize: font,
+              fontSize: font * fontHelper(context),
             ),
           ),
         ],
@@ -116,8 +116,8 @@ class CustomRadioButtonb extends StatelessWidget {
             text,
             style: TextStyle(
               color: Color(0xffE5A194),
-              fontFamily: 'JostMedium',
-              fontSize: font,
+              fontFamily: 'LatoBold',
+              fontSize: font * fontHelper(context),
             ),
           ),
         ],
@@ -173,7 +173,8 @@ class CustomNumberedRadioButton extends StatelessWidget {
                 '$number',
                 style: TextStyle(
                   color: !selected ? const Color(0xFFD4D4D5) : numberColor,
-                  fontSize: 13,
+                  fontSize: 13 * fontHelper(context),
+                  fontFamily: "LatoBold"
                 ),
               ),
             ),
@@ -185,8 +186,8 @@ class CustomNumberedRadioButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: this.color,
-              fontFamily: 'JostMedium',
-              fontSize: font,
+              fontFamily: "LatoBold",
+              fontSize: font * fontHelper(context),
             ),
           ),
         ],
@@ -226,10 +227,10 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                   children: [
                     Text(
                       widget.question,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'JostMedium',
-                        fontSize: 13,
+                        fontSize: 13* fontHelper(context),
                       ),
                     ),
                     const Spacer(),
@@ -333,6 +334,8 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
   }
 }
 
+
+
 class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
   final String question;
 
@@ -341,122 +344,129 @@ class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
     required this.question,
   }) : super(key: key);
 
-
   @override
   State<QuestionWithFiveOptionsSingleLine> createState() => _QuestionWithFiveOptionsSingleLineState();
 }
 
 class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOptionsSingleLine> {
   String? selectedValue;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (352/414)*screenWidth(context),
-      // height: (90/869)*screenHeight(context),
+      width: (352 / 414) * MediaQuery.of(context).size.width,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Flexible(
-                child: Text(
-                  widget.question,
-                  style: TextStyle(
-                    color: ColorOptions.skin,
-                    fontFamily: 'JostMedium',
-                    fontSize: (screenHeight(context)/896)*13,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            widget.question,
+            style: TextStyle(
+              color: ColorOptions.skin,
+              fontFamily: 'JostMedium',
+              fontSize: (screenHeight(context)/896)*13,
+            ),
           ),
-          SizedBox(height:(11/869)*screenHeight(context),),
-          SizedBox(
-            width: (352/414)*screenWidth(context),
-            child: Column(
-              children: [
-                Row(
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomRadioButton(
-                      font: 11,
-                      text: translations[LanguageManager().currentLanguage]!['never']!,
-                      value: 'Never',
-                      selected: selectedValue == 'Never',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Never';
-                        });
-                      },
-                      spacing: 3,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      child: CustomRadioButton(
+                        font: 12,
+                        text: translations[LanguageManager().currentLanguage]!['never']!,
+                        value: 'Never',
+                        selected: selectedValue == 'Never',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Never';
+                          });
+                        },
+                        spacing: 3,
+                      ),
                     ),
-                    const Spacer(),
-                    CustomRadioButton(
-                      font: 11,
-                      text: translations[LanguageManager().currentLanguage]!['rarely']!,
-                      value: 'Rarely',
-                      selected:
-                      selectedValue == 'Rarely',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Rarely';
-                        });
-                      },
-                      spacing: 3,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      child: CustomRadioButton(
+                        font: 12,
+                        text: translations[LanguageManager().currentLanguage]!['frequently']!,
+                        value: 'Frequently',
+                        selected: selectedValue == 'Frequently',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Frequently';
+                          });
+                        },
+                        spacing: 3,
+                      ),
                     ),
-                    const Spacer(),
-                    CustomRadioButton(
-                      font: 11,
-                      text: translations[LanguageManager().currentLanguage]!['sometimes']!,
-                      value: 'Sometimes',
-                      selected:
-                      selectedValue == 'Sometimes',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Sometimes';
-                        });
-                      },
-                      spacing: 3,
-                    ),
-                    const Spacer(),
-                    CustomRadioButton(
-                      font: 11,
-                      text: translations[LanguageManager().currentLanguage]!['frequently']!,
-                      value: 'Frequently',
-                      selected:
-                      selectedValue == 'Frequently',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Frequently';
-                        });
-                      },
-                      spacing: 3,
-                    ),
-                    const Spacer(),
-                    CustomRadioButton(
-                      font: 11,
-                      text: 'Nearly Always',
-                      value: 'Nearly Always',
-                      selected: selectedValue == 'Nearly Always',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Nearly Always';
-                        });
-                      },
-                      spacing: 3,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      child: CustomRadioButton(
+                        font: 12,
+                        text: translations[LanguageManager().currentLanguage]!['sometimes']!,
+                        value: 'Sometimes',
+                        selected: selectedValue == 'Sometimes',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Sometimes';
+                          });
+                        },
+                        spacing: 3,
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height:(10/869)*screenHeight(context),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      child: CustomRadioButton(
+                        font: 12,
+                        text: translations[LanguageManager().currentLanguage]!['rarely']!,
+                        value: 'Rarely',
+                        selected: selectedValue == 'Rarely',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Rarely';
+                          });
+                        },
+                        spacing: 3,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      child: CustomRadioButton(
+                        font: 12,
+                        text: translations[LanguageManager().currentLanguage]!['nearly_always']!,
+                        value: 'Nearly Always',
+                        selected: selectedValue == 'Nearly Always',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Nearly Always';
+                          });
+                        },
+                        spacing: 3,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 }
+
 
 class QuestionsWithFourOptions extends StatefulWidget {
   final String question;
@@ -562,6 +572,114 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
   }
 }
 
+class QuestionsWithFourOptions4Lines extends StatefulWidget {
+  final String question;
+  final Color textColor;
+
+  const QuestionsWithFourOptions4Lines({
+    Key? key,
+    required this.question,
+    this.textColor = Colors.white,
+  }) : super(key: key);
+
+  @override
+  _QuestionsWithFourOptions4LinesState createState() =>
+      _QuestionsWithFourOptions4LinesState();
+}
+
+class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOptions4Lines> {
+  String? selectedValue; // Default value
+
+  @override
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: screenWidth(context) * (350 / 414),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch children to fill the width
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 11),
+            child: Text(
+              widget.question,
+              style: TextStyle(
+                color: widget.textColor,
+                fontFamily: 'JostMedium',
+                fontSize: 13,
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                child: CustomRadioButton(
+                  font: screenWidth(context) * (12 / 414),
+                  text: translations[LanguageManager().currentLanguage]!['not_at_all']!,
+                  value: 'I haven\'t been doing this at all',
+                  selected: selectedValue == 'I haven\'t been doing this at all',
+                  onSelect: () {
+                    setState(() {
+                      selectedValue = 'I haven\'t been doing this at all';
+                    });
+                  },
+                  spacing: 3,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                child: CustomRadioButton(
+                  font: screenWidth(context) * (12 / 414),
+                  text: translations[LanguageManager().currentLanguage]!['medium_amount']!,
+                  value: 'A medium amount',
+                  selected: selectedValue == 'A medium amount',
+                  onSelect: () {
+                    setState(() {
+                      selectedValue = 'A medium amount';
+                    });
+                  },
+                  spacing: 3,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                child: CustomRadioButton(
+                  font: screenWidth(context) * (12 / 414),
+                  text: translations[LanguageManager().currentLanguage]!['little_bit']!,
+                  value: 'A little bit',
+                  selected: selectedValue == 'A little bit',
+                  onSelect: () {
+                    setState(() {
+                      selectedValue = 'A little bit';
+                    });
+                  },
+                  spacing: 3,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                child: CustomRadioButton(
+                  font: screenWidth(context) * (12 / 414),
+                  text: translations[LanguageManager().currentLanguage]!['doing_a_lot']!,
+                  value: 'I’ve been doing this a lot',
+                  selected: selectedValue == 'I’ve been doing this a lot',
+                  onSelect: () {
+                    setState(() {
+                      selectedValue = 'I’ve been doing this a lot';
+                    });
+                  },
+                  spacing: 3,
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 
 class QuestionsWithThreeNumberedOptions extends StatefulWidget {
@@ -582,78 +700,227 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (352 / 414) * screenWidth(context),
-      // height: (90 / 869) * screenHeight(context),
+      width: (352 / 414) * MediaQuery.of(context).size.width,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            widget.question,
+            style: TextStyle(
+              color: ColorOptions.skin, // Original color
+              fontFamily: 'JostMedium',
+              fontSize: 14*fontHelper(context), // Original font size
+            ),
+          ),
+          SizedBox(height: 11),
           Row(
             children: [
-              Flexible(
-                child: Text(
-                  widget.question,
-                  style: TextStyle(
-                    color: ColorOptions.skin,
-                    fontFamily: 'JostMedium',
-                    fontSize: (screenHeight(context) / 896) * 13,
-                  ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      child: CustomNumberedRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]!['no_burden']!,
+                        value: 'No Burden',
+                        selected: selectedValue == 'No Burden',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'No Burden';
+                          });
+                        },
+                        number: 0,
+                        color: ColorOptions.skin, // Original color
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(width: screenWidth(context) * 0.05), // Adjust spacing between rows as needed
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      child: CustomNumberedRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]!['moderate_burden']!,
+                        value: 'Moderate Burden',
+                        selected: selectedValue == 'Moderate Burden',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Moderate Burden';
+                          });
+                        },
+                        number: 1,
+                        color: ColorOptions.skin, // Original color
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-          SizedBox(height: (11 / 869) * screenHeight(context)),
-          SizedBox(
-            width: (352 / 414) * screenWidth(context),
-            child: Column(
-              children: [
-                Row(
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomNumberedRadioButton(
-                      font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['no_burden']!,
-                      value: 'No Burden',
-                      selected: selectedValue == 'No Burden',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'No Burden';
-                        });
-                      },
-                      number: 0,
-                      color: ColorOptions.skin,
-                    ),
-                    Spacer(),
-                    CustomNumberedRadioButton(
-                      font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['moderate_burden']!,
-                      value: 'Moderate Burden',
-                      selected: selectedValue == 'Moderate Burden',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Moderate Burden';
-                        });
-                      },
-                      number: 1,
-                      color: ColorOptions.skin,
-                    ),
-                    Spacer(),
-                    CustomNumberedRadioButton(
-                      font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['severe_burden']!,
-                      value: 'Severe Burden',
-                      selected: selectedValue == 'Severe Burden',
-                      onSelect: () {
-                        setState(() {
-                          selectedValue = 'Severe Burden';
-                        });
-                      },
-                      number: 2,
-                      color: ColorOptions.skin,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      child: CustomNumberedRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]!['severe_burden']!,
+                        value: 'Severe Burden',
+                        selected: selectedValue == 'Severe Burden',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Severe Burden';
+                          });
+                        },
+                        number: 2,
+                        color: ColorOptions.skin, // Original color
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(height: (10 / 869) * screenHeight(context)),
-              ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class QuestionWithEmotions extends StatefulWidget {
+  final String question;
+
+  const QuestionWithEmotions({
+    Key? key,
+    required this.question,
+  }) : super(key: key);
+
+  @override
+  State<QuestionWithEmotions> createState() => _QuestionWithEmotionsState();
+}
+
+class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
+  String? emotion;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: (352 / 414) * MediaQuery.of(context).size.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: screenHeight(context) * (25 / 895)),
+          Text(
+            widget.question,
+            style: TextStyle(
+              color: Color(0xffE5A194),
+              fontFamily: 'JostMedium',
+              fontSize: fontHelper(context) * 14,
             ),
+          ),
+          SizedBox(height: 17),
+          Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['happy']!,
+                      value: 'Happy',
+                      selected: emotion == 'Happy',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Happy';
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['surprise']!,
+                      value: 'Surprise',
+                      selected: emotion == 'Surprise',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Surprise';
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['disgusted']!,
+                      value: 'Disgusted',
+                      selected: emotion == 'Disgusted',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Disgusted';
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: screenWidth(context) * 0.1),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['anxious']!,
+                      value: 'Anxious',
+                      selected: emotion == 'Anxious',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Anxious';
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['angry']!,
+                      value: 'Angry',
+                      selected: emotion == 'Angry',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Angry';
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['bad']!,
+                      value: 'Bad',
+                      selected: emotion == 'Bad',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Bad';
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),

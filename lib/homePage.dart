@@ -93,7 +93,8 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ZaritBurdenResultsPage(),
+            builder: (context) => ZaritScalePage(),
+            // builder: (context) => ZaritBurdenResultsPage(),
           ),
         );
       },
@@ -101,7 +102,8 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FamilyBurdenResultsPage(),
+            builder: (context) => FamilyBurdenScalePage(),
+            // builder: (context) => FamilyBurdenResultsPage(),
           ),
         );
       },
@@ -109,7 +111,8 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BriefCopeResultsPage(),
+            builder: (context) => BriefCopePage(),
+            // builder: (context) => BriefCopeResultsPage(),
           ),
         );
       },
@@ -117,7 +120,8 @@ class HomePageFirst extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EmotionalWheelResultsPage(),
+            builder: (context) => EmotionalWheel(),
+            // builder: (context) => EmotionalWheelResultsPage(),
           ),
         );
       },

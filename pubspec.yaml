@@ -155,6 +155,11 @@ flutter:
     - family: Poppins
       fonts:
         - asset: fonts/poppins/Poppins-Regular_684471b5ff3c204b8d3b3da3bd4e082d.ttf
+    - family: LatoBold
+      fonts:
+        - asset: fonts/Lato/Lato-Bold.ttf
+
+
           # style: italic
   #   - family: Trajan Pro
   #     fonts:
