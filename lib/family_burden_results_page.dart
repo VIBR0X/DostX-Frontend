@@ -97,7 +97,7 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['family-burden']!,
+                                  translations[LanguageManager().currentLanguage]!['family_burden_results']!,
                                   style: TextStyle(
                                       fontSize: relFont * 15,
                                       fontFamily: 'SFProMedium',

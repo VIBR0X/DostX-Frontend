@@ -82,7 +82,7 @@ class CustomRadioButtonb extends StatelessWidget {
     required this.value,
     required this.selected,
     required this.onSelect,
-    this.font = 14,
+    this.font = 13,
   }) : assert(font > 0);
 
   @override
