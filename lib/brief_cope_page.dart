@@ -74,8 +74,8 @@ class _BriefCopePageState extends State<BriefCopePage> {
                         ),
                       ),
                       SizedBox(height: (20/869)*screenHeight(context),),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                      SizedBox(
+                        width: (345 / 414) * MediaQuery.of(context).size.width,
                         child: Text(
                           translations[LanguageManager().currentLanguage]!['brief_cope_intro']!,
                           style: TextStyle(

@@ -77,8 +77,8 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(45, 10, 45, 10),
+                        SizedBox(
+                          width: (345 / 414) * MediaQuery.of(context).size.width,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

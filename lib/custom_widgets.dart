@@ -144,7 +144,7 @@ class CustomNumberedRadioButton extends StatelessWidget {
     required this.value,
     required this.selected,
     required this.onSelect,
-    this.font = 14,
+    this.font = 13,
     this.color = ColorOptions.skin,
     this.numberColor = const Color(0xFF204267),
     required this.number,
@@ -354,7 +354,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (352 / 414) * MediaQuery.of(context).size.width,
+      width: (345 / 414) * MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -369,15 +369,16 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,  // Align items from the top
             children: [
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(30, 0, 10, 0),  // Adjust top padding to align from top
                       child: CustomRadioButton(
-                        font: 12,
+                        font: 13,
                         text: translations[LanguageManager().currentLanguage]!['never']!,
                         value: 'Never',
                         selected: selectedValue == 'Never',
@@ -392,7 +393,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                     Padding(
                       padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
                       child: CustomRadioButton(
-                        font: 12,
+                        font: 13,
                         text: translations[LanguageManager().currentLanguage]!['frequently']!,
                         value: 'Frequently',
                         selected: selectedValue == 'Frequently',
@@ -407,7 +408,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                     Padding(
                       padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
                       child: CustomRadioButton(
-                        font: 12,
+                        font: 13,
                         text: translations[LanguageManager().currentLanguage]!['sometimes']!,
                         value: 'Sometimes',
                         selected: selectedValue == 'Sometimes',
@@ -427,9 +428,9 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),  // Adjust top padding to align from top
                       child: CustomRadioButton(
-                        font: 12,
+                        font: 13,
                         text: translations[LanguageManager().currentLanguage]!['rarely']!,
                         value: 'Rarely',
                         selected: selectedValue == 'Rarely',
@@ -444,7 +445,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
                       child: CustomRadioButton(
-                        font: 12,
+                        font: 13,
                         text: translations[LanguageManager().currentLanguage]!['nearly_always']!,
                         value: 'Nearly Always',
                         selected: selectedValue == 'Nearly Always',
@@ -605,7 +606,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
               style: TextStyle(
                 color: widget.textColor,
                 fontFamily: 'JostMedium',
-                fontSize: 13,
+                fontSize: 13 * fontHelper(context),
               ),
             ),
           ),
@@ -615,7 +616,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
                 child: CustomRadioButton(
-                  font: screenWidth(context) * (12 / 414),
+                  font: 13,
                   text: translations[LanguageManager().currentLanguage]!['not_at_all']!,
                   value: 'I haven\'t been doing this at all',
                   selected: selectedValue == 'I haven\'t been doing this at all',
@@ -630,7 +631,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
                 child: CustomRadioButton(
-                  font: screenWidth(context) * (12 / 414),
+                  font: 13,
                   text: translations[LanguageManager().currentLanguage]!['medium_amount']!,
                   value: 'A medium amount',
                   selected: selectedValue == 'A medium amount',
@@ -645,7 +646,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
                 child: CustomRadioButton(
-                  font: screenWidth(context) * (12 / 414),
+                  font: 13,
                   text: translations[LanguageManager().currentLanguage]!['little_bit']!,
                   value: 'A little bit',
                   selected: selectedValue == 'A little bit',
@@ -660,7 +661,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
                 child: CustomRadioButton(
-                  font: screenWidth(context) * (12 / 414),
+                  font: 13,
                   text: translations[LanguageManager().currentLanguage]!['doing_a_lot']!,
                   value: 'I’ve been doing this a lot',
                   selected: selectedValue == 'I’ve been doing this a lot',
@@ -700,7 +701,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (352 / 414) * MediaQuery.of(context).size.width,
+      width: (345 / 414) * MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -709,7 +710,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
             style: TextStyle(
               color: ColorOptions.skin, // Original color
               fontFamily: 'JostMedium',
-              fontSize: 14*fontHelper(context), // Original font size
+              fontSize: 13*fontHelper(context), // Original font size
             ),
           ),
           SizedBox(height: 11),
@@ -815,7 +816,7 @@ class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (352 / 414) * MediaQuery.of(context).size.width,
+      width: (345 / 414) * MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

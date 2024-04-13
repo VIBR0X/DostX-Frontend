@@ -74,13 +74,13 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                         ),
                       ),
                       SizedBox(height: (20/869)*screenHeight(context),),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                      SizedBox(
+                        width: (345 / 414) * MediaQuery.of(context).size.width,
                         child: Text(
                           translations[LanguageManager().currentLanguage]!['family_burden_scale_intro']!,
                           style: TextStyle(
                             color: const Color(0xFF204267),
-                            fontSize: fontSize * (14 / 13),
+                            fontSize: fontHelper(context) * 13,
                             fontFamily: 'SFProMedium',
                             letterSpacing: 0.7,
                           ),
