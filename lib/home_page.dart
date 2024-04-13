@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         0xFFFEBEB1,
       ),
         title:Center(
-            child: SvgPicture.asset('assets/svg/logo2.svg',width: 100,)
+            child: SvgPicture.asset('assets/svg/logoa99.svg',width: 100,)
         ),
         leading:Stack(
           children: [SvgPicture.asset('assets/svg/lang.svg',),

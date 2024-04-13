@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1245.51 448.03">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-895" y1="1981.55" x2="-789.2" y2="1742.63" gradientTransform="translate(1264.6 -1449.62) rotate(8.02)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#204267"/>
+      <stop offset=".5" stop-color="#32587f"/>
+      <stop offset="1" stop-color="#397ebe"/>
+    </linearGradient>
+    <symbol id="New_Symbol" data-name="New Symbol" viewBox="0 0 1245.51 448.03">
+      <g>
+        <path d="M138.59,97.9c2.19,8.56,66.63,126.92,60.5,170.44-5.54,39.31-49.09,73.38-92.91,59.62-83.45-26.2-33.85-137.75-28.51-145l-36.85.76c-.54.5-1.3,1.42-1.69,2.04-142.2,229.68,140.74,328.82,248.46,202.87C407.34,248.64,228.25,0,228.25,0l-89.66,97.9Z" style="fill: url(#linear-gradient); stroke-width: 0px;"/>
+        <text transform="translate(372.37 366.27)" style="font-family: Muli-ExtraBold, Muli; font-size: 294.09px; font-weight: 700;"><tspan x="0" y="0" style="fill: #204267;">Do</tspan><tspan x="404.37" y="0" style="fill: #204267; letter-spacing: 0em;">s</tspan><tspan x="550.82" y="0" style="fill: #204267;">t</tspan><tspan x="667.28" y="0" style="fill: #397ebe;">X</tspan></text>
+      </g>
+    </symbol>
+  </defs>
+  <g id="graphics">
+    <use width="1245.51" height="448.03" xlink:href="#New_Symbol"/>
+  </g>
+</svg>

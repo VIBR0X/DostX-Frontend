@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1246.382" height="443.765" viewBox="0 0 1246.382 443.765">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-1.076" y1="3.734" x2="-0.754" y2="3.196" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#204267"/>
+      <stop offset="0.5" stop-color="#32587f"/>
+      <stop offset="1" stop-color="#397ebe"/>
+    </linearGradient>
+  </defs>
+  <g id="graphics" transform="translate(0.012)">
+    <g id="Group_937" data-name="Group 937">
+      <path id="Path_412" data-name="Path 412" d="M138.59,97.9c2.19,8.56,66.63,126.92,60.5,170.44-5.54,39.31-49.09,73.38-92.91,59.62-83.45-26.2-33.85-137.75-28.51-145l-36.85.76a12.215,12.215,0,0,0-1.69,2.04c-142.2,229.68,140.74,328.82,248.46,202.87C407.34,248.64,228.25,0,228.25,0Z" fill="url(#linear-gradient)"/>
+      <text id="DostX" transform="translate(372.37 366.27)" fill="#204267" font-size="294.09" font-family="Muli-ExtraBold, Muli" font-weight="800"><tspan x="0" y="0">Dost</tspan><tspan y="0" fill="#397ebe">X</tspan></text>
+    </g>
+      </g>
+</svg>
