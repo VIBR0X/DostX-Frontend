@@ -34,13 +34,13 @@ class _BriefCopePageState extends State<BriefCopePage> {
             Column(
               children: [
                 Container(
-                  height: 0.3627232142857143 * screenHeight(context)-10,
+                  height: 0.3627232142857143 * screenHeight(context)-60,
                   color: Colors.transparent,
                 ),
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height -
-                      (0.3627232142857143) * screenHeight(context)+10,
+                      (0.3627232142857143) * screenHeight(context)+60,
                   decoration: const BoxDecoration(
                     color: ColorOptions.whitish,
                     borderRadius: BorderRadius.only(
@@ -53,11 +53,11 @@ class _BriefCopePageState extends State<BriefCopePage> {
                       SizedBox(height: (30/869)*screenHeight(context)),
                       Center(
                           child: Text(
-                            "Brief - COPE",
+                            translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
                             style: TextStyle(
                               color: ColorOptions.skin,
                               fontFamily: 'JostBold',
-                              fontSize: fontSize*2,
+                              fontSize: fontHelper(context) * 28,
                             ),
                           )
                       ),
@@ -74,20 +74,20 @@ class _BriefCopePageState extends State<BriefCopePage> {
                         ),
                       ),
                       SizedBox(height: (20/869)*screenHeight(context),),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                      SizedBox(
+                        width: (345 / 414) * MediaQuery.of(context).size.width,
                         child: Text(
-                          translations[LanguageManager().currentLanguage]!['bried_cope_intro']!,
+                          translations[LanguageManager().currentLanguage]!['brief_cope_intro']!,
                           style: TextStyle(
                             color: const Color(0xFF204267),
-                            fontSize: fontSize * (14 / 13),
-                            fontFamily: 'SFProText',
+                            fontSize: fontHelper(context) * 13,
+                            fontFamily: 'SFProMedium',
                             letterSpacing: 0.7,
                           ),
                         ),
                       ),
-                      SizedBox(height: (25/869)*screenHeight(context),),
-                      QuestionsWithFourOptions(
+                      SizedBox(height: (30/869)*screenHeight(context),),
+                      QuestionsWithFourOptions4Lines(
                           question: translations[LanguageManager().currentLanguage]!['brief_cope_question_1']!,
                         textColor: ColorOptions.skin,
                       ),

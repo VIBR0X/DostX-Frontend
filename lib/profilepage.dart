@@ -1,6 +1,7 @@
 import 'package:dostx/sign_up_first_page.dart';
 import 'package:dostx/sign_up_third_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'palette.dart';
 import 'short12.dart';
 
@@ -34,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Container(
             height: 100,
             width: 100,
-            child: Image.asset("name"),
+            child: SvgPicture.asset("assets/svg/grandfather.svg"),
           ),
         ),
         SizedBox(height: 10),

@@ -26,13 +26,15 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Stack(
-          children: [ Column(
+          children: [
+            Column(
             children: [SizedBox(height: (15/896)* screenHeight(context,),),
               Center(
                 child: SvgPicture.asset(
                   "assets/svg/grandfather.svg",
                   height: 0.3827232142857143 * screenHeight(context),
-                ),),
+                ),
+              ),
             ],
           ),
             Column(
@@ -57,7 +59,7 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                       SizedBox(height: (22/869)*screenHeight(context)),
                       Center(
                         child: Text(
-                          "Zarit Scale",
+                          translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
                           style: TextStyle(
                             color: ColorOptions.skin,
                             fontFamily: 'JostBold',
@@ -77,24 +79,24 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: (15/869)*screenHeight(context),),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                      SizedBox(height: (25/869)*screenHeight(context),),
+                      SizedBox(
+                        width: (345 / 414) * MediaQuery.of(context).size.width,
                         child: Text(
                           translations[LanguageManager().currentLanguage]!['zarit_scale_intro_text']!,
                           style: TextStyle(
                             color: const Color(0xFF204267),
-                            fontSize: fontSize * (14 / 13),
-                            fontFamily: 'SFProText',
+                            fontSize: fontHelper(context) * 13,
+                            fontFamily: 'SFProMedium',
                             letterSpacing: 0.7,
                           ),
                         ),
                       ),
-                      SizedBox(height: (25/869)*screenHeight(context),),
+                      SizedBox(height: (40/869)*screenHeight(context),),
                       QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_stressed_about_responsibilities']!),
-                      SizedBox(height: (15/869)*screenHeight(context),),
-                      QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
-                      SizedBox(height: (35/869)*screenHeight(context),),
+                      // SizedBox(height: (15/869)*screenHeight(context),),
+                      // QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
+                      SizedBox(height: (45/869)*screenHeight(context),),
                       SizedBox(
                         height:(43/869)*screenHeight(context),
                         width: 261,

@@ -20,9 +20,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color(
+      appBar: AppBar(backgroundColor:_selectedIndex != 0? Color(
         0xFFFEBEB1,
-      ),
+      ):Color(0xffFFF2E3),
         title:Center(
             child: SvgPicture.asset('assets/svg/logoa99.svg',width: 100,)
         ),

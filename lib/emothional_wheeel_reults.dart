@@ -96,7 +96,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['emotional-wheel']!,
+                                  translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
                                   style: TextStyle(
                                       fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',

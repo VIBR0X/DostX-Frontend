@@ -97,7 +97,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['zarit-burden']!,
+                                  translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
                                   style: TextStyle(
                                       fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',

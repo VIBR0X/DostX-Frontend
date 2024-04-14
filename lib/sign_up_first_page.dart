@@ -31,7 +31,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                   children: [
                     Center(
                         child: SvgPicture.asset(
-                      "assets/svg/logoa1.svg",
+                      "assets/svg/grandfather.svg",
 
                     ),),
                   ],

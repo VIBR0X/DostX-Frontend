@@ -27,7 +27,7 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
         child: Stack(
           children: [ Center(
               child: SvgPicture.asset(
-                "assets/svg/ppp.svg",
+                "assets/svg/grandfather.svg",
                 height: 0.3827232142857143 * screenHeight(context),
               )
           ),
@@ -53,7 +53,7 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                       SizedBox(height: (30/869)*screenHeight(context)),
                       Center(
                           child: Text(
-                            "Family Burden Scale",
+                            translations[LanguageManager().currentLanguage]!['family_burden_scale_form_title']!,
                             style: TextStyle(
                               color: ColorOptions.skin,
                               fontFamily: 'JostBold',
@@ -74,24 +74,24 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                         ),
                       ),
                       SizedBox(height: (20/869)*screenHeight(context),),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                      SizedBox(
+                        width: (345 / 414) * MediaQuery.of(context).size.width,
                         child: Text(
                           translations[LanguageManager().currentLanguage]!['family_burden_scale_intro']!,
                           style: TextStyle(
                             color: const Color(0xFF204267),
-                            fontSize: fontSize * (14 / 13),
-                            fontFamily: 'SFProText',
+                            fontSize: fontHelper(context) * 13,
+                            fontFamily: 'SFProMedium',
                             letterSpacing: 0.7,
                           ),
                         ),
                       ),
-                      SizedBox(height: (25/869)*screenHeight(context),),
+                      SizedBox(height: (35/869)*screenHeight(context),),
                       QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_1']!),
-                      SizedBox(height: (10/869)*screenHeight(context),),
+                      SizedBox(height: (25/869)*screenHeight(context),),
                       QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_2']!),
-                      SizedBox(height: (10/869)*screenHeight(context),),
-                      QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_3']!),
+                      SizedBox(height: (15/869)*screenHeight(context),),
+                      // QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_3']!),
                       SizedBox(height: (35/869)*screenHeight(context),),
                       SizedBox(
                         height:(43/869)*screenHeight(context),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'globals.dart ';
 import 'palette.dart';
 import 'custom_widgets.dart';
 import 'sign_up_second_page.dart';
@@ -20,241 +21,93 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
 
       body: Container(
         decoration: const BoxDecoration(
-          color: Color(0xffE5A194),
+          color: ColorOptions.skin,
         ),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Stack(
-            children: [
-              Container(color: Color(0xffE5A194),
-                child: Image.asset(
-                  "assets/image/emo_wheel.png",
-                  fit: BoxFit.cover,
-                  width: MediaQuery.of(context).size.width,
-                ),
-              ),
+            children: [ Column(
+              children: [SizedBox(height: (15/896)* screenHeight(context,),),
+                Center(
+                  child: Image.asset(
+                    "assets/image/emo_wheel.png",
+                    height: 0.3827232142857143 * screenHeight(context),
+                  ),),
+              ],
+            ),
               Column(
                 children: [
                   Container(
-                    height: 380,
+                    height: 0.3627232142857143 * screenHeight(context)-10,
                     color: Colors.transparent,
                   ),
                   Container(
                     width: double.infinity,
+                    height: MediaQuery.of(context).size.height -
+                        (0.3627232142857143) * screenHeight(context)+10,
                     decoration: const BoxDecoration(
-                      color: Color(0xffFFF2E3),
+                      color: ColorOptions.whitish,
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
+                        topLeft: Radius.circular(30,),
+                        topRight: Radius.circular(30,),
                       ),
                     ),
                     child: Column(
-                      children: [ const SizedBox(
+                      children: [
+                        const SizedBox(
                         height: 35,
-                      ),Text(
-                        "Emotional Wheel",
+                      ),
+                        Text(
+                          translations[LanguageManager().currentLanguage]!['emotional_wheel_form_title']!,
                         style: TextStyle(
                           fontFamily: 'JostBold',
                           fontSize: 28,
                           color: Color(0xffE5A194),
                         ),
                       ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        SizedBox(height: (5/869)*screenHeight(context),),
+                        Container(
+                          width: 45,
+                          height: 4,
+                          decoration: BoxDecoration(
+                            color: ColorOptions.skin,
+                            border: Border.all(
+                                color: ColorOptions.skin,
+                                width: 1
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: (345 / 414) * MediaQuery.of(context).size.width,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
-
                               const SizedBox(
                                 height: 20,
                               ),
                               // Additional text
                               Text(
-                                "The following is a list of statements that reflect how people sometimes feel when taking care of another person. After reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.",
+                                translations[LanguageManager().currentLanguage]!['emotional_wheel_intro']!,
                                 style: TextStyle(
-
-                                  fontFamily: 'JostMedium',
-                                  fontSize: 13,
-                              ),
-
+                                  color: const Color(0xFF204267),
+                                  fontSize: fontHelper(context) * 13,
+                                  fontFamily: 'SFProMedium',
+                                  letterSpacing: 0.7,
+                                ),
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              // "How are you feeling today?" text
-                              Text(
-                                "How are you feeling today?",
-                                style: TextStyle(
-                                  color: Color(0xffE5A194),
-                                  fontFamily: 'JostMedium',
-                                  fontSize: 13,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 17,
-                                child: Row(
-                                  children: [
-                                    CustomRadioButtonb(
-                                      text: "Happy",
-                                      value: 'Happy',
-                                      selected: emotion == 'Happy',
-                                      onSelect: () {
-                                        setState(() {
-                                          emotion = 'Happy';
-                                        });
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      width: 16,
-                                    ),
-                                    CustomRadioButtonb(
-                                      text: "Surprise",
-                                      value: 'Surprise',
-                                      selected: emotion == 'Surprise',
-                                      onSelect: () {
-                                        setState(() {
-                                          emotion = 'Surprise';
-                                        });
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      width: 16,
-                                    ),
-                                    CustomRadioButtonb(
-                                      text: "Anxious",
-                                      value: 'Anxious',
-                                      selected: emotion == 'Anxious',
-                                      onSelect: () {
-                                        setState(() {
-                                          emotion = 'Anxious';
-                                        });
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      width: 16,
-                                    ),
 
-
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-                              Row(children: [ CustomRadioButtonb(
-                                text: "Angry",
-                                value: 'Angry',
-                                selected: emotion == 'Angry',
-                                onSelect: () {
-                                  setState(() {
-                                    emotion = 'Angry';
-                                  });
-                                },
-                              ),
-                                const SizedBox(
-                                  width: 16,
-                                ),
-                                CustomRadioButtonb(
-                                text: "Disgusted",
-                                value: 'Disgusted',
-                                selected: emotion == 'Disgusted',
-                                onSelect: () {
-                                  setState(() {
-                                    emotion = 'Disgusted';
-                                  });
-                                },
-                              ),
-                                const SizedBox(
-                                  width: 16,
-                                ),
-                                CustomRadioButtonb(
-                                  text: "Bad",
-                                  value: 'Bad',
-                                  selected: emotion == 'Bad',
-                                  onSelect: () {
-                                    setState(() {
-                                      emotion = 'Bad';
-                                    });
-                                  },
-                                ),],),
-                              const SizedBox(
-                                height: 10,
-                              ),
-
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              // "What emotion are you feeling from wheel 2?" text
-                              Text(
-                                "What emotion are you feeling from wheel 2?",
-                                style: TextStyle(
-                                  color: Color(0xffE5A194),
-                                  fontFamily: 'JostMedium',
-                                  fontSize: 13,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              // Dropdown for selecting emotion from wheel 2
-                              DropdownButton<String>(
-                                value: null, // Set initial value or handle state accordingly
-                                onChanged: (newValue) {
-                                  // Handle dropdown value change
-                                },
-                                items: [
-                                  DropdownMenuItem(
-                                    value: "Option 1",
-                                    child: Text("Option 1"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Option 2",
-                                    child: Text("Option 2"),
-                                  ),
-                                  // Add more options as needed
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              // Text fields for first name, last name, gender, and Abha ID
-                              Text(
-                                "What emotion are you feeling from wheel 3?",
-                                style: TextStyle(
-                                  color: Color(0xffE5A194),
-                                  fontFamily: 'JostMedium',
-                                  fontSize: 13,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              // Dropdown for selecting emotion from wheel 2
-                              DropdownButton<String>(
-                                value: null, // Set initial value or handle state accordingly
-                                onChanged: (newValue) {
-                                  // Handle dropdown value change
-                                },
-                                items: [
-                                  DropdownMenuItem(
-                                    value: "Option 1",
-                                    child: Text("Option 1"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Option 2",
-                                    child: Text("Option 2"),
-                                  ),
-                                  // Add more options as needed
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
+                              QuestionWithEmotions(question: translations[LanguageManager().currentLanguage]!['emotional_wheel_question_1']!,)
 
                             ],
                           ),
                         ),
+                        SizedBox(height: (35/869)*screenHeight(context),),
                         SizedBox(
+                          height:(43/869)*screenHeight(context),
                           width: 261,
-                          height: 43,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                               gradient: GradientOptions.signInGradient,
@@ -264,21 +117,18 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                               style: TextButton.styleFrom(
                                 backgroundColor: null,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SignUpSecond(),
-                                  ),
-                                );
+
                               },
-                              child: Text(
+                              child:  Text(
                                 translations[LanguageManager().currentLanguage]!['submit']!,
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize:(fontHelper(context)*14),
                                   fontFamily: "JostBold",
                                   color: Colors.white,
                                 ),
@@ -286,9 +136,7 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 100,
-                        )],
+                      ],
                     ),
                   ),
                 ],
