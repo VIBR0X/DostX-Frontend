@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           'assets/svg/logoa99.svg',
           width: 100,
         )),
-        leading: Stack(
+        leading:  Stack(
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                               // Close the dialog
                               Navigator.pop(context);
                               setState(() {
-                                // Update UI if necessary
+
                               });
                             },
                           ),

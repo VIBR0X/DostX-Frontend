@@ -122,12 +122,12 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   width: 62,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: _pickedImage != null
                                       ? Image.file(_pickedImage!,
                                           fit: BoxFit.cover)
-                                      : const SizedBox(),
+                                      : Image.asset("assets/image/canvas.png",fit: BoxFit.cover),
                                 ),
                               ],
                             ),
@@ -541,6 +541,84 @@ class _SignUpSecondState extends State<SignUpSecond> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ],
+              ),
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: SvgPicture.asset(
+                      'assets/svg/lang.svg',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Select Language'),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ListTile(
+                                  title: Text('English'),
+                                  onTap: () {
+                                    // Set English language
+                                    LanguageManager().setLanguage('en');
+                                    // Close the dialog
+                                    Navigator.pop(context);
+                                    setState(() {
+
+                                    });
+                                  },
+                                ),
+                                ListTile(
+                                  title: Text('Hindi'),
+                                  onTap: () {
+                                    // Set Hindi language
+                                    LanguageManager().setLanguage('hi');
+                                    // Close the dialog
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      // Update UI if necessary
+                                    });
+                                  },
+                                ),
+                                ListTile(
+                                  title: Text('Marathi'),
+                                  onTap: () {
+                                    // Set Marathi language
+                                    LanguageManager().setLanguage('mr');
+                                    // Close the dialog
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      // Update UI if necessary
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Ink(
+                      decoration: ShapeDecoration(
+                        color: Colors.transparent,
+                        shape: CircleBorder(),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: SvgPicture.asset(
+                          'assets/icons/language_icon.svg',
+                          width: 24,
+                          height: 24,
+                          color: Colors.black, // Optionally customize the color
+                        ),
+                      ),
                     ),
                   ),
                 ],

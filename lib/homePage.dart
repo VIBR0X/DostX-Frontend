@@ -86,7 +86,7 @@ class HomePageFirst extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Text(
-                            "Form Screening",
+                            "Rescue Sessions",
                             style: TextStyle(
                               fontSize: 16 * fontHelper(context),
                               fontFamily: 'SFProText',
@@ -109,7 +109,7 @@ class HomePageFirst extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Text(
-                            "Consultation History",
+                            "Form Screening",
                             style: TextStyle(
                               fontSize: 16 * fontHelper(context),
                               fontFamily: 'SFProText',
@@ -128,7 +128,7 @@ class HomePageFirst extends StatelessWidget {
                       onPressed: () { Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  ZaritScalePage(),
+                          builder: (context) =>  ZaritBurdenResultsPage(),
                         ),
                       );},
                     ),
@@ -140,10 +140,33 @@ class HomePageFirst extends StatelessWidget {
                       onPressed: () { Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  ZaritScalePage(),
+                          builder: (context) =>  EmotionalWheelResultsPage(),
                         ),
                       );},
-                    )
+                    ), ReusableTile(
+                      title: 'Family Burden Scale',
+                      author: 'By Dr. Someone Someone',
+                      testDate: '29 Aug 2022',
+                      buttonText: "Begin",
+                      onPressed: () { Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  FamilyBurdenResultsPage(),
+                        ),
+                      );},
+                    ),
+                    ReusableTile(
+                      title: 'COPE Scale',
+                      author: 'By Dr. Someone Someone',
+                      testDate: '29 Aug 2022',
+                      buttonText: "Begin",
+                      onPressed: () { Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  BriefCopeResultsPage(),
+                        ),
+                      );},
+                    ),
                   ],
                 ),
               ),
@@ -157,36 +180,16 @@ class HomePageFirst extends StatelessWidget {
   Widget _buildHorizontalScrollSection(BuildContext context) {
     List<void Function(BuildContext)> routes = [
       (BuildContext context) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ZaritScalePage(),
-          ),
-        );
+
       },
       (BuildContext context) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => FamilyBurdenScalePage(),
-          ),
-        );
+
       },
       (BuildContext context) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BriefCopePage(),
-          ),
-        );
+
       },
       (BuildContext context) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => EmotionalWheel(),
-          ),
-        );
+
       },
     ];
 
@@ -234,10 +237,11 @@ class HomePageFirst extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(
                               0, screenHeight(context) * 12 / 869, 0, 0),
-                          child: Image.asset(
+                          child: index != 2?Image.asset(
+
                             "assets/image/Icon$index.png",
                             fit: BoxFit.contain,
-                          ),
+                          ):SvgPicture.asset("assets/svg/DocIcon.svg",fit: BoxFit.contain,),
                         ),
                       ),
                       SizedBox(
@@ -352,29 +356,13 @@ Widget _buildRescueSessions(BuildContext context) {
                           child: TextButton(
                             onPressed: () {
                               if (index == 0) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>  ZaritScalePage(),
-                                  ),
-                                );
+
                               }
                               if (index == 1) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ZaritBurdenResultsPage(),
-                                  ),
-                                );
+
                               }
                               if (index == 2) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const CopePage(),
-                                  ),
-                                );
+
                               }
                             },
                             child: Padding(

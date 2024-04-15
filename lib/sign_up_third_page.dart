@@ -99,7 +99,9 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 width: 280,
                                 child: Column(
                                   children: [
-                                    Row(crossAxisAlignment: CrossAxisAlignment.start,
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Column(
                                           crossAxisAlignment:
@@ -255,118 +257,141 @@ class _SignUpThirdState extends State<SignUpThird> {
                                       child: Column(
                                         children: [
                                           Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
-                                              CustomRadioButton(
-                                                font: 13 * fontHelper(context),
-                                                text: translations[
-                                                        LanguageManager()
-                                                            .currentLanguage]![
-                                                    'either_parents']!,
-                                                value: 'Either parent',
-                                                selected:
-                                                    relation == 'Either parent',
-                                                onSelect: () {
-                                                  setState(() {
-                                                    relation = 'Either parent';
-                                                  });
-                                                },
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  CustomRadioButton(
+                                                    font: 13 *
+                                                        fontHelper(context),
+                                                    text: translations[
+                                                            LanguageManager()
+                                                                .currentLanguage]![
+                                                        'either_parents']!,
+                                                    value: 'Either parent',
+                                                    selected: relation ==
+                                                        'Either parent',
+                                                    onSelect: () {
+                                                      setState(() {
+                                                        relation =
+                                                            'Either parent';
+                                                      });
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  CustomRadioButton(
+                                                    font: 13 *
+                                                        fontHelper(context),
+                                                    text: translations[
+                                                            LanguageManager()
+                                                                .currentLanguage]![
+                                                        'spouse']!,
+                                                    value: 'Spouse',
+                                                    selected:
+                                                        relation == 'Spouse',
+                                                    onSelect: () {
+                                                      setState(() {
+                                                        relation = 'Spouse';
+                                                      });
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  CustomRadioButton(
+                                                    font: 13 *
+                                                        fontHelper(context),
+                                                    text: translations[
+                                                            LanguageManager()
+                                                                .currentLanguage]![
+                                                        'sibling']!,
+                                                    value: 'Sibling',
+                                                    selected:
+                                                        relation == 'Sibling',
+                                                    onSelect: () {
+                                                      setState(() {
+                                                        relation = 'Sibling';
+                                                      });
+                                                    },
+                                                  ),
+                                                ],
                                               ),
-                                               SizedBox(
-                                                width: 25,
+                                              SizedBox(
+                                                width: screenWidth(context) *
+                                                    30 /
+                                                    414,
                                               ),
-                                              CustomRadioButton(
-                                                font: 13 * fontHelper(context),
-                                                text: translations[
-                                                        LanguageManager()
-                                                            .currentLanguage]![
-                                                    'relative']!,
-                                                value: 'Relative',
-                                                selected:
-                                                    relation == 'Relative',
-                                                onSelect: () {
-                                                  setState(() {
-                                                    relation = 'Relative';
-                                                  });
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: (10 / 896) *
-                                                screenHeight(context),
-                                          ),
-                                          Row(
-                                            children: [
-                                              CustomRadioButton(
-                                                font: 13 * fontHelper(context),
-                                                text: translations[
-                                                        LanguageManager()
-                                                            .currentLanguage]![
-                                                    'spouse']!,
-                                                value: 'Spouse',
-                                                selected: relation == 'Spouse',
-                                                onSelect: () {
-                                                  setState(() {
-                                                    relation = 'Spouse';
-                                                  });
-                                                },
-                                              ),
-                                              const SizedBox(
-                                                width: 60,
-                                              ),
-                                              CustomRadioButton(
-                                                font: 13 * fontHelper(context),
-                                                text: translations[
-                                                        LanguageManager()
-                                                            .currentLanguage]![
-                                                    'friend']!,
-                                                value: 'Friend',
-                                                selected: relation == 'Friend',
-                                                onSelect: () {
-                                                  setState(() {
-                                                    relation = 'Friend';
-                                                  });
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: (10 / 896) *
-                                                screenHeight(context),
-                                          ),
-                                          Row(
-                                            children: [
-                                              CustomRadioButton(
-                                                font: 13 * fontHelper(context),
-                                                text: translations[
-                                                        LanguageManager()
-                                                            .currentLanguage]![
-                                                    'sibling']!,
-                                                value: 'Sibling',
-                                                selected: relation == 'Sibling',
-                                                onSelect: () {
-                                                  setState(() {
-                                                    relation = 'Sibling';
-                                                  });
-                                                },
-                                              ),
-                                              const SizedBox(
-                                                width: 62,
-                                              ),
-                                              CustomRadioButton(
-                                                font: 13 * fontHelper(context),
-                                                text: translations[
-                                                        LanguageManager()
-                                                            .currentLanguage]![
-                                                    'non_relation']!,
-                                                value: 'Non relations',
-                                                selected:
-                                                    relation == 'Non relations',
-                                                onSelect: () {
-                                                  setState(() {
-                                                    relation = 'Non relations';
-                                                  });
-                                                },
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  CustomRadioButton(
+                                                    font: 13 *
+                                                        fontHelper(context),
+                                                    text: translations[
+                                                            LanguageManager()
+                                                                .currentLanguage]![
+                                                        'relative']!,
+                                                    value: 'Relative',
+                                                    selected:
+                                                        relation == 'Relative',
+                                                    onSelect: () {
+                                                      setState(() {
+                                                        relation = 'Relative';
+                                                      });
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  CustomRadioButton(
+                                                    font: 13 *
+                                                        fontHelper(context),
+                                                    text: translations[
+                                                            LanguageManager()
+                                                                .currentLanguage]![
+                                                        'friend']!,
+                                                    value: 'Friend',
+                                                    selected:
+                                                        relation == 'Friend',
+                                                    onSelect: () {
+                                                      setState(() {
+                                                        relation = 'Friend';
+                                                      });
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  CustomRadioButton(
+                                                    font: 13 *
+                                                        fontHelper(context),
+                                                    text: translations[
+                                                            LanguageManager()
+                                                                .currentLanguage]![
+                                                        'non_relation']!,
+                                                    value: 'Non relations',
+                                                    selected: relation ==
+                                                        'Non relations',
+                                                    onSelect: () {
+                                                      setState(() {
+                                                        relation =
+                                                            'Non relations';
+                                                      });
+                                                    },
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -610,6 +635,83 @@ class _SignUpThirdState extends State<SignUpThird> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ],
+              ),Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: SvgPicture.asset(
+                      'assets/svg/lang.svg',
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Select Language'),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ListTile(
+                                  title: Text('English'),
+                                  onTap: () {
+                                    // Set English language
+                                    LanguageManager().setLanguage('en');
+                                    // Close the dialog
+                                    Navigator.pop(context);
+                                    setState(() {
+
+                                    });
+                                  },
+                                ),
+                                ListTile(
+                                  title: Text('Hindi'),
+                                  onTap: () {
+                                    // Set Hindi language
+                                    LanguageManager().setLanguage('hi');
+                                    // Close the dialog
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      // Update UI if necessary
+                                    });
+                                  },
+                                ),
+                                ListTile(
+                                  title: Text('Marathi'),
+                                  onTap: () {
+                                    // Set Marathi language
+                                    LanguageManager().setLanguage('mr');
+                                    // Close the dialog
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      // Update UI if necessary
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Ink(
+                      decoration: ShapeDecoration(
+                        color: Colors.transparent,
+                        shape: CircleBorder(),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: SvgPicture.asset(
+                          'assets/icons/language_icon.svg',
+                          width: 24,
+                          height: 24,
+                          color: Colors.black, // Optionally customize the color
+                        ),
+                      ),
                     ),
                   ),
                 ],

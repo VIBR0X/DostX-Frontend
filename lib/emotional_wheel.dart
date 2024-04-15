@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'emotional.dart';
 import 'globals.dart ';
 import 'palette.dart';
 import 'custom_widgets.dart';
@@ -122,9 +123,7 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                                   ),
                                 ),
                               ),
-                              onPressed: () {
-
-                              },
+                              onPressed: () { },
                               child:  Text(
                                 translations[LanguageManager().currentLanguage]!['submit']!,
                                 style: TextStyle(

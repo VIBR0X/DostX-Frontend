@@ -4,7 +4,7 @@ import 'language_manager.dart';
 import 'palette.dart';
 import 'translations.dart';
 import 'globals.dart';
-
+import 'emotional_wheel.dart';
 
 class EmotionalWheelResultsPage extends StatelessWidget {
   @override
@@ -146,7 +146,12 @@ class EmotionalWheelResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () { Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  EmotionalWheel(),
+                              ),
+                            );},
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,

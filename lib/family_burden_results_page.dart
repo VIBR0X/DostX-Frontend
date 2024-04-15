@@ -1,3 +1,4 @@
+import 'package:dostx/family_burden_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_widgets.dart';
@@ -147,7 +148,12 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () { Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  FamilyBurdenScalePage(),
+                              ),
+                            );},
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,

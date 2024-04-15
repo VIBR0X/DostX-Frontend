@@ -1,3 +1,4 @@
+import 'package:dostx/brief_cope_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_widgets.dart';
@@ -147,7 +148,12 @@ class BriefCopeResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  BriefCopePage(),
+                              ),
+                            );},
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,

@@ -5,6 +5,7 @@ import 'language_manager.dart';
 import 'palette.dart';
 import 'translations.dart';
 import 'globals.dart';
+import 'zarit_scale_page.dart';
 
 
 class ZaritBurdenResultsPage extends StatelessWidget {
@@ -147,7 +148,12 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () { Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  ZaritScalePage(),
+                              ),
+                            );},
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,

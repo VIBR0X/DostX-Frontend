@@ -53,7 +53,7 @@ class CustomRadioButton extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: spacing * 2,
+            width: (10/414)*screenWidth(context),
           ),
           Text(
             text,
@@ -374,20 +374,21 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
             style: TextStyle(
               color: ColorOptions.skin,
               fontFamily: 'JostMedium',
-              fontSize: (screenHeight(context)/896)*13,
+              fontSize: 13,
             ),
           ),
           SizedBox(height: 20),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,  // Align items from the top
             children: [
-              Expanded(
-                child: Column(
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 10, 0),  // Adjust top padding to align from top
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
                       child: CustomRadioButton(
                         font: 13,
                         text: translations[LanguageManager().currentLanguage]!['never']!,
@@ -402,7 +403,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                       child: CustomRadioButton(
                         font: 13,
                         text: translations[LanguageManager().currentLanguage]!['frequently']!,
@@ -417,7 +418,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                       child: CustomRadioButton(
                         font: 13,
                         text: translations[LanguageManager().currentLanguage]!['sometimes']!,
@@ -432,14 +433,13 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                       ),
                     ),
                   ],
-                ),
-              ),
-              Expanded(
-                child: Column(
+                ),SizedBox(width:20),
+
+              Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),  // Adjust top padding to align from top
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
                       child: CustomRadioButton(
                         font: 13,
                         text: translations[LanguageManager().currentLanguage]!['rarely']!,
@@ -454,7 +454,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                       child: CustomRadioButton(
                         font: 13,
                         text: translations[LanguageManager().currentLanguage]!['nearly_always']!,
@@ -470,7 +470,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                     ),
                   ],
                 ),
-              ),
+
             ],
           ),
         ],
@@ -503,7 +503,7 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
     return SizedBox(
       width: screenWidth(context)*(350/414),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch children to fill the width
+        crossAxisAlignment: CrossAxisAlignment.start, // Stretch children to fill the width
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 11),
@@ -517,7 +517,8 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(width: 10,),
               CustomRadioButton(
@@ -612,7 +613,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
     return SizedBox(
       width: screenWidth(context) * (350 / 414),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch children to fill the width
+        crossAxisAlignment: CrossAxisAlignment.start, // Stretch children to fill the width
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 11),
@@ -629,7 +630,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
                   text: translations[LanguageManager().currentLanguage]!['not_at_all']!,
@@ -644,7 +645,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
                   text: translations[LanguageManager().currentLanguage]!['medium_amount']!,
@@ -659,7 +660,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
                   text: translations[LanguageManager().currentLanguage]!['little_bit']!,
@@ -674,7 +675,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 5, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
                   text: translations[LanguageManager().currentLanguage]!['doing_a_lot']!,
@@ -731,52 +732,48 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
           SizedBox(height: 11),
           Row(
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
-                      child: CustomNumberedRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['no_burden']!,
-                        value: 'No Burden',
-                        selected: selectedValue == 'No Burden',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'No Burden';
-                          });
-                        },
-                        number: 0,
-                        color: ColorOptions.skin, // Original color
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                    child: CustomNumberedRadioButton(
+                      font: 13,
+                      text: translations[LanguageManager().currentLanguage]!['no_burden']!,
+                      value: 'No Burden',
+                      selected: selectedValue == 'No Burden',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'No Burden';
+                        });
+                      },
+                      number: 0,
+                      color: ColorOptions.skin, // Original color
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(width: screenWidth(context) * 0.05), // Adjust spacing between rows as needed
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-                      child: CustomNumberedRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['moderate_burden']!,
-                        value: 'Moderate Burden',
-                        selected: selectedValue == 'Moderate Burden',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'Moderate Burden';
-                          });
-                        },
-                        number: 1,
-                        color: ColorOptions.skin, // Original color
-                      ),
+              SizedBox(width: screenWidth(context) * 0.09), // Adjust spacing between rows as needed
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                    child: CustomNumberedRadioButton(
+                      font: 13,
+                      text: translations[LanguageManager().currentLanguage]!['moderate_burden']!,
+                      value: 'Moderate Burden',
+                      selected: selectedValue == 'Moderate Burden',
+                      onSelect: () {
+                        setState(() {
+                          selectedValue = 'Moderate Burden';
+                        });
+                      },
+                      number: 1,
+                      color: ColorOptions.skin, // Original color
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -787,7 +784,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                       child: CustomNumberedRadioButton(
                         font: 13,
                         text: translations[LanguageManager().currentLanguage]!['severe_burden']!,

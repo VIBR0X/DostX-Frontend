@@ -1,4 +1,5 @@
 import 'package:dostx/custom_widgets.dart';
+import 'package:dostx/familyburden.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -111,6 +112,12 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                               ),
                             ),
                             onPressed: () {
+                               Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>  familyBurden(),
+                                ),
+                              );
 
                             },
                             child:  Text(

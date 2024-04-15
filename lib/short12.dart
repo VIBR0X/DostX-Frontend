@@ -20,7 +20,7 @@ class _SignUpThirdState extends State<Short12Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorOptions.skin,
+        backgroundColor: ColorOptions.whitish,
         title: const Text("Zarit Scale"),
         titleTextStyle: const TextStyle(
           color: Colors.black,
@@ -41,17 +41,15 @@ class _SignUpThirdState extends State<Short12Page> {
                 Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    color: ColorOptions.skin,
+                    color: ColorOptions.whitish,
                   ),
                   child: Column(
                     children: [
                       const SizedBox(
                         height: 29,
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                       QuestionsWithFiveOptions(
+
+                      QuestionWithFiveOptionsSingleLine(
                           question:
                               translations[LanguageManager().currentLanguage]![
                                   'question1']!),
@@ -59,63 +57,59 @@ class _SignUpThirdState extends State<Short12Page> {
                         height: 14,
                       ),
 
-                      const SizedBox(
-                        height: 14,
-                      ),
 
-                       QuestionsWithFiveOptions(
+
+                      QuestionWithFiveOptionsSingleLine(
                           question:
                               translations[LanguageManager().currentLanguage]![
                                   'question4']!),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel strained when are around your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const QuestionsWithFiveOptions(
+
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel your social life has suffered because\nyou are caring for your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel you have lost control of your life since\nyour relative’s illness?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel uncertain about what to do about\nrelative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel you should be doing more for your\nrelative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFiveOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
                               "Do you feel you could do a better job in caring for\nyour relative?"),
                       const SizedBox(
@@ -158,7 +152,7 @@ class _SignUpThirdState extends State<Short12Page> {
                         ),
                       ),
                       const SizedBox(
-                        height: 150,
+                        height: 30,
                       )
                     ],
                   ),

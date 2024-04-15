@@ -1,3 +1,4 @@
+import 'package:dostx/cope.dart';
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +112,12 @@ class _BriefCopePageState extends State<BriefCopePage> {
                               ),
                             ),
                             onPressed: () {
-
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>  CopePage(),
+                                ),
+                              );
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]!['proceed']!,

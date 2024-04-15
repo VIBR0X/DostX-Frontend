@@ -124,6 +124,9 @@ flutter:
     - assets/hooo.svg
     - assets/sad.svg
     - assets/profile.png
+    - assets/svg/emotional_wheel.svg
+    - assets/image/canvas.png
+    - assets/svg/DocIcon.svg
 #    -
 
   # An image asset can refer to one or more resolution-specific "variants", see
