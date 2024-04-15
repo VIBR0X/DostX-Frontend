@@ -1,7 +1,10 @@
 import 'package:dostx/sign_up_first_page.dart';
 import 'package:dostx/sign_up_third_page.dart';
+import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'custom_widgets.dart';
+import 'language_manager.dart';
 import 'palette.dart';
 import 'short12.dart';
 
@@ -35,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Container(
             height: 100,
             width: 100,
-            child: SvgPicture.asset("assets/svg/grandfather.svg"),
+            child: Image.asset("assets/profile.png"),
           ),
         ),
         SizedBox(height: 10),
@@ -154,7 +157,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 26, 0),
+        padding: const EdgeInsets.fromLTRB(0, 10, 25, 0),
         child: RawScrollbar(
           thumbColor: Color(0xff1A3858),
           thickness: 19.78,
@@ -163,14 +166,45 @@ class _ProfilePageState extends State<ProfilePage> {
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 20, 5, 0),
             child: ListView(
               children: [
-                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
-                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
-                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
-                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
-                _buildHistoryCard('History 1', "Dr ABC", "29 Aug 2022", () {}),
+                ReusableTile(
+                  title: 'Zarit Scale',
+                  author: 'By Dr. Someone Someone',
+                  testDate: 'Test taken on 29 Aug 2022',
+                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                  onPressed: () {
+
+                  },
+                ),
+                ReusableTile(
+                  title: 'Zarit Scale',
+                  author: 'By Dr. Someone Someone',
+                  testDate: 'Test taken on 29 Aug 2022',
+                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                  onPressed: () {
+
+                  },
+                ),
+                ReusableTile(
+                  title: 'Zarit Scale',
+                  author: 'By Dr. Someone Someone',
+                  testDate: 'Test taken on 29 Aug 2022',
+                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                  onPressed: () {
+
+                  },
+                ),
+                ReusableTile(
+                  title: 'Zarit Scale',
+                  author: 'By Dr. Someone Someone',
+                  testDate: 'Test taken on 29 Aug 2022',
+                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                  onPressed: () {
+
+                  },
+                ),
               ],
             ),
           ),
@@ -267,14 +301,7 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3),
-            ),
-          ],
+
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -315,8 +342,8 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildOption('Settings', _isProfileSelected),
-        SizedBox(width: 20),
-        _buildOption('History', !_isProfileSelected),
+        SizedBox(width: 2),
+        _buildOption('Assessment', !_isProfileSelected),
       ],
     );
   }

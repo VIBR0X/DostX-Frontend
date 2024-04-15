@@ -20,14 +20,25 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor:_selectedIndex != 0? Color(
-        0xFFFEBEB1,
-      ):Color(0xffFFF2E3),
-        title:Center(
-            child: SvgPicture.asset('assets/svg/logoa99.svg',width: 100,)
-        ),
-        leading:Stack(
-          children: [SvgPicture.asset('assets/svg/lang.svg',),
+      appBar: AppBar(
+        backgroundColor: _selectedIndex != 0
+            ? Color(
+                0xFFFEBEB1,
+              )
+            : Color(0xffFFF2E3),
+        title: Center(
+            child: SvgPicture.asset(
+          'assets/svg/logoa99.svg',
+          width: 100,
+        )),
+        leading: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: SvgPicture.asset(
+                'assets/svg/lang.svg',
+              ),
+            ),
             InkWell(
               onTap: () {
                 showDialog(
@@ -98,7 +109,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-
         actions: [
           IconButton(
             icon: Icon(Icons.notifications),
@@ -107,16 +117,17 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ],
+        scrolledUnderElevation: 0.0,
       ),
       bottomNavigationBar: Container(
-
-        decoration: BoxDecoration(color:Colors.white,boxShadow: [BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 2,
-          blurRadius: 48,
-          offset: Offset(0, 2),
-        ),]),
-
+        decoration: BoxDecoration(color: Colors.white, boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 48,
+            offset: Offset(0, 2),
+          ),
+        ]),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -167,7 +178,8 @@ class _HomePageState extends State<HomePage> {
       icon: Icon(
         icon,
         size: 30,
-        color: _selectedIndex == index ? ColorOptions.skin : ColorOptions.darkblue,
+        color:
+            _selectedIndex == index ? ColorOptions.skin : ColorOptions.darkblue,
       ),
     );
   }

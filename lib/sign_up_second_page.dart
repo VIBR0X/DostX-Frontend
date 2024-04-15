@@ -28,7 +28,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
           child: Stack(
             children: [
               Column(
-                children: [SizedBox(height: (15/896)* screenHeight(context,),),
+                children: [SizedBox(height: (20/896)* screenHeight(context,),),
                   Center(
                     child: SvgPicture.asset(
                       "assets/svg/grandfather.svg",
@@ -499,7 +499,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                           ),
                         ),
                         SizedBox(
-                          height: (25 / 869) * screenHeight(context),
+                          height: (40 / 869) * screenHeight(context),
                         ),
                         Center(
                           child: SizedBox(

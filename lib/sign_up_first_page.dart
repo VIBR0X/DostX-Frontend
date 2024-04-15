@@ -28,11 +28,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
             child: Stack(
               children: [
                 Column(
-                  children: [
+                  children: [SizedBox(height: (20/896)* screenHeight(context,),),
                     Center(
                         child: SvgPicture.asset(
                       "assets/svg/grandfather.svg",
-
+                          height: 0.3827232142857143 * screenHeight(context),
                     ),),
                   ],
                 ),

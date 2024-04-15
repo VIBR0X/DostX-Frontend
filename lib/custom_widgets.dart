@@ -954,6 +954,7 @@ class ReusableTile extends StatelessWidget {
   final VoidCallback onPressed;
   final String buttonText;
 
+
   ReusableTile({
     required this.title,
     required this.author,
@@ -1029,11 +1030,11 @@ class ReusableTile extends StatelessWidget {
                     ),
                     SizedBox(
                       height: screenHeight(context) * (32 / 896),
-                      width: MediaQuery.of(context).size.width * (125/ 419),
+                      width: MediaQuery.of(context).size.width * (120/ 419),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: GradientOptions.signInGradient,
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextButton(
                           style: TextButton.styleFrom(

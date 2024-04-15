@@ -119,6 +119,11 @@ flutter:
     - assets/svg/aunty.svg
     - assets/svg/logoa99.svg
     - assets/svg/Image.svg
+    - assets/angry.svg
+    - assets/smiley.svg
+    - assets/hooo.svg
+    - assets/sad.svg
+    - assets/profile.png
 #    -
 
   # An image asset can refer to one or more resolution-specific "variants", see

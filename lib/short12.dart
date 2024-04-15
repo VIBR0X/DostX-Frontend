@@ -1,3 +1,5 @@
+import 'package:dostx/zarit_burden_results_page.dart';
+
 import 'palette.dart';
 import 'custom_widgets.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class _SignUpThirdState extends State<Short12Page> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorOptions.skin,
-        title: const Text("Form"),
+        title: const Text("Zarit Scale"),
         titleTextStyle: const TextStyle(
           color: Colors.black,
           fontFamily: 'JostMedium',
@@ -56,20 +58,11 @@ class _SignUpThirdState extends State<Short12Page> {
                       const SizedBox(
                         height: 14,
                       ),
-                       QuestionsWithFiveOptions(
-                          question:
-                              translations[LanguageManager().currentLanguage]![
-                                  'question2']!),
+
                       const SizedBox(
                         height: 14,
                       ),
-                       QuestionsWithFiveOptions(
-                          question:
-                              translations[LanguageManager().currentLanguage]![
-                                  'question3']!),
-                      const SizedBox(
-                        height: 14,
-                      ),
+
                        QuestionsWithFiveOptions(
                           question:
                               translations[LanguageManager().currentLanguage]![
@@ -145,8 +138,12 @@ class _SignUpThirdState extends State<Short12Page> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-
+                            onPressed: () {Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  ZaritBurdenResultsPage(),
+                              ),
+                            );
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]![

@@ -334,7 +334,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   },
                                                 ),
                                                 const SizedBox(
-                                                  width: 22,
+                                                  width: 20,
                                                 ),
                                                 CustomRadioButton(
                                                   font: fontSize*(14/13),

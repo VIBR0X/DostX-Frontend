@@ -1,5 +1,6 @@
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
+import 'package:dostx/short12.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'consent_page.dart';
@@ -115,6 +116,12 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                               ),
                             ),
                             onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>  Short12Page(),
+                                ),
+                              );
 
                             },
                             child:  Text(

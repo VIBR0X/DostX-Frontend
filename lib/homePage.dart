@@ -6,11 +6,15 @@ import 'package:dostx/family_burden_results_page.dart';
 import 'package:dostx/family_burden_scale_page.dart';
 import 'package:dostx/globals.dart%20';
 import 'package:dostx/svg_test.dart';
+import 'package:dostx/translations.dart';
 import 'package:dostx/zarit_burden_results_page.dart';
 import 'package:dostx/zarit_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'custom_widgets.dart';
 import 'font_test.dart';
+import 'language_manager.dart';
 import 'short12.dart';
 import 'emotional_wheel.dart';
 import 'globals.dart' as global;
@@ -44,8 +48,21 @@ class HomePageFirst extends StatelessWidget {
                   ),
                 ),
                 Row(
-                  children: [],
-                )
+                  children: [
+                    Spacer(),
+                    SvgPicture.asset(
+                      "assets/smiley.svg",
+                    ),
+                    Spacer(),
+                    SvgPicture.asset("assets/sad.svg"),
+                    Spacer(),
+                    SvgPicture.asset("assets/hooo.svg"),
+                    Spacer(),
+                    SvgPicture.asset("assets/angry.svg"),
+                    Spacer()
+                  ],
+                ),
+                SizedBox(height: 24)
               ],
             ),
           ),
@@ -53,46 +70,80 @@ class HomePageFirst extends StatelessWidget {
             color: Color(0xFFF1F1F1),
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                        height: screenHeight(context) * 89 / 869,
-                        child: _buildHorizontalScrollSection(context)),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: SizedBox(
+                          height: screenHeight(context) * 89 / 869,
+                          child: _buildHorizontalScrollSection(context)),
+                    ),
                     SizedBox(height: screenHeight(context) * 30 / 869),
                     Row(
                       children: [
-                        Text(
-                          "Rescue Sessions",
-                          style: TextStyle(
-                            fontSize: 16 * fontHelper(context),
-                            fontFamily: 'SFProText',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Text(
+                            "Form Screening",
+                            style: TextStyle(
+                              fontSize: 16 * fontHelper(context),
+                              fontFamily: 'SFProText',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         Spacer(),
                       ],
                     ),
                     SizedBox(height: 10),
-                    _buildRescueSessions(context),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: _buildRescueSessions(context),
+                    ),
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        Text(
-                          "Consultation History",
-                          style: TextStyle(
-                            fontSize: 16 * fontHelper(context),
-                            fontFamily: 'SFProText',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Text(
+                            "Consultation History",
+                            style: TextStyle(
+                              fontSize: 16 * fontHelper(context),
+                              fontFamily: 'SFProText',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
-                       
-
                       ],
-                    ),SingleChildScrollView(child: Container(height: 200,child: _buildHistory(context),))
+                    ),
+                    ReusableTile(
+                      title: 'Zarit Scale',
+                      author: 'By Dr. Someone Someone',
+                      testDate: '29 Aug 2022',
+                      buttonText: "Begin",
+                      onPressed: () { Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  ZaritScalePage(),
+                        ),
+                      );},
+                    ),
+                    ReusableTile(
+                      title: 'Emotional Wheel',
+                      author: 'By Dr. Someone Someone',
+                      testDate: '29 Aug 2022',
+                      buttonText: "Begin",
+                      onPressed: () { Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  ZaritScalePage(),
+                        ),
+                      );},
+                    )
                   ],
                 ),
               ),
@@ -306,7 +357,7 @@ Widget _buildRescueSessions(BuildContext context) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const Short12Page(),
+                                    builder: (context) =>  ZaritScalePage(),
                                   ),
                                 );
                               }
@@ -315,7 +366,7 @@ Widget _buildRescueSessions(BuildContext context) {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const EmotionalWheel(),
+                                        ZaritBurdenResultsPage(),
                                   ),
                                 );
                               }
@@ -380,8 +431,6 @@ Widget _buildRescueSessions(BuildContext context) {
 //   }
 // }
 
-
-
 Widget _buildHistory(BuildContext context) {
   return Container(
     decoration: BoxDecoration(
@@ -393,31 +442,22 @@ Widget _buildHistory(BuildContext context) {
     ),
     child: Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 6, 0),
-      child: RawScrollbar(
-        thumbColor: Color(0xff1A3858),
-        thickness: 19.78,
-        thumbVisibility: true,
-        radius: Radius.circular(20),
-        scrollbarOrientation: ScrollbarOrientation.right,
-        interactive: true,
-        child: ListView.builder(
-          itemCount: 5, // Number of history cards to display
-          itemBuilder: (context, index) {
-            return _buildHistoryCard(
-              'History ${index + 1}',
-              "Dr ABC",
-              "29 Aug 2022",
-                  () {
-                // Handle tap action for history card
-              },
-            );
-          },
-        ),
+      child: ListView.builder(
+        itemCount: 5, // Number of history cards to display
+        itemBuilder: (context, index) {
+          return _buildHistoryCard(
+            'History ${index + 1}',
+            "Dr ABC",
+            "29 Aug 2022",
+            () {
+              // Handle tap action for history card
+            },
+          );
+        },
       ),
     ),
   );
 }
-
 
 Widget _buildHistoryCard(
     String text, String doctor, String date, VoidCallback tap) {
@@ -494,4 +534,3 @@ Widget _buildHistoryCard(
     ),
   );
 }
-
