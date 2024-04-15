@@ -161,7 +161,6 @@ class HomePageFirst extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ZaritScalePage(),
-            // builder: (context) => ZaritBurdenResultsPage(),
           ),
         );
       },
@@ -170,7 +169,6 @@ class HomePageFirst extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => FamilyBurdenScalePage(),
-            // builder: (context) => FamilyBurdenResultsPage(),
           ),
         );
       },
@@ -179,7 +177,6 @@ class HomePageFirst extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => BriefCopePage(),
-            // builder: (context) => BriefCopeResultsPage(),
           ),
         );
       },
@@ -188,7 +185,6 @@ class HomePageFirst extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => EmotionalWheel(),
-            // builder: (context) => EmotionalWheelResultsPage(),
           ),
         );
       },
@@ -274,6 +270,8 @@ class HomePageFirst extends StatelessWidget {
       ),
     );
   }
+
+
 }
 
 Widget _buildRescueSessions(BuildContext context) {

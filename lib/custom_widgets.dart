@@ -173,9 +173,9 @@ class CustomNumberedRadioButton extends StatelessWidget {
               child: Text(
                 '$number',
                 style: TextStyle(
-                  color: !selected ? const Color(0xFFD4D4D5) : numberColor,
-                  fontSize: 13 * fontHelper(context),
-                  fontFamily: "LatoBold"
+                    color: !selected ? const Color(0xFFD4D4D5) : numberColor,
+                    fontSize: 13 * fontHelper(context),
+                    fontFamily: "LatoBold"
                 ),
               ),
             ),
@@ -851,7 +851,7 @@ class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                     child: CustomRadioButtonb(
                       text: translations[LanguageManager().currentLanguage]!['happy']!,
                       value: 'Happy',
@@ -864,7 +864,7 @@ class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                     child: CustomRadioButtonb(
                       text: translations[LanguageManager().currentLanguage]!['surprise']!,
                       value: 'Surprise',
@@ -877,7 +877,7 @@ class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 5, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                     child: CustomRadioButtonb(
                       text: translations[LanguageManager().currentLanguage]!['disgusted']!,
                       value: 'Disgusted',
