@@ -1002,55 +1002,68 @@ class ReusableTile extends StatelessWidget {
               ),
               // SizedBox(height: 12),
               Padding(
-                padding: EdgeInsets.fromLTRB(screenWidth(context) * (25 / 419), 10, 20, (20 / 896) * screenHeight(context)),
+                padding: EdgeInsets.fromLTRB(
+                  screenWidth(context) * (25 / 419),
+                  10,
+                  20,
+                  (20 / 896) * screenHeight(context),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFF8FBFB), // Setting background color to white
-                        borderRadius: BorderRadius.circular(screenWidth(context) * (10 / 419)),
-                        // border: Border.all(
-                        //     color: ColorOptions.skin,
-                        //     width: 1
-                        // ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          testDate,
-                          style: TextStyle(
-                              fontSize: relFont * 12,
+                    // Container for testDate taking up 60% of tile width
+                    Expanded(
+                      flex: 65,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF8FBFB),
+                          borderRadius: BorderRadius.circular(screenWidth(context) * (10 / 419)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            testDate,
+                            maxLines: 1, // Limiting to 1 line
+                            overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
+                            style: TextStyle(
+                              fontSize: fontHelper(context) * 11,
                               color: Color(0xFF9FA4A4),
                               fontFamily: 'SFProText',
-                              letterSpacing: 0.6
+                              letterSpacing: 0.6,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: screenHeight(context) * (32 / 896),
-                      width: MediaQuery.of(context).size.width * (120/ 419),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          gradient: GradientOptions.signInGradient,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: null,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                    // SizedBox for spacing
+                    SizedBox(width: 10),
+                    // Button taking up 40% of tile width
+                    Expanded(
+                      flex: 35,
+                      child: SizedBox(
+                        height: screenHeight(context) * (32 / 896),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            gradient: GradientOptions.signInGradient,
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          onPressed: onPressed,
-                          child: Text(
-                            buttonText,
-                            style: TextStyle(
-                                fontSize: relFont * 11,
-                                // fontWeight: FontWeight.bold,
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: null,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            onPressed: onPressed,
+                            child: Text(
+                              buttonText,
+                              maxLines: 1, // Limiting to 1 line
+                              overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
+                              style: TextStyle(
+                                fontSize: fontHelper(context) * 11,
                                 color: Colors.white,
-                                fontFamily: 'SFProText'
+                                fontFamily: 'SFProText',
+                              ),
                             ),
                           ),
                         ),
@@ -1059,6 +1072,7 @@ class ReusableTile extends StatelessWidget {
                   ],
                 ),
               ),
+
             ],
           ),
         ),
