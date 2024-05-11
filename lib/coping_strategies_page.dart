@@ -266,17 +266,19 @@ class _StrategyEntryState extends State<StrategyEntry> {
           style: ElevatedButton.styleFrom(
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(20),
             ),
           backgroundColor: Colors.transparent,
           elevation: 0,),
         onPressed: (){
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>  widget.navigationPage,
-            ),
-          );
+            if (widget.navigationPage != null){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  widget.navigationPage,
+              ),
+            );
+            }
         },
         child: Container(
           padding: const EdgeInsets.all(16.0),
