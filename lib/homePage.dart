@@ -1,10 +1,12 @@
 import 'package:dostx/brief_cope_results_page.dart';
 import 'package:dostx/brief_cope_page.dart';
 import 'package:dostx/cope.dart';
+import 'package:dostx/coping_strategies_page.dart';
 import 'package:dostx/emothional_wheeel_reults.dart';
 import 'package:dostx/family_burden_results_page.dart';
 import 'package:dostx/family_burden_scale_page.dart';
 import 'package:dostx/globals.dart%20';
+import 'package:dostx/medical_reminder.dart';
 import 'package:dostx/svg_test.dart';
 import 'package:dostx/translations.dart';
 import 'package:dostx/zarit_burden_results_page.dart';
@@ -82,9 +84,10 @@ class HomePageFirst extends StatelessWidget {
                     ),
                     SizedBox(height: screenHeight(context) * 30 / 869),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
                           child: Text(
                             "Rescue Sessions",
                             style: TextStyle(
@@ -95,7 +98,25 @@ class HomePageFirst extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        // Spacer(),
+                        TextButton(
+                            onPressed: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>  CopingStrategiesPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                                'See All',
+                              style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: 14 * fontHelper(context),
+                                color: Color(0xFF323736),
+                              ),
+                            )
+                        )
                       ],
                     ),
                     SizedBox(height: 10),
@@ -183,7 +204,12 @@ class HomePageFirst extends StatelessWidget {
 
       },
       (BuildContext context) {
-
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>  MedicalReminderPage(),
+          ),
+        );
       },
       (BuildContext context) {
 
@@ -249,20 +275,38 @@ class HomePageFirst extends StatelessWidget {
                       ),
                       Container(
                         alignment: Alignment.center,
-                        child: Text(
-                            index == 0
-                                ? 'psycho-\neducation'
-                                : index == 1
-                                    ? 'medicine\nreminder'
+                        child: Column(
+                          children: [
+                            Text(
+                                index == 0
+                                    ? 'Psycho-'
+                                    : index == 1
+                                        ? 'Medicine'
+                                        : index == 2
+                                            ? 'Doctor'
+                                            : index == 3
+                                                ? 'Financial'
+                                                : '',
+                                style: TextStyle(
+                                    color: Color(0xff323736),
+                                    fontFamily: "SFProText",
+                                    fontSize: 10 * fontHelper(context))),
+                            Text(
+                                index == 0
+                                    ? 'education'
+                                    : index == 1
+                                    ? 'Reminder'
                                     : index == 2
-                                        ? 'doctor\nconnect'
-                                        : index == 3
-                                            ? 'financial\ncoping'
-                                            : '',
-                            style: TextStyle(
-                                color: Color(0xff323736),
-                                fontFamily: "SFProText",
-                                fontSize: 10 * fontHelper(context))),
+                                    ? 'Connect'
+                                    : index == 3
+                                    ? 'Coping'
+                                    : '',
+                                style: TextStyle(
+                                    color: Color(0xff323736),
+                                    fontFamily: "SFProText",
+                                    fontSize: 10 * fontHelper(context))),
+                          ],
+                        ),
                       ),
                     ],
                   ),

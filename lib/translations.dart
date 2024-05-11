@@ -123,7 +123,10 @@ Map<String, Map<String, String>> translations = {
     'emotional_wheel_results': "Emotional Wheel",
     'zarit_burden_results': "The Zarit Burden Interview Assessing Caregiver Burden",
     'family_burden_results': "The Family Burden Scale",
-    'brief_cope_result': "Coping Orientation to Problems Experienced Inventory (Brief-COPE)"
+    'brief_cope_result': "Coping Orientation to Problems Experienced Inventory (Brief-COPE)",
+
+    "available":"Available",
+    "upcoming":"Upcoming",
   },
   'hi': {
     'app_name': 'दोस्तएक्स ऐप',
@@ -249,7 +252,10 @@ Map<String, Map<String, String>> translations = {
     'emotional_wheel_results': "भावनात्मक चक्र",
     'zarit_burden_results': "जारित बोझ परिचिति देखभालक का बोझ मूल्यांकन",
     'family_burden_results': "परिवार का बोझ स्केल",
-    'brief_cope_result': "संक्षिप्त चिंता समस्याओं के सामने संभावित विवरण असमर्थी इन्वेंट्री (संक्षिप्त-कोप)"
+    'brief_cope_result': "संक्षिप्त चिंता समस्याओं के सामने संभावित विवरण असमर्थी इन्वेंट्री (संक्षिप्त-कोप)",
+
+    "available":"उपलब्ध",
+    "upcoming":"आगामी",
 
   },
   'mr': {
@@ -376,8 +382,9 @@ Map<String, Map<String, String>> translations = {
     'emotional_wheel_results': "भावनात्मक चक्र",
     'zarit_burden_results': "झारित बोझ चिंतामय देखाणी देखावणी",
     'family_burden_results': "कुटुंब बोझ मोडण",
-    'brief_cope_result': "टोंचण करण्याचा विभाग समस्यांसाठी अनुभवी चिन्हांकन (लघु-COPE)"
+    'brief_cope_result': "टोंचण करण्याचा विभाग समस्यांसाठी अनुभवी चिन्हांकन (लघु-COPE)",
 
-
+    "available":"उपलब्ध",
+    "upcoming":"आगामी",
   },
 };

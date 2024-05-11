@@ -127,7 +127,16 @@ flutter:
     - assets/svg/emotional_wheel.svg
     - assets/image/canvas.png
     - assets/svg/DocIcon.svg
-#    -
+    - assets/image/med (1).png
+    - assets/image/med (2).png
+    - assets/image/med (3).png
+    - assets/image/med (4).png
+    - assets/image/coping (1).png
+    - assets/image/coping (2).png
+    - assets/image/coping (3).png
+    - assets/image/coping (4).png
+
+  #    -
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
