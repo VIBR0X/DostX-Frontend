@@ -1,3 +1,4 @@
+import 'package:dostx/coping_strategies_page.dart';
 import 'package:dostx/homePage.dart';
 import 'package:dostx/medical_reminder.dart';
 import 'package:flutter/material.dart';
@@ -31,18 +32,20 @@ class _HomePageState extends State<HomePage> {
                 0xFFFEBEB1,
               )
             : Color(0xffFFF2E3),
-        title: Center(
-            child: Image.asset(
-              'assets/image/logo.png',
-              width: 100,
-              // height: 80,
-        )),
+        title: Image.asset(
+          'assets/image/logo.png',
+          width: 78,
+          // height: 27,
+          // height: 80,
+                ),
+        leadingWidth: 100,
         leading:  Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+              padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
               child: SvgPicture.asset(
                 'assets/svg/lang.svg',
+                width: 41,
               ),
             ),
             InkWell(
@@ -115,14 +118,14 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {
-              // Handle bell icon tap
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.notifications),
+        //     onPressed: () {
+        //       // Handle bell icon tap
+        //     },
+        //   ),
+        // ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: Colors.white, boxShadow: [

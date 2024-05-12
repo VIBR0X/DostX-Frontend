@@ -41,6 +41,7 @@ dependencies:
   retrofit: ^4.0.3
   bloc_provider: ^1.0.0
   flutter_svg: ^2.0.10+1
+  fluttertoast: ^8.2.5
 
 dev_dependencies:
   flutter_test:

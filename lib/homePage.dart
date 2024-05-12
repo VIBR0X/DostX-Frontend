@@ -2,6 +2,7 @@ import 'package:dostx/brief_cope_results_page.dart';
 import 'package:dostx/brief_cope_page.dart';
 import 'package:dostx/cope.dart';
 import 'package:dostx/coping_strategies_page.dart';
+import 'package:dostx/cost_effective_analysis_page.dart';
 import 'package:dostx/emothional_wheeel_reults.dart';
 import 'package:dostx/family_burden_results_page.dart';
 import 'package:dostx/family_burden_scale_page.dart';
@@ -16,11 +17,13 @@ import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'font_test.dart';
 import 'language_manager.dart';
 import 'short12.dart';
 import 'emotional_wheel.dart';
 import 'globals.dart' as global;
+
 
 class HomePageFirst extends StatelessWidget {
   @override
@@ -216,10 +219,21 @@ class HomePageFirst extends StatelessWidget {
         );
       },
       (BuildContext context) {
-
+        Fluttertoast.showToast(
+          msg: "Feature Upcoming",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Color(0xAA444444),
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
       },
       (BuildContext context) {
-
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CostEffectiveAnalysisPage())
+        );
       },
     ];
 
