@@ -51,21 +51,23 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
         // centerTitle: true,
       ),
       body: SafeArea(
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                height: screenHeight(context) * 0.1,
-                width: screenWidth(context),
-                decoration: const BoxDecoration(
-                  color: Color(0xFFFFF2E3),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
-                  ),
+        child: Column(
+          children: [
+            Container(
+              height: screenHeight(context) * 0.08,
+              width: screenWidth(context),
+              decoration: const BoxDecoration(
+                color: Color(0xFFFFF2E3),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
                 ),
-                child: Center(
-                  child: Container(
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
                     width: screenWidth(context)*0.91,
                     height: screenHeight(context) * 0.06,
                     decoration: BoxDecoration(
@@ -73,7 +75,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                         borderRadius: BorderRadius.circular(20.0)
                     ),
                     child:  Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(6.0),
                       child: Center(child: Row(
                         children: [
                           Expanded(
@@ -142,81 +144,81 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                       )),
                     ),
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 15),
+
+            Container(
+              height: screenHeight(context)*0.765 - 15,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: StrategyEntry(
+                        imageUrl: "assets/image/coping (1).png",
+                        title:"Grounding yourself",
+                        authorName: "Dr. Vinni",
+                        dateField: "Coming Soon",
+                        readDurationMins: "13",
+                        navigationPage: CopingStrategyAboutPage(
+                          title: "The Art of Self-Love",
+                          imageUrl: "assets/image/coping (2).png",
+                          description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\n Understanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: StrategyEntry(
+                        imageUrl: "assets/image/coping (2).png",
+                        title:"Take a break!",
+                        authorName: "Dr. Gulati, MBBS",
+                        dateField: "22 Aug 2022",
+                        readDurationMins: "5",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: StrategyEntry(
+                        imageUrl: "assets/image/coping (2).png",
+                        title:"Take a break!",
+                        authorName: "Dr. Gulati, MBBS",
+                        dateField: "22 Aug 2022",
+                        readDurationMins: "5",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: StrategyEntry(
+                        imageUrl: "assets/image/coping (2).png",
+                        title:"Take a break!",
+                        authorName: "Dr. Gulati, MBBS",
+                        dateField: "22 Aug 2022",
+                        readDurationMins: "5",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: StrategyEntry(
+                        imageUrl: "assets/image/coping (2).png",
+                        title:"Take a break!",
+                        authorName: "Dr. Gulati, MBBS",
+                        dateField: "22 Aug 2022",
+                        readDurationMins: "5",
+                      ),
+                    )
+
+
+                    // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
+
+
+                  ],
                 ),
               ),
-              const SizedBox(height: 15),
-
-              Container(
-                height: screenHeight(context)*0.765 - 15,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: StrategyEntry(
-                          imageUrl: "assets/image/coping (1).png",
-                          title:"Grounding yourself",
-                          authorName: "Dr. Vinni",
-                          dateField: "Coming Soon",
-                          readDurationMins: "13",
-                          navigationPage: CopingStrategyAboutPage(
-                            title: "The Art of Self-Love",
-                            imageUrl: "assets/image/coping (2).png",
-                            description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\n Understanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: StrategyEntry(
-                          imageUrl: "assets/image/coping (2).png",
-                          title:"Take a break!",
-                          authorName: "Dr. Gulati, MBBS",
-                          dateField: "22 Aug 2022",
-                          readDurationMins: "5",
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: StrategyEntry(
-                          imageUrl: "assets/image/coping (2).png",
-                          title:"Take a break!",
-                          authorName: "Dr. Gulati, MBBS",
-                          dateField: "22 Aug 2022",
-                          readDurationMins: "5",
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: StrategyEntry(
-                          imageUrl: "assets/image/coping (2).png",
-                          title:"Take a break!",
-                          authorName: "Dr. Gulati, MBBS",
-                          dateField: "22 Aug 2022",
-                          readDurationMins: "5",
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: StrategyEntry(
-                          imageUrl: "assets/image/coping (2).png",
-                          title:"Take a break!",
-                          authorName: "Dr. Gulati, MBBS",
-                          dateField: "22 Aug 2022",
-                          readDurationMins: "5",
-                        ),
-                      )
-
-
-                      // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
-
-
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

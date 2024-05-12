@@ -7,6 +7,7 @@ import 'package:dostx/family_burden_results_page.dart';
 import 'package:dostx/family_burden_scale_page.dart';
 import 'package:dostx/globals.dart%20';
 import 'package:dostx/medical_reminder.dart';
+import 'package:dostx/psychoeducation_page.dart';
 import 'package:dostx/svg_test.dart';
 import 'package:dostx/translations.dart';
 import 'package:dostx/zarit_burden_results_page.dart';
@@ -201,7 +202,10 @@ class HomePageFirst extends StatelessWidget {
   Widget _buildHorizontalScrollSection(BuildContext context) {
     List<void Function(BuildContext)> routes = [
       (BuildContext context) {
-
+        Navigator.push(
+            context,
+          MaterialPageRoute(builder: (context) => PsychoEducationPage())
+        );
       },
       (BuildContext context) {
         Navigator.push(

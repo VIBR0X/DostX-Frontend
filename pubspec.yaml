@@ -113,6 +113,7 @@ flutter:
     - assets/svg/image-11.svg
     - assets/svg/Image-12.svg
     - assets/svg/logo.svg
+    - assets/svg/logoa1.svg
     - assets/svg/logo2.svg
     - assets/svg/lang.svg
     - assets/svg/grandma.svg
@@ -135,6 +136,7 @@ flutter:
     - assets/image/coping (2).png
     - assets/image/coping (3).png
     - assets/image/coping (4).png
+    - assets/svg/Icon tick.svg
 
   #    -
 

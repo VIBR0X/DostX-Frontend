@@ -32,9 +32,10 @@ class _HomePageState extends State<HomePage> {
               )
             : Color(0xffFFF2E3),
         title: Center(
-            child: SvgPicture.asset(
-          'assets/svg/logoa99.svg',
-          width: 100,
+            child: Image.asset(
+              'assets/image/logo.png',
+              width: 100,
+              // height: 80,
         )),
         leading:  Stack(
           children: [

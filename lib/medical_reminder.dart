@@ -51,7 +51,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
         child: Column(
           children: [
             Container(
-              height: screenHeight(context) * 0.1,
+              height: screenHeight(context) * 0.08,
               width: screenWidth(context),
               decoration: const BoxDecoration(
                 color: Color(0xFFFFF2E3),
@@ -60,8 +60,11 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: Center(
-                child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
                   width: screenWidth(context)*0.91,
                   height: screenHeight(context) * 0.06,
                   decoration: BoxDecoration(
@@ -69,7 +72,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                       borderRadius: BorderRadius.circular(20.0)
                   ),
                   child:  Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(6.0),
                     child: Center(child: Row(
                       children: [
                         Expanded(
@@ -137,7 +140,8 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                       ],
                     )),
                   ),
-                ),
+                )
+                ],
               ),
             ),
             const SizedBox(height: 15),
