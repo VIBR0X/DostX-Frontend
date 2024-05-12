@@ -1,6 +1,6 @@
 import 'package:dostx/emothional_wheeel_reults.dart';
 import 'package:dostx/zarit_burden_results_page.dart';
-
+import 'globals.dart';
 import 'palette.dart';
 import 'custom_widgets.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +21,10 @@ class _SignUpThirdState extends State<emotional> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: screenHeight(context)*0.105,
+        centerTitle: true,
+        scrolledUnderElevation: 0,
+
         backgroundColor: ColorOptions.whitish,
         title: const Text("Emotional Wheel"),
         titleTextStyle: const TextStyle(

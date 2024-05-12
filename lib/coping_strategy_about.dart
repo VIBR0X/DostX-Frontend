@@ -22,6 +22,8 @@ class CopingStrategyAboutPage extends StatelessWidget {
       backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        toolbarHeight: screenHeight(context)*0.105,
+        centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: const Color(0xFFFFF2E3),
         // shape: const RoundedRectangleBorder(
@@ -38,7 +40,7 @@ class CopingStrategyAboutPage extends StatelessWidget {
         title: Text(
           'Coping Strategies',
           style: TextStyle(
-            fontSize: relFont * 18,
+            fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
             color: ColorOptions.darkblue,
             fontWeight: FontWeight.w600,

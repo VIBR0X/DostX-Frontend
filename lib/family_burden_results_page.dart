@@ -16,6 +16,8 @@ class FamilyBurdenResultsPage extends StatelessWidget {
       backgroundColor: Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        toolbarHeight: screenHeight(context)*0.105,
+        centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: const Color(0xFFFFF2E3),
         shape: const RoundedRectangleBorder(
@@ -39,7 +41,6 @@ class FamilyBurdenResultsPage extends StatelessWidget {
             letterSpacing: 0.4,
           ),
         ),
-        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

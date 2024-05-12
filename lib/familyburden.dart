@@ -1,5 +1,4 @@
-import 'package:dostx/zarit_burden_results_page.dart';
-
+import 'globals.dart';
 import 'family_burden_results_page.dart';
 import 'palette.dart';
 import 'custom_widgets.dart';
@@ -21,6 +20,10 @@ class _SignUpThirdState extends State<familyBurden> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: screenHeight(context)*0.105,
+        centerTitle: true,
+        scrolledUnderElevation: 0,
+
         backgroundColor: ColorOptions.whitish,
         title: const Text("Family Burden Scale"),
         titleTextStyle: const TextStyle(

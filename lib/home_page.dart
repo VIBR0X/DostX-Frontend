@@ -1,4 +1,5 @@
 import 'package:dostx/homePage.dart';
+import 'package:dostx/medical_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'profilepage.dart';
@@ -21,6 +22,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: screenHeight(context)*0.105,
+        centerTitle: true,
+        scrolledUnderElevation: 0,
+
         backgroundColor: _selectedIndex != 0
             ? Color(
                 0xFFFEBEB1,
@@ -117,7 +122,6 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ],
-        scrolledUnderElevation: 0.0,
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
@@ -171,6 +175,15 @@ class _HomePageState extends State<HomePage> {
   Widget _buildIconButton(IconData icon, int index) {
     return IconButton(
       onPressed: () {
+        if(index == 3){
+                      Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  MedicalReminderPage(),
+              ),
+            );
+                      return;
+        }
         setState(() {
           _selectedIndex = index;
         });
@@ -193,8 +206,8 @@ class _HomePageState extends State<HomePage> {
         return ProfilePage();
       case 2:
         return Text('Messenger Page Content');
-      case 3:
-        return Text('Calendar Page Content');
+      // case 3:
+      //   return Text('Calendar Page Content');
       default:
         return Container();
     }

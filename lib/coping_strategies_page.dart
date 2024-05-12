@@ -23,6 +23,8 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
       backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        toolbarHeight: screenHeight(context)*0.105,
+        centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: const Color(0xFFFFF2E3),
         // shape: const RoundedRectangleBorder(
@@ -39,7 +41,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
         title: Text(
           'Coping Strategies',
           style: TextStyle(
-            fontSize: relFont * 18,
+            fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
             color: ColorOptions.darkblue,
             fontWeight: FontWeight.w600,
@@ -145,7 +147,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
               const SizedBox(height: 15),
 
               Container(
-                height: screenHeight(context)*0.80 - 15,
+                height: screenHeight(context)*0.765 - 15,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
