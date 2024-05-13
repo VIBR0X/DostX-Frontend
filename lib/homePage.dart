@@ -24,8 +24,21 @@ import 'short12.dart';
 import 'emotional_wheel.dart';
 import 'globals.dart' as global;
 
+class HomePageFirst extends StatefulWidget {
+  final Function(int) updateHomeIndex;
+  final Function() getPrevPageIndex;
+  const HomePageFirst({
+    super.key,
+    required this.updateHomeIndex,
+    required this.getPrevPageIndex,
+  });
+  @override
+  State<HomePageFirst> createState() => _HomePageFirstState();
+}
 
-class HomePageFirst extends StatelessWidget {
+class _HomePageFirstState extends State<HomePageFirst> {
+  List<bool>feelingSelection=[false,false,false,false];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -33,167 +46,204 @@ class HomePageFirst extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            color: Color(0xffFFF2E3),
+            color: const Color(0xffFFF2E3),
             width: double.maxFinite,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsets.fromLTRB(
-                      14,
-                      screenHeight(context) * 20 / 869,
+                      17,
+                      0,//screenHeight(context) * 20 / 869,
                       0,
-                      screenHeight(context) * 36 / 869),
+                      screenHeight(context) * 30 / 869),
                   child: Text(
                     "How do you feel today?",
                     style: TextStyle(
                       fontSize: 20 * fontHelper(context),
-                      fontFamily: 'SFProText',
-                      color: Color(0xFF204267),
+                      fontFamily: 'SFProTextMedium',
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF204267),
+                      letterSpacing: 1.1
                     ),
                   ),
                 ),
                 Row(
                   children: [
-                    Spacer(),
-                    SvgPicture.asset(
-                      "assets/smiley.svg",
+                    const Spacer(),
+                    InkWell(
+                      onTap: (){
+                        // feelingSelection=[false,false,false,false];
+                        setState((){
+                          feelingSelection=[true,false,false,false];
+                        });
+                      },
+                      child:SvgPicture.asset(feelingSelection[0]? "assets/smiley-selected.svg":"assets/smiley-unselected.svg",
+                        height: 67.26,
+                        width:67.26,
+                      )
                     ),
-                    Spacer(),
-                    SvgPicture.asset("assets/sad.svg"),
-                    Spacer(),
-                    SvgPicture.asset("assets/hooo.svg"),
-                    Spacer(),
-                    SvgPicture.asset("assets/angry.svg"),
-                    Spacer()
+                    const Spacer(),
+                    InkWell(
+                      onTap: (){
+                        setState((){
+                          feelingSelection=[false,true,false,false];
+                        });
+                      },
+                      child: SvgPicture.asset(
+                        feelingSelection[1]?"assets/sad-selected.svg":"assets/sad-unselected.svg",
+                        height:67.26,
+                        width:67.26,
+                      )
+                    ),
+                    const Spacer(),
+                    InkWell(
+                      onTap: (){
+                        setState((){
+                          feelingSelection=[false,false,true,false];
+                        });
+                      },
+                      child: SvgPicture.asset(
+                        feelingSelection[2]?"assets/hooo-selected.svg":"assets/hooo-unselected.svg",
+                        height:67.26,
+                        width:67.26,
+                      )
+                    ),
+                    const Spacer(),
+                    InkWell(
+                      onTap: (){
+                        setState((){
+                          feelingSelection=[false,false,false,true];
+                        });
+                      },
+                      child: SvgPicture.asset(
+                        feelingSelection[3]?"assets/angry-selected.svg":"assets/angry-unselected.svg",
+                        height:67.26,
+                        width:67.26,
+                      )
+                    ),
+                    const Spacer()
                   ],
                 ),
-                SizedBox(height: 24)
+                const SizedBox(height: 24)
               ],
             ),
           ),
           Container(
-            color: Color(0xFFF1F1F1),
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: SizedBox(
-                          height: screenHeight(context) * 89 / 869,
-                          child: _buildHorizontalScrollSection(context)),
-                    ),
-                    SizedBox(height: screenHeight(context) * 30 / 869),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
-                          child: Text(
-                            "Rescue Sessions",
-                            style: TextStyle(
-                              fontSize: 16 * fontHelper(context),
-                              fontFamily: 'SFProText',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
+            color: const Color(0xFFF1F1F1),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: SizedBox(
+                        height: screenHeight(context) * 89 / 869,
+                        child: _buildHorizontalScrollSection(context)),
+                  ),
+                  SizedBox(height: screenHeight(context) * 30 / 869),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
+                        child: Text(
+                          "Rescue Sessions",
+                          style: TextStyle(
+                            fontSize: 16 * fontHelper(context),
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
-                        // Spacer(),
-                        TextButton(
-                            onPressed: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>  CopingStrategiesPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                                'See All',
-                              style: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: 14 * fontHelper(context),
-                                color: Color(0xFF323736),
-                              ),
-                            )
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: _buildRescueSessions(context),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      ),
+                      // Spacer(),
+                      TextButton(
+                          onPressed: (){
+                            widget.updateHomeIndex(2);
+                          },
                           child: Text(
-                            "Form Screening",
+                              'See All',
                             style: TextStyle(
-                              fontSize: 16 * fontHelper(context),
                               fontFamily: 'SFProText',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                              fontSize: 14 * fontHelper(context),
+                              color: const Color(0xFF323736),
                             ),
+                          )
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: _buildRescueSessions(context),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                        child: Text(
+                          "Form Screening",
+                          style: TextStyle(
+                            fontSize: 16 * fontHelper(context),
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
-                      ],
-                    ),
-                    ReusableTile(
-                      title: 'Zarit Scale',
-                      author: 'By Dr. Someone Someone',
-                      testDate: '29 Aug 2022',
-                      buttonText: "Begin",
-                      onPressed: () { Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  ZaritBurdenResultsPage(),
-                        ),
-                      );},
-                    ),
-                    ReusableTile(
-                      title: 'Emotional Wheel',
-                      author: 'By Dr. Someone Someone',
-                      testDate: '29 Aug 2022',
-                      buttonText: "Begin",
-                      onPressed: () { Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  EmotionalWheelResultsPage(),
-                        ),
-                      );},
-                    ), ReusableTile(
-                      title: 'Family Burden Scale',
-                      author: 'By Dr. Someone Someone',
-                      testDate: '29 Aug 2022',
-                      buttonText: "Begin",
-                      onPressed: () { Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  FamilyBurdenResultsPage(),
-                        ),
-                      );},
-                    ),
-                    ReusableTile(
-                      title: 'COPE Scale',
-                      author: 'By Dr. Someone Someone',
-                      testDate: '29 Aug 2022',
-                      buttonText: "Begin",
-                      onPressed: () { Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  BriefCopeResultsPage(),
-                        ),
-                      );},
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  ReusableTile(
+                    title: 'Zarit Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: "Begin",
+                    onPressed: () { Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>  ZaritBurdenResultsPage(),
+                      ),
+                    );},
+                  ),
+                  ReusableTile(
+                    title: 'Emotional Wheel',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: "Begin",
+                    onPressed: () { Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>  EmotionalWheelResultsPage(),
+                      ),
+                    );},
+                  ), ReusableTile(
+                    title: 'Family Burden Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: "Begin",
+                    onPressed: () { Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>  FamilyBurdenResultsPage(),
+                      ),
+                    );},
+                  ),
+                  ReusableTile(
+                    title: 'COPE Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: "Begin",
+                    onPressed: () { Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>  BriefCopeResultsPage(),
+                      ),
+                    );},
+                  ),
+                ],
               ),
             ),
           ),
@@ -207,16 +257,17 @@ class HomePageFirst extends StatelessWidget {
       (BuildContext context) {
         Navigator.push(
             context,
-          MaterialPageRoute(builder: (context) => PsychoEducationPage())
+          MaterialPageRoute(builder: (context) => const PsychoEducationPage())
         );
       },
       (BuildContext context) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>  MedicalReminderPage(),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) =>  MedicalReminderPage(),
+        //   ),
+        // );
+        widget.updateHomeIndex(3);
       },
       (BuildContext context) {
         Fluttertoast.showToast(
@@ -224,7 +275,7 @@ class HomePageFirst extends StatelessWidget {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color(0xAA444444),
+          backgroundColor: const Color(0xAA444444),
           textColor: Colors.white,
           fontSize: 16.0,
         );
@@ -232,7 +283,7 @@ class HomePageFirst extends StatelessWidget {
       (BuildContext context) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CostEffectiveAnalysisPage())
+          MaterialPageRoute(builder: (context) => const CostEffectiveAnalysisPage())
         );
       },
     ];
@@ -246,9 +297,9 @@ class HomePageFirst extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: RawScrollbar(
-        thumbColor: Color(0xff1A3858),
+        thumbColor: const Color(0xff1A3858),
         thickness: 10,
-        radius: Radius.circular(10),
+        radius: const Radius.circular(10),
         child: ListView.builder(
           // padding: EdgeInsets.only(left: 10),
           scrollDirection: Axis.horizontal,
@@ -263,10 +314,10 @@ class HomePageFirst extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xff0000000A).withOpacity(0.01),
+                      color: const Color(0xff0000000A).withOpacity(0.01),
                       spreadRadius: 1,
                       blurRadius: 1,
-                      offset: Offset(0, 0),
+                      offset: const Offset(0, 0),
                     ),
                   ],
                   color: Colors.white,
@@ -306,7 +357,7 @@ class HomePageFirst extends StatelessWidget {
                                                 ? 'Financial'
                                                 : '',
                                 style: TextStyle(
-                                    color: Color(0xff323736),
+                                    color: const Color(0xff323736),
                                     fontFamily: "SFProText",
                                     fontSize: 10 * fontHelper(context))),
                             Text(
@@ -320,7 +371,7 @@ class HomePageFirst extends StatelessWidget {
                                     ? 'Coping'
                                     : '',
                                 style: TextStyle(
-                                    color: Color(0xff323736),
+                                    color: const Color(0xff323736),
                                     fontFamily: "SFProText",
                                     fontSize: 10 * fontHelper(context))),
                           ],
@@ -350,7 +401,7 @@ Widget _buildRescueSessions(BuildContext context) {
         itemBuilder: (context, index) {
           return Container(
             width: 230 / 414 * screenWidth(context),
-            margin: EdgeInsets.only(right: 10),
+            margin: const EdgeInsets.only(right: 10),
             decoration: BoxDecoration(
               color: Colors.white, // Replace with your desired color
               borderRadius: BorderRadius.circular(10),
@@ -367,7 +418,7 @@ Widget _buildRescueSessions(BuildContext context) {
                             ? Image.asset("assets/p1.png")
                             : Image.asset("assets/p2.png"),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                     ],
@@ -379,7 +430,7 @@ Widget _buildRescueSessions(BuildContext context) {
                   child: Text(
                     index == 0 ? "Let’s breathe easy!" : "Grounding Technique",
                     style: TextStyle(
-                        color: Color(0xff323736),
+                        color: const Color(0xff323736),
                         fontFamily: "SFProMedium",
                         fontWeight: FontWeight.w200,
                         fontSize: 14 * fontHelper(context)),
@@ -391,7 +442,7 @@ Widget _buildRescueSessions(BuildContext context) {
                   child: Text(
                     index == 0 ? "Breath Work" : "Coping with Anxiety",
                     style: TextStyle(
-                        color: Color(0xff9FA4A4),
+                        color: const Color(0xff9FA4A4),
                         fontFamily: "SFProText",
                         fontSize: 12 * fontHelper(context)),
                   ),
@@ -481,7 +532,7 @@ Widget _buildRescueSessions(BuildContext context) {
 
 Widget _buildHistory(BuildContext context) {
   return Container(
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.transparent,
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(40),
@@ -512,8 +563,8 @@ Widget _buildHistoryCard(
   return Padding(
     padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
     child: Container(
-      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-      padding: EdgeInsets.fromLTRB(10, 10, 20, 10),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+      padding: const EdgeInsets.fromLTRB(10, 10, 20, 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -522,7 +573,7 @@ Widget _buildHistoryCard(
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -532,21 +583,21 @@ Widget _buildHistoryCard(
             children: [
               Text(
                 text,
-                style: TextStyle(fontSize: 14, fontFamily: 'SFProMedium'),
+                style: const TextStyle(fontSize: 14, fontFamily: 'SFProMedium'),
               ),
             ],
           ),
           Row(
             children: [
               Text(doctor,
-                  style: TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+                  style: const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
             ],
           ),
           Row(
             children: [
               Text(date,
-                  style: TextStyle(fontSize: 14, fontFamily: 'SFProText')),
-              Spacer(),
+                  style: const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+              const Spacer(),
               SizedBox(
                 height: 43,
                 width: 100,
@@ -565,7 +616,7 @@ Widget _buildHistoryCard(
                       ),
                     ),
                     onPressed: tap,
-                    child: Text(
+                    child: const Text(
                       "Check Result",
                       style: TextStyle(
                           color: Colors.white,

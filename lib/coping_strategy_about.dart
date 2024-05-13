@@ -128,7 +128,9 @@ class CopingStrategyAboutPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
-                                  onPressed: (){},
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                  },
                                   child: Text(
                                     "PROCEED",
                                     maxLines: 1, // Limiting to 1 line

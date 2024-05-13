@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: 20),
+        // SizedBox(height: 10),
         Text(
           "My Profile",
           style: TextStyle(

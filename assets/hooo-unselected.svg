@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 682.4 671.39">
+  <defs>
+    <clipPath id="clippath">
+      <path d="M341.2,0C152.76,0,0,150.3,0,335.69s152.76,335.7,341.2,335.7,340.79-149.89,341.2-334.95v-1.49C681.98,149.89,529.38,0,341.2,0Z" style="fill: none; stroke-width: 0px;"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect width="682.4" height="671.39" style="fill: none; stroke-width: 0px;"/>
+    </clipPath>
+  </defs>
+  <g id="graphics">
+    <g>
+      <g style="clip-path: url(#clippath);">
+        <g id="Group_732" data-name="Group 732">
+          <path id="Path_85" data-name="Path 85" d="M0,0h682.4v671.39H0V0Z" style="fill: #d8dcdc; stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g style="clip-path: url(#clippath-1);">
+        <g id="Group_733" data-name="Group 733">
+          <path id="Path_87" data-name="Path 87" d="M300.37,351.28c0-34.74-28.16-62.9-62.9-62.9-34.74,0-62.9,28.16-62.9,62.9,0,34.74,28.16,62.9,62.9,62.9s62.9-28.16,62.9-62.9h0" style="fill: #fff; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_88" data-name="Path 88" d="M494.07,351.28c0-34.74-28.16-62.9-62.9-62.9-34.74,0-62.9,28.16-62.9,62.9,0,34.74,28.16,62.9,62.9,62.9s62.9-28.16,62.9-62.9h0" style="fill: #fff; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_89" data-name="Path 89" d="M430.69,235.02c8.05.94,15.94,2.92,23.48,5.89,6.85,2.74,12.56,8.59,22.93,7.58-2.36-8.75-6.74-16.82-12.78-23.57-8.03-7.18-17.42-12.68-27.61-16.17-9.05-3.66-19.23-3.3-27.99,1.01-8.62,3.97-14.85,11.23-7.12,19.82,7.05,7.8,19.57,4.34,29.09,5.4" style="fill: #000; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_90" data-name="Path 90" d="M233.36,234.03c8.52-.11,27.6,4.5,26.89-9.4-1.49-29.48-61.57-7.21-59.4,22.06,9.92-6.25,20.95-10.54,32.48-12.66" style="fill: #000; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_91" data-name="Path 91" d="M247.45,391.1c21.91,0,39.67-17.76,39.67-39.67s-17.76-39.67-39.67-39.67-39.67,17.76-39.67,39.67c0,4.05.6,8.07,1.79,11.94l28.45-3.59-15.26,22.7c7.02,5.58,15.72,8.62,24.69,8.62" style="fill: #000; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_92" data-name="Path 92" d="M426.58,391.1c21.91,0,39.67-17.76,39.67-39.67s-17.76-39.67-39.67-39.67-39.67,17.76-39.67,39.67c0,4.05.6,8.07,1.79,11.94l28.45-3.59-15.26,22.7c7.02,5.58,15.72,8.62,24.69,8.62" style="fill: #000; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_93" data-name="Path 93" d="M350.82,560.16h-19.24c-29.21-.09-52.86-23.74-52.95-52.95v-38.58c.09-29.21,23.74-52.86,52.95-52.95h19.25c29.21.08,52.87,23.74,52.95,52.95v38.58c-.08,29.21-23.74,52.87-52.95,52.95" style="fill: #000; stroke-width: 0px;"/>
+          <path id="Path_94" data-name="Path 94" d="M381.04,551.04c4.56-3.02,16.78-14.1,11.45-16.49-3.3-1.9-6.74-3.55-10.29-4.93-11.48-1.84-23.2-1.49-34.55,1.01-3.04,1.55-6.64,1.55-9.69,0-8.96-3.77-18.71-5.27-28.39-4.36-7.52.62-14.68,3.53-20.51,8.33-4.03,2.65,9.06,13.93,10.39,14.78,7.66,5.78,16.75,9.37,26.29,10.39,7.35.55,34.23,5.39,55.29-8.77" style="fill: #f54d5c; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_95" data-name="Path 95" d="M303.7,423.76c6.93,20.97,66.18,22.67,78.11,1.74" style="fill: #fff; fill-rule: evenodd; stroke-width: 0px;"/>
+          <path id="Path_96" data-name="Path 96" d="M303.7,423.76c11.64-10.07,57-14.6,78.11,1.74" style="fill: #fff; fill-rule: evenodd; stroke-width: 0px;"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -121,10 +121,14 @@ flutter:
     - assets/svg/aunty.svg
     - assets/svg/logoa99.svg
     - assets/svg/Image.svg
-    - assets/angry.svg
-    - assets/smiley.svg
-    - assets/hooo.svg
-    - assets/sad.svg
+    - assets/angry-selected.svg
+    - assets/smiley-selected.svg
+    - assets/hooo-selected.svg
+    - assets/sad-selected.svg
+    - assets/angry-unselected.svg
+    - assets/smiley-unselected.svg
+    - assets/hooo-unselected.svg
+    - assets/sad-unselected.svg
     - assets/profile.png
     - assets/svg/emotional_wheel.svg
     - assets/image/canvas.png

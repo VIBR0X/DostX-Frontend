@@ -8,7 +8,13 @@ import 'globals.dart';
 import 'zarit_scale_page.dart';
 
 class CopingStrategiesPage extends StatefulWidget {
-  const CopingStrategiesPage({super.key});
+  final Function() getPrevPageIndex;
+  final Function(int) updateHomeIndex;
+  const CopingStrategiesPage({
+    super.key,
+    required this.updateHomeIndex,
+    required this.getPrevPageIndex
+  });
 
   @override
   State<CopingStrategiesPage> createState() => _CopingStrategiesPageState();
@@ -35,7 +41,9 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
+            widget.updateHomeIndex(widget.getPrevPageIndex());
+
           },
         ),
         title: Text(
@@ -150,7 +158,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
             const SizedBox(height: 15),
 
             Container(
-              height: screenHeight(context)*0.765 - 15,
+              height: screenHeight(context)*0.765 - 62,
               child: SingleChildScrollView(
                 child: Column(
                   children: [

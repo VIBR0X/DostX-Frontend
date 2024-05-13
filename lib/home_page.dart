@@ -18,11 +18,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 1;
+  int _previousIndex = 1;
+
+  void _updateNavigation(int index){
+    _previousIndex = _selectedIndex;
+    setState(() {
+      _selectedIndex=index;
+    });
+  }
+  int _getPrevIndex(){
+    return _previousIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: (_selectedIndex==0 || _selectedIndex==1)?AppBar(
         toolbarHeight: screenHeight(context)*0.105,
         centerTitle: true,
         scrolledUnderElevation: 0,
@@ -118,15 +129,15 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        // actions: [
-        //   IconButton(
-        //     icon: Icon(Icons.notifications),
-        //     onPressed: () {
-        //       // Handle bell icon tap
-        //     },
-        //   ),
-        // ],
-      ),
+        actions: (_selectedIndex==1)?[
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {
+              // Handle bell icon tap
+            },
+          ),
+        ]:null,
+      ):null,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
@@ -179,18 +190,19 @@ class _HomePageState extends State<HomePage> {
   Widget _buildIconButton(IconData icon, int index) {
     return IconButton(
       onPressed: () {
-        if(index == 3){
-                      Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>  MedicalReminderPage(),
-              ),
-            );
-                      return;
-        }
-        setState(() {
-          _selectedIndex = index;
-        });
+        // if(index == 3){
+        //               Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: (context) =>  MedicalReminderPage(),
+        //       ),
+        //     );
+        //               return;
+        // }
+        // setState(() {
+        //   _selectedIndex = index;
+        // });
+        _updateNavigation(index);
       },
       icon: Icon(
         icon,
@@ -205,13 +217,22 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBodyContent(int index) {
     switch (index) {
       case 0:
-        return HomePageFirst();
+        return HomePageFirst(
+          updateHomeIndex: _updateNavigation,
+          getPrevPageIndex: _getPrevIndex,
+        );
       case 1:
         return ProfilePage();
       case 2:
-        return Text('Messenger Page Content');
-      // case 3:
-      //   return Text('Calendar Page Content');
+        return CopingStrategiesPage(
+          updateHomeIndex: _updateNavigation,
+          getPrevPageIndex: _getPrevIndex,
+        );//Text('Messenger Page Content');
+      case 3:
+        return MedicalReminderPage(
+          updateHomeIndex: _updateNavigation,
+          getPrevPageIndex: _getPrevIndex,
+        );//Text('Calendar Page Content');
       default:
         return Container();
     }
