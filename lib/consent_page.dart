@@ -148,7 +148,7 @@ class _ConsentFormState extends State<ConsentForm> {
                   ),
                   onPressed: () {
                     if(isSelected[0]){
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => HomePage(),

@@ -520,7 +520,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => const SignUpThird(),

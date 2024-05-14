@@ -162,25 +162,44 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            colors: <Color>[
-              Color(
-                0xFFFFFFFF,
-              ),
-              Color(
-                0xFFFEBEB1,
-              ),
-            ],
+      body: PopScope(
+        canPop: false,
+        onPopInvoked:(bool didPop){
+          if (didPop){
+            return;
+          }
+          if(_selectedIndex == 1){
+            Navigator.pop(context);
+            return;
+          }
+          else if(_previousIndex == 1 || _previousIndex ==0){
+            _updateNavigation(_previousIndex);
+            return;
+          }else if(_selectedIndex == 0){
+            _updateNavigation(1);
+            return;
+          }
+        } ,
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              colors: <Color>[
+                Color(
+                  0xFFFFFFFF,
+                ),
+                Color(
+                  0xFFFEBEB1,
+                ),
+              ],
+            ),
           ),
-        ),
-        child: Center(
-          child: _buildBodyContent(_selectedIndex),
+          child: Center(
+            child: _buildBodyContent(_selectedIndex),
+          ),
         ),
       ),
     );
