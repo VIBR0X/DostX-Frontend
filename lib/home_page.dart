@@ -3,6 +3,7 @@ import 'package:dostx/homePage.dart';
 import 'package:dostx/medical_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
+import 'package:flutter/services.dart';
 import 'profilepage.dart';
 import 'language_manager.dart';
 import 'globals.dart';
@@ -169,7 +170,7 @@ class _HomePageState extends State<HomePage> {
             return;
           }
           if(_selectedIndex == 1){
-            Navigator.pop(context);
+            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
             return;
           }
           else if(_previousIndex == 1 || _previousIndex ==0){
