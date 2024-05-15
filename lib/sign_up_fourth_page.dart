@@ -553,7 +553,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const ConsentForm(),

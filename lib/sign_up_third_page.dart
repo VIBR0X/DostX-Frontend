@@ -615,7 +615,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const SignUpFourth(),

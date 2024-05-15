@@ -4,6 +4,24 @@ class GradientOptions {
   static const LinearGradient backgroundGradient = LinearGradient(
     colors: <Color>[
       Color(
+        0xFFE5A194,
+      ),
+      Color(
+        0xFFE5A194,
+      ),
+      Color(
+        0xFFFFF6E8,
+      ),
+      Color(
+          0xFFFFF8EA
+      )
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+  static const LinearGradient consentBackgroundGradient = LinearGradient(
+    colors: <Color>[
+      Color(
         0xFFFFFFFF,
       ),
       Color(

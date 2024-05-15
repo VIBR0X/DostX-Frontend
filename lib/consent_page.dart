@@ -25,7 +25,7 @@ class _ConsentFormState extends State<ConsentForm> {
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          gradient: GradientOptions.backgroundGradient,
+          gradient: GradientOptions.consentBackgroundGradient,
         ),
         child: Column(
           children: [
@@ -148,7 +148,7 @@ class _ConsentFormState extends State<ConsentForm> {
                   ),
                   onPressed: () {
                     if(isSelected[0]){
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => HomePage(),
