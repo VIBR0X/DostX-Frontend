@@ -1,7 +1,7 @@
 import 'package:dostx/request/otpVer.dart';
 import 'package:dostx/response/otpResponse.dart';
 import 'package:flutter/material.dart';
-import 'palette.dart';
+import '../palette.dart';
 import 'package:flutter/services.dart';
 import 'sign_up_first_page.dart';
 import 'package:dostx/bloc/bloc_provider.dart';
@@ -161,25 +161,25 @@ class _otpPageState extends State<otpPage> {
                           ),
                           onPressed: validNumber
                               ? () async {
-                            otpVerRequest fakeOtpRequest =
-                            otpVerRequest(
-                                phoneNumber: widget.number,
-otp: _otpController.text,
-                            );
+                            // otpVerRequest fakeOtpRequest =
+//                             otpVerRequest(
+//                                 phoneNumber: widget.number,
+// otp: _otpController.text,
+//                             );
 
-                            String jsonRepresentation = jsonEncode(fakeOtpRequest);
-                            print(jsonRepresentation);
+                            // String jsonRepresentation = jsonEncode(fakeOtpRequest);
+                            // print(jsonRepresentation);
                             
-                             otpResponse res = await bloc.otpBloc(fakeOtpRequest);
-                             print(res.key);
-                             if(res.key??false){
+                             // otpResponse res = await bloc.otpBloc(fakeOtpRequest);
+                             // print(res.key);
+                             // if(res.key??false){
                                Navigator.push(
                                  context,
                                  MaterialPageRoute(
                                    builder: (context) => const SignUpFirst(),
                                  ),
                                );
-                             }
+                             // }
 
 
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
 
 class CostEffectiveAnalysisPage extends StatefulWidget {
   final String imageUrl="";

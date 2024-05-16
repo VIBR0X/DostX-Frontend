@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'emotional.dart';
-import 'globals.dart ';
-import 'palette.dart';
-import 'custom_widgets.dart';
+import '../globals.dart ';
+import '../palette.dart';
+import '../custom_widgets.dart';
 import 'sign_up_second_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';

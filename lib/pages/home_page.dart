@@ -1,12 +1,12 @@
-import 'package:dostx/coping_strategies_page.dart';
-import 'package:dostx/homePage.dart';
-import 'package:dostx/medical_reminder.dart';
+import 'package:dostx/pages/coping_strategies_page.dart';
+import 'package:dostx/pages/homePage.dart';
+import 'package:dostx/pages/medical_reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/services.dart';
 import 'profilepage.dart';
-import 'language_manager.dart';
-import 'globals.dart';
+import '../language_manager.dart';
+import '../globals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

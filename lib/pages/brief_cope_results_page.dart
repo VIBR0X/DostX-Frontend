@@ -1,11 +1,10 @@
-import 'package:dostx/brief_cope_page.dart';
+import 'package:dostx/pages/brief_cope_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'custom_widgets.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
+import '../custom_widgets.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
 
 
 class BriefCopeResultsPage extends StatelessWidget {

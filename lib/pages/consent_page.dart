@@ -2,12 +2,12 @@ import 'package:dostx/globals.dart%20';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'palette.dart';
-import 'custom_widgets.dart';
+import '../palette.dart';
+import '../custom_widgets.dart';
 import 'short12.dart';
-import 'translations.dart';
-import 'language_manager.dart';
-import 'package:dostx/home_page.dart';
+import '../translations.dart';
+import '../language_manager.dart';
+import 'package:dostx/pages/home_page.dart';
 class ConsentForm extends StatefulWidget {
   const ConsentForm({super.key});
 

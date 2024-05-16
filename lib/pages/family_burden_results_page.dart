@@ -1,14 +1,14 @@
+import 'package:dostx/pages/family_burden_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'custom_widgets.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
-import 'zarit_scale_page.dart';
+import '../custom_widgets.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
 
 
-class ZaritBurdenResultsPage extends StatelessWidget {
+class FamilyBurdenResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -32,9 +32,9 @@ class ZaritBurdenResultsPage extends StatelessWidget {
           },
         ),
         title: Text(
-          'Zarit Burden Interview Results',
+          'Family Burden Scale Results',
           style: TextStyle(
-            fontSize: relFont * 17,
+            fontSize: relFont * 15,
             fontFamily: 'SFProSemiBold',
             color: ColorOptions.darkblue,
             fontWeight: FontWeight.w600,
@@ -73,15 +73,15 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: screenWidth(context) * 0.19,
-                            height: screenHeight(context) * 0.066,
-                            child: SvgPicture.asset(
-                              "assets/svg/Image-5.svg",
-                              fit: BoxFit.contain,
-                            ),
-                            // child: Image.asset(
-                            //   "assets/image/emo_wheel.png",
+                            // height: screenHeight(context) * 0.066,
+                            // child: SvgPicture.asset(
+                            //   "assets/svg/Image-1.svg",
                             //   fit: BoxFit.contain,
                             // ),
+                            child: Image.asset(
+                              "assets/image/Image-1.png",
+                              fit: BoxFit.contain,
+                            ),
                           ),
                           SizedBox(width: 16.0),
                           Expanded(
@@ -89,9 +89,9 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${translations[LanguageManager().currentLanguage]!['date']!} :",
+                                  "${translations[LanguageManager().currentLanguage]!['about']!} :",
                                   style: TextStyle(
-                                      fontSize: relFont * 15.0,
+                                      fontSize: relFont * 15,
                                       fontFamily: 'SFProMedium',
                                       color: Color(0xFF323736),
                                       letterSpacing: 1.1),
@@ -99,9 +99,9 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
+                                  translations[LanguageManager().currentLanguage]!['family_burden_results']!,
                                   style: TextStyle(
-                                      fontSize: relFont * 15.0,
+                                      fontSize: relFont * 15,
                                       fontFamily: 'SFProMedium',
                                       color: Color(0xFF323736),
                                       letterSpacing: 1.1),
@@ -120,7 +120,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                           translations[LanguageManager().currentLanguage]![
                           'assessment-text']!,
                           style: TextStyle(
-                              fontSize: relFont * 18.0,
+                              fontSize: relFont * 20,
                               fontFamily: 'SFProText',
                               fontWeight: FontWeight.w500,
                               color: Color(0xFF323736),
@@ -152,14 +152,14 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                             onPressed: () { Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  ZaritScalePage(),
+                                builder: (context) =>  FamilyBurdenScalePage(),
                               ),
                             );},
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,
                               style: TextStyle(
-                                fontSize: relFont * 14,
+                                fontSize: relFont * 12,
                                 fontFamily: "JostBold",
                                 color: Colors.white,
                               ),
@@ -177,7 +177,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
             // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
 
             ReusableTile(
-              title: 'Zarit Scale',
+              title: 'Family Burden Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -186,7 +186,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'Zarit Scale',
+              title: 'Family Burden Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -195,7 +195,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'Zarit Scale',
+              title: 'Family Burden Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -204,7 +204,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'Zarit Scale',
+              title: ' Family Burden Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,

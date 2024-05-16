@@ -1,20 +1,19 @@
-import 'package:dostx/brief_cope_results_page.dart';
-import 'globals.dart';
-
-import 'palette.dart';
-import 'custom_widgets.dart';
+import '../globals.dart';
+import 'family_burden_results_page.dart';
+import '../palette.dart';
+import '../custom_widgets.dart';
 import 'package:flutter/material.dart';
-import 'translations.dart';
-import 'language_manager.dart';
+import '../translations.dart';
+import '../language_manager.dart';
 
-class CopePage extends StatefulWidget {
-  const CopePage({super.key});
+class familyBurden extends StatefulWidget {
+  const familyBurden({super.key});
 
   @override
-  State<CopePage> createState() => _SignUpThirdState();
+  State<familyBurden> createState() => _SignUpThirdState();
 }
 
-class _SignUpThirdState extends State<CopePage> {
+class _SignUpThirdState extends State<familyBurden> {
   String? maritalStatus;
   String? relation;
   @override
@@ -26,7 +25,7 @@ class _SignUpThirdState extends State<CopePage> {
         scrolledUnderElevation: 0,
 
         backgroundColor: ColorOptions.whitish,
-        title: const Text("COPE Form"),
+        title: const Text("Family Burden Scale"),
         titleTextStyle: const TextStyle(
           color: Colors.black,
           fontFamily: 'JostMedium',
@@ -53,62 +52,68 @@ class _SignUpThirdState extends State<CopePage> {
                       const SizedBox(
                         height: 29,
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
 
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      QuestionsWithThreeNumberedOptions(
+                          question:
+                          "Expenditure incurred due to patients and treatment and it's effect on family finances",
+                      ),
+                       SizedBox(
+                        height: 14,
+                      ),
+                      QuestionsWithThreeNumberedOptions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'question4']!),
+
+
+
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel strained when are around your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
 
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel your social life has suffered because\nyou are caring for your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel you have lost control of your life since\nyour relative’s illness?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel uncertain about what to do about\nrelative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel you should be doing more for your\nrelative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
+                      const  QuestionsWithThreeNumberedOptions(
                           question:
                           "Do you feel you could do a better job in caring for\nyour relative?"),
                       const SizedBox(
@@ -131,13 +136,12 @@ class _SignUpThirdState extends State<CopePage> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>  BriefCopeResultsPage(),
-                                ),
-                              );
+                            onPressed: () {Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  FamilyBurdenResultsPage(),
+                              ),
+                            );
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]![

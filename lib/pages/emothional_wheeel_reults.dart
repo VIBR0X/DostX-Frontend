@@ -1,14 +1,12 @@
-import 'package:dostx/family_burden_scale_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'custom_widgets.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
+import '../custom_widgets.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
+import 'emotional_wheel.dart';
 
-
-class FamilyBurdenResultsPage extends StatelessWidget {
+class EmotionalWheelResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -32,9 +30,9 @@ class FamilyBurdenResultsPage extends StatelessWidget {
           },
         ),
         title: Text(
-          'Family Burden Scale Results',
+          'Emotional Wheel Results',
           style: TextStyle(
-            fontSize: relFont * 15,
+            fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
             color: ColorOptions.darkblue,
             fontWeight: FontWeight.w600,
@@ -72,14 +70,14 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                       child: Row(
                         children: [
                           SizedBox(
-                            width: screenWidth(context) * 0.19,
-                            // height: screenHeight(context) * 0.066,
+                            width: screenWidth(context) * 0.15,
+                            height: screenHeight(context) * 0.066,
                             // child: SvgPicture.asset(
-                            //   "assets/svg/Image-1.svg",
+                            //   'assets/svg/Icon-10.svg',
                             //   fit: BoxFit.contain,
                             // ),
                             child: Image.asset(
-                              "assets/image/Image-1.png",
+                              "assets/image/emo_wheel.png",
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -89,9 +87,9 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${translations[LanguageManager().currentLanguage]!['about']!} :",
+                                  "${translations[LanguageManager().currentLanguage]!['date']!} :",
                                   style: TextStyle(
-                                      fontSize: relFont * 15,
+                                      fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
                                       color: Color(0xFF323736),
                                       letterSpacing: 1.1),
@@ -99,9 +97,9 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['family_burden_results']!,
+                                  translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
                                   style: TextStyle(
-                                      fontSize: relFont * 15,
+                                      fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
                                       color: Color(0xFF323736),
                                       letterSpacing: 1.1),
@@ -120,7 +118,7 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                           translations[LanguageManager().currentLanguage]![
                           'assessment-text']!,
                           style: TextStyle(
-                              fontSize: relFont * 20,
+                              fontSize: relFont * 18.0,
                               fontFamily: 'SFProText',
                               fontWeight: FontWeight.w500,
                               color: Color(0xFF323736),
@@ -152,14 +150,14 @@ class FamilyBurdenResultsPage extends StatelessWidget {
                             onPressed: () { Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  FamilyBurdenScalePage(),
+                                builder: (context) =>  EmotionalWheel(),
                               ),
                             );},
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,
                               style: TextStyle(
-                                fontSize: relFont * 12,
+                                fontSize: relFont * 14,
                                 fontFamily: "JostBold",
                                 color: Colors.white,
                               ),
@@ -177,7 +175,7 @@ class FamilyBurdenResultsPage extends StatelessWidget {
             // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
 
             ReusableTile(
-              title: 'Family Burden Scale',
+              title: 'The Emotional Wheel Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -186,7 +184,7 @@ class FamilyBurdenResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'Family Burden Scale',
+              title: 'The Emotional Wheel Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -195,7 +193,7 @@ class FamilyBurdenResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'Family Burden Scale',
+              title: 'The Emotional Wheel Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -204,7 +202,7 @@ class FamilyBurdenResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: ' Family Burden Scale',
+              title: 'The Emotional Wheel Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,

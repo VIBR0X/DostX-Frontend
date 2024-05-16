@@ -1,7 +1,8 @@
-import 'package:dostx/otpPage.dart';
+import 'package:dostx/globals.dart';
+import 'package:dostx/pages/otpPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'palette.dart';
+import '../palette.dart';
 import 'package:flutter/services.dart';
 import 'sign_up_first_page.dart';
 import 'package:dostx/bloc/bloc_provider.dart';
@@ -63,6 +64,9 @@ class _SignInState extends State<SignIn> {
                           ),
                         ],
                       ),
+                       SizedBox(
+                         height: screenHeight(context)*0.04,
+                       ),
                        Text(
                         translations[LanguageManager().currentLanguage]!['slogan']!,
                         style: TextStyle(

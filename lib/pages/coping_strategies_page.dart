@@ -1,10 +1,10 @@
-import 'package:dostx/coping_strategy_about.dart';
+import 'package:dostx/pages/coping_strategy_about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
 import 'zarit_scale_page.dart';
 
 class CopingStrategiesPage extends StatefulWidget {

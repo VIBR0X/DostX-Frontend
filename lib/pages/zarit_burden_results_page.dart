@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'custom_widgets.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
-import 'emotional_wheel.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../custom_widgets.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
+import 'zarit_scale_page.dart';
 
-class EmotionalWheelResultsPage extends StatelessWidget {
+
+class ZaritBurdenResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -30,7 +32,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
           },
         ),
         title: Text(
-          'Emotional Wheel Results',
+          'Zarit Burden Interview Results',
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -70,16 +72,16 @@ class EmotionalWheelResultsPage extends StatelessWidget {
                       child: Row(
                         children: [
                           SizedBox(
-                            width: screenWidth(context) * 0.15,
+                            width: screenWidth(context) * 0.19,
                             height: screenHeight(context) * 0.066,
-                            // child: SvgPicture.asset(
-                            //   'assets/svg/Icon-10.svg',
-                            //   fit: BoxFit.contain,
-                            // ),
-                            child: Image.asset(
-                              "assets/image/emo_wheel.png",
+                            child: SvgPicture.asset(
+                              "assets/svg/Image-5.svg",
                               fit: BoxFit.contain,
                             ),
+                            // child: Image.asset(
+                            //   "assets/image/emo_wheel.png",
+                            //   fit: BoxFit.contain,
+                            // ),
                           ),
                           SizedBox(width: 16.0),
                           Expanded(
@@ -97,7 +99,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
+                                  translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
                                   style: TextStyle(
                                       fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
@@ -150,7 +152,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
                             onPressed: () { Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  EmotionalWheel(),
+                                builder: (context) =>  ZaritScalePage(),
                               ),
                             );},
                             child: Text(
@@ -175,7 +177,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
             // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
 
             ReusableTile(
-              title: 'The Emotional Wheel Scale',
+              title: 'Zarit Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -184,7 +186,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'The Emotional Wheel Scale',
+              title: 'Zarit Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -193,7 +195,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'The Emotional Wheel Scale',
+              title: 'Zarit Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
@@ -202,7 +204,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
               },
             ),
             ReusableTile(
-              title: 'The Emotional Wheel Scale',
+              title: 'Zarit Scale',
               author: 'By Dr. Someone Someone',
               testDate: 'Test taken on 29 Aug 2022',
               buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,

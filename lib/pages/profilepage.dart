@@ -1,11 +1,11 @@
-import 'package:dostx/sign_up_first_page.dart';
-import 'package:dostx/sign_up_third_page.dart';
+import 'package:dostx/pages/sign_up_first_page.dart';
+import 'package:dostx/pages/sign_up_third_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'custom_widgets.dart';
-import 'language_manager.dart';
-import 'palette.dart';
+import '../custom_widgets.dart';
+import '../language_manager.dart';
+import '../palette.dart';
 import 'short12.dart';
 
 class ProfilePage extends StatefulWidget {

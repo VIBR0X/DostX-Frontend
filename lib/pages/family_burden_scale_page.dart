@@ -1,11 +1,11 @@
 import 'package:dostx/custom_widgets.dart';
-import 'package:dostx/familyburden.dart';
+import 'package:dostx/pages/familyburden.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'translations.dart';
-import 'language_manager.dart';
-import 'globals.dart ';
+import '../translations.dart';
+import '../language_manager.dart';
+import '../globals.dart ';
 
 
 class FamilyBurdenScalePage extends StatefulWidget {

@@ -1,12 +1,12 @@
-import 'package:dostx/sign_in.dart';
+import 'package:dostx/pages/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'palette.dart';
-import 'custom_widgets.dart';
+import '../palette.dart';
+import '../custom_widgets.dart';
 import 'sign_up_second_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'globals.dart';
+import '../globals.dart';
 
 class SignUpFirst extends StatefulWidget {
   const SignUpFirst({Key? key}) : super(key: key);
@@ -539,12 +539,12 @@ class _SignUpFirstState extends State<SignUpFirst> {
                       shape: CircleBorder(),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: EdgeInsets.fromLTRB(18,25,0,0),
                       child: SvgPicture.asset(
                         'assets/icons/language_icon.svg',
-                        width: 24,
-                        height: 24,
-                        color: Colors.black, // Optionally customize the color
+                        width: 65,
+                        height: 65,
+                        // color: Colors.black, // Optionally customize the color
                       ),
                     ),
                   ),

@@ -1,28 +1,15 @@
-import 'package:dostx/brief_cope_results_page.dart';
-import 'package:dostx/brief_cope_page.dart';
-import 'package:dostx/cope.dart';
-import 'package:dostx/coping_strategies_page.dart';
-import 'package:dostx/cost_effective_analysis_page.dart';
-import 'package:dostx/emothional_wheeel_reults.dart';
-import 'package:dostx/family_burden_results_page.dart';
-import 'package:dostx/family_burden_scale_page.dart';
+import 'package:dostx/pages/brief_cope_results_page.dart';
+import 'package:dostx/pages/cost_effective_analysis_page.dart';
+import 'package:dostx/pages/emothional_wheeel_reults.dart';
+import 'package:dostx/pages/family_burden_results_page.dart';
 import 'package:dostx/globals.dart%20';
-import 'package:dostx/medical_reminder.dart';
-import 'package:dostx/psychoeducation_page.dart';
-import 'package:dostx/svg_test.dart';
-import 'package:dostx/translations.dart';
-import 'package:dostx/zarit_burden_results_page.dart';
-import 'package:dostx/zarit_scale_page.dart';
+import 'package:dostx/pages/psychoeducation_page.dart';
+import 'package:dostx/pages/zarit_burden_results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'custom_widgets.dart';
+import '../custom_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'font_test.dart';
-import 'language_manager.dart';
-import 'short12.dart';
-import 'emotional_wheel.dart';
-import 'globals.dart' as global;
 
 class HomePageFirst extends StatefulWidget {
   final Function(int) updateHomeIndex;

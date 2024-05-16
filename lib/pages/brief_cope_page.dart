@@ -1,22 +1,21 @@
+import 'package:dostx/pages/cope.dart';
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
-import 'package:dostx/short12.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'consent_page.dart';
-import 'translations.dart';
-import 'language_manager.dart';
-import 'globals.dart ';
-class ZaritScalePage extends StatefulWidget {
-  const ZaritScalePage({super.key});
+import '../translations.dart';
+import '../language_manager.dart';
+import '../globals.dart ';
+
+
+class BriefCopePage extends StatefulWidget {
+  const BriefCopePage({super.key});
 
   @override
-  State<ZaritScalePage> createState() => _ZaritScalePageState();
+  State<BriefCopePage> createState() => _BriefCopePageState();
 }
 
-class _ZaritScalePageState extends State<ZaritScalePage> {
-  String? stressed;
-  String? embarrassed;
+class _BriefCopePageState extends State<BriefCopePage> {
   @override
   Widget build(BuildContext context) {final fontSize =(screenHeight(context)/896)*13;
   return Scaffold(
@@ -27,27 +26,22 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Stack(
-          children: [
-            Column(
-            children: [SizedBox(height: (15/896)* screenHeight(context,),),
-              Center(
-                child: SvgPicture.asset(
-                  "assets/svg/grandfather.svg",
-                  height: 0.3827232142857143 * screenHeight(context),
-                ),
-              ),
-            ],
+          children: [ Center(
+              child: SvgPicture.asset(
+                "assets/svg/ppp.svg",
+                height: 0.3827232142857143 * screenHeight(context),
+              )
           ),
             Column(
               children: [
                 Container(
-                  height: 0.3627232142857143 * screenHeight(context)-10,
+                  height: 0.3627232142857143 * screenHeight(context)-60,
                   color: Colors.transparent,
                 ),
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height -
-                      (0.3627232142857143) * screenHeight(context)+10,
+                      (0.3627232142857143) * screenHeight(context)+60,
                   decoration: const BoxDecoration(
                     color: ColorOptions.whitish,
                     borderRadius: BorderRadius.only(
@@ -57,16 +51,16 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(height: (22/869)*screenHeight(context)),
+                      SizedBox(height: (30/869)*screenHeight(context)),
                       Center(
-                        child: Text(
-                          translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
-                          style: TextStyle(
-                            color: ColorOptions.skin,
-                            fontFamily: 'JostBold',
-                            fontSize: fontSize*2,
-                          ),
-                        )
+                          child: Text(
+                            translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
+                            style: TextStyle(
+                              color: ColorOptions.skin,
+                              fontFamily: 'JostBold',
+                              fontSize: fontHelper(context) * 28,
+                            ),
+                          )
                       ),
                       SizedBox(height: (5/869)*screenHeight(context),),
                       Container(
@@ -80,11 +74,11 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: (25/869)*screenHeight(context),),
+                      SizedBox(height: (20/869)*screenHeight(context),),
                       SizedBox(
                         width: (345 / 414) * MediaQuery.of(context).size.width,
                         child: Text(
-                          translations[LanguageManager().currentLanguage]!['zarit_scale_intro_text']!,
+                          translations[LanguageManager().currentLanguage]!['brief_cope_intro']!,
                           style: TextStyle(
                             color: const Color(0xFF204267),
                             fontSize: fontHelper(context) * 13,
@@ -93,11 +87,13 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: (40/869)*screenHeight(context),),
-                      QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_stressed_about_responsibilities']!),
-                      // SizedBox(height: (15/869)*screenHeight(context),),
-                      // QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
-                      SizedBox(height: (45/869)*screenHeight(context),),
+                      SizedBox(height: (30/869)*screenHeight(context),),
+                      QuestionsWithFourOptions4Lines(
+                          question: translations[LanguageManager().currentLanguage]!['brief_cope_question_1']!,
+                        textColor: ColorOptions.skin,
+                      ),
+                      SizedBox(height: (30/869)*screenHeight(context),),
+
                       SizedBox(
                         height:(43/869)*screenHeight(context),
                         width: 261,
@@ -119,10 +115,9 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>  Short12Page(),
+                                  builder: (context) =>  CopePage(),
                                 ),
                               );
-
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]!['proceed']!,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'language_manager.dart';
-import 'palette.dart';
-import 'translations.dart';
-import 'globals.dart';
+import '../language_manager.dart';
+import '../palette.dart';
+import '../translations.dart';
+import '../globals.dart';
 
 class MedicalReminderPage extends StatefulWidget {
   final Function() getPrevPageIndex;

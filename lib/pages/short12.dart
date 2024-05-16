@@ -1,20 +1,20 @@
-import 'package:dostx/emothional_wheeel_reults.dart';
-import 'package:dostx/zarit_burden_results_page.dart';
-import 'globals.dart';
-import 'palette.dart';
-import 'custom_widgets.dart';
-import 'package:flutter/material.dart';
-import 'translations.dart';
-import 'language_manager.dart';
+import 'package:dostx/pages/zarit_burden_results_page.dart';
+import '../globals.dart';
 
-class emotional extends StatefulWidget {
-  const emotional({super.key});
+import '../palette.dart';
+import '../custom_widgets.dart';
+import 'package:flutter/material.dart';
+import '../translations.dart';
+import '../language_manager.dart';
+
+class Short12Page extends StatefulWidget {
+  const Short12Page({super.key});
 
   @override
-  State<emotional> createState() => _SignUpThirdState();
+  State<Short12Page> createState() => _SignUpThirdState();
 }
 
-class _SignUpThirdState extends State<emotional> {
+class _SignUpThirdState extends State<Short12Page> {
   String? maritalStatus;
   String? relation;
   @override
@@ -26,7 +26,7 @@ class _SignUpThirdState extends State<emotional> {
         scrolledUnderElevation: 0,
 
         backgroundColor: ColorOptions.whitish,
-        title: const Text("Emotional Wheel"),
+        title: const Text("Zarit Scale"),
         titleTextStyle: const TextStyle(
           color: Colors.black,
           fontFamily: 'JostMedium',
@@ -54,69 +54,69 @@ class _SignUpThirdState extends State<emotional> {
                         height: 29,
                       ),
 
-                      QuestionsWithThreeNumberedOptions(
-                        question:
-                        "Expenditure incurred due to patients and treatment and it's effect on family finances",
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      QuestionsWithThreeNumberedOptions(
+                      QuestionWithFiveOptionsSingleLine(
                           question:
-                          translations[LanguageManager().currentLanguage]![
-                          'question4']!),
-
-
-
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const  QuestionsWithThreeNumberedOptions(
-                          question:
-                          "Do you feel strained when are around your relative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const  QuestionsWithThreeNumberedOptions(
-                          question:
-                          "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const  QuestionsWithThreeNumberedOptions(
-                          question:
-                          "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
+                              translations[LanguageManager().currentLanguage]![
+                                  'question1']!),
                       const SizedBox(
                         height: 14,
                       ),
 
-                      const  QuestionsWithThreeNumberedOptions(
+
+
+                      QuestionWithFiveOptionsSingleLine(
                           question:
-                          "Do you feel your social life has suffered because\nyou are caring for your relative?"),
+                              translations[LanguageManager().currentLanguage]![
+                                  'question4']!),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
-                          "Do you feel you have lost control of your life since\nyour relative’s illness?"),
+                              "Do you feel strained when are around your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
-                          "Do you feel uncertain about what to do about\nrelative?"),
+                              "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
-                          "Do you feel you should be doing more for your\nrelative?"),
+                              "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+
+                      const  QuestionWithFiveOptionsSingleLine(
                           question:
-                          "Do you feel you could do a better job in caring for\nyour relative?"),
+                              "Do you feel your social life has suffered because\nyou are caring for your relative?"),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      const  QuestionWithFiveOptionsSingleLine(
+                          question:
+                              "Do you feel you have lost control of your life since\nyour relative’s illness?"),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      const  QuestionWithFiveOptionsSingleLine(
+                          question:
+                              "Do you feel uncertain about what to do about\nrelative?"),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      const  QuestionWithFiveOptionsSingleLine(
+                          question:
+                              "Do you feel you should be doing more for your\nrelative?"),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      const  QuestionWithFiveOptionsSingleLine(
+                          question:
+                              "Do you feel you could do a better job in caring for\nyour relative?"),
                       const SizedBox(
                         height: 26,
                       ),
@@ -140,13 +140,13 @@ class _SignUpThirdState extends State<emotional> {
                             onPressed: () {Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  EmotionalWheelResultsPage(),
+                                builder: (context) =>  ZaritBurdenResultsPage(),
                               ),
                             );
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]![
-                              'submit']!,
+                                  'submit']!,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "JostBold",
