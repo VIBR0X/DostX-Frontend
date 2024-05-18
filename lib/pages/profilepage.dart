@@ -88,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildSettings() {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xffFFF2E3),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40),

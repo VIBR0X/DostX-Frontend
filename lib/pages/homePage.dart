@@ -11,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../custom_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'coping_strategy_about.dart';
+
 class HomePageFirst extends StatefulWidget {
   final Function(int) updateHomeIndex;
   final Function() getPrevPageIndex;
@@ -164,7 +166,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: _buildRescueSessions(context),
+                    child: _buildRescueSessions(context, [
+                      CopingStrategyAboutPage(
+                        title: "The Art of Self-Love",
+                        imageUrl: "assets/image/coping (2).png",
+                        description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
+                      ),
+                    ]),
                   ),
                   const SizedBox(height: 10),
                   Row(
@@ -378,7 +386,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
 
 }
 
-Widget _buildRescueSessions(BuildContext context) {
+Widget _buildRescueSessions(BuildContext context, navigationPageArray) {
   return Container(
     height: 280 / 869 * screenHeight(context),
     child: RawScrollbar(
@@ -456,7 +464,10 @@ Widget _buildRescueSessions(BuildContext context) {
                           child: TextButton(
                             onPressed: () {
                               if (index == 0) {
-
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context)=>navigationPageArray[0])
+                                );
                               }
                               if (index == 1) {
 
