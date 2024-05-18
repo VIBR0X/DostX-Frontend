@@ -250,7 +250,10 @@ class _HomePageState extends State<HomePage> {
           getPrevPageIndex: _getPrevIndex,
         );
       case 1:
-        return ProfilePage();
+        return ProfilePage(
+          updateHomeIndex: _updateNavigation,
+          getPrevPageIndex: _getPrevIndex,
+        );
       case 2:
         return CopingStrategiesPage(
           updateHomeIndex: _updateNavigation,

@@ -266,7 +266,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
       },
       (BuildContext context) {
         Fluttertoast.showToast(
-          msg: "Feature Upcoming",
+          msg: "Feature Coming Soon",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -275,10 +275,15 @@ class _HomePageFirstState extends State<HomePageFirst> {
           fontSize: 16.0,
         );
       },
-      (BuildContext context) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const CostEffectiveAnalysisPage())
+          (BuildContext context) {
+        Fluttertoast.showToast(
+          msg: "Feature Coming Soon",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: const Color(0xAA444444),
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
       },
     ];

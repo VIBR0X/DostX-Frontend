@@ -6,10 +6,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../custom_widgets.dart';
 import '../language_manager.dart';
 import '../palette.dart';
+import 'cost_effective_analysis_page.dart';
 import 'short12.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  final Function(int) updateHomeIndex;
+  final Function() getPrevPageIndex;
+  const ProfilePage({
+    super.key,
+    required this.updateHomeIndex,
+    required this.getPrevPageIndex,
+  });
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -131,11 +138,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   }),
                   _buildSettingCard('Cost Effectiveness', () {
                     // Navigate to cost effectiveness page
-                    Navigator.pushNamed(context, '/cost_effectiveness');
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>const CostEffectiveAnalysisPage())
+                    );
                   }),
                   _buildSettingCard('Medicine Reminders', () {
                     // Navigate to medicine reminders page
-                    Navigator.pushNamed(context, '/medicine_reminders');
+                    widget.updateHomeIndex(2);
                   }),
                   SizedBox(height: 10),
                 ],
