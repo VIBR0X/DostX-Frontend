@@ -29,10 +29,10 @@ class _SignUpFirstState extends State<SignUpFirst> {
             Column(
               children: [SizedBox(height: (0.03+0.011)* screenHeight(context,),),
                 Center(
-                    child: SvgPicture.asset(
-                  "assets/svg/grandfather.svg",
-                      height: 0.33 * screenHeight(context),
-                ),),
+                  child: SvgPicture.asset(
+                    "assets/svg/grandfather.svg",
+                    height: 0.33 * screenHeight(context),
+                  ),),
               ],
             ),
             Column(

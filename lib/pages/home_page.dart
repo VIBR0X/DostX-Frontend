@@ -34,22 +34,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  _selectedIndex != 0
+          ? const Color(
+        0xFFFEBEB1,
+      )
+          : const Color(0xffFFF2E3),
       appBar: (_selectedIndex==0 || _selectedIndex==1)?AppBar(
         toolbarHeight: screenHeight(context)*0.105,
         centerTitle: true,
-        scrolledUnderElevation: 0,
+        // scrolledUnderElevation: 0,
+        elevation: 0,
 
         backgroundColor: _selectedIndex != 0
-            ? Color(
+            ? const Color(
                 0xFFFEBEB1,
               )
-            : Color(0xffFFF2E3),
+            : const Color(0xffFFF2E3),
         title: Image.asset(
           'assets/image/logo.png',
           width: 78,
           // height: 27,
           // height: 80,
                 ),
+
         leadingWidth: 100,
         leading:  Stack(
           children: [
@@ -184,7 +191,8 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
+            // gradient: GradientOptions.backgroundGradient,
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
