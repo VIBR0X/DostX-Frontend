@@ -86,7 +86,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                             ),
                             SizedBox(
                               height: (47 / 896) * screenHeight(context),
-                              width: 280,
+                              // width: 280,
                               child: Column(
                                 children: [
                                   Row(
@@ -614,7 +614,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                             },
                             child: Text(
                               translations[LanguageManager()
-                                  .currentLanguage]!['submit']!,
+                                  .currentLanguage]!['proceed']!,
                               style: TextStyle(
                                 fontSize: 14 * fontHelper(context),
                                 fontFamily: "JostBold",
@@ -628,7 +628,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                   ),
                 ),
               ],
-            ),Stack(
+            ),
+            Stack(
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),

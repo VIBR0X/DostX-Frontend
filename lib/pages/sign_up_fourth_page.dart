@@ -538,7 +538,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             },
                             child: Text(
                               translations[LanguageManager()
-                                  .currentLanguage]!['submit']!,
+                                  .currentLanguage]!['proceed']!,
                               style: TextStyle(
                                 fontSize: (fontSize / 13) * 14,
                                 fontFamily: "JostBold",

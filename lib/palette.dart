@@ -7,14 +7,18 @@ class GradientOptions {
         0xFFE5A194,
       ),
       Color(
-        0xFFE5A194,
+        0xFFFFC2B4,
+      ),
+      Color(
+          0xFFFFE8C9
       ),
       Color(
         0xFFFFF6E8,
       ),
       Color(
-          0xFFFFF8EA
-      )
+        0xFFFFF8EA,
+      ),
+
     ],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

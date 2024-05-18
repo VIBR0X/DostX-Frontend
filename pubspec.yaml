@@ -187,7 +187,9 @@ flutter:
     - family: LatoBold
       fonts:
         - asset: fonts/Lato/Lato-Bold.ttf
-
+    - family: Quicksand
+      fonts:
+        - asset: fonts/Quicksand/Quicksand-VariableFont_wght.ttf
 
           # style: italic
   #   - family: Trajan Pro

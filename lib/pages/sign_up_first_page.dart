@@ -457,16 +457,6 @@ class _SignUpFirstState extends State<SignUpFirst> {
                           ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context)=>const SignIn())
-                          );
-                        },
-                        child: Text(
-                          "Sign In"
-                        ),
-                      )
                     ],
                   ),
                 ),
