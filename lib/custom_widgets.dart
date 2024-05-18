@@ -1010,7 +1010,7 @@ class ReusableTile extends StatelessWidget {
                   children: [
                     // Container for testDate taking up 60% of tile width
                     Expanded(
-                      flex: 65,
+                      flex: 6,
                       child: Container(
                         decoration: BoxDecoration(
                           color: Color(0xFFF8FBFB),
@@ -1033,13 +1033,13 @@ class ReusableTile extends StatelessWidget {
                       ),
                     ),
                     // SizedBox for spacing
-                    SizedBox(width: 10),
+                    // SizedBox(width: 10),
                     // Button taking up 40% of tile width
                     Expanded(
-                      flex: 35,
-                      child: SizedBox(
+                      flex: 4,
+                      child: Container(
                         height: screenHeight(context) * (32 / 896),
-                        child: DecoratedBox(
+
                           decoration: BoxDecoration(
                             gradient: GradientOptions.signInGradient,
                             borderRadius: BorderRadius.circular(12),
@@ -1063,7 +1063,7 @@ class ReusableTile extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
+
                       ),
                     ),
                   ],

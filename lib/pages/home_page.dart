@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       appBar: (_selectedIndex==0 || _selectedIndex==1)?AppBar(
         toolbarHeight: screenHeight(context)*0.105,
         centerTitle: true,
-        // scrolledUnderElevation: 0,
+        scrolledUnderElevation: 0,
         elevation: 0,
 
         backgroundColor: _selectedIndex != 0

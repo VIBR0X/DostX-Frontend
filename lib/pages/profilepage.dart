@@ -169,41 +169,53 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.fromLTRB(0, 20, 5, 0),
             child: ListView(
               children: [
-                ReusableTile(
-                  title: 'Zarit Scale',
-                  author: 'By Dr. Someone Someone',
-                  testDate: 'Test taken on 29 Aug 2022',
-                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                  onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
+                  child: ReusableTile(
+                    title: 'Zarit Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                    onPressed: () {
 
-                  },
+                    },
+                  ),
                 ),
-                ReusableTile(
-                  title: 'Zarit Scale',
-                  author: 'By Dr. Someone Someone',
-                  testDate: 'Test taken on 29 Aug 2022',
-                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                  onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
+                  child: ReusableTile(
+                    title: 'Zarit Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                    onPressed: () {
 
-                  },
+                    },
+                  ),
                 ),
-                ReusableTile(
-                  title: 'Zarit Scale',
-                  author: 'By Dr. Someone Someone',
-                  testDate: 'Test taken on 29 Aug 2022',
-                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                  onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
+                  child: ReusableTile(
+                    title: 'Zarit Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                    onPressed: () {
 
-                  },
+                    },
+                  ),
                 ),
-                ReusableTile(
-                  title: 'Zarit Scale',
-                  author: 'By Dr. Someone Someone',
-                  testDate: 'Test taken on 29 Aug 2022',
-                  buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                  onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
+                  child: ReusableTile(
+                    title: 'Zarit Scale',
+                    author: 'By Dr. Someone Someone',
+                    testDate: '29 Aug 2022',
+                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                    onPressed: () {
 
-                  },
+                    },
+                  ),
                 ),
               ],
             ),
