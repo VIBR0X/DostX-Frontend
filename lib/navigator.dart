@@ -1,5 +1,6 @@
 import 'package:dostx/pages/brief_cope_page.dart';
 import 'package:dostx/pages/brief_cope_results_page.dart';
+import 'package:dostx/pages/client_details.dart';
 import 'package:dostx/pages/cope.dart';
 import 'package:dostx/pages/coping_strategies_page.dart';
 import 'package:dostx/pages/coping_strategy_about.dart';
@@ -395,6 +396,12 @@ class _NavigationControllerState extends State<NavigationController> {
 
           case "cost_effectiveness_analysis":
             return CostEffectiveAnalysisPage(
+              updateSubPage: _updateSubPage,
+              getPrevSubPage: _getPrevSubPage,
+            );
+
+          case "client_details":
+            return ClientDetailsPage(
               updateSubPage: _updateSubPage,
               getPrevSubPage: _getPrevSubPage,
             );

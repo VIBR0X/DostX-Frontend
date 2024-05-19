@@ -134,13 +134,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   }),
                   _buildSettingCard('Client Details', () {
                     // Navigate to client details page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignUpFirst(),
-                      ),
-                    );
-                    ;
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const SignUpFirst(),
+                    //   ),
+                    // );
+                    // ;
+                    widget.updateSubPage("client_details");
                   }),
                   _buildSettingCard('Cost Effectiveness', () {
                     // Navigate to cost effectiveness page

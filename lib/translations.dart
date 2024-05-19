@@ -1,5 +1,7 @@
 Map<String, Map<String, String>> translations = {
   'en': {
+    'client_details':'Client Details',
+    'age':'Age',
     'app_name': 'DostX App',
     'slogan': 'Supporting Carers, Nurturing Lives',
     'phone_number': 'Phone no.',
@@ -8,6 +10,7 @@ Map<String, Map<String, String>> translations = {
     'resend_otp': 'Resend OTP',
     'verify_otp': 'Verify OTP',
     'sign_up': 'Sign Up!',
+    'name_optional':'Name (optional)',
     'first_name': 'First Name',
     'last_name': 'Last Name',
     'gender': 'Gender',
@@ -130,6 +133,8 @@ Map<String, Map<String, String>> translations = {
     "upcoming":"Upcoming",
   },
   'hi': {
+    'client_details':'ग्राहक का विवरण',
+    'age':'उम्र',
     'app_name': 'दोस्तएक्स ऐप',
     'slogan': 'सहारा प्रदान करना, जीवन को देखभाल करना',
     'phone_number': 'फोन नंबर',
@@ -138,6 +143,7 @@ Map<String, Map<String, String>> translations = {
     'resend_otp': 'Resend OTP',
     'verify_otp': 'OTP सत्यापित करें',
     'sign_up': 'साइन अप करें!',
+    'name_optional':'नाम (वैकल्पिक)',
     'first_name': 'पहला नाम',
     'last_name': 'अंतिम नाम',
     'gender': 'लिंग',
@@ -261,6 +267,8 @@ Map<String, Map<String, String>> translations = {
 
   },
   'mr': {
+    'age':'वय',
+    'client_details':'क्लायंटचे तपशील',
     'app_name': 'दोस्तएक्स अ‍ॅप',
     'slogan': 'सहाय्यार्थ देणारे, जीवन पोषण करणारे',
     'phone_number': 'फोन क्रमांक',
@@ -269,6 +277,7 @@ Map<String, Map<String, String>> translations = {
     'resend_otp': 'Resend OTP',
     'verify_otp': 'OTP सत्यापित करा',
     'sign_up': 'साइन अप करा!',
+    'name_optional':'नाव (पर्यायी)',
     'first_name': 'पहिले नाव',
     'last_name': 'आडनाव',
     'gender': 'लिंग',

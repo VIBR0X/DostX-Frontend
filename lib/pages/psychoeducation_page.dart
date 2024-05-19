@@ -285,16 +285,6 @@ class _PsychoEducationEntryState extends State<PsychoEducationEntry> {
                           width: widget.tickVisible?12:0,
                           colorFilter: ColorFilter.mode(Color(widget.tickBlue?0xFFFFFFFF:0x22000000), BlendMode.modulate),
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          "09:00 PM",
-                          style: TextStyle(
-                            color: const Color(0xFFD8DCDC),
-                            fontSize: relFont * 11.0,
-                            fontFamily: 'SFProMedium',
-                            letterSpacing: 1.1,
-                          ),
-                        )
                       ],
                     )
                 )
