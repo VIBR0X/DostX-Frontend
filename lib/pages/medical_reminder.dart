@@ -279,10 +279,10 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
                                         child: Container(
                                           child: Text(
-                                              "01:00 - 02:30 PM",
+                                              "02:30 PM",
                                               style: TextStyle(
                                                   fontSize: relFont * 12.0,
                                                   fontFamily: 'SFProMedium',
@@ -392,7 +392,7 @@ class MedicalEntry extends StatefulWidget {
 class _MedicalEntryState extends State<MedicalEntry> {
   String dayCategory = "Morning";
   TimeOfDay time1 = TimeOfDay.now();
-  TimeOfDay time2 = TimeOfDay.now();
+  // TimeOfDay time2 = TimeOfDay.now();
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay picked1 = await showTimePicker(
       // barrierLabel: "Hi",
@@ -402,16 +402,16 @@ class _MedicalEntryState extends State<MedicalEntry> {
       helpText: "Select start time"
     )??time1;
 
-    final TimeOfDay picked2 = await showTimePicker(
-        initialEntryMode: TimePickerEntryMode.inputOnly,
-        context: context,
-        initialTime: time2,
-        helpText: "Select end time"
-    )??time2;
+    // final TimeOfDay picked2 = await showTimePicker(
+    //     initialEntryMode: TimePickerEntryMode.inputOnly,
+    //     context: context,
+    //     initialTime: time2,
+    //     helpText: "Select end time"
+    // )??time2;
 
       setState(() {
         time1 = picked1;
-        time2 =(picked2.hour+picked2.minute/60.0 > picked1.hour+picked2.minute/60.0)?picked2:time1;
+        // time2 =(picked2.hour+picked2.minute/60.0 > picked1.hour+picked2.minute/60.0)?picked2:time1;
         });
   }
 
@@ -515,7 +515,7 @@ class _MedicalEntryState extends State<MedicalEntry> {
                   Container(
                     decoration: BoxDecoration(
                       color: Color(0xFFF8FBFB),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -567,19 +567,32 @@ class _MedicalEntryState extends State<MedicalEntry> {
                               )
                           ),
                         ),
-                        Container(
-                          child: TextButton(
-                            onPressed: (){
-                              _selectTime(context);
-                            },
-                            child: Text(
-                              "${time1.format(context).replaceAll(RegExp('[A-Z]'),'')} - ${time2.format(context)}",
-                              style: TextStyle(
-                                  fontSize: relFont * 12.0,
-                                  fontFamily: 'SFProMedium',
-                                  color: const Color(0xFF606060),
-                                  letterSpacing: 1.1),
-                              // textAlign: TextAlign.center,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Container(
+                            child: TextButton(
+                              onPressed: (){
+                                _selectTime(context);
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "${time1.format(context)}",
+                                    style: TextStyle(
+                                        fontSize: relFont * 12.0,
+                                        fontFamily: 'SFProMedium',
+                                        color: const Color(0xFF606060),
+                                        letterSpacing: 1.1),
+                                    // textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(width: 3,),
+                                  Icon(
+                                      Icons.edit_calendar,
+                                    color: const Color(0xFF606060),
+                                    size: 14,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         )
@@ -591,8 +604,8 @@ class _MedicalEntryState extends State<MedicalEntry> {
                       color: Color(0xFFF8FBFB),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
                       child: Center(
                         child: Text(
                           "Day x${widget.dayx}",
