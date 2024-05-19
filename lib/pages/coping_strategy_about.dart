@@ -8,11 +8,15 @@ class CopingStrategyAboutPage extends StatelessWidget {
   final String imageUrl;
   final String description;
   final String title;
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
   const CopingStrategyAboutPage({
     super.key,
     required this.imageUrl,
     required this.title,
-    required this.description
+    required this.description,
+    required this.updateSubPage, required this.getPrevSubPage
+
   });
 
   @override
@@ -34,7 +38,8 @@ class CopingStrategyAboutPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
+            updateSubPage(getPrevSubPage());
           },
         ),
         title: Text(
@@ -141,7 +146,8 @@ class CopingStrategyAboutPage extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: (){
-                                  Navigator.pop(context);
+                                  // Navigator.pop(context);
+                                  this.updateSubPage(this.getPrevSubPage());
                                 },
                                 child: Text(
                                   "PROCEED",

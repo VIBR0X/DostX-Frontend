@@ -16,10 +16,14 @@ import 'coping_strategy_about.dart';
 class HomePageFirst extends StatefulWidget {
   final Function(int) updateHomeIndex;
   final Function() getPrevPageIndex;
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
   const HomePageFirst({
     super.key,
     required this.updateHomeIndex,
     required this.getPrevPageIndex,
+    required this.updateSubPage,
+    required this.getPrevSubPage,
   });
   @override
   State<HomePageFirst> createState() => _HomePageFirstState();
@@ -27,6 +31,124 @@ class HomePageFirst extends StatefulWidget {
 
 class _HomePageFirstState extends State<HomePageFirst> {
   List<bool>feelingSelection=[false,false,false,false];
+  Widget _buildRescueSessions(BuildContext context, subPageArray) {
+    return Container(
+      height: 280 / 869 * screenHeight(context),
+      child: RawScrollbar(
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return Container(
+              width: 230 / 414 * screenWidth(context),
+              margin: const EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                color: Colors.white, // Replace with your desired color
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: index == 0
+                              ? Image.asset("assets/p1.png")
+                              : Image.asset("assets/p2.png"),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        10 / 414 * screenWidth(context), 0, 0, 0),
+                    child: Text(
+                      index == 0 ? "Let’s breathe easy!" : "Grounding Technique",
+                      style: TextStyle(
+                          color: const Color(0xff323736),
+                          fontFamily: "SFProMedium",
+                          fontWeight: FontWeight.w200,
+                          fontSize: 14 * fontHelper(context)),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        10 / 414 * screenWidth(context), 0, 0, 0),
+                    child: Text(
+                      index == 0 ? "Breath Work" : "Coping with Anxiety",
+                      style: TextStyle(
+                          color: const Color(0xff9FA4A4),
+                          fontFamily: "SFProText",
+                          fontSize: 12 * fontHelper(context)),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(screenWidth(context) * 70 / 414,
+                        10 / 869 * screenHeight(context), 0, 0),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: GradientOptions.signInGradient,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Container(
+                        height: 38 / 869 * screenHeight(context),
+                        width: 150 / 414 * screenWidth(context),
+                        child: SizedBox(
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              gradient: GradientOptions.signInGradient,
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              ),
+                            ),
+                            child: TextButton(
+                              onPressed: () {
+                                if (index == 0) {
+                                  widget.updateSubPage(subPageArray[0]);
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context)=>navigationPageArray[0])
+                                  // );
+
+                                }
+                                if (index == 1) {
+
+                                }
+                                if (index == 2) {
+
+                                }
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 20),
+                                child: Text(
+                                  "BEGIN",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "SFProText",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12 * fontHelper(context)),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,11 +289,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: _buildRescueSessions(context, [
-                      CopingStrategyAboutPage(
-                        title: "The Art of Self-Love",
-                        imageUrl: "assets/image/coping (2).png",
-                        description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
-                      ),
+                      "cope_strategy_test"
                     ]),
                   ),
                   const SizedBox(height: 10),
@@ -196,47 +314,62 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     author: 'By Dr. Someone Someone',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
-                    onPressed: () { Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  ZaritBurdenResultsPage(),
-                      ),
-                    );},
+                    onPressed: () {
+                      widget.updateSubPage("zarit_burden_results");
+                      // Navigator.push(
+                      // context,
+                      // MaterialPageRoute(
+                      //   builder: (context) =>  ZaritBurdenResultsPage(),
+                      // ),
+                    // );
+                },
                   ),
                   ReusableTile(
                     title: 'Emotional Wheel',
                     author: 'By Dr. Someone Someone',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
-                    onPressed: () { Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  EmotionalWheelResultsPage(),
-                      ),
-                    );},
+                    onPressed: () {
+                      widget.updateSubPage("emotional_wheel_results");
+
+                      //   Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) =>  EmotionalWheelResultsPage(),
+                    //   ),
+                    // );
+                      },
                   ), ReusableTile(
                     title: 'Family Burden Scale',
                     author: 'By Dr. Someone Someone',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
-                    onPressed: () { Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  FamilyBurdenResultsPage(),
-                      ),
-                    );},
+                    onPressed: () {
+                      widget.updateSubPage("family_burden_results");
+
+                      //   Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) =>  FamilyBurdenResultsPage(),
+                    //   ),
+                    // );
+                      },
                   ),
                   ReusableTile(
                     title: 'COPE Scale',
                     author: 'By Dr. Someone Someone',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
-                    onPressed: () { Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  BriefCopeResultsPage(),
-                      ),
-                    );},
+                    onPressed: () {
+                    //   Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) =>  BriefCopeResultsPage(),
+                    //   ),
+                    // );
+                      widget.updateSubPage("brief_cope_results");
+
+                    },
                   ),
                 ],
               ),
@@ -250,10 +383,11 @@ class _HomePageFirstState extends State<HomePageFirst> {
   Widget _buildHorizontalScrollSection(BuildContext context) {
     List<void Function(BuildContext)> routes = [
       (BuildContext context) {
-        Navigator.push(
-            context,
-          MaterialPageRoute(builder: (context) => const PsychoEducationPage())
-        );
+        // Navigator.push(
+        //     context,
+        //   MaterialPageRoute(builder: (context) => const PsychoEducationPage())
+        // );
+        widget.updateSubPage("psycho_education");
       },
       (BuildContext context) {
         // Navigator.push(
@@ -391,122 +525,6 @@ class _HomePageFirstState extends State<HomePageFirst> {
 
 }
 
-Widget _buildRescueSessions(BuildContext context, navigationPageArray) {
-  return Container(
-    height: 280 / 869 * screenHeight(context),
-    child: RawScrollbar(
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return Container(
-            width: 230 / 414 * screenWidth(context),
-            margin: const EdgeInsets.only(right: 10),
-            decoration: BoxDecoration(
-              color: Colors.white, // Replace with your desired color
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: index == 0
-                            ? Image.asset("assets/p1.png")
-                            : Image.asset("assets/p2.png"),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      10 / 414 * screenWidth(context), 0, 0, 0),
-                  child: Text(
-                    index == 0 ? "Let’s breathe easy!" : "Grounding Technique",
-                    style: TextStyle(
-                        color: const Color(0xff323736),
-                        fontFamily: "SFProMedium",
-                        fontWeight: FontWeight.w200,
-                        fontSize: 14 * fontHelper(context)),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      10 / 414 * screenWidth(context), 0, 0, 0),
-                  child: Text(
-                    index == 0 ? "Breath Work" : "Coping with Anxiety",
-                    style: TextStyle(
-                        color: const Color(0xff9FA4A4),
-                        fontFamily: "SFProText",
-                        fontSize: 12 * fontHelper(context)),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(screenWidth(context) * 70 / 414,
-                      10 / 869 * screenHeight(context), 0, 0),
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: GradientOptions.signInGradient,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Container(
-                      height: 38 / 869 * screenHeight(context),
-                      width: 150 / 414 * screenWidth(context),
-                      child: SizedBox(
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            gradient: GradientOptions.signInGradient,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              if (index == 0) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context)=>navigationPageArray[0])
-                                );
-                              }
-                              if (index == 1) {
-
-                              }
-                              if (index == 2) {
-
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 0, horizontal: 20),
-                              child: Text(
-                                "BEGIN",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "SFProText",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12 * fontHelper(context)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    ),
-  );
-}
 
 //   Widget _buildRescueSessions() {
 //     return Column(

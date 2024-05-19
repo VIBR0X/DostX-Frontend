@@ -9,8 +9,11 @@ class CostEffectiveAnalysisPage extends StatefulWidget {
   final String imageUrl="";
   final String description="";
   final String title="";
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
   const CostEffectiveAnalysisPage({
     super.key,
+    required this.updateSubPage, required this.getPrevSubPage
   });
 
   @override
@@ -37,7 +40,8 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
+            widget.updateSubPage(widget.getPrevSubPage());
           },
         ),
 

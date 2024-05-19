@@ -12,10 +12,16 @@ import 'short12.dart';
 class ProfilePage extends StatefulWidget {
   final Function(int) updateHomeIndex;
   final Function() getPrevPageIndex;
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+
   const ProfilePage({
     super.key,
     required this.updateHomeIndex,
     required this.getPrevPageIndex,
+    required this.updateSubPage,
+    required this.getPrevSubPage
+
   });
 
   @override
@@ -138,9 +144,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   }),
                   _buildSettingCard('Cost Effectiveness', () {
                     // Navigate to cost effectiveness page
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>const CostEffectiveAnalysisPage())
-                    );
+                    // Navigator.push(context,
+                    //   MaterialPageRoute(builder: (context)=>const CostEffectiveAnalysisPage())
+                    // );
+                    widget.updateSubPage("cost_effectiveness_analysis");
                   }),
                   _buildSettingCard('Medicine Reminders', () {
                     // Navigate to medicine reminders page

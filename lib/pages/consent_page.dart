@@ -7,7 +7,7 @@ import '../custom_widgets.dart';
 import 'short12.dart';
 import '../translations.dart';
 import '../language_manager.dart';
-import 'package:dostx/pages/home_page.dart';
+import 'package:dostx/navigator.dart';
 class ConsentForm extends StatefulWidget {
   const ConsentForm({super.key});
 
@@ -151,7 +151,7 @@ class _ConsentFormState extends State<ConsentForm> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomePage(),
+                        builder: (context) => NavigationController(),
                       ),
                     );}
                   },

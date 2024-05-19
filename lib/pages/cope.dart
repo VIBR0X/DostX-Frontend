@@ -8,8 +8,13 @@ import '../translations.dart';
 import '../language_manager.dart';
 
 class CopePage extends StatefulWidget {
-  const CopePage({super.key});
-
+  final Function(String, [bool]) updateSubPage;
+  final Function() getPrevSubPage;
+  const CopePage({
+    super.key,
+    required this.updateSubPage,
+    required this.getPrevSubPage
+  });
   @override
   State<CopePage> createState() => _SignUpThirdState();
 }
@@ -25,7 +30,7 @@ class _SignUpThirdState extends State<CopePage> {
         centerTitle: true,
         scrolledUnderElevation: 0,
 
-        backgroundColor: ColorOptions.whitish,
+        backgroundColor: const Color(0xFFE5A194), //ColorOptions.whitish,
         title: const Text("COPE Form"),
         titleTextStyle: const TextStyle(
           color: Colors.black,
@@ -33,131 +38,134 @@ class _SignUpThirdState extends State<CopePage> {
           fontSize: 23,
         ),
       ),
+      backgroundColor: const Color(0xFFE5A194),
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
-        child: Stack(
+        child: Column(
           children: [
-            Column(
-              children: [
-                Container(
-                  height: 0,
-                  color: Colors.transparent,
-                ),
-                Container(
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: ColorOptions.whitish,
+            // Container(
+            //   height: 0,
+            //   color: Colors.transparent,
+            // ),
+            Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                color: ColorOptions.whitish,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)
+                )
+
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 29,
                   ),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 29,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                  const SizedBox(
+                    height: 15,
+                  ),
 
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel strained when are around your relative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel strained when are around your relative?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
 
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel your social life has suffered because\nyou are caring for your relative?"),
-                      const SizedBox(
-                        height: 14,
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel your social life has suffered because\nyou are caring for your relative?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel you have lost control of your life since\nyour relative’s illness?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel uncertain about what to do about\nrelative?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel you should be doing more for your\nrelative?"),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      "Do you feel you could do a better job in caring for\nyour relative?"),
+                  const SizedBox(
+                    height: 26,
+                  ),
+                  SizedBox(
+                    height: 43,
+                    width: 261,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: GradientOptions.signInGradient,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel you have lost control of your life since\nyour relative’s illness?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel uncertain about what to do about\nrelative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel you should be doing more for your\nrelative?"),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      const QuestionsWithFourOptions4Lines(
-                          textColor: ColorOptions.skin,
-                          question:
-                          "Do you feel you could do a better job in caring for\nyour relative?"),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      SizedBox(
-                        height: 43,
-                        width: 261,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            gradient: GradientOptions.signInGradient,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: null,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>  BriefCopeResultsPage(),
-                                ),
-                              );
-                            },
-                            child:  Text(
-                              translations[LanguageManager().currentLanguage]![
-                              'submit']!,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: "JostBold",
-                                color: Colors.white,
-                              ),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: null,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              20,
                             ),
                           ),
                         ),
+                        onPressed: () {
+                          widget.updateSubPage("brief_cope_results", true);
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>  BriefCopeResultsPage(),
+                          //   ),
+                          // );
+                        },
+                        child:  Text(
+                          translations[LanguageManager().currentLanguage]![
+                          'submit']!,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "JostBold",
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                      const SizedBox(
-                        height: 30,
-                      )
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 30,
+                  )
+                ],
+              ),
             ),
           ],
         ),

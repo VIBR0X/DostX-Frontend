@@ -9,8 +9,13 @@ import '../globals.dart ';
 
 
 class FamilyBurdenScalePage extends StatefulWidget {
-  const FamilyBurdenScalePage({super.key});
-
+  final Function(String, [bool]) updateSubPage;
+  final Function() getPrevSubPage;
+  const FamilyBurdenScalePage({
+    super.key,
+    required this.updateSubPage,
+    required this.getPrevSubPage
+  });
   @override
   State<FamilyBurdenScalePage> createState() => _FamilyBurdenScalePageState();
 }
@@ -26,22 +31,22 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Stack(
-          children: [ Center(
-              child: SvgPicture.asset(
-                "assets/svg/grandfather.svg",
-                height: 0.3827232142857143 * screenHeight(context),
-              )
-          ),
+          children: [ 
+            Image.asset(
+              "assets/image/02-square.png",
+              // height: 0.33 * screenHeight(context),
+              width: screenWidth(context),
+            ),
             Column(
               children: [
                 Container(
-                  height: 0.3627232142857143 * screenHeight(context)-10,
+                  height: 0.36 * screenHeight(context),
                   color: Colors.transparent,
                 ),
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height -
-                      (0.3627232142857143) * screenHeight(context)+10,
+                      (0.36) * screenHeight(context)-64,
                   decoration: const BoxDecoration(
                     color: ColorOptions.whitish,
                     borderRadius: BorderRadius.only(
@@ -112,13 +117,13 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                               ),
                             ),
                             onPressed: () {
-                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>  familyBurden(),
-                                ),
-                              );
-
+                              widget.updateSubPage("family_burden_2");
+                              //  Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) =>  familyBurden(),
+                              //   ),
+                              // );
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]!['proceed']!,
@@ -137,6 +142,86 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                 ),
               ],
             ),
+            Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
+                  child: SvgPicture.asset(
+                    'assets/svg/lang.svg',
+                    width: 41,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Select Language'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ListTile(
+                                title: Text('English'),
+                                onTap: () {
+                                  // Set English language
+                                  LanguageManager().setLanguage('en');
+                                  // Close the dialog
+                                  Navigator.pop(context);
+                                  setState(() {
+
+                                  });
+                                },
+                              ),
+                              ListTile(
+                                title: Text('Hindi'),
+                                onTap: () {
+                                  // Set Hindi language
+                                  LanguageManager().setLanguage('hi');
+                                  // Close the dialog
+                                  Navigator.pop(context);
+                                  setState(() {
+                                    // Update UI if necessary
+                                  });
+                                },
+                              ),
+                              ListTile(
+                                title: Text('Marathi'),
+                                onTap: () {
+                                  // Set Marathi language
+                                  LanguageManager().setLanguage('mr');
+                                  // Close the dialog
+                                  Navigator.pop(context);
+                                  setState(() {
+                                    // Update UI if necessary
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Ink(
+                    decoration: ShapeDecoration(
+                      color: Colors.transparent,
+                      shape: CircleBorder(),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(18,25,0,0),
+                      child: SvgPicture.asset(
+                        'assets/icons/language_icon.svg',
+                        width: 65,
+                        height: 65,
+                        // color: Colors.black, // Optionally customize the color
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
           ],
         ),
       ),

@@ -377,99 +377,107 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
               fontSize: 13,
             ),
           ),
-          SizedBox(height: 20),
-          Row(
+          SizedBox(height: 15),
+          Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,  // Align items from the top
             children: [
 
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
-                      child: CustomRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['never']!,
-                        value: 'Never',
-                        selected: selectedValue == 'Never',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'Never';
-                          });
-                        },
-                        spacing: 3,
+                Container(
+                  width: 300,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
+                        child: CustomRadioButton(
+                          font: 13,
+                          text: translations[LanguageManager().currentLanguage]!['never']!,
+                          value: 'Never',
+                          selected: selectedValue == 'Never',
+                          onSelect: () {
+                            setState(() {
+                              selectedValue = 'Never';
+                            });
+                          },
+                          spacing: 3,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                      child: CustomRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['frequently']!,
-                        value: 'Frequently',
-                        selected: selectedValue == 'Frequently',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'Frequently';
-                          });
-                        },
-                        spacing: 3,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                        child: CustomRadioButton(
+                          font: 13,
+                          text: translations[LanguageManager().currentLanguage]!['rarely']!,
+                          value: 'Rarely',
+                          selected: selectedValue == 'Rarely',
+                          onSelect: () {
+                            setState(() {
+                              selectedValue = 'Rarely';
+                            });
+                          },
+                          spacing: 3,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                      child: CustomRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['sometimes']!,
-                        value: 'Sometimes',
-                        selected: selectedValue == 'Sometimes',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'Sometimes';
-                          });
-                        },
-                        spacing: 3,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                        child: CustomRadioButton(
+                          font: 13,
+                          text: translations[LanguageManager().currentLanguage]!['sometimes']!,
+                          value: 'Sometimes',
+                          selected: selectedValue == 'Sometimes',
+                          onSelect: () {
+                            setState(() {
+                              selectedValue = 'Sometimes';
+                            });
+                          },
+                          spacing: 3,
+                        ),
                       ),
-                    ),
-                  ],
-                ),SizedBox(width:20),
+                    ],
+                  ),
+                ),SizedBox(height: 10,),
 
-              Column(
+              Container(
+                width: 300,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
-                      child: CustomRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['rarely']!,
-                        value: 'Rarely',
-                        selected: selectedValue == 'Rarely',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'Rarely';
-                          });
-                        },
-                        spacing: 3,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
+                        child: CustomRadioButton(
+                          font: 13,
+                          text: translations[LanguageManager().currentLanguage]!['frequently']!,
+                          value: 'Frequently',
+                          selected: selectedValue == 'Frequently',
+                          onSelect: () {
+                            setState(() {
+                              selectedValue = 'Frequently';
+                            });
+                          },
+                          spacing: 3,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                      child: CustomRadioButton(
-                        font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['nearly_always']!,
-                        value: 'Nearly Always',
-                        selected: selectedValue == 'Nearly Always',
-                        onSelect: () {
-                          setState(() {
-                            selectedValue = 'Nearly Always';
-                          });
-                        },
-                        spacing: 3,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                        child: CustomRadioButton(
+                          font: 13,
+                          text: translations[LanguageManager().currentLanguage]!['nearly_always']!,
+                          value: 'Nearly Always',
+                          selected: selectedValue == 'Nearly Always',
+                          onSelect: () {
+                            setState(() {
+                              selectedValue = 'Nearly Always';
+                            });
+                          },
+                          spacing: 3,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+              ),
 
             ],
           ),
@@ -841,7 +849,7 @@ class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
               fontSize: fontHelper(context) * 14,
             ),
           ),
-          SizedBox(height: 17),
+          SizedBox(height: 5),
           Row(
             children: [
               Column(

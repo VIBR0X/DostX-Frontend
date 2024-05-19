@@ -6,7 +6,13 @@ import '../translations.dart';
 import '../globals.dart';
 
 class PsychoEducationPage extends StatefulWidget {
-  const PsychoEducationPage({super.key});
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+  const PsychoEducationPage({
+    super.key,
+    required this.updateSubPage,
+    required this.getPrevSubPage,
+  });
 
   @override
   State<PsychoEducationPage> createState() => _PsychoEducationPageState();
@@ -33,7 +39,7 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            widget.updateSubPage(widget.getPrevSubPage());
           },
         ),
         title: Text(
@@ -147,7 +153,7 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
             ),
             const SizedBox(height: 15),
             SizedBox(
-              height: screenHeight(context)*0.765 - 15,
+              height: screenHeight(context)*0.765 - 62,
               child: const SingleChildScrollView(
                 child: Column(
                   children: [

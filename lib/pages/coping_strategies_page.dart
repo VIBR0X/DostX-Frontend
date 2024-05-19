@@ -10,10 +10,12 @@ import 'zarit_scale_page.dart';
 class CopingStrategiesPage extends StatefulWidget {
   final Function() getPrevPageIndex;
   final Function(int) updateHomeIndex;
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
   const CopingStrategiesPage({
     super.key,
     required this.updateHomeIndex,
-    required this.getPrevPageIndex
+    required this.getPrevPageIndex, required this.updateSubPage, required this.getPrevSubPage
   });
 
   @override
@@ -165,21 +167,28 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       child: StrategyEntry(
+                        updateSubPage: widget.updateSubPage,
+                        getPrevSubPage: widget.getPrevSubPage,
                         imageUrl: "assets/image/coping (1).png",
                         title:"Grounding yourself",
                         authorName: "Dr. Vinni",
                         dateField: "Coming Soon",
                         readDurationMins: "13",
-                        navigationPage: CopingStrategyAboutPage(
-                          title: "The Art of Self-Love",
-                          imageUrl: "assets/image/coping (2).png",
-                          description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\n Understanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
-                        ),
+                        navigationPage: "cope_strategy_test",
+                        // navigationPage: CopingStrategyAboutPage(
+                        //   updateSubPage: widget.updateSubPage ,
+                        //   getPrevSubPage: widget.getPrevSubPage,
+                        //   title: "The Art of Self-Love",
+                        //   imageUrl: "assets/image/coping (2).png",
+                        //   description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\n Understanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
+                        // ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       child: StrategyEntry(
+                        updateSubPage: widget.updateSubPage,
+                        getPrevSubPage: widget.getPrevSubPage,
                         imageUrl: "assets/image/coping (2).png",
                         title:"Take a break!",
                         authorName: "Dr. Gulati, MBBS",
@@ -190,6 +199,8 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       child: StrategyEntry(
+                        updateSubPage: widget.updateSubPage,
+                        getPrevSubPage: widget.getPrevSubPage,
                         imageUrl: "assets/image/coping (2).png",
                         title:"Take a break!",
                         authorName: "Dr. Gulati, MBBS",
@@ -200,6 +211,8 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       child: StrategyEntry(
+                        updateSubPage: widget.updateSubPage,
+                        getPrevSubPage: widget.getPrevSubPage,
                         imageUrl: "assets/image/coping (2).png",
                         title:"Take a break!",
                         authorName: "Dr. Gulati, MBBS",
@@ -210,6 +223,8 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       child: StrategyEntry(
+                        updateSubPage: widget.updateSubPage,
+                        getPrevSubPage: widget.getPrevSubPage,
                         imageUrl: "assets/image/coping (2).png",
                         title:"Take a break!",
                         authorName: "Dr. Gulati, MBBS",
@@ -239,7 +254,10 @@ class StrategyEntry extends StatefulWidget {
   final String authorName;
   final String dateField;
   final String readDurationMins;
-  final navigationPage;
+  final String? navigationPage;
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+
    StrategyEntry({
      super.key,
      required this.imageUrl,
@@ -247,7 +265,7 @@ class StrategyEntry extends StatefulWidget {
      required this.authorName,
      required this.dateField,
      required this.readDurationMins,
-     this.navigationPage,
+     this.navigationPage, required this.updateSubPage, required this.getPrevSubPage,
    });
   @override
   State<StrategyEntry> createState() => _StrategyEntryState();
@@ -284,12 +302,13 @@ class _StrategyEntryState extends State<StrategyEntry> {
           elevation: 0,),
         onPressed: (){
             if (widget.navigationPage != null){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>  widget.navigationPage,
-              ),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) =>  widget.navigationPage,
+            //   ),
+            // );
+              widget.updateSubPage(widget.navigationPage!);
             }
         },
         child: Container(

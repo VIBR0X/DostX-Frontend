@@ -9,6 +9,12 @@ import 'zarit_scale_page.dart';
 
 
 class ZaritBurdenResultsPage extends StatelessWidget {
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+  const ZaritBurdenResultsPage({
+    super.key,
+    required this.updateSubPage, required this.getPrevSubPage,
+  });
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -28,7 +34,8 @@ class ZaritBurdenResultsPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            this.updateSubPage(this.getPrevSubPage());
+            // Navigator.of(context).pop();
           },
         ),
         title: Text(
@@ -46,7 +53,7 @@ class ZaritBurdenResultsPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: screenHeight(context) * 0.19,
+              height: screenHeight(context) * 0.15,
               decoration: const BoxDecoration(
                 color: Color(0xFFFFF2E3),
                 borderRadius: BorderRadius.only(
@@ -149,12 +156,15 @@ class ZaritBurdenResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () { Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  ZaritScalePage(),
-                              ),
-                            );},
+                            onPressed: () {
+                              this.updateSubPage("zarit_scale_1");
+                            //   Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>  ZaritScalePage(),
+                            //   ),
+                            // );
+                              },
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,

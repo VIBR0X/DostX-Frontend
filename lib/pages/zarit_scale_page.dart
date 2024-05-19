@@ -8,7 +8,12 @@ import '../translations.dart';
 import '../language_manager.dart';
 import '../globals.dart ';
 class ZaritScalePage extends StatefulWidget {
-  const ZaritScalePage({super.key});
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+  const ZaritScalePage({
+    super.key,
+    required this.updateSubPage, required this.getPrevSubPage
+  });
 
   @override
   State<ZaritScalePage> createState() => _ZaritScalePageState();
@@ -24,37 +29,37 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
       decoration: const BoxDecoration(
         color: ColorOptions.skin,
       ),
-      child: SingleChildScrollView(
-        physics: const ClampingScrollPhysics(),
-        child: Stack(
-          children: [
-            Column(
-            children: [SizedBox(height: (15/896)* screenHeight(context,),),
-              Center(
-                child: SvgPicture.asset(
-                  "assets/svg/grandfather.svg",
-                  height: 0.3827232142857143 * screenHeight(context),
-                ),
+      child: Stack(
+        children: [
+          Column(
+          children: [SizedBox(height: (0.03+0.011)* screenHeight(context,),),
+            Center(
+              child: SvgPicture.asset(
+                "assets/svg/grandfather.svg",
+                height: 0.33 * screenHeight(context),
               ),
-            ],
-          ),
-            Column(
-              children: [
-                Container(
-                  height: 0.3627232142857143 * screenHeight(context)-10,
-                  color: Colors.transparent,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height -
-                      (0.3627232142857143) * screenHeight(context)+10,
-                  decoration: const BoxDecoration(
-                    color: ColorOptions.whitish,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30,),
-                      topRight: Radius.circular(30,),
-                    ),
+            ),
+          ],
+        ),
+          Column(
+            children: [
+              Container(
+                height: 0.36 * screenHeight(context),
+                color: Colors.transparent,
+              ),
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height -
+                    (0.36
+                    ) * screenHeight(context)-64,
+                decoration: const BoxDecoration(
+                  color: ColorOptions.whitish,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30,),
+                    topRight: Radius.circular(30,),
                   ),
+                ),
+                child: SingleChildScrollView(
                   child: Column(
                     children: [
                       SizedBox(height: (22/869)*screenHeight(context)),
@@ -93,11 +98,11 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: (40/869)*screenHeight(context),),
+                      SizedBox(height: (18/869)*screenHeight(context),),
                       QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_stressed_about_responsibilities']!),
                       // SizedBox(height: (15/869)*screenHeight(context),),
                       // QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
-                      SizedBox(height: (45/869)*screenHeight(context),),
+                      SizedBox(height: (35/869)*screenHeight(context),),
                       SizedBox(
                         height:(43/869)*screenHeight(context),
                         width: 261,
@@ -116,13 +121,13 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                               ),
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>  Short12Page(),
-                                ),
-                              );
-
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) =>  Short12Page(),
+                              //   ),
+                              // );
+                              widget.updateSubPage('zarit_scale_2');
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]!['proceed']!,
@@ -135,14 +140,94 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                           ),
                         ),
                       ),
-
+                        
                     ],
                   ),
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
+                child: SvgPicture.asset(
+                  'assets/svg/lang.svg',
+                    width: 41,
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Select Language'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ListTile(
+                              title: Text('English'),
+                              onTap: () {
+                                // Set English language
+                                LanguageManager().setLanguage('en');
+                                // Close the dialog
+                                Navigator.pop(context);
+                                setState(() {
+      
+                                });
+                              },
+                            ),
+                            ListTile(
+                              title: Text('Hindi'),
+                              onTap: () {
+                                // Set Hindi language
+                                LanguageManager().setLanguage('hi');
+                                // Close the dialog
+                                Navigator.pop(context);
+                                setState(() {
+                                  // Update UI if necessary
+                                });
+                              },
+                            ),
+                            ListTile(
+                              title: Text('Marathi'),
+                              onTap: () {
+                                // Set Marathi language
+                                LanguageManager().setLanguage('mr');
+                                // Close the dialog
+                                Navigator.pop(context);
+                                setState(() {
+                                  // Update UI if necessary
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: Ink(
+                  decoration: ShapeDecoration(
+                    color: Colors.transparent,
+                    shape: CircleBorder(),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(18,25,0,0),
+                    child: SvgPicture.asset(
+                      'assets/icons/language_icon.svg',
+                      width: 65,
+                      height: 65,
+                      // color: Colors.black, // Optionally customize the color
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+      
+        ],
       ),
     ),
   );

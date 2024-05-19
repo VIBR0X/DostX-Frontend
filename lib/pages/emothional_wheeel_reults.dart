@@ -7,6 +7,12 @@ import '../globals.dart';
 import 'emotional_wheel.dart';
 
 class EmotionalWheelResultsPage extends StatelessWidget {
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+  const EmotionalWheelResultsPage({
+    super.key,
+    required this.updateSubPage, required this.getPrevSubPage,
+  });
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -26,7 +32,8 @@ class EmotionalWheelResultsPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
+            updateSubPage(getPrevSubPage());
           },
         ),
         title: Text(
@@ -44,7 +51,7 @@ class EmotionalWheelResultsPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: screenHeight(context) * 0.19,
+              height: screenHeight(context) * 0.13,
               decoration: const BoxDecoration(
                 color: Color(0xFFFFF2E3),
                 borderRadius: BorderRadius.only(
@@ -147,12 +154,15 @@ class EmotionalWheelResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () { Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  EmotionalWheel(),
-                              ),
-                            );},
+                            onPressed: () {
+                            //   Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>  EmotionalWheel(),
+                            //   ),
+                            // );
+                              updateSubPage('emotional_wheel_1');
+                              },
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,

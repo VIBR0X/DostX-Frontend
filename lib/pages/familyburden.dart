@@ -7,8 +7,13 @@ import '../translations.dart';
 import '../language_manager.dart';
 
 class familyBurden extends StatefulWidget {
-  const familyBurden({super.key});
-
+  final Function(String, [bool]) updateSubPage;
+  final Function() getPrevSubPage;
+  const familyBurden({
+    super.key,
+    required this.updateSubPage,
+    required this.getPrevSubPage
+  });
   @override
   State<familyBurden> createState() => _SignUpThirdState();
 }
@@ -136,12 +141,14 @@ class _SignUpThirdState extends State<familyBurden> {
                                 ),
                               ),
                             ),
-                            onPressed: () {Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  FamilyBurdenResultsPage(),
-                              ),
-                            );
+                            onPressed: () {
+                              widget.updateSubPage("family_burden_results", true);
+                            //   Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>  FamilyBurdenResultsPage(),
+                            //   ),
+                            // );
                             },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]![

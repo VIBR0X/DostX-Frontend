@@ -8,6 +8,13 @@ import '../globals.dart';
 
 
 class BriefCopeResultsPage extends StatelessWidget {
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+  const BriefCopeResultsPage({
+    super.key,
+    required this.updateSubPage,
+    required this.getPrevSubPage
+  });
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -27,7 +34,7 @@ class BriefCopeResultsPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            updateSubPage(getPrevSubPage());
           },
         ),
         title: Text(
@@ -45,7 +52,7 @@ class BriefCopeResultsPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: screenHeight(context) * 0.19,
+              height: screenHeight(context) * 0.13,
               decoration: const BoxDecoration(
                 color: Color(0xFFFFF2E3),
                 borderRadius: BorderRadius.only(
@@ -148,12 +155,15 @@ class BriefCopeResultsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  BriefCopePage(),
-                              ),
-                            );},
+                            onPressed: () {
+                              updateSubPage("brief_cope_1");
+                            //   Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>  BriefCopePage(),
+                            //   ),
+                            // );
+                              },
                             child: Text(
                               translations[LanguageManager().currentLanguage]![
                               'retake']!,
