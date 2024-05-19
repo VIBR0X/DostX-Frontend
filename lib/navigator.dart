@@ -416,6 +416,7 @@ class _NavigationControllerState extends State<NavigationController> {
               getPrevSubPage: _getPrevSubPage,
             );
 
+
           default:
             return ProfilePage(
               updateHomeIndex: _updateNavigation,
@@ -426,6 +427,14 @@ class _NavigationControllerState extends State<NavigationController> {
         }
       case 2:
         switch(subPage){
+          case "cope_strategy_test":
+            return CopingStrategyAboutPage(
+              updateSubPage: _updateSubPage,
+              getPrevSubPage: _getPrevSubPage,
+              title: "The Art of Self-Love",
+              imageUrl: "assets/image/coping (2).png",
+              description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
+            );
           default:
             return CopingStrategiesPage(
               updateHomeIndex: _updateNavigation,
