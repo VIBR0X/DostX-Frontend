@@ -8,8 +8,12 @@ import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
 
 class EmotionalWheel extends StatefulWidget {
-  const EmotionalWheel({Key? key}) : super(key: key);
-
+  final Function(String) updateSubPage;
+  final Function() getPrevSubPage;
+  const EmotionalWheel({
+    super.key,
+    required this.updateSubPage, required this.getPrevSubPage,
+  });
   @override
   State<EmotionalWheel> createState() => _EmotionalWheelState();
 }
@@ -123,7 +127,9 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                                   ),
                                 ),
                               ),
-                              onPressed: () { },
+                              onPressed: () {
+                                widget.updateSubPage("emotional_wheel_2");
+                              },
                               child:  Text(
                                 translations[LanguageManager().currentLanguage]!['submit']!,
                                 style: TextStyle(

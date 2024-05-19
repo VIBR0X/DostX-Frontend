@@ -7,6 +7,7 @@ import 'package:dostx/pages/coping_strategy_about.dart';
 import 'package:dostx/pages/cost_effective_analysis_page.dart';
 import 'package:dostx/pages/emothional_wheeel_reults.dart';
 import 'package:dostx/pages/emotional_wheel.dart';
+import 'package:dostx/pages/emotional_wheel_2.dart';
 import 'package:dostx/pages/family_burden_results_page.dart';
 import 'package:dostx/pages/family_burden_scale_page.dart';
 import 'package:dostx/pages/familyburden.dart';
@@ -333,7 +334,16 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "emotional_wheel_1":
-            return EmotionalWheel();
+            return EmotionalWheel(
+              updateSubPage: _updateSubPage,
+              getPrevSubPage: _getPrevSubPage,
+            );
+
+          case "emotional_wheel_2":
+            return EmotionalWheel2(
+              updateSubPage: _updateSubPage,
+              getPrevSubPage: _getPrevSubPage,
+            );
 
           case "family_burden_results":
             return FamilyBurdenResultsPage(
