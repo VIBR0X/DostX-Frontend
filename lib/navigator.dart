@@ -20,6 +20,7 @@ import 'package:dostx/pages/zarit_scale_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'pages/profilepage.dart';
 import 'language_manager.dart';
 import 'globals.dart';
@@ -193,8 +194,15 @@ class _NavigationControllerState extends State<NavigationController> {
           IconButton(
             icon: const Icon(Icons.notifications),
             onPressed: () {
-              // Handle bell icon tap
-            },
+              Fluttertoast.showToast(
+                msg: "Feature Coming Soon",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: const Color(0xAA444444),
+                textColor: Colors.white,
+                fontSize: 16.0,
+              );            },
           ),
         ]:null,
       ):null,

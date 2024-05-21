@@ -1,3 +1,4 @@
+import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/globals.dart';
 import 'package:dostx/pages/otp_page.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _SignInState extends State<SignIn> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color(0xFFE5A194),
+        backgroundColor: const Color(0xFFFFF8EA),
         body: SingleChildScrollView(
           child: Stack(
             children: [
@@ -245,9 +246,11 @@ class _SignInState extends State<SignIn> {
                                             // bloc.signInBloc(fakeSignInRequest);
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>  OtpPage(number: _phoneController.text,),
-                                              ),
+                                              createCustomPageRoute(OtpPage(number: _phoneController.text,), context, transitionType: 'no-animation'),
+                                              // MaterialPageRoute(
+                                              //
+                                              //   builder: (context) =>  OtpPage(number: _phoneController.text,),
+                                              // ),
                                             );
                                           }
                                         : () {},

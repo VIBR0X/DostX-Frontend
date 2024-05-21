@@ -74,79 +74,71 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                 children: [
                   Container(
                   width: screenWidth(context)*0.91,
-                  height: screenHeight(context) * 0.06,
+                  // height: relFont * 20,
                   decoration: BoxDecoration(
                       color: const Color(0xFFDBA497),
                       borderRadius: BorderRadius.circular(20.0)
                   ),
-                  child:  Padding(
-                    padding: EdgeInsets.all(6.0),
-                    child: Center(child: Row(
-                      children: [
-                        Expanded(
-                            child: Container(
-                                child: Center(
+                  child:  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: Center(
+                              child: TextButton(
+                                onPressed: (){setState(() {
+                                  modeIndex=0;
+                                });},
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: modeIndex==0?Color(0xFFFFFFFF):Colors.transparent,
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: Center(
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: modeIndex==0?Color(0xFFFFFFFF):Colors.transparent,
-                                            borderRadius: BorderRadius.circular(15)
-                                        ),
-                                        child: Center(
-                                          child: TextButton(
-                                            child: Text(
-                                              translations[LanguageManager().currentLanguage]!['upcoming']!,
-                                              style: TextStyle(
-                                                  fontSize: relFont * 12.0,
-                                                  fontFamily: 'SFProMedium',
-                                                  color: const Color(0xFF323736),
-                                                  letterSpacing: 1.1),
-                                            ),
-                                            onPressed: (){
-                                              setState(() {
-                                                modeIndex=0;
-                                              });
-                                            },
-                                          ),
-                                        ),
+                                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                      child: Text(
+                                        translations[LanguageManager().currentLanguage]!['upcoming']!,
+                                        style: TextStyle(
+                                            fontSize: relFont * 12.0,
+                                            fontFamily: 'SFProMedium',
+                                            color: const Color(0xFF323736),
+                                            letterSpacing: 1.1),
                                       ),
-                                    )
-                                )
-                            )
-                        ),
-                        Expanded(
-                            child: Container(
-                                child: Center(
+                                    ),
+                                  ),
+                                ),
+                              )
+                          )
+                      ),
+                      Expanded(
+                          child: Center(
+                              child: TextButton(
+                                onPressed: (){setState(() {
+                                  modeIndex=1;
+                                });},
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: modeIndex==1?Color(0xFFFFFFFF):Colors.transparent,
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: Center(
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: modeIndex==1?Color(0xFFFFFFFF):Colors.transparent,
-                                            borderRadius: BorderRadius.circular(15)
-                                        ),
-                                        child: Center(
-                                          child: TextButton(
-                                            child: Text(
-                                              translations[LanguageManager().currentLanguage]!['available']!,
-                                              style: TextStyle(
-                                                  fontSize: relFont * 12.0,
-                                                  fontFamily: 'SFProMedium',
-                                                  color: const Color(0xFF323736),
-                                                  letterSpacing: 1.1),
-                                            ),
-                                            onPressed: (){setState(() {
-                                              modeIndex=1;
-                                            });},
-                                          ),
-                                        ),
+                                      padding: const EdgeInsets.symmetric(vertical: 8),
+                                      child: Text(
+                                        translations[LanguageManager().currentLanguage]!['completed']!,
+                                        style: TextStyle(
+                                            fontSize: relFont * 12.0,
+                                            fontFamily: 'SFProMedium',
+                                            color: const Color(0xFF323736),
+                                            letterSpacing: 1.1),
                                       ),
-                                    )
-                                )
-                            )
-                        ),
-                      ],
-                    )),
+                                    ),
+                                  ),
+                                ),
+                              )
+                          )
+                      ),
+                    ],
                   ),
                 )
                 ],

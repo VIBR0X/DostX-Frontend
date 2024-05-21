@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../language_manager.dart';
@@ -137,7 +139,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                 ),
                 const SizedBox(height: 20,),
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Container(
                     width: screenWidth(context),
                     height: 90,
@@ -158,7 +160,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: 230,
+                                width: min(230, screenWidth(context)*0.5),
                                 child: Text(
                                   "Total amount spent for one OPD visit",
                                   style: TextStyle(
@@ -171,7 +173,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                 ),
                               ),
                               SizedBox(
-                                width: 90,
+                                width: min(90, screenWidth(context)*0.3),
                                 child:TextFormField(
                                 // maxLines: 1,
                                   textAlign: TextAlign.start,
@@ -222,7 +224,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: 230,
+                                width: min(230, screenWidth(context)*0.5),
                                 child: Text(
                                   "No. frequency of visits",
                                   style: TextStyle(
@@ -235,7 +237,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                 ),
                               ),
                               SizedBox(
-                                  width: 90,
+                                  width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
@@ -287,7 +289,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Container(
                     width: screenWidth(context),
                     height: 90,
@@ -308,7 +310,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: 230,
+                                width: min(230, screenWidth(context)*0.5),
                                 child: Text(
                                   "Total amount spent for one Hospitalisation",
                                   style: TextStyle(
@@ -321,7 +323,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                 ),
                               ),
                               SizedBox(
-                                  width: 90,
+                                  width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
@@ -372,7 +374,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: 230,
+                                width: min(230, screenWidth(context)*0.5),
                                 child: Text(
                                   "No. frequency of visits",
                                   style: TextStyle(
@@ -385,7 +387,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                 ),
                               ),
                               SizedBox(
-                                  width: 90,
+                                  width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
@@ -436,6 +438,307 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Container(
+                    width: screenWidth(context),
+                    height: 90,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: const [
+                          BoxShadow(color: Color(0x0A000000), offset: Offset(0,2), blurRadius: 48, spreadRadius: 100)
+                        ]
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20,0,25,0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.c,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: min(230, screenWidth(context)*0.5),
+                                child: Text(
+                                  "Total amount spent for emergency",
+                                  style: TextStyle(
+                                    fontSize: relFont * 13,
+                                    fontFamily: 'JostMedium',
+                                    color: const Color(0xFFE5A194),
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.4,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: min(90, screenWidth(context)*0.3),
+                                  child:TextFormField(
+                                    // maxLines: 1,
+                                    textAlign: TextAlign.start,
+                                    textAlignVertical: TextAlignVertical.center,
+                                    style: TextStyle(
+                                      overflow: TextOverflow.visible,
+
+                                      fontSize: relFont * 13,
+                                      fontFamily: 'JostMedium',
+                                      color: const Color(0xFFE5A194),
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.4,
+                                    ),
+                                    decoration:  InputDecoration(
+                                      isDense:true,
+                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
+                                      // alignLabelWithHint: true,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+
+
+                                      // contentPadding:
+                                      // EdgeInsets.fromLTRB(2, 0,0,0),
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly,
+                                      // LengthLimitingTextInputFormatter(9)
+
+                                    ], // Only numbers can be entered
+                                  )
+                              )
+                            ],
+                          ),
+                          const SizedBox(height: 7,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: min(230, screenWidth(context)*0.5),
+                                child: Text(
+                                  "No. frequency of visits",
+                                  style: TextStyle(
+                                    fontSize: relFont * 13,
+                                    fontFamily: 'JostMedium',
+                                    color: const Color(0xFFE5A194),
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.4,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: min(90, screenWidth(context)*0.3),
+                                  child:TextFormField(
+                                    // maxLines: 1,
+                                    textAlign: TextAlign.start,
+                                    textAlignVertical: TextAlignVertical.center,
+                                    style: TextStyle(
+                                      overflow: TextOverflow.visible,
+
+                                      fontSize: relFont * 13,
+                                      fontFamily: 'JostMedium',
+                                      color: const Color(0xFFE5A194),
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.4,
+                                    ),
+                                    decoration:  InputDecoration(
+                                      isDense:true,
+                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
+                                      // alignLabelWithHint: true,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+
+
+                                      // contentPadding:
+                                      // EdgeInsets.fromLTRB(2, 0,0,0),
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly,
+                                      // LengthLimitingTextInputFormatter(9)
+
+                                    ], // Only numbers can be entered
+                                  )
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Container(
+                    width: screenWidth(context),
+                    height: 90,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: const [
+                          BoxShadow(color: Color(0x0A000000), offset: Offset(0,2), blurRadius: 48, spreadRadius: 100)
+                        ]
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20,0,25,0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.c,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: min(230, screenWidth(context)*0.5),
+                                child: Text(
+                                  "Total amount spent for one Home care visit",
+                                  style: TextStyle(
+                                    fontSize: relFont * 13,
+                                    fontFamily: 'JostMedium',
+                                    color: const Color(0xFFE5A194),
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.4,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: min(90, screenWidth(context)*0.3),
+                                  child:TextFormField(
+                                    // maxLines: 1,
+                                    textAlign: TextAlign.start,
+                                    textAlignVertical: TextAlignVertical.center,
+                                    style: TextStyle(
+                                      overflow: TextOverflow.visible,
+
+                                      fontSize: relFont * 13,
+                                      fontFamily: 'JostMedium',
+                                      color: const Color(0xFFE5A194),
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.4,
+                                    ),
+                                    decoration:  InputDecoration(
+                                      isDense:true,
+                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
+                                      // alignLabelWithHint: true,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+
+
+                                      // contentPadding:
+                                      // EdgeInsets.fromLTRB(2, 0,0,0),
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly,
+                                      // LengthLimitingTextInputFormatter(9)
+
+                                    ], // Only numbers can be entered
+                                  )
+                              )
+                            ],
+                          ),
+                          const SizedBox(height: 7,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: min(230, screenWidth(context)*0.5),
+                                child: Text(
+                                  "No. frequency of visits",
+                                  style: TextStyle(
+                                    fontSize: relFont * 13,
+                                    fontFamily: 'JostMedium',
+                                    color: const Color(0xFFE5A194),
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.4,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: min(90, screenWidth(context)*0.3),
+                                  child:TextFormField(
+                                    // maxLines: 1,
+                                    textAlign: TextAlign.start,
+                                    textAlignVertical: TextAlignVertical.center,
+                                    style: TextStyle(
+                                      overflow: TextOverflow.visible,
+
+                                      fontSize: relFont * 13,
+                                      fontFamily: 'JostMedium',
+                                      color: const Color(0xFFE5A194),
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.4,
+                                    ),
+                                    decoration:  InputDecoration(
+                                      isDense:true,
+                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
+                                      // alignLabelWithHint: true,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide:  BorderSide(
+                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(13),
+                                      ),
+
+
+                                      // contentPadding:
+                                      // EdgeInsets.fromLTRB(2, 0,0,0),
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly,
+                                      // LengthLimitingTextInputFormatter(9)
+
+                                    ], // Only numbers can be entered
+                                  )
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
                 const SizedBox(height: 25),
                 Center(
                   child: SizedBox(
@@ -471,6 +774,8 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 25),
+
 
               ],
             ),

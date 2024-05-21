@@ -34,35 +34,35 @@ class CustomRadioButton extends StatelessWidget {
       onTap: onSelect,
       child: Row(
         children: [
-          Container(
-            height: 17,
-            width: 17,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-            ),
-            child: Center(
-              child: Container(
-                height: 13,
-                width: 13,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: selected ? GradientOptions.signInGradient : null,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,0,5,0),
+            child: Container(
+              height: 17,
+              width: 17,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+              child: Center(
+                child: Container(
+                  height: 13,
+                  width: 13,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: selected ? GradientOptions.signInGradient : null,
+                  ),
                 ),
               ),
             ),
           ),
-          SizedBox(
-            width: (10/414)*screenWidth(context),
-          ),
           Text(
-            text,
-            style: TextStyle(
-              color: this.color,
-              fontFamily: 'JostMedium',
-              fontSize: font * fontHelper(context),
+              text,
+              style: TextStyle(
+                color: this.color,
+                fontFamily: 'JostMedium',
+                fontSize: font * fontHelper(context),
+              ),
             ),
-          ),
         ],
       ),
     );

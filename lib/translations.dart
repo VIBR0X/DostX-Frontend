@@ -130,6 +130,7 @@ Map<String, Map<String, String>> translations = {
     'brief_cope_result': "Coping Orientation to Problems Experienced Inventory (Brief-COPE)",
 
     "available":"Available",
+    "completed":"Completed",
     "upcoming":"Upcoming",
   },
   'hi': {
@@ -263,6 +264,7 @@ Map<String, Map<String, String>> translations = {
     'brief_cope_result': "संक्षिप्त चिंता समस्याओं के सामने संभावित विवरण असमर्थी इन्वेंट्री (संक्षिप्त-कोप)",
 
     "available":"उपलब्ध",
+    "completed":"संपूरित",
     "upcoming":"आगामी",
 
   },
@@ -397,6 +399,7 @@ Map<String, Map<String, String>> translations = {
     'brief_cope_result': "टोंचण करण्याचा विभाग समस्यांसाठी अनुभवी चिन्हांकन (लघु-COPE)",
 
     "available":"उपलब्ध",
+    "completed":"पूर्ण",
     "upcoming":"आगामी",
   },
 };

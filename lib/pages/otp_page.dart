@@ -1,4 +1,6 @@
+import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/globals.dart';
+import 'package:dostx/pages/consent_page.dart';
 import 'package:dostx/pages/sign_up_first_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,12 +63,12 @@ class _OtpPageState extends State<OtpPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color(0xFFE5A194),
+        backgroundColor: const Color(0xFFFFF8EA),
         body: SingleChildScrollView(
           child: Stack(
             children: [
               Container(
-                // width: double.maxFinite,
+                width: screenWidth(context),
                 height: screenHeight(context),
                 decoration: const BoxDecoration(
                   gradient: GradientOptions.backgroundGradient,
@@ -384,10 +386,11 @@ class _OtpPageState extends State<OtpPage> {
                                             // print(jsonRepresentation);
                                             // // bloc.signInBloc(fakeSignInRequest);
                                             print('otp = $otp');
-                                            Navigator.push(
+                                            Navigator.pushReplacement(
                                               context,
+                                              // createCustomPageRoute(const ConsentForm(), context)
                                               MaterialPageRoute(
-                                                builder: (context) =>  SignUpFirst(),
+                                                builder: (context) =>  const ConsentForm(),
                                               ),
                                             );
                                           }

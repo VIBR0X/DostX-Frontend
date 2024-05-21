@@ -1,4 +1,6 @@
+import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/globals.dart%20';
+import 'package:dostx/pages/sign_up_first_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -103,8 +105,9 @@ class _ConsentFormState extends State<ConsentForm> {
               height: (25/896)*screenHeight(context),
             ),
             Center(
-              child: SizedBox(
+              child: Container(
                 width: 320,
+                // alignment: Alignment.center,
                 height: (31/896)*screenHeight(context),
                 child: Row(children: [
                   CustomRadioButton(
@@ -148,11 +151,12 @@ class _ConsentFormState extends State<ConsentForm> {
                   ),
                   onPressed: () {
                     if(isSelected[0]){
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => NavigationController(),
-                      ),
+                      createCustomPageRoute(const SignUpFirst(), context)
+                      // MaterialPageRoute(
+                      //   builder: (context) => Sign(),
+                      // ),
                     );}
                   },
                   child:  Text(

@@ -1,7 +1,9 @@
+import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../navigator.dart';
 import 'consent_page.dart';
 import '../translations.dart';
 import '../language_manager.dart';
@@ -72,12 +74,11 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               children: [
                                 Text(
                                   translations[LanguageManager()
-                                          .currentLanguage]!['job_loss']! +
-                                      ":",
+                                          .currentLanguage]!['job_loss']!,
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: 'JostMedium',
-                                    fontSize: fontSize*(14 / 13),
+                                    fontSize: fontHelper(context) * (14),
                                   ),
                                 ),
                                 Spacer(),
@@ -92,7 +93,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               child: Row(
                                 children: [
                                   CustomRadioButton(
-                                    font: fontSize * (14 / 13),
+                                    font: fontHelper(context) * (14),
                                     text: translations[LanguageManager()
                                         .currentLanguage]!['yes']!,
                                     value: 'Yes',
@@ -107,7 +108,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                     width: 35,
                                   ),
                                   CustomRadioButton(
-                                    font: fontSize * (14 / 13),
+                                    font: fontHelper(context) * (14),
                                     text: translations[LanguageManager()
                                         .currentLanguage]!['no']!,
                                     value: 'No',
@@ -144,7 +145,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                     style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
-                                        fontSize: fontSize*(14 / 13)),
+                                        fontSize: fontHelper(context) * (14)),
                                   ),
                                 ),
                               ],
@@ -158,7 +159,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               child: Row(
                                 children: [
                                   CustomRadioButton(
-                                    font: fontSize * (14 / 13),
+                                    font: fontHelper(context) * (14),
                                     text: translations[LanguageManager()
                                         .currentLanguage]!['yes']!,
                                     value: 'Yes',
@@ -173,7 +174,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                     width: 35,
                                   ),
                                   CustomRadioButton(
-                                    font: fontSize * (14 / 13),
+                                    font: fontHelper(context) * (14),
                                     text: translations[LanguageManager()
                                         .currentLanguage]!['no']!,
                                     value: 'No',
@@ -191,7 +192,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                         ),
                       ),
                       SizedBox(
-                        height: (11 / 869) * screenHeight(context),
+                        height: (5 / 869) * screenHeight(context),
                       ),
                       SizedBox(
                         width: 299,
@@ -199,7 +200,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                           children: [
                             SizedBox(
                               width: 299,
-                              height: (91 / 869) * screenHeight(context),
+                              height: (82 / 869) * screenHeight(context),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -208,30 +209,28 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                       Text(
                                         translations[LanguageManager()
                                                     .currentLanguage]![
-                                                'status_of_person']! +
-                                            ":",
+                                                'status_of_person']!,
                                         style: TextStyle(
                                             color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
-                                            fontSize: fontSize*(14 / 13)),
+                                            fontSize: fontHelper(context) * (14)),
                                       ),
-                                      Spacer(),
                                     ],
                                   ),
                                   SizedBox(
                                     height:
-                                        (11 / 869) * screenHeight(context),
+                                        (5 / 869) * screenHeight(context),
                                   ),
                                   SizedBox(
                                     height:
-                                        (60 / 869) * screenHeight(context),
+                                        (55 / 869) * screenHeight(context),
                                     width: 299,
                                     child: Column(
                                       children: [
                                         Row(
                                           children: [
                                             CustomRadioButton(
-                                              font: fontSize * (14 / 13),
+                                              font: fontHelper(context) * (14),
                                               text: translations[
                                                       LanguageManager()
                                                           .currentLanguage]![
@@ -248,7 +247,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                               width: 60,
                                             ),
                                             CustomRadioButton(
-                                              font: fontSize * (14 / 13),
+                                              font: fontHelper(context) * (14),
                                               text: translations[
                                                       LanguageManager()
                                                           .currentLanguage]![
@@ -265,13 +264,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                           ],
                                         ),
                                         SizedBox(
-                                          height: (10 / 869) *
+                                          height: (8 / 869) *
                                               screenHeight(context),
                                         ),
                                         Row(
                                           children: [
                                             CustomRadioButton(
-                                              font: fontSize * (14 / 13),
+                                              font: fontHelper(context) * (14),
                                               text: translations[
                                                       LanguageManager()
                                                           .currentLanguage]![
@@ -298,9 +297,9 @@ class _SignUpFourthState extends State<SignUpFourth> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: (3 / 869) * screenHeight(context),
-                      ),
+                      // SizedBox(
+                      //   height: (3 / 869) * screenHeight(context),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: SizedBox(
@@ -318,19 +317,17 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                         Text(
                                           translations[LanguageManager()
                                                       .currentLanguage]![
-                                                  'diagnosis_of_person']! +
-                                              ":",
+                                                  'diagnosis_of_person']!,
                                           style: TextStyle(
                                               color: ColorOptions.skin,
                                               fontFamily: 'JostMedium',
-                                              fontSize: fontSize*(14 / 13)),
+                                              fontSize: fontHelper(context) * (14)),
                                         ),
-                                        Spacer(),
                                       ],
                                     ),
                                     SizedBox(
                                       height:
-                                          (14 / 869) * screenHeight(context),
+                                          (11 / 869) * screenHeight(context),
                                     ),
                                     SizedBox(
                                       height:
@@ -352,7 +349,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                 children: [
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -368,12 +365,12 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                       });
                                                     },
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 5,
                                                   ),
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -388,10 +385,10 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                       });
                                                     },
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -407,10 +404,10 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                       });
                                                     },
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -441,7 +438,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                 children: [
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -459,7 +456,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   SizedBox(height: 5),
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -477,7 +474,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   SizedBox(height: 5),
                                                   CustomRadioButton(
                                                     font:
-                                                        fontSize * (14 / 13),
+                                                        fontHelper(context) * (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -506,7 +503,6 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                   ],
                                 ),
                               ),
-                              const Spacer(),
                             ],
                           ),
                         ),
@@ -531,9 +527,10 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ConsentForm(),
-                                ),
+                                createCustomPageRoute(const NavigationController(), context)
+                                // MaterialPageRoute(
+                                //   builder: (context) => const ConsentForm(),
+                                // ),
                               );
                             },
                             child: Text(
