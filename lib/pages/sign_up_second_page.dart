@@ -18,7 +18,7 @@ class SignUpSecond extends StatefulWidget {
 }
 
 class _SignUpSecondState extends State<SignUpSecond> {
-  late File? _pickedImage;
+  late File? _pickedImage=null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

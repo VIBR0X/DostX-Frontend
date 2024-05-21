@@ -260,7 +260,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                         ),
                         SizedBox(
                           width: 265.96,
-                          height: (45/896)*screenHeight(context),
+                          height: (50/896)*screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -282,7 +282,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 height: (5 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (16/896)*screenHeight(context),
+                                height: (24/896)*screenHeight(context),
                                 child: Row(
                                   children: [
                                     CustomRadioButton(
