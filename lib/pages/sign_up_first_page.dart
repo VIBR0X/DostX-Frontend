@@ -1,5 +1,4 @@
 import 'package:dostx/CustomRouteBuilder.dart';
-import 'package:dostx/pages/sign_in.dart';
 import 'package:flutter/material.dart';
 import '../palette.dart';
 import '../custom_widgets.dart';
@@ -106,16 +105,16 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       fontSize: 14 * fontHelper(context),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                 ],
                               ),
                               SizedBox(
                                 height: (4 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (37/ 896) * screenHeight(context),
+                                height: (35/ 896) * screenHeight(context),
                                 child: TextField(
-                                  inputFormatters: [],
+                                  inputFormatters: const [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: "JostMedium",
@@ -123,7 +122,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   ),
                                   cursorColor: ColorOptions.skin,
                                   keyboardType: TextInputType.name,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.fromLTRB(10, 0, 0, 5),
                                     filled: true,
@@ -191,16 +190,16 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       fontSize: 14 * fontHelper(context),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                 ],
                               ),
                               SizedBox(
                                 height: (4 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (37/896)*screenHeight(context),
+                                height: (35/896)*screenHeight(context),
                                 child: TextField(
-                                  inputFormatters: [],
+                                  inputFormatters: const [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: "JostMedium",
@@ -208,7 +207,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   ),
                                   cursorColor: ColorOptions.skin,
                                   keyboardType: TextInputType.name,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.fromLTRB(10, 0, 0, 5),
                                     filled: true,
@@ -261,7 +260,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                         ),
                         SizedBox(
                           width: 265.96,
-                          height: (41/896)*screenHeight(context),
+                          height: (45/896)*screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -276,7 +275,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       fontSize: 14 * fontHelper(context),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                 ],
                               ),
                               SizedBox(
@@ -351,16 +350,16 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                       fontSize: 14 * fontHelper(context),
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                 ],
                               ),
                               SizedBox(
                                 height: (4 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (37/896)*screenHeight(context),
+                                height: (35/896)*screenHeight(context),
                                 child: TextField(
-                                  inputFormatters: [],
+                                  inputFormatters: const [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: "JostMedium",
@@ -368,7 +367,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                   ),
                                   cursorColor: ColorOptions.skin,
                                   keyboardType: TextInputType.text,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.fromLTRB(10, 0, 0, 5),
                                     filled: true,
@@ -475,12 +474,12 @@ class _SignUpFirstState extends State<SignUpFirst> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Select Language'),
+                          title: const Text('Select Language'),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               ListTile(
-                                title: Text('English'),
+                                title: const Text('English'),
                                 onTap: () {
                                   // Set English language
                                   LanguageManager().setLanguage('en');
@@ -492,7 +491,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 },
                               ),
                               ListTile(
-                                title: Text('Hindi'),
+                                title: const Text('Hindi'),
                                 onTap: () {
                                   // Set Hindi language
                                   LanguageManager().setLanguage('hi');
@@ -504,7 +503,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 },
                               ),
                               ListTile(
-                                title: Text('Marathi'),
+                                title: const Text('Marathi'),
                                 onTap: () {
                                   // Set Marathi language
                                   LanguageManager().setLanguage('mr');
@@ -522,12 +521,12 @@ class _SignUpFirstState extends State<SignUpFirst> {
                     );
                   },
                   child: Ink(
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       color: Colors.transparent,
                       shape: CircleBorder(),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(18,25,0,0),
+                      padding: const EdgeInsets.fromLTRB(18,25,0,0),
                       child: SvgPicture.asset(
                         'assets/icons/language_icon.svg',
                         width: 65,

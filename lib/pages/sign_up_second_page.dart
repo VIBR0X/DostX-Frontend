@@ -18,7 +18,7 @@ class SignUpSecond extends StatefulWidget {
 }
 
 class _SignUpSecondState extends State<SignUpSecond> {
-  late File? _pickedImage = null;
+  late File? _pickedImage;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +72,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                             child: Row(
                               children: [
                                 SizedBox(
-                                  height:( 32/ 896) * screenHeight(context),
+                                  height:40*fontHelper(context),//( 32/ 896) * screenHeight(context),
                                   width: 170,
                                   child: DecoratedBox(
                                     decoration: BoxDecoration(
@@ -114,7 +114,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 // SizedBox(
                                 //   width: (18 / 896) * screenHeight(context),
                                 // ),
@@ -140,23 +140,22 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 269.91,
-                            height: (103/ 896) * screenHeight(context),
+                            // height: (105/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager()
-                                              .currentLanguage]!['address']! +
-                                          ":",
+                                      "${translations[LanguageManager()
+                                              .currentLanguage]!['address']!}:",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
                                         fontSize: 14 * fontHelper(context),
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                   ],
                                 ),
                                 SizedBox(
@@ -173,7 +172,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       contentPadding:
                                           EdgeInsets.fromLTRB(10, 0, 0, 5),
                                       filled: true,
@@ -227,7 +226,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         ),
                         Center(
                           child: SizedBox(
-                            height:( 47/ 896) * screenHeight(context),
+                            // height:( 47/ 896) * screenHeight(context),
                             width: 269.91,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -235,17 +234,16 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager()
+                                      "${translations[LanguageManager()
                                                   .currentLanguage]![
-                                              'postal_code']! +
-                                          ":",
+                                              'postal_code']!}:",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
                                         fontSize: 14 * fontHelper(context),
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                   ],
                                 ),
                                 SizedBox(
@@ -329,23 +327,22 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 267.91,
-                            height: (61/ 896) * screenHeight(context),
+                            // height: (61/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager()
-                                              .currentLanguage]!['state']! +
-                                          ":",
+                                      "${translations[LanguageManager()
+                                              .currentLanguage]!['state']!}:",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
                                         fontSize: 14 * fontHelper(context),
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                   ],
                                 ),
                                 SizedBox(
@@ -354,7 +351,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 SizedBox(
                                   height: (37/ 896) * screenHeight(context),
                                   child: TextField(
-                                    inputFormatters: [],
+                                    inputFormatters: const [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
@@ -362,7 +359,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       contentPadding:
                                           EdgeInsets.fromLTRB(10, 0, 0, 5),
                                       filled: true,
@@ -417,23 +414,22 @@ class _SignUpSecondState extends State<SignUpSecond> {
                         Center(
                           child: SizedBox(
                             width: 269.91,
-                            height: (61/ 896) * screenHeight(context),
+                            // height: (61/ 896) * screenHeight(context),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
                                     Text(
-                                      translations[LanguageManager()
-                                              .currentLanguage]!['country']! +
-                                          ":",
+                                      "${translations[LanguageManager()
+                                              .currentLanguage]!['country']!}:",
                                       style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
                                         fontSize: 14 * fontHelper(context),
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                   ],
                                 ),
                                 SizedBox(
@@ -442,7 +438,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 SizedBox(
                                   height: (37/ 896) * screenHeight(context),
                                   child: TextField(
-                                    inputFormatters: [],
+                                    inputFormatters: const [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: "JostMedium",
@@ -450,7 +446,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                     ),
                                     cursorColor: ColorOptions.skin,
                                     keyboardType: TextInputType.name,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       contentPadding:
                                           EdgeInsets.fromLTRB(10, 0, 0, 5),
                                       filled: true,
@@ -560,12 +556,12 @@ class _SignUpSecondState extends State<SignUpSecond> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Select Language'),
+                          title: const Text('Select Language'),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               ListTile(
-                                title: Text('English'),
+                                title: const Text('English'),
                                 onTap: () {
                                   // Set English language
                                   LanguageManager().setLanguage('en');
@@ -577,7 +573,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 },
                               ),
                               ListTile(
-                                title: Text('Hindi'),
+                                title: const Text('Hindi'),
                                 onTap: () {
                                   // Set Hindi language
                                   LanguageManager().setLanguage('hi');
@@ -589,7 +585,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 },
                               ),
                               ListTile(
-                                title: Text('Marathi'),
+                                title: const Text('Marathi'),
                                 onTap: () {
                                   // Set Marathi language
                                   LanguageManager().setLanguage('mr');
@@ -607,12 +603,12 @@ class _SignUpSecondState extends State<SignUpSecond> {
                     );
                   },
                   child: Ink(
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       color: Colors.transparent,
                       shape: CircleBorder(),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(18,25,0,0),
+                      padding: const EdgeInsets.fromLTRB(18,25,0,0),
                       child: SvgPicture.asset(
                         'assets/icons/language_icon.svg',
                         width: 65,
