@@ -101,7 +101,7 @@ class CopingStrategyAboutPage extends StatelessWidget {
                     ]
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(38.0),
+                    padding: const EdgeInsets.fromLTRB(38.0,38.0,20,38.0),
                     child: Column(
                       children: [
                         Container(
@@ -113,14 +113,17 @@ class CopingStrategyAboutPage extends StatelessWidget {
                             radius: Radius.circular(20),
                             scrollbarOrientation: ScrollbarOrientation.right,
                             interactive: true,
-                            child: SingleChildScrollView(
-                              child: Text(
-                                  description,
-                                style: TextStyle(
-                                    fontSize: relFont * 12.0,
-                                    fontFamily: 'SFProMedium',
-                                    color: const Color(0xFF323736),
-                                    letterSpacing: 1.1,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 18.0),
+                              child: SingleChildScrollView(
+                                child: Text(
+                                    description,
+                                  style: TextStyle(
+                                      fontSize: relFont * 12.0,
+                                      fontFamily: 'SFProMedium',
+                                      color: const Color(0xFF323736),
+                                      letterSpacing: 1.1,
+                                  ),
                                 ),
                               ),
                             ),

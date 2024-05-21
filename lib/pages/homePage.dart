@@ -250,10 +250,10 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: SizedBox(
-                        height: screenHeight(context) * 89 / 869,
+                        height: screenHeight(context) * 89 / 869 + 18,
                         child: _buildHorizontalScrollSection(context)),
                   ),
-                  SizedBox(height: screenHeight(context) * 30 / 869),
+                  SizedBox(height: screenHeight(context) * 30 / 869 - 18),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -441,77 +441,80 @@ class _HomePageFirstState extends State<HomePageFirst> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () => routes[index](context),
-              child: Container(
-                width: screenWidth(context) * 89 / 414,
-                margin: EdgeInsets.fromLTRB(
-                    0, 0, screenWidth(context) * 12 / 414, 0),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xff0000000A).withOpacity(0.01),
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                      offset: const Offset(0, 0),
-                    ),
-                  ],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 50 * screenHeight(context) / 869,
-                        width: 50 * screenWidth(context) / 414,
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              0, screenHeight(context) * 12 / 869, 0, 0),
-                          child: index != 2?Image.asset(
-
-                            "assets/image/Icon$index.png",
-                            fit: BoxFit.contain,
-                          ):SvgPicture.asset("assets/svg/DocIcon.svg",fit: BoxFit.contain,),
-                        ),
-                      ),
-                      SizedBox(
-                        height: screenHeight(context) * 5 / 869,
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        child: Column(
-                          children: [
-                            Text(
-                                index == 0
-                                    ? 'Psycho-'
-                                    : index == 1
-                                        ? 'Medicine'
-                                        : index == 2
-                                            ? 'Doctor'
-                                            : index == 3
-                                                ? 'Financial'
-                                                : '',
-                                style: TextStyle(
-                                    color: const Color(0xff323736),
-                                    fontFamily: "SFProText",
-                                    fontSize: 10 * fontHelper(context))),
-                            Text(
-                                index == 0
-                                    ? 'education'
-                                    : index == 1
-                                    ? 'Reminder'
-                                    : index == 2
-                                    ? 'Connect'
-                                    : index == 3
-                                    ? 'Coping'
-                                    : '',
-                                style: TextStyle(
-                                    color: const Color(0xff323736),
-                                    fontFamily: "SFProText",
-                                    fontSize: 10 * fontHelper(context))),
-                          ],
-                        ),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Container(
+                  width: screenWidth(context) * 89 / 414,
+                  margin: EdgeInsets.fromLTRB(
+                      0, 0, screenWidth(context) * 12 / 414, 0),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xff0000000A).withOpacity(0.01),
+                        spreadRadius: 1,
+                        blurRadius: 1,
+                        offset: const Offset(0, 0),
                       ),
                     ],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 50 * screenHeight(context) / 869,
+                          width: 50 * screenWidth(context) / 414,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                0, screenHeight(context) * 12 / 869, 0, 0),
+                            child: index != 2?Image.asset(
+
+                              "assets/image/Icon$index.png",
+                              fit: BoxFit.contain,
+                            ):SvgPicture.asset("assets/svg/DocIcon.svg",fit: BoxFit.contain,),
+                          ),
+                        ),
+                        SizedBox(
+                          height: screenHeight(context) * 5 / 869,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              Text(
+                                  index == 0
+                                      ? 'Psycho-'
+                                      : index == 1
+                                          ? 'Medicine'
+                                          : index == 2
+                                              ? 'Doctor'
+                                              : index == 3
+                                                  ? 'Financial'
+                                                  : '',
+                                  style: TextStyle(
+                                      color: const Color(0xff323736),
+                                      fontFamily: "SFProText",
+                                      fontSize: 10 * fontHelper(context))),
+                              Text(
+                                  index == 0
+                                      ? 'education'
+                                      : index == 1
+                                      ? 'Reminder'
+                                      : index == 2
+                                      ? 'Connect'
+                                      : index == 3
+                                      ? 'Coping'
+                                      : '',
+                                  style: TextStyle(
+                                      color: const Color(0xff323736),
+                                      fontFamily: "SFProText",
+                                      fontSize: 10 * fontHelper(context))),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
