@@ -178,8 +178,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                   const SizedBox(
                     height: 29,
                   ),
-                  Text(
-                    "What emotion are you feeling from the wheel 02?",
+                  Text( translations[LanguageManager().currentLanguage]!['emotional_wheel_question_2']!,
                     style: TextStyle(
                       color: const Color(0xFFE5A194),
                       fontFamily: 'JostMedium',
@@ -244,7 +243,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                     height: 109,
                   ),
                   Text(
-                    "What emotion are you feeling from the wheel 03?",
+                    translations[LanguageManager().currentLanguage]!['emotional_wheel_question_3']!,
                     style: TextStyle(
                       color: const Color(0xFFE5A194),
                       fontFamily: 'JostMedium',

@@ -161,56 +161,77 @@ class _SignUpThirdState extends State<Short12Page> {
                   QuestionWithFiveOptionsSingleLine(
                       question:
                           translations[LanguageManager().currentLanguage]![
+                              'question2']!),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question3']!),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
                               'question4']!),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
-                          "Do you feel strained when are around your relative?"),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
+                          translations[LanguageManager().currentLanguage]![
+                              'question5']!),
                   const SizedBox(
                     height: 14,
                   ),
 
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
-                          "Do you feel your social life has suffered because\nyou are caring for your relative?"),
+                          translations[LanguageManager().currentLanguage]![
+                              'question6']!),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
-                          "Do you feel you have lost control of your life since\nyour relative’s illness?"),
+                          translations[LanguageManager().currentLanguage]![
+                              'question7']!),
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question8']!),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
-                          "Do you feel uncertain about what to do about\nrelative?"),
+                          translations[LanguageManager().currentLanguage]![
+                              'question9']!),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
-                          "Do you feel you should be doing more for your\nrelative?"),
+                          translations[LanguageManager().currentLanguage]![
+                              'question10']!),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
-                          "Do you feel you could do a better job in caring for\nyour relative?"),
+                          translations[LanguageManager().currentLanguage]![
+                              'question11']!),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question12']!),
                   const SizedBox(
                     height: 26,
                   ),

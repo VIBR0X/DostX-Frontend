@@ -154,58 +154,59 @@ class _SignUpThirdState extends State<CopePage> {
 
                   const QuestionsWithFourOptions4Lines(
                       textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel strained when are around your relative?"),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_2']!
+                      ),
                   const SizedBox(
                     height: 14,
                   ),
                   const QuestionsWithFourOptions4Lines(
                       textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel your health has suffered because of your\ninvolvement with your relative?"),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_3']!
+                      ),
                   const SizedBox(
                     height: 14,
                   ),
                   const QuestionsWithFourOptions4Lines(
                       textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel you don’t have as much privacy as you\nwould like, because of your relative?"),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_4']!
+                      ),
                   const SizedBox(
                     height: 14,
                   ),
 
                   const QuestionsWithFourOptions4Lines(
                       textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel your social life has suffered because\nyou are caring for your relative?"),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_5']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_6']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_7']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_8']!
+                      ),
                   const SizedBox(
                     height: 14,
                   ),
                   const QuestionsWithFourOptions4Lines(
                       textColor: ColorOptions.skin,
                       question:
-                      "Do you feel you have lost control of your life since\nyour relative’s illness?"),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel uncertain about what to do about\nrelative?"),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel you should be doing more for your\nrelative?"),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question:
-                      "Do you feel you could do a better job in caring for\nyour relative?"),
+                      translations[LanguageManager().currentLanguage]!['brief_cope_question_9']!
+                      ),
                   const SizedBox(
                     height: 26,
                   ),
