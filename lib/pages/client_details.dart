@@ -393,11 +393,11 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['male']!,
-                                      value: 'Male',
-                                      selected: selectedGender == 'Male',
+                                      value: 'M',
+                                      selected: selectedGender == 'M',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Male';
+                                          selectedGender = 'M';
                                         });
                                       },
                                     ),
@@ -407,11 +407,11 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['female']!,
-                                      value: 'Female',
-                                      selected: selectedGender == 'Female',
+                                      value: 'F',
+                                      selected: selectedGender == 'F',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Female';
+                                          selectedGender = 'F';
                                         });
                                       },
                                     ),
@@ -421,11 +421,11 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['others']!,
-                                      value: 'Other',
-                                      selected: selectedGender == 'Others',
+                                      value: 'O',
+                                      selected: selectedGender == 'O',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Others';
+                                          selectedGender = 'O';
                                         });
                                       },
                                     ),

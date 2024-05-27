@@ -1,13 +1,16 @@
+import 'package:dostx/config.dart';
 import 'package:dostx/pages/sign_up_first_page.dart';
 import 'package:dostx/pages/sign_up_third_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
 import '../custom_widgets.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import 'cost_effective_analysis_page.dart';
 import 'short12.dart';
+import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
   final Function(int) updateHomeIndex;
@@ -30,6 +33,8 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool _showSettings = true;
+  var tokenBox = Hive.box('TokenBox');
+  var profileBox = Hive.box('ProfileBox');
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +56,18 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Container(
             height: 100,
             width: 100,
-            child: Image.asset("assets/profile.png"),
+            child: Image.network(
+                appConfig["serverURL"]+profileBox.get('profile_pic')!,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset("assets/profile.png");
+              },
+
+            ),
           ),
         ),
         SizedBox(height: 10),
         Text(
-          'John Doe',
+          profileBox.get('full_name')??'joe',
           style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w800,
@@ -64,7 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Color(0xff204267)),
         ),
         Text(
-          'johndoe@example.com',
+          profileBox.get('email')??'your.email@example.com',
           style: TextStyle(
               fontSize: 14, fontFamily: 'Poppins', color: Color(0xff204267)),
         ),

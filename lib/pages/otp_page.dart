@@ -4,6 +4,9 @@ import 'package:dostx/pages/consent_page.dart';
 import 'package:dostx/pages/sign_up_first_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
+import '../navigator.dart';
 import '../palette.dart';
 import 'package:flutter/services.dart';
 import 'package:dostx/bloc/bloc_provider.dart';
@@ -11,6 +14,7 @@ import 'package:dostx/request/signInRequest.dart';
 import 'dart:convert';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
+import 'package:http/http.dart' as http;
 class OtpPage extends StatefulWidget {
   final String number;
   const OtpPage({
@@ -22,7 +26,7 @@ class OtpPage extends StatefulWidget {
 }
 
 bool isvalidOTP(String input) {
-  return input.length == 4;
+  return input.length == 6;
 }
 
 class _OtpPageState extends State<OtpPage> {
@@ -30,8 +34,8 @@ class _OtpPageState extends State<OtpPage> {
   final TextEditingController _phoneController = TextEditingController();
   int phoneColor = 0xFFBABABA;
 
-  final List<FocusNode> _focusNodes = List.generate(4, (index) => FocusNode());
-  final List<TextEditingController> _controllers = List.generate(4, (index) => TextEditingController());
+  final List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
+  final List<TextEditingController> _controllers = List.generate(6, (index) => TextEditingController());
   String otp = '';
 
   @override
@@ -43,7 +47,7 @@ class _OtpPageState extends State<OtpPage> {
 
   void _onOTPChanged(String value, int index) {
     if (value.isNotEmpty) {
-      if (index < 3) {
+      if (index < 5) {
         FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
       } else {
         FocusScope.of(context).unfocus();
@@ -293,7 +297,7 @@ class _OtpPageState extends State<OtpPage> {
                                 child: Container(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    children: List.generate(4, (index) {
+                                    children: List.generate(6, (index) {
                                       return Padding(
                                         padding: const EdgeInsets.fromLTRB(0,0,8,0),
                                         child: SizedBox(
@@ -333,7 +337,18 @@ class _OtpPageState extends State<OtpPage> {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                                   child: TextButton(
-                                    onPressed: (){},
+                                    onPressed: () async {
+                                      var body = json.encode( {
+                                        "phone_number":int.parse(widget.number)
+                                      });
+                                      final url=appConfig["serverURL"]+'/auth/register_phone/';
+                                      final uri = Uri.parse(url);
+                                      final response = await http.post(
+                                        uri,
+                                        headers: {"Content-Type": "application/json"},
+                                        body: body,
+                                      );
+                                    },
                                     style: TextButton.styleFrom(
                                       padding: EdgeInsets.all(0),
                                       elevation: 0
@@ -377,7 +392,7 @@ class _OtpPageState extends State<OtpPage> {
                                       ),
                                     ),
                                     onPressed: validOTP
-                                        ? () {
+                                        ? () async {
                                             // SignInRequest fakeSignInRequest = SignInRequest(
                                             //  phoneNumber: _phoneController.text.substring(3)
                                             //     );
@@ -385,14 +400,49 @@ class _OtpPageState extends State<OtpPage> {
                                             // String jsonRepresentation = jsonEncode(fakeSignInRequest);
                                             // print(jsonRepresentation);
                                             // // bloc.signInBloc(fakeSignInRequest);
-                                            print('otp = $otp');
-                                            Navigator.pushReplacement(
-                                              context,
-                                              // createCustomPageRoute(const ConsentForm(), context)
-                                              MaterialPageRoute(
-                                                builder: (context) =>  const ConsentForm(),
-                                              ),
+                                            var body = json.encode( {
+                                              "phone_number":int.parse(widget.number),
+                                              "otp":otp
+                                            });
+                                            final url=appConfig["serverURL"]+'/auth/verify_otp/';
+                                            final uri = Uri.parse(url);
+                                            final response = await http.post(
+                                              uri,
+                                              headers: {"Content-Type": "application/json"},
+                                              body: body,
                                             );
+                                            if (response.statusCode == 200){
+                                              final responseBody = jsonDecode(response.body);
+                                              // print(responseBody);
+                                              final access_token = responseBody['data']['access'];
+                                              // print(access_token);
+                                              final refresh_token = responseBody['data']['refresh'];
+                                              final profile_available = responseBody['data']['user_profile']!=null;
+                                              final Map<String,dynamic>? user_profile = responseBody['data']['user_profile'];
+                                              var tokenBox = Hive.box('TokenBox');
+
+                                              tokenBox.put('access_token', access_token);
+                                              tokenBox.put('refresh_token', refresh_token);
+
+                                              tokenBox.put('profile_available', profile_available);
+                                              var profileBox = Hive.box('ProfileBox');
+                                              if (profile_available){
+                                                for (var entry in user_profile!.entries){
+                                                  profileBox.put(entry.key,entry.value);
+                                                }
+                                              }else{
+                                                profileBox.put('phone_number',widget.number);
+                                              }
+
+
+                                              Navigator.pushReplacement(
+                                                context,
+                                                // createCustomPageRoute(const ConsentForm(), context)
+                                                MaterialPageRoute(
+                                                  builder: (context) =>   profile_available?const NavigationController(): const ConsentForm(),
+                                                ),
+                                              );
+                                            }
                                           }
                                         : () {},
           

@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'package:dostx/config.dart';
+import 'package:hive/hive.dart';
+import 'package:http/http.dart' as http;
 import 'package:dostx/pages/brief_cope_page.dart';
 import 'package:dostx/pages/brief_cope_results_page.dart';
 import 'package:dostx/pages/client_details.dart';
@@ -40,6 +44,7 @@ class _NavigationControllerState extends State<NavigationController> {
   String _selectedSubPage = "default";
   String _previousSubPage = "default";
   List<String>_previousSubPageTrack = ["default"];
+  var tokenBox = Hive.box('TokenBox');
 
   void _updateNavigation(int index){
     _previousIndex = _selectedIndex;
@@ -308,13 +313,57 @@ class _NavigationControllerState extends State<NavigationController> {
 
   // Method to build body content based on selected index
   Widget _buildBodyContent(int index, String subPage) {
+
+    Future<List<dynamic>> fetchPsychoEducationData() async {
+      String url = appConfig["serverURL"]+"/api/websites";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchMedicalReminderData() async {
+      String url = appConfig["serverURL"]+"/api/notification";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("refresh_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
     switch (index) {
       case 0:
         switch(subPage) {
           case "psycho_education":
-            return PsychoEducationPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchPsychoEducationData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return PsychoEducationPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    websiteList: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "zarit_burden_results":
@@ -454,10 +503,26 @@ class _NavigationControllerState extends State<NavigationController> {
       case 3:
         switch(subPage) {
           default:
-            return MedicalReminderPage(
-              updateHomeIndex: _updateNavigation,
-              getPrevPageIndex: _getPrevIndex,
-            ); //
+            return FutureBuilder<List<dynamic>>(
+              future: fetchMedicalReminderData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return MedicalReminderPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    reminderList:snapshot.data!,
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
+            );
+
         }// Text('Calendar Page Content');
       default:
         return Container();

@@ -1,17 +1,23 @@
+import 'package:dostx/config.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
+import 'package:intl/intl.dart';
 
 class PsychoEducationPage extends StatefulWidget {
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
+  final websiteList;
   const PsychoEducationPage({
     super.key,
     required this.updateSubPage,
     required this.getPrevSubPage,
+    required this.websiteList,
+
   });
 
   @override
@@ -22,6 +28,8 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
   int modeIndex = 0;
   @override
   Widget build(BuildContext context) {
+    print(widget.websiteList);
+
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),
@@ -144,27 +152,38 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
                 ],
               ),            ),
             const SizedBox(height: 15),
+            const SizedBox(height: 15),
             SizedBox(
-              height: screenHeight(context)*0.765 - 62,
-              child: const SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: PsychoEducationEntry(
-                        title:"Dr. Druid Wensleydale",
-                        description: "Etiam iaculis suscipit lec…",
-                        // imageUrl: 'assets/image/med (2).png',
-                        // tickVisible: false,
-                      ),
-                    )
-
-
-                    // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
-
-
-                  ],
-                ),
+              height: screenHeight(context)*0.765 - 80,
+              child: ListView.builder(
+                itemCount: widget.websiteList.length,
+                  itemBuilder: (context, index){
+                    return Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    minimumSize: Size(50, 30),
+                                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    alignment: Alignment.centerLeft
+                                ),
+                                onPressed: () async {
+                                  final url = widget.websiteList[index]['url'];  // URL to open
+                                  if (await canLaunchUrl(Uri.parse(url))) {
+                                    await launchUrl(Uri.parse(url),  mode: LaunchMode.platformDefault);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
+                                child: PsychoEducationEntry(
+                                  title:widget.websiteList[index]['title'],
+                                  description:DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.parse(widget.websiteList[index]['date_added'])),
+                                  imageUrl: appConfig["serverURL"]+widget.websiteList[index]['image'],
+                                  tickVisible: widget.websiteList[index]['availability'],
+                                ),
+                              ),
+                            );
+                  }
               ),
             ),
           ],
@@ -230,9 +249,15 @@ class _PsychoEducationEntryState extends State<PsychoEducationEntry> {
                       // width: 1
                     )
                   ),
-                  child: (widget.imageUrl!=null)?Image.asset(
+                  child: (widget.imageUrl!=null)?Image.network(
                     widget.imageUrl!,
-                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(decoration: BoxDecoration(
+                        color: const Color(0xFFE0EFED),
+                        borderRadius: BorderRadius.circular(14.4),
+                      border: Border.all(
+                      color: const Color(0xFFE0EFED),),));},
+                    fit: BoxFit.fill,
                   ):null,
                 ),),
                 const SizedBox(width: 16.0),

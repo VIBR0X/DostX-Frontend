@@ -1,4 +1,5 @@
 import 'package:dostx/CustomRouteBuilder.dart';
+import 'package:dostx/config.dart';
 import 'package:dostx/globals.dart';
 import 'package:dostx/pages/otp_page.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ import 'package:dostx/request/signInRequest.dart';
 import 'dart:convert';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
+import 'package:http/http.dart' as http;
+
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
   @override
@@ -236,22 +239,31 @@ class _SignInState extends State<SignIn> {
                                       ),
                                     ),
                                     onPressed: validNumber
-                                        ? () {
-                                            SignInRequest fakeSignInRequest = SignInRequest(
-                                             phoneNumber: _phoneController.text.substring(3)
-                                                );
-          
-                                            String jsonRepresentation = jsonEncode(fakeSignInRequest);
-                                            print(jsonRepresentation);
+                                        ? () async {
+                                            // SignInRequest fakeSignInRequest = SignInRequest(
+                                            //  phoneNumber: _phoneController.text.substring(3)
+                                            //     );
+                                            //
+                                            // String jsonRepresentation = jsonEncode(fakeSignInRequest);
+                                            // print(jsonRepresentation);
                                             // bloc.signInBloc(fakeSignInRequest);
+                                          var body = json.encode( {
+                                            "phone_number":int.parse(_phoneController.text)
+                                          });
+                                          final url=appConfig["serverURL"]+'/auth/register_phone/';
+                                          final uri = Uri.parse(url);
+                                          final response = await http.post(
+                                            uri,
+                                            headers: {"Content-Type": "application/json"},
+                                            body: body,
+                                          );
+                                          if (response.statusCode == 200){
                                             Navigator.push(
                                               context,
                                               createCustomPageRoute(OtpPage(number: _phoneController.text,), context, transitionType: 'no-animation'),
-                                              // MaterialPageRoute(
-                                              //
-                                              //   builder: (context) =>  OtpPage(number: _phoneController.text,),
-                                              // ),
                                             );
+                                          }
+
                                           }
                                         : () {},
           

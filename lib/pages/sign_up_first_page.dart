@@ -1,5 +1,6 @@
 import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import '../palette.dart';
 import '../custom_widgets.dart';
 import 'sign_up_second_page.dart';
@@ -17,6 +18,10 @@ class SignUpFirst extends StatefulWidget {
 
 class _SignUpFirstState extends State<SignUpFirst> {
   String? selectedGender;
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // Get the screen width
@@ -43,6 +48,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                     color: Colors.transparent,
                   ),
                   Container(
+                    width: screenWidth(context),
                     height: MediaQuery.of(context).size.height -
                         (0.36) * screenHeight(context),
 
@@ -114,6 +120,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                               SizedBox(
                                 height: (35/ 896) * screenHeight(context),
                                 child: TextField(
+                                  controller: _firstNameController,
                                   inputFormatters: const [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
@@ -199,6 +206,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                               SizedBox(
                                 height: (35/896)*screenHeight(context),
                                 child: TextField(
+                                  controller: _lastNameController,
                                   inputFormatters: const [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
@@ -282,17 +290,17 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 height: (5 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (24/896)*screenHeight(context),
+                                height: (22/896)*screenHeight(context),
                                 child: Row(
                                   children: [
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['male']!,
-                                      value: 'Male',
-                                      selected: selectedGender == 'Male',
+                                      value: 'M',
+                                      selected: selectedGender == 'M',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Male';
+                                          selectedGender = 'M';
                                         });
                                       },
                                     ),
@@ -302,11 +310,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['female']!,
-                                      value: 'Female',
-                                      selected: selectedGender == 'Female',
+                                      value: 'F',
+                                      selected: selectedGender == 'F',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Female';
+                                          selectedGender = 'F';
                                         });
                                       },
                                     ),
@@ -316,11 +324,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['others']!,
-                                      value: 'Other',
-                                      selected: selectedGender == 'Others',
+                                      value: 'O',
+                                      selected: selectedGender == 'O',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Others';
+                                          selectedGender = 'O';
                                         });
                                       },
                                     ),
@@ -343,7 +351,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 children: [
                                   Text(
                                     translations[LanguageManager()
-                                        .currentLanguage]!['abha_id']!,
+                                        .currentLanguage]!['age']!,
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
@@ -359,6 +367,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                               SizedBox(
                                 height: (35/896)*screenHeight(context),
                                 child: TextField(
+                                  controller: _ageController,
                                   inputFormatters: const [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
@@ -366,7 +375,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                     fontSize: 18*fontHelper(context),
                                   ),
                                   cursorColor: ColorOptions.skin,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.number,
                                   decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.fromLTRB(10, 0, 0, 5),
@@ -436,6 +445,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 ),
                               ),
                               onPressed: () {
+                                var profileBox = Hive.box("ProfileBox");
+                                profileBox.put("first_name", _firstNameController.text);
+                                profileBox.put("last_name", _lastNameController.text);
+                                profileBox.put("age", int.parse(_ageController.text));
+                                profileBox.put("gender", selectedGender);
                                 Navigator.push(
                                   context,
                                   createCustomPageRoute(const SignUpSecond(), context, transitionType: 'slide-in-left')
