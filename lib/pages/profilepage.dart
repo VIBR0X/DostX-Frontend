@@ -35,6 +35,19 @@ class _ProfilePageState extends State<ProfilePage> {
   bool _showSettings = true;
   var tokenBox = Hive.box('TokenBox');
   var profileBox = Hive.box('ProfileBox');
+  String? profile_pic_endpoint;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    try{
+      profile_pic_endpoint= profileBox.get('profile_pic')??"no-image";
+    }
+    catch (e) {
+      profile_pic_endpoint="no-image";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 100,
             width: 100,
             child: Image.network(
-                appConfig["serverURL"]+profileBox.get('profile_pic')!,
+                appConfig["serverURL"]+"/"+profile_pic_endpoint,
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset("assets/profile.png");
               },

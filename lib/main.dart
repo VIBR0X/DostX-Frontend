@@ -13,6 +13,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('TokenBox');
   await Hive.openBox('ProfileBox');
+  await Hive.openBox('EmotionalWheelBox');
 
   mainBloc bloc = mainBloc();
     runApp(

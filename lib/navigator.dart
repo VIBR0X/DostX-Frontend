@@ -46,13 +46,37 @@ class _NavigationControllerState extends State<NavigationController> {
   List<String>_previousSubPageTrack = ["default"];
   var tokenBox = Hive.box('TokenBox');
 
-  void _updateNavigation(int index){
+  void _refreshToken()async{
+    DateTime? lastRefreshTime = await tokenBox.get('last_access_refresh_time');
+    if (lastRefreshTime == null || (DateTime.now().difference(lastRefreshTime).inMinutes >= 30)){
+      print('token is refreshed');
+      var response = await http.post(
+          Uri.parse(appConfig["serverURL"]+'/auth/tokenrefresh/'),
+          body: json.encode({
+            "refresh":tokenBox.get('refresh_token')
+          }),
+          headers: {
+            'Content-Type':'application/json',
+          }
+
+      );
+      var data= jsonDecode(response.body);
+      var accessToken = data['access'];
+      print(accessToken);
+      await tokenBox.put('access_token',accessToken);
+      await tokenBox.put('last_access_refresh_time', DateTime.now());
+    }
+  }
+
+  void _updateNavigation(int index)async{
+    _refreshToken();
     _previousIndex = _selectedIndex;
     setState(() {
       _selectedIndex=index;
     });
   }
   void _updateSubPage(String pageName, [bool overrideTrack = false]){
+    _refreshToken();
     if(overrideTrack){
       _previousSubPageTrack = <String>["default"];
       _previousSubPage = "default";
@@ -329,9 +353,38 @@ class _NavigationControllerState extends State<NavigationController> {
     }
 
     Future<List<dynamic>> fetchMedicalReminderData() async {
-      String url = appConfig["serverURL"]+"/api/notification";
+      String url = appConfig["serverURL"]+"/api/notifications/";
       var header={
-        'Authorization': 'Bearer '+tokenBox.get("refresh_token")
+        'Authorization': 'Bearer '+await tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        print(jsonDecode(response.body));
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchEMWheelData() async {
+      String url = appConfig["serverURL"]+"/api/em_test";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchBriefCopeData() async {
+      String url = appConfig["serverURL"]+"/api/brief_cope";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
 
@@ -385,9 +438,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "emotional_wheel_results":
-            return EmotionalWheelResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchEMWheelData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return EmotionalWheelResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "emotional_wheel_1":
@@ -420,9 +488,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "brief_cope_results":
-            return BriefCopeResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchPsychoEducationData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return BriefCopeResultsPage(
+                  updateSubPage: _updateSubPage,
+                  getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "brief_cope_1":

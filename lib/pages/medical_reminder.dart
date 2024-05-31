@@ -22,6 +22,149 @@ class MedicalReminderPage extends StatefulWidget {
 class _MedicalReminderPageState extends State<MedicalReminderPage> {
   int modeIndex = 0;
 
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _doctorController = TextEditingController();
+  TextEditingController _dayxController = TextEditingController();
+  TimeOfDay timeNewAdd = TimeOfDay.now();
+  String dayCategoryNewAdd = "MORNING";
+
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            Future<void> _selectTime(BuildContext context) async {
+              final TimeOfDay picked = await showTimePicker(
+                initialEntryMode: TimePickerEntryMode.inputOnly,
+                context: context,
+                initialTime: timeNewAdd,
+                helpText: "Select start time",
+              ) ?? timeNewAdd;
+              setState(() {
+                timeNewAdd = picked;
+              });
+            }
+
+            return AlertDialog(
+              title: const Text('Create Reminder'),
+              content: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.4,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(child: Text("Title:")),
+                          Expanded(
+                            child: TextField(
+                              controller: _titleController,
+                              decoration: InputDecoration(
+                                  hintText: "Type title here"),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(child: Text("Doctor:")),
+                          Expanded(
+                            child: TextField(
+                              controller: _doctorController,
+                              decoration: InputDecoration(
+                                  hintText: "Type doctor's name here"),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5,),
+                      Row(
+                        children: [
+                          DropdownButton<String>(
+                            iconEnabledColor: Color(0xFF4D4D4D),
+                            elevation: 0,
+                            underline: null,
+                            value: dayCategoryNewAdd,
+                            iconSize: 25,
+                            isDense: true,
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                fontFamily: 'SFProMedium',
+                                color: const Color(0xFF606060),
+                                letterSpacing: 1.1),
+                            items: ["MORNING", "AFTERNOON", "EVENING"].map<
+                                DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                    ),
+                                  );
+                                }
+                            ).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                dayCategoryNewAdd = value!;
+                              });
+                            },
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              _selectTime(context);
+                            },
+                            child: Row(
+                              children: [
+                                Text(
+                                  "${timeNewAdd.format(context)}",
+                                  style: TextStyle(
+                                      fontSize: 14.0,
+                                      fontFamily: 'SFProMedium',
+                                      color: const Color(0xFF606060),
+                                      letterSpacing: 1.1),
+                                ),
+                                SizedBox(width: 3,),
+                                Icon(
+                                  Icons.edit_calendar,
+                                  color: const Color(0xFF606060),
+                                  size: 14,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: Text('Add'),
+                  onPressed: () {
+                    // String title = _titleController.text;
+                    // String doctor = _doctorController.text;
+                    // Handle the input text here
+                    print("Time: ${timeNewAdd}, Day Category: $dayCategoryNewAdd");
+                    // Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
@@ -74,246 +217,258 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                  width: screenWidth(context)*0.91,
-                  // height: relFont * 20,
-                  decoration: BoxDecoration(
-                      color: const Color(0xFFDBA497),
-                      borderRadius: BorderRadius.circular(20.0)
-                  ),
-                  child:  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                          child: Center(
-                              child: TextButton(
-                                onPressed: (){setState(() {
-                                  modeIndex=0;
-                                });},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: modeIndex==0?Color(0xFFFFFFFF):Colors.transparent,
-                                      borderRadius: BorderRadius.circular(15)
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                      child: Text(
-                                        translations[LanguageManager().currentLanguage]!['upcoming']!,
-                                        style: TextStyle(
-                                            fontSize: relFont * 12.0,
-                                            fontFamily: 'SFProMedium',
-                                            color: const Color(0xFF323736),
-                                            letterSpacing: 1.1),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                    width: screenWidth(context)*0.91,
+                    // height: relFont * 20,
+                    decoration: BoxDecoration(
+                        color: const Color(0xFFDBA497),
+                        borderRadius: BorderRadius.circular(20.0)
+                    ),
+                    child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                            child: Center(
+                                child: TextButton(
+                                  onPressed: (){setState(() {
+                                    modeIndex=0;
+                                  });},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: modeIndex==0?Color(0xFFFFFFFF):Colors.transparent,
+                                        borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          translations[LanguageManager().currentLanguage]!['upcoming']!,
+                                          style: TextStyle(
+                                              fontSize: relFont * 12.0,
+                                              fontFamily: 'SFProMedium',
+                                              color: const Color(0xFF323736),
+                                              letterSpacing: 1.1),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              )
-                          )
-                      ),
-                      Expanded(
-                          child: Center(
-                              child: TextButton(
-                                onPressed: (){setState(() {
-                                  modeIndex=1;
-                                });},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: modeIndex==1?Color(0xFFFFFFFF):Colors.transparent,
-                                      borderRadius: BorderRadius.circular(15)
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 8),
-                                      child: Text(
-                                        translations[LanguageManager().currentLanguage]!['completed']!,
-                                        style: TextStyle(
-                                            fontSize: relFont * 12.0,
-                                            fontFamily: 'SFProMedium',
-                                            color: const Color(0xFF323736),
-                                            letterSpacing: 1.1),
+                                )
+                            )
+                        ),
+                        Expanded(
+                            child: Center(
+                                child: TextButton(
+                                  onPressed: (){setState(() {
+                                    modeIndex=1;
+                                  });},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: modeIndex==1?Color(0xFFFFFFFF):Colors.transparent,
+                                        borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 8),
+                                        child: Text(
+                                          translations[LanguageManager().currentLanguage]!['completed']!,
+                                          style: TextStyle(
+                                              fontSize: relFont * 12.0,
+                                              fontFamily: 'SFProMedium',
+                                              color: const Color(0xFF323736),
+                                              letterSpacing: 1.1),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              )
-                          )
-                      ),
-                    ],
-                  ),
-                )
-                ],
+                                )
+                            )
+                        ),
+                      ],
+                    ),
+                  )
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 15),
             Container(
-              height: screenHeight(context)*0.765 - 62,
+              height: screenHeight(context)*0.765 - 76,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                    child: Container(
-                      padding: const EdgeInsets.all(16.0),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFE0EFED),
-                        borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Color(0x0A000000),
-                                offset: Offset(0,2),
-                                blurRadius: 48,
-                                spreadRadius: 10
-                            )
-                          ]
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: screenWidth(context) * 0.13,
-                                  // height: screenHeight(context) * 0.09,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      padding: EdgeInsets.zero,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                        side: const BorderSide(color: Color(0xFF707070), width: 1),
+                  TextButton(
+
+                    style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        minimumSize: Size(50, 30),
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        alignment: Alignment.centerLeft,
+                    ),
+                    onPressed:(){ _showDialog();},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE0EFED),
+                          borderRadius: BorderRadius.circular(20.0),
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Color(0x0A000000),
+                                  offset: Offset(0,2),
+                                  blurRadius: 48,
+                                  spreadRadius: 10
+                              )
+                            ]
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: screenWidth(context) * 0.13,
+                                    // height: screenHeight(context) * 0.09,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        padding: EdgeInsets.zero,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(12),
+                                          side: const BorderSide(color: Color(0xFF707070), width: 1),
+
+                                        ),
+                                        backgroundColor: Colors.transparent,
+                                        elevation: 0,
 
                                       ),
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-
+                                      onPressed: (){},
+                                      child: Image.asset(
+                                        "assets/image/med (1).png",
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
-                                    onPressed: (){},
-                                    child: Image.asset(
-                                      "assets/image/med (1).png",
-                                      fit: BoxFit.contain,
+                                    // child: Image.asset(
+                                    //   "assets/image/emo_wheel.png",
+                                    //   fit: BoxFit.contain,
+                                    // ),
+                                  ),
+                                  const SizedBox(width: 16.0),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          "Click to add medicine",
+                                          style: TextStyle(
+                                              fontSize: relFont * 15.0,
+                                              fontFamily: 'SFProMedium',
+                                              color: const Color(0xFF323736),
+                                              letterSpacing: 1.1),
+                                          // textAlign: TextAlign.center,
+                                        ),
+                                        // const SizedBox(height: 10,),
+                                        Text(
+                                          "By Dr._________",
+                                          style: TextStyle(
+                                              fontSize: relFont * 12.0,
+                                              fontFamily: 'SFProMedium',
+                                              color: const Color(0xFF606060),
+                                              letterSpacing: 1.1),
+                                          // textAlign: TextAlign.center,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  // child: Image.asset(
-                                  //   "assets/image/emo_wheel.png",
-                                  //   fit: BoxFit.contain,
-                                  // ),
-                                ),
-                                const SizedBox(width: 16.0),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 10,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF8FBFB),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        "Click to add medicine",
-                                        style: TextStyle(
-                                            fontSize: relFont * 15.0,
-                                            fontFamily: 'SFProMedium',
-                                            color: const Color(0xFF323736),
-                                            letterSpacing: 1.1),
-                                        // textAlign: TextAlign.center,
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+                                        child: Container(
+                                          decoration:  BoxDecoration(
+                                            color: const Color(0xFFD8D8D8),
+                                            borderRadius: BorderRadius.circular(12)
+
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                    "Morning",
+                                                    style: TextStyle(
+                                                        fontSize: relFont * 12.0,
+                                                        fontFamily: 'SFProMedium',
+                                                        color: const Color(0xFF606060),
+                                                        letterSpacing: 1.1),
+                                                    // textAlign: TextAlign.center,
+                                                ),
+                                                SizedBox(width: screenWidth(context)*0.05,),
+                                                Icon(Icons.arrow_drop_down)
+                                              ],
+                                            ),
+                                          )
+                                        ),
                                       ),
-                                      // const SizedBox(height: 10,),
-                                      Text(
-                                        "By Dr._________",
-                                        style: TextStyle(
-                                            fontSize: relFont * 12.0,
-                                            fontFamily: 'SFProMedium',
-                                            color: const Color(0xFF606060),
-                                            letterSpacing: 1.1),
-                                        // textAlign: TextAlign.center,
-                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                                        child: Container(
+                                          child: Text(
+                                              "02:30 PM",
+                                              style: TextStyle(
+                                                  fontSize: relFont * 12.0,
+                                                  fontFamily: 'SFProMedium',
+                                                  color: const Color(0xFF606060),
+                                                  letterSpacing: 1.1),
+                                              // textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        )
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF8FBFB),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-                                      child: Container(
-                                        decoration:  BoxDecoration(
-                                          color: const Color(0xFFD8D8D8),
-                                          borderRadius: BorderRadius.circular(12)
-
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                  "Morning",
-                                                  style: TextStyle(
-                                                      fontSize: relFont * 12.0,
-                                                      fontFamily: 'SFProMedium',
-                                                      color: const Color(0xFF606060),
-                                                      letterSpacing: 1.1),
-                                                  // textAlign: TextAlign.center,
-                                              ),
-                                              SizedBox(width: screenWidth(context)*0.05,),
-                                              Icon(Icons.arrow_drop_down)
-                                            ],
-                                          ),
-                                        )
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                                      child: Container(
-                                        child: Text(
-                                            "02:30 PM",
-                                            style: TextStyle(
-                                                fontSize: relFont * 12.0,
-                                                fontFamily: 'SFProMedium',
-                                                color: const Color(0xFF606060),
-                                                letterSpacing: 1.1),
-                                            // textAlign: TextAlign.center,
-                                          ),
-                                        )
-                                      )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF8FBFB),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 11),
-                                child: Text(
-                                    "Day x0",
-                                  style: TextStyle(
-                                      fontSize: relFont * 12.0,
-                                      fontFamily: 'SFProMedium',
-                                      color: const Color(0xFF606060),
-                                      letterSpacing: 1.1),
-                                  // textAlign: TextAlign.center,
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF8FBFB),
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
-                                ),
-                              )
-                            ],
-                          )
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 11),
+                                  child: Text(
+                                      "Day x0",
+                                    style: TextStyle(
+                                        fontSize: relFont * 12.0,
+                                        fontFamily: 'SFProMedium',
+                                        color: const Color(0xFF606060),
+                                        letterSpacing: 1.1),
+                                    // textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

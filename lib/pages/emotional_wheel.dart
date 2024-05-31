@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import '../globals.dart ';
 import '../palette.dart';
 import '../custom_widgets.dart';
@@ -19,7 +20,7 @@ class EmotionalWheel extends StatefulWidget {
 }
 
 class _EmotionalWheelState extends State<EmotionalWheel> {
-  String? emotion;
+  var embox = Hive.box('EmotionalWheelBox');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +105,9 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                                 ),
                               ),
       
-                              QuestionWithEmotions(question: translations[LanguageManager().currentLanguage]!['emotional_wheel_question_1']!,)
+                              QuestionWithEmotions(
+                                question: translations[LanguageManager().currentLanguage]!['emotional_wheel_question_1']!,
+                              )
       
                             ],
                           ),
@@ -128,7 +131,11 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                                 ),
                               ),
                               onPressed: () {
-                                widget.updateSubPage("emotional_wheel_2");
+                                setState(() {
+                                  String primaryEmotion = embox.get("primary_emotion")??"";
+                                  if (primaryEmotion != "" ){
+                                    widget.updateSubPage("emotional_wheel_2");}
+                                });
                               },
                               child:  Text(
                                 translations[LanguageManager().currentLanguage]!['submit']!,
@@ -229,6 +236,161 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class QuestionWithEmotions extends StatefulWidget {
+  final String question;
+
+  const QuestionWithEmotions({
+    Key? key,
+    required this.question,
+  }) : super(key: key);
+
+  @override
+  State<QuestionWithEmotions> createState() => _QuestionWithEmotionsState();
+}
+
+class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
+  var embox = Hive.box('EmotionalWheelBox');
+  @override
+  Widget build(BuildContext context) {
+    String? emotion = embox.get('primary_emotion')??"";
+    return SizedBox(
+      width: (345 / 414) * MediaQuery.of(context).size.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: screenHeight(context) * (25 / 895)),
+          Text(
+            widget.question,
+            style: TextStyle(
+              color: Color(0xffE5A194),
+              fontFamily: 'JostMedium',
+              fontSize: fontHelper(context) * 14,
+            ),
+          ),
+          SizedBox(height: 5),
+          Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['happy']!,
+                      value: 'Happy',
+                      selected: emotion == 'Happy',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Happy';
+                          embox.put("primary_emotion", emotion);
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['surprise']!,
+                      value: 'Surprise',
+                      selected: emotion == 'Surprise',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Surprise';
+                          embox.put("primary_emotion", emotion);
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['disgusted']!,
+                      value: 'Disgusted',
+                      selected: emotion == 'Disgusted',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Disgusted';
+                          embox.put("primary_emotion", emotion);
+
+                        });
+                      },
+                    ),
+                  ),Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['fearful']??'Fearful',
+                      value: 'Fearful',
+                      selected: emotion == 'Fearful',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Fearful';
+                          embox.put("primary_emotion", emotion);
+
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: screenWidth(context) * 0.1),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['bad']!,
+                      value: 'Bad',
+                      selected: emotion == 'Bad',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Bad';
+                          embox.put("primary_emotion", emotion);
+
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['angry']!,
+                      value: 'Angry',
+                      selected: emotion == 'Angry',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Angry';
+                          embox.put("primary_emotion", emotion);
+
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    child: CustomRadioButtonb(
+                      text: translations[LanguageManager().currentLanguage]!['sad']!,
+                      value: 'Sad',
+                      selected: emotion == 'Sad',
+                      onSelect: () {
+                        setState(() {
+                          emotion = 'Sad';
+                          embox.put("primary_emotion", emotion);
+
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

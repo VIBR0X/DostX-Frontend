@@ -560,19 +560,28 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 }
                               }
                               String image_path = profileBox.get('profile_pic_local_path');
-                              final File file = File(image_path);
-                              final Uint8List fileBytes = await file.readAsBytes() ;
-                              request.files.add(
-                                  http.MultipartFile.fromBytes(
+                              if(image_path!="") {
+                                final File file = File(image_path);
+                                final Uint8List fileBytes = await file
+                                    .readAsBytes();
+                                request.files.add(
+                                    http.MultipartFile.fromBytes(
                                       'profile_pic',
                                       fileBytes,
-                                      filename: profileBox.get('phone_number')+'-'+profileBox.get('first_name')+' '+profileBox.get('last_name')+'.'+image_path.split('.').last,
-                                      contentType: MediaType('image', 'jpeg'),));
-
+                                      filename: profileBox.get('phone_number') +
+                                          '-' + profileBox.get('first_name') +
+                                          ' ' + profileBox.get('last_name') +
+                                          '.' + image_path
+                                          .split('.')
+                                          .last,
+                                      contentType: MediaType(
+                                          'image', 'jpeg'),));
+                              }
                               var response = await request.send();
                               var responseData = await response.stream.bytesToString();
                               var decodedResponse = jsonDecode(responseData);
-                              print(decodedResponse['user_profile']);
+                              print(decodedResponse);
+                              print(response.statusCode);
                               if (response.statusCode == 201){
                                 tokenBox.put('profile_available',true);
                                 for (var entry in decodedResponse['user_profile']!.entries){

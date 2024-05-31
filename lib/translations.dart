@@ -103,6 +103,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "Anxious",
     'angry': "Angry",
     'bad': "Bad",
+    'sad':'Sad',
 
     // burden question options with 3 options
     'no_burden': 'No Burden',
@@ -262,6 +263,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "चिंतित",
     'angry': "रोषित",
     'bad': "बुरा",
+    'sad':'उदास',
 
     // burden question options with 3 options
     'no_burden': 'कोई बोझ नहीं',
@@ -417,6 +419,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "चिंतित",
     'angry': "रागावला",
     'bad': "वाईट",
+    'sad':'दुःखी',
 
 // बोझ प्रश्न पर्यायांसह
     'no_burden': 'कोणतेही बोझ नाही',
