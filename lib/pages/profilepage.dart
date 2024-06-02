@@ -42,10 +42,10 @@ class _ProfilePageState extends State<ProfilePage> {
     // TODO: implement initState
     super.initState();
     try{
-      profile_pic_endpoint= profileBox.get('profile_pic')??"no-image";
+      profile_pic_endpoint= profileBox.get('profile_pic')??"/no-image";
     }
     catch (e) {
-      profile_pic_endpoint="no-image";
+      profile_pic_endpoint="/no-image";
     }
   }
 
@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 100,
             width: 100,
             child: Image.network(
-                appConfig["serverURL"]+"/"+profile_pic_endpoint,
+                appConfig["serverURL"]+profile_pic_endpoint,
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset("assets/profile.png");
               },

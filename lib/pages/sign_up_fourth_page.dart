@@ -538,9 +538,9 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               var profileBox = Hive.box('ProfileBox');
                               var tokenBox = Hive.box('TokenBox');
                               profileBox.put("job_loss",jobLoss=="Yes"?true:false);
-                              profileBox.put("diagnosis",diagnosis);
-                              profileBox.put("percieved_income_loss",income);
-                              profileBox.put("status_of_person_with_disorder", status);
+                              profileBox.put("diagnosis",diagnosis??"");
+                              profileBox.put("percieved_income_loss",income??"");
+                              profileBox.put("status_of_person_with_disorder", status??"");
                               var uri = Uri.parse(appConfig["serverURL"]+'/auth/signup/');
                               var request = http.MultipartRequest('POST', uri);
                               request.headers['Authorization'] = 'Bearer '+tokenBox.get("access_token");

@@ -26,6 +26,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: Color(0xFFF8F8F8),
@@ -103,14 +104,26 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "${translations[LanguageManager().currentLanguage]!['date']!} :",
-                                  style: TextStyle(
-                                      fontSize: relFont * 15.0,
-                                      fontFamily: 'SFProMedium',
-                                      color: Color(0xFF323736),
-                                      letterSpacing: 1.1),
-                                  // textAlign: TextAlign.center,
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${translations[LanguageManager().currentLanguage]!['date']!} :",
+                                      style: TextStyle(
+                                          fontSize: relFont * 15.0,
+                                          fontFamily: 'SFProMedium',
+                                          color: Color(0xFF323736),
+                                          letterSpacing: 1.1),
+                                      // textAlign: TextAlign.center,
+                                    ),
+                                    Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['date'])):"Please select a result",
+                                      style: TextStyle(
+                                          fontSize: relFont * 15.0,
+                                          fontFamily: 'SFProMedium',
+                                          color: Color(0xFF323736),
+                                          letterSpacing: 1.1),
+                                      // textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
@@ -174,8 +187,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                             // );
                               },
                             child: Text(
-                              translations[LanguageManager().currentLanguage]![
-                              'retake']!,
+                              (widget.results.length==0)?translations[LanguageManager().currentLanguage]!['proceed']! : translations[LanguageManager().currentLanguage]!['retake']!,
                               style: TextStyle(
                                 fontSize: relFont * 14,
                                 fontFamily: "JostBold",
@@ -203,7 +215,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                       child: ReusableTile(
                         title: 'Brief-COPE',
                         author: 'By Dr. Someone Someone',
-                        testDate:'',
+                        testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date'])),
                         buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                         onPressed: () {
                           setState(() {

@@ -615,10 +615,10 @@ class _SignUpThirdState extends State<SignUpThird> {
                               ),
                               onPressed: () {
                                 var profileBox = Hive.box("ProfileBox");
-                                profileBox.put("mean_duration_of_care", _hoursSpentController.text);
-                                profileBox.put("mean_duration_of_illness", _illnessDurationController.text);
-                                profileBox.put("marital_status",maritalStatus);
-                                profileBox.put("cater_client_relationship", relation);
+                                profileBox.put("mean_duration_of_care", _hoursSpentController.text??"");
+                                profileBox.put("mean_duration_of_illness", _illnessDurationController.text??"");
+                                profileBox.put("marital_status",maritalStatus??"");
+                                profileBox.put("cater_client_relationship", relation??"");
 
                                 Navigator.push(
                                   context,

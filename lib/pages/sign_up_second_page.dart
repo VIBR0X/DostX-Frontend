@@ -530,11 +530,11 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 ),
                                 onPressed: () {
                                   var profileBox = Hive.box("ProfileBox");
-                                  profileBox.put("address", _addressController.text);
-                                  profileBox.put("postal_code", _postalCodeController.text);
-                                  profileBox.put("state", _stateController.text);
-                                  profileBox.put("country", _countryController.text);
-                                  profileBox.put("profile_pic_local_path", _pickedImagePath);
+                                  profileBox.put("address", _addressController.text??"");
+                                  profileBox.put("postal_code", _postalCodeController.text??"");
+                                  profileBox.put("state", _stateController.text??"");
+                                  profileBox.put("country", _countryController.text??"");
+                                  profileBox.put("profile_pic_local_path", _pickedImagePath??"");
                                   Navigator.push(
                                     context,
                                     createCustomPageRoute(const SignUpThird(), context, transitionType: 'slide-in-left')

@@ -339,11 +339,12 @@ class _NavigationControllerState extends State<NavigationController> {
   Widget _buildBodyContent(int index, String subPage) {
 
     Future<List<dynamic>> fetchPsychoEducationData() async {
-      String url = appConfig["serverURL"]+"/api/websites";
+      String url = appConfig["serverURL"]+"/api/websites/";
       var header={
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
+      print(response.statusCode);
 
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
@@ -382,12 +383,40 @@ class _NavigationControllerState extends State<NavigationController> {
     }
 
     Future<List<dynamic>> fetchBriefCopeData() async {
-      String url = appConfig["serverURL"]+"/api/brief_cope";
+      String url = appConfig["serverURL"]+"/api/brief_cope_test_full/";
       var header={
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
 
+    Future<List<dynamic>> fetchZaritData() async {
+      String url = appConfig["serverURL"]+"/api/zaritscale/";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchFamilyBurdenData() async {
+      String url = appConfig["serverURL"]+"/api/family_burden_scale/";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      print(response.statusCode);
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
@@ -420,9 +449,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "zarit_burden_results":
-            return ZaritBurdenResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchZaritData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return ZaritBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "zarit_scale_1":
@@ -471,9 +515,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "family_burden_results":
-            return FamilyBurdenResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchFamilyBurdenData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return FamilyBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "family_burden_1":
@@ -489,7 +548,7 @@ class _NavigationControllerState extends State<NavigationController> {
 
           case "brief_cope_results":
             return FutureBuilder<List<dynamic>>(
-              future: fetchPsychoEducationData(),
+              future: fetchBriefCopeData(),
 
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {

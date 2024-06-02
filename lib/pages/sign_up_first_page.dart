@@ -446,10 +446,10 @@ class _SignUpFirstState extends State<SignUpFirst> {
                               ),
                               onPressed: () {
                                 var profileBox = Hive.box("ProfileBox");
-                                profileBox.put("first_name", _firstNameController.text);
-                                profileBox.put("last_name", _lastNameController.text);
-                                profileBox.put("age", int.parse(_ageController.text));
-                                profileBox.put("gender", selectedGender);
+                                profileBox.put("first_name", _firstNameController.text??"");
+                                profileBox.put("last_name", _lastNameController.text??"");
+                                profileBox.put("age", int.parse(_ageController.text??""));
+                                profileBox.put("gender", selectedGender??"");
                                 Navigator.push(
                                   context,
                                   createCustomPageRoute(const SignUpSecond(), context, transitionType: 'slide-in-left')
