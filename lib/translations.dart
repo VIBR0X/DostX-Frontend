@@ -62,13 +62,14 @@ Map<String, Map<String, String>> translations = {
     'consent_text':
         'This is to request your permission to collect data for screening, triaging, risk assessment and AI based symptom assessment purposes. The aim is to make healthcare navigation easier through digital pathways for mental and physical health problems. The organization collecting data are HIPAA compliant and are updating the provisions in the Digital personal data protection bill 2022. The method that will be used to meet this purpose are completing socio demographic forms , clinical risk scales and AI based tools. Your personal identifiers will remain anonymous and confidential. Your participation might help understand population health, perform analytics and health navigation better. You can withdraw from the screening at any point of time and your data will be anonymized. In the event you choose to withdraw from the screening in between all information you provide will be destroyed and omitted. This would not disturb healthcare you are seeking or providing currently or in future with the healthcare organization. There will be no direct benefits to you. There are no monetary benefits for participating in the screening. There will be no cost to you for participating in this screening but there could be charges for using the AI tool and related services.\n\nThis is to confirm that you are above 18 years of age. The alternative is not to participate in this screening. Any studies published will go through an ethics committee. I understand that if I inform the healthcare digital navigator that myself or someone else is at risk of harm they may have to report this to the relevant authorities - they will discuss this with me first but may be required to report with or without my permission. You might get a further direction to access the healthcare providers through telemedicine route and /or physical connect which would be your responsibility to access after screening information or risk is indicated. You might get reminder for parameters in case they are above range in case after your permission to get a follow up through a customer relationship management system. I am fully aware that my participation is voluntary and that I can withdraw from the study at any time, without giving any reason.',
     'accept_terms': 'By accepting you are agreeing to all terms and conditions',
+
+    //zarit_scale
     'question1': "Do you feel you don’t have enough time for yourself?",
-    'question2':
-        "Do you feel stressed between caring and meeting \n other responsibilities?",
+    'question2': "Do you feel angry when you are around your relative?",
     'question3':
-        "Do you feel stressed between caring and meeting\n other responsibilities?",
+        "Do you feel stressed between caring and meeting other responsibilities?",
     'question4':
-        "Do you feel your relative affects your relationship\n with others in a negative way?",
+        "Do you feel your relative affects your relationship with others in a negative way?",
     'question5': "Do you feel strained when are around your relative?",
     'question6':
         "Do you feel your health has suffered because of your involvement with your relative?",
@@ -103,7 +104,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "Anxious",
     'angry': "Angry",
     'bad': "Bad",
-    'sad':'Sad',
+    'sad': 'Sad',
 
     // burden question options with 3 options
     'no_burden': 'No Burden',
@@ -119,6 +120,7 @@ Map<String, Map<String, String>> translations = {
     'zarit_scale_intro_text':
         'The following is a list of statements that reflect how people sometimes feel when taking care of another person.\n\nAfter reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.',
 
+    //faamily_burden_scale
     'family_burden_scale_form_title': 'Family Burden Scale',
     'family_burden_scale_intro':
         'The following is a list of statements that reflect how people sometimes feel when taking care of another person.',
@@ -128,17 +130,55 @@ Map<String, Map<String, String>> translations = {
         'Do you feel embarrassed your relative’s behavior?',
     'family_burden_scale_question_3':
         'Expenditure incurred due to patients and treatments and its effects on family finances',
+    'family_burden_scale_question_4':
+        "Do you feel strained when are around your relative?",
+    'family_burden_scale_question_5':
+        "Do you feel your health has suffered because of your involvement with your relative?",
+    'family_burden_scale_question_6':
+        "Do you feel you don’t have as much privacy as you would like, because of your relative?",
+    'family_burden_scale_question_7':
+        "Do you feel your social life has suffered because you are caring for your relative?",
+    'family_burden_scale_question_8':
+        "Do you feel you have lost control of your life since your relative’s illness?",
+    'family_burden_scale_question_9':
+        "Do you feel uncertain about what to do about relative?",
+    'family_burden_scale_question_10':
+        "Do you feel you should be doing more for your relative?",
+    'family_burden_scale_question_11':
+        "Do you feel you could do a better job in caring for your relative?",
 
+    //emo_wheel
     'emotional_wheel_form_title': "Emotional Wheel",
     'emotional_wheel_intro':
         'The following is a list of statements that reflect how people sometimes feel when taking care of another person.\n\nAfter reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.',
     'emotional_wheel_question_1': "How are you feeling today?",
+    'emotional_wheel_question_2':
+        "What emotion are you feeling from the wheel 02?",
+    'emotional_wheel_question_3':
+        "What emotion are you feeling from the wheel 03?",
 
+    //brief_cope scale
     'brief_cope_form_title': "Brief - COPE",
     'brief_cope_intro':
         'The Brief-COPE is a 28 item self-report questionnaire designed to measure effective and ineffective ways to cope with a stressful life event. “Coping” is defined broadly as an effort used to minimise distress associated with negative life experiences.\nThe following questions ask how you have sought to cope with a hardship in your life. Read the statements and indicate how much you have been using each coping style',
     'brief_cope_question_1':
         '1. I’ve been turning to work or other activities to take my mind off things',
+    'brief_cope_question_2':
+        "2. Do you feel strained when are around your relative?",
+    'brief_cope_question_3':
+        "3. Do you feel your health has suffered because of your involvement with your relative?",
+    'brief_cope_question_4':
+        "4. Do you feel you don’t have as much privacy as you would like, because of your relative?",
+    'brief_cope_question_5':
+        "5. Do you feel your social life has suffered because you are caring for your relative?",
+    'brief_cope_question_6':
+        "6. Do you feel you have lost control of your life since your relative’s illness?",
+    'brief_cope_question_7':
+        "7. Do you feel uncertain about what to do about relative?",
+    'brief_cope_question_8':
+        "8. Do you feel you should be doing more for your relative?",
+    'brief_cope_question_9':
+        "9. Do you feel you could do a better job in caring for your relative?",
 
     'retake': "RETAKE",
     'assessment-text': 'Your latest assessment result will be displayed here',
@@ -146,6 +186,7 @@ Map<String, Map<String, String>> translations = {
     'about': 'About',
     'check-result': "Check Result",
 
+    // results
     'emotional_wheel_results': "Emotional Wheel",
     'zarit_burden_results':
         "The Zarit Burden Interview Assessing Caregiver Burden",
@@ -222,7 +263,7 @@ Map<String, Map<String, String>> translations = {
         'इसे स्वीकार करने के लिए आप सभी नियमों और शर्तों से सहमत हो रहे हैं',
     'question1': "क्या आपको लगता है कि आपके पास अपने लिए पर्याप्त समय नहीं है?",
     'question2':
-        "क्या आपको देखभाल और अन्य जिम्मेदारियों को पूरा करने के बीच तनाव महसूस होता है?",
+        "जब आप अपने रिश्तेदार के आसपास होते हैं तो क्या आपको गुस्सा आता है?",
     'question3':
         "क्या आपको देखभाल और अन्य जिम्मेदारियों को पूरा करने के बीच तनाव महसूस होता है?",
     'question4':
@@ -263,7 +304,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "चिंतित",
     'angry': "रोषित",
     'bad': "बुरा",
-    'sad':'उदास',
+    'sad': 'उदास',
 
     // burden question options with 3 options
     'no_burden': 'कोई बोझ नहीं',
@@ -279,6 +320,7 @@ Map<String, Map<String, String>> translations = {
     'zarit_scale_intro_text':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।\n\nप्रत्येक वाक्यांश को पढ़ने के बाद, इन भावनाओं को आप कितनी बार महसूस करते हैं उसका पता लगाने के लिए, इन भावनाओं की आवधिका को घेर करने के लिए उन्हें गोलाकार करें।',
 
+    //family_burden_scale
     'family_burden_scale_form_title': 'परिवार का बोझ स्केल',
     'family_burden_scale_intro':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।',
@@ -288,17 +330,55 @@ Map<String, Map<String, String>> translations = {
         'क्या आप अपने रिश्तेदार के व्यवहार से शर्मिंदा महसूस करते हैं?',
     'family_burden_scale_question_3':
         'रोगी और उपचार के लागत और परिवार की वित्तीय स्थिति पर उसका प्रभाव',
+    'family_burden_scale_question_4':
+        "क्या आप अपने रिश्तेदारों के आसपास होने पर तनाव महसूस करते हैं?",
+    'family_burden_scale_question_5':
+        "क्या आपको लगता है कि आपके रिश्तेदार के साथ जुड़ाव के कारण आपके स्वास्थ्य पर असर पड़ा है?",
+    'family_burden_scale_question_6':
+        "क्या आपको लगता है कि आपके रिश्तेदार के कारण आपके पास उतनी गोपनीयता नहीं है जितनी आप चाहते हैं?",
+    'family_burden_scale_question_7':
+        "क्या आपको लगता है कि आपके रिश्तेदार की देखभाल करने के कारण आपका सामाजिक जीवन प्रभावित हुआ है?",
+    'family_burden_scale_question_8':
+        "क्या आपको लगता है कि आपके रिश्तेदार की बीमारी के बाद से आपने अपने जीवन पर नियंत्रण खो दिया है?",
+    'family_burden_scale_question_9':
+        "क्या आप इस बारे में अनिश्चित महसूस करते हैं कि रिश्तेदार के बारे में क्या करें?",
+    'family_burden_scale_question_10':
+        "क्या आपको लगता है कि आपको अपने रिश्तेदार के लिए और अधिक प्रयास करना चाहिए?",
+    'family_burden_scale_question_11':
+        "क्या आपको लगता है कि आप अपने रिश्तेदार की देखभाल में बेहतर काम कर सकते हैं?",
 
+    //emo_wheel
     'emotional_wheel_form_title': "भावनात्मक चक्र",
     'emotional_wheel_intro':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।\n\nप्रत्येक वाक्यांश को पढ़ने के बाद, इन भावनाओं को आप कितनी बार महसूस करते हैं उसका पता लगाने के लिए, इन भावनाओं की आवधिका को घेर करने के लिए उन्हें गोलाकार करें।',
     'emotional_wheel_question_1': "आज आप कैसा महसूस कर रहे हैं?",
+    'emotional_wheel_question_2':
+        "पहिया 02 से आप कौन सी भावना महसूस कर रहे हैं?",
+    'emotional_wheel_question_3':
+        "पहिया 03 से आप कौन सी भावना महसूस कर रहे हैं?",
 
+    //brief_cope scale
     'brief_cope_form_title': "संक्षिप्त - COPE",
     'brief_cope_intro':
         'संक्षेपित-COPE एक 28 आइटम स्व-रिपोर्ट प्रश्नावली है जो एक तनावपूर्ण जीवन घटना के साथ कैसे समझदारी और असमझदारी के ढंगों को मापने के लिए डिज़ाइन की गई है। “सामना” को व्यापक रूप से एक प्रयास के रूप में परिभाषित किया गया है जो नकारात्मक जीवन अनुभवों के साथ आँखों में पानी भरने का प्रयास करता है।\nनिम्नलिखित प्रश्न आपसे पूछते हैं कि आपने अपने जीवन में किसी कठिनाई का सामना कैसे किया है। वाक्यों को पढ़ें और इस बताएं कि आपने प्रत्येक सहनशीलता के स्टाइल का कितना प्रयोग किया है',
     'brief_cope_question_1':
         '1. मैं काम या अन्य गतिविधियों का इस्तेमाल कर रहा हूँ कि अपनी बातों को भूल जाऊ',
+    'brief_cope_question_2':
+        "2. क्या आप अपने रिश्तेदारों के आसपास होने पर तनाव महसूस करते हैं?",
+    'brief_cope_question_3':
+        "3. क्या आपको लगता है कि आपके रिश्तेदार के साथ जुड़ाव के कारण आपके स्वास्थ्य पर असर पड़ा है?",
+    'brief_cope_question_4':
+        "4. क्या आपको लगता है कि आपके रिश्तेदार के कारण आपके पास उतनी गोपनीयता नहीं है जितनी आप चाहते हैं?",
+    'brief_cope_question_5':
+        "5. क्या आपको लगता है कि आपके रिश्तेदार की देखभाल करने के कारण आपका सामाजिक जीवन प्रभावित हुआ है?",
+    'brief_cope_question_6':
+        "6. क्या आपको लगता है कि आपके रिश्तेदार की बीमारी के बाद से आपने अपने जीवन पर नियंत्रण खो दिया है?",
+    'brief_cope_question_7':
+        "7. क्या आप इस बारे में अनिश्चित महसूस करते हैं कि रिश्तेदार के बारे में क्या करें?",
+    'brief_cope_question_8':
+        "8. क्या आपको लगता है कि आपको अपने रिश्तेदार के लिए और अधिक प्रयास करना चाहिए?",
+    'brief_cope_question_9':
+        "9. क्या आपको लगता है कि आप अपने रिश्तेदार की देखभाल में बेहतर काम कर सकते हैं?",
 
     'retake': "पुनः लेना",
     'assessment-text': 'आपका नवीनतम मूल्यांकन परिणाम यहाँ प्रदर्शित किया जाएगा',
@@ -356,7 +436,8 @@ Map<String, Map<String, String>> translations = {
     'friend': 'मित्र',
     'sibling': 'भाऊ-बहिण',
     'non_relation': 'गैर संबंधी',
-    'mean_duration_of_illness': 'विकृत व्यक्तीसोबत बीमारीची सरासरी अवधी (दिवसात)',
+    'mean_duration_of_illness':
+        'विकृत व्यक्तीसोबत बीमारीची सरासरी अवधी (दिवसात)',
     'mean_hours_spent': 'विकृत व्यक्तीसोबत बितालेल्या औसत तास',
     'job_loss': 'देखभाल करण्यासाठी नोकरीचा गम:',
     'income_inadequacy': 'देखभाल करण्यासाठी ओळखलेली उत्पन्न:',
@@ -379,7 +460,7 @@ Map<String, Map<String, String>> translations = {
     'accept_terms': 'सर्व नियम आणि अटींच्या स्वीकारल्यामुळे आपण सहमत आहात',
     'question1': "आपल्याकडे स्वत:साठी काही काळ नसून वाटतंय का?",
     'question2':
-        "काळजी घेण्यासाठी आणि इतर प्राधान्ये पूर्ण करण्यासाठी आपल्याला तक्रार का होतं?",
+        "जेव्हा तुम्ही तुमच्या नातेवाईकाभोवती असता तेव्हा तुम्हाला राग येतो का?",
     'question3':
         "काळजी घेण्यासाठी आणि इतर प्राधान्ये पूर्ण करण्यासाठी आपल्याला तक्रार का होतं?",
     'question4':
@@ -419,7 +500,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "चिंतित",
     'angry': "रागावला",
     'bad': "वाईट",
-    'sad':'दुःखी',
+    'sad': 'दुःखी',
 
 // बोझ प्रश्न पर्यायांसह
     'no_burden': 'कोणतेही बोझ नाही',
@@ -435,6 +516,7 @@ Map<String, Map<String, String>> translations = {
     'zarit_scale_intro_text':
         'खालील वाक्यांची यादी आहे जे माणसांना कधीकधी एका इतर व्यक्तीवर काळजी करताना कसे वाटतात.\n\nप्रत्येक वाक्य वाचताना, तुम्हाला वाटते की आपण आणि आपल्याला या भावनांचा अनुभव कितपत दिला पाहिजे, हे कितपत काय नंबरवर टिपकले त्याचा अर्थ पाठिंबा',
 
+    //family_burden_scale
     'family_burden_scale_form_title': 'कुटुंब बोझ प्रमाण',
     'family_burden_scale_intro':
         'खालील वाक्यांची यादी आहे जे माणसांना कधीकधी एका इतर व्यक्तीवर काळजी करताना कसे वाटतात.',
@@ -444,17 +526,53 @@ Map<String, Map<String, String>> translations = {
         'आपल्या नातेवाईकांच्या वर्तनाने आपण लज्जित वाटत असा वाटत का?',
     'family_burden_scale_question_3':
         'रुग्णांच्या आणि उपचारांच्या खर्च आणि परिवार वित्तावर त्याच्या परिणामांची नियत्रण',
+    'family_burden_scale_question_4':
+        "आपल्या नातेवाईकांच्या काळजी करताना आपण कितपत करत असता किव्हा कार्य करता?",
+    'family_burden_scale_question_5':
+        'रुग्णांच्या आणि उपचारांच्या खर्च आणि परिवार वित्तावर त्याच्या परिणामांची नियत्रण',
+    'family_burden_scale_question_6':
+        "आपल्या नातेवाईकांच्या काळजी करताना आपण कितपत करत असता किव्हा कार्य करता?",
+    'family_burden_scale_question_7':
+        "आपल्या नातेवाईकांच्या वर्तनाने आपण लज्जित वाटत असा वाटत का?",
+    'family_burden_scale_question_8':
+        'रुग्णांच्या आणि उपचारांच्या खर्च आणि परिवार वित्तावर त्याच्या परिणामांची नियत्रण',
+    'family_burden_scale_question_9':
+        "आपल्या नातेवाईकांच्या काळजी करताना आपण कितपत करत असता किव्हा कार्य करता?",
+    'family_burden_scale_question_10':
+        'रुग्णांच्या आणि उपचारांच्या खर्च आणि परिवार वित्तावर त्याच्या परिणामांची नियत्रण',
+    'family_burden_scale_question_11':
+        "आपल्या नातेवाईकांच्या वर्तनाने आपण लज्जित वाटत असा वाटत का?",
 
+    //emo_wheel
     'emotional_wheel_form_title': "भावनात्मक चक्र",
     'emotional_wheel_intro':
         'खालील वाक्यांची यादी आहे जे माणसांना कधीकधी एका इतर व्यक्तीवर काळजी करताना कसे वाटतात.\n\nप्रत्येक वाक्य वाचताना, तुम्हाला वाटते की आपण आणि आपल्याला या भावनांचा अनुभव कितपत दिला पाहिजे, हे कितपत काय नंबरवर टिपकले त्याचा अर्थ पाठिंबा',
     'emotional_wheel_question_1': "आज आपण कसं अनुभवत आहात?",
+    'emotional_wheel_question_2': "चाक 02 पासून तुम्हाला कोणती भावना जाणवते?",
+    'emotional_wheel_question_3': "चाक 03 पासून तुम्हाला कोणती भावना जाणवते?",
 
+    //brief_cope
     'brief_cope_form_title': "लघु - COPE",
     'brief_cope_intro':
         'लघु-COPE हा एक २८ वस्तु आत्म-अहल्याने व्यक्त करणारा प्रश्नपत्र आहे ज्यात ताणावपूर्ण जीवन घडवण्याचा उत्तम आणि अप्रभावी प्रकार आणण्याचे प्रयत्न करण्यासाठी डिझाइन केलेले आहे. "टोंचण" हा नेहमीच्या जीवनाच्या अनुभवांसह आवळणीचा प्रयत्न म्हणजे उत्तमपणे विशेषतः नकारात्मक जीवन अनुभवांसह जुळणारे दु:खामध्ये ताणाव कमी करण्याचा प्रयत्न. खालील प्रश्न आपण आपल्या जीवनातील एक कठीणाईबद्दल कसे टोंचण केले आहे हे विचारून घेतले आहे. विचार आणि नेहमीच्या जीवनाच्या अनुभवांना सूचित करणे, वाक्ये वाचा आणि प्रत्येक टोंचण स्टाइलवर कितपत वापरत आहात कितपत द्या',
     'brief_cope_question_1':
         '१. मी काम किंवा इतर क्रियेसाठी मन त्याच्यावर घेणे केले आहे',
+    'brief_cope_question_2':
+        "२. आपल्या नातेवाईकांच्या जवळ असल्यामुळे आपल्याला ताणाव महसूस होतो का?",
+    'brief_cope_question_3':
+        "३. आपल्याला वाटतं की आपल्या नातेवाईकांच्या साथीत जुडण्याच्या कारणाने आपल्या आरोग्यावर परिणाम पडले आहे?",
+    'brief_cope_question_4':
+        "४. आपल्या नातेवाईकांच्या कारण आपल्या गोपनीयतेची अधिकता नसल्यामुळे आपल्याला ताणाव महसूस होतो का?",
+    'brief_cope_question_5':
+        "५. आपल्या नातेवाईकांच्या वर्तनाने आपल्याला लज्जित वाटते का?",
+    'brief_cope_question_6':
+        "६. आपल्या नातेवाईकांच्या वर्तनाने आपल्या जीवनाची नियंत्रणे नकारली आहे का?",
+    'brief_cope_question_7':
+        "७. आपल्या नातेवाईकांच्या वर्तनाने आपल्या आरोग्यावर परिणाम पडले आहे का?",
+    'brief_cope_question_8':
+        "८. आपल्या नातेवाईकांच्या वर्तनाने आपल्या सामाजिक जीवनावर परिणाम पडले आहे का?",
+    'brief_cope_question_9':
+        "९. आपल्या नातेवाईकांच्या वर्तनाने आपल्या जीवनाची नियंत्रणे नकारली आहे का?",
 
     'retake': "पुन्हा घ्या",
     'assessment-text': 'आपल्या नवीनतम मूल्यांकनाचा निकाल येथे दर्शविला जाईल',
@@ -473,3 +591,5 @@ Map<String, Map<String, String>> translations = {
     "upcoming": "आगामी",
   },
 };
+
+String get newMethod => '';

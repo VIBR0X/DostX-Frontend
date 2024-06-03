@@ -152,12 +152,69 @@ class _SignUpThirdState extends State<CopePage> {
                     height: 15,
                   ),
 
-                  QuestionsWithFourOptions4Lines(
-                    question: translations[LanguageManager().currentLanguage]!['brief_cope_question_1']!,
-                    fieldName:'brief_cope_question_2' ,
-                    textColor: ColorOptions.skin,
-                  ),                  const SizedBox(
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_2']!,
+                     fieldName:'brief_cope_question_2' ,
+                   ),
+                  const SizedBox(
                     height: 14,
+                  ),
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_3']!,
+                    fieldName:'brief_cope_question_3' ,
+
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_4']!,
+                     fieldName:'brief_cope_question_4',
+                   ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_5']!,
+                     fieldName:'brief_cope_question_5',
+                   ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_6']!,
+                     fieldName:'brief_cope_question_6',
+                   ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_7']!,
+                     fieldName:'brief_cope_question_7'
+                   ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                   QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_8']!,
+                     fieldName:'brief_cope_question_8',
+                   ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question:
+                      translations[LanguageManager().currentLanguage]!['brief_cope_question_9']!,
+                    fieldName:'brief_cope_question_9',
                   ),
 
                   const SizedBox(
