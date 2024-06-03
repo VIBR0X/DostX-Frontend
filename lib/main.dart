@@ -14,6 +14,10 @@ void main() async {
   await Hive.openBox('TokenBox');
   await Hive.openBox('ProfileBox');
   await Hive.openBox('EmotionalWheelBox');
+  await Hive.openBox('ZaritBox');
+  await Hive.openBox('FamilyBurdenBox');
+  await Hive.openBox('ClientProfileBox');
+  await Hive.openBox('CostEffBox');
 
   mainBloc bloc = mainBloc();
     runApp(

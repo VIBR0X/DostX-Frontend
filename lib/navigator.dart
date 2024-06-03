@@ -424,6 +424,30 @@ class _NavigationControllerState extends State<NavigationController> {
       }
     }
 
+    Future<List<dynamic>> fetchRecentResultsData() async {
+      String url = appConfig["serverURL"]+"/api/combined_results/";
+
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> data = jsonDecode(response.body);
+        print(data.keys);
+        List<dynamic> finalData = [];
+        for (var key in data.keys){
+          for (var item in data[key]){
+            item['type'] = key;
+            finalData.add(item);
+          }
+        }
+        return finalData;
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
     switch (index) {
       case 0:
         switch(subPage) {
@@ -617,12 +641,28 @@ class _NavigationControllerState extends State<NavigationController> {
 
 
           default:
-            return ProfilePage(
-              updateHomeIndex: _updateNavigation,
-              getPrevPageIndex: _getPrevIndex,
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchRecentResultsData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return ProfilePage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
+
         }
       case 2:
         switch(subPage){

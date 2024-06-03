@@ -5,6 +5,7 @@ import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import '../custom_widgets.dart';
 import '../language_manager.dart';
 import '../palette.dart';
@@ -17,13 +18,14 @@ class ProfilePage extends StatefulWidget {
   final Function() getPrevPageIndex;
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
-
+  final results;
   const ProfilePage({
     super.key,
     required this.updateHomeIndex,
     required this.getPrevPageIndex,
     required this.updateSubPage,
-    required this.getPrevSubPage
+    required this.getPrevSubPage,
+    required this.results
 
   });
 
@@ -207,59 +209,61 @@ class _ProfilePageState extends State<ProfilePage> {
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 5, 0),
-            child: ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
-                  child: ReusableTile(
-                    title: 'Zarit Scale',
-                    author: 'By Dr. Someone Someone',
-                    testDate: '29 Aug 2022',
-                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                    onPressed: () {
+            padding: const EdgeInsets.fromLTRB(5,0,28,0),
+            child: ListView.builder(
+                itemCount: widget.results.length,
+                itemBuilder: (context, index){
+                  String type = widget.results[index]['type'];
+                  var time =  widget.results[index]['updated_at']??widget.results[index]['created_at']??widget.results[index]['taken_at']??"-";
+                  var result = widget.results[index]['score']??widget.results[index]['result']??widget.results[index]['cost_effectiveness']??"No Result Found";
+                  late String resultAnchor;
+                  if (widget.results[index].keys.contains('score')) {
+                    resultAnchor = 'Score:';
+                  } else if (widget.results[index].keys.contains('cost_effectiveness')) {
+                    resultAnchor = 'Cost Effectiveness:';
+                  } else if (widget.results[index].keys.contains('result')) {
+                    resultAnchor = 'Result:';
+                  } else {
+                    resultAnchor = "";
+                  }
 
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
-                  child: ReusableTile(
-                    title: 'Zarit Scale',
-                    author: 'By Dr. Someone Someone',
-                    testDate: '29 Aug 2022',
-                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
-                  child: ReusableTile(
-                    title: 'Zarit Scale',
-                    author: 'By Dr. Someone Someone',
-                    testDate: '29 Aug 2022',
-                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(5,0,28,0),
-                  child: ReusableTile(
-                    title: 'Zarit Scale',
-                    author: 'By Dr. Someone Someone',
-                    testDate: '29 Aug 2022',
-                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-              ],
+                  return Container(
+                    child: ReusableTile(
+                      title: (type=='family_burden_scale')?'Family Burden Scale':(type == 'zarit_scale')?'Zarit Scale':(type=='emotional_wheel')?'The Emotional Wheel Scale':(type=='cost_effectiveness')?'Cost Effectiveness Analysis':'Brief-COPE',
+                      author: 'By Dr. Someone Someone',
+                      testDate:(time == "-")?"-":DateFormat("dd MMM yyyy").format(DateTime.parse(time)),
+                      buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                      onPressed: () {
+                        print(widget.results[index]);
+                        showDialog(context: context,
+                            builder: (context)=> AlertDialog(
+                              title: Text('$resultAnchor $result'),
+                            )
+                        );
+                        // setState(() {
+                        // });
+                      },
+                    ),
+                  );
+                }
             ),
+            // ListView(
+            //   children: [
+            //
+            //     Padding(
+            //       padding: const EdgeInsets.fromLTRB(5,0,28,0),
+            //       child: ReusableTile(
+            //         title: 'Zarit Scale',
+            //         author: 'By Dr. Someone Someone',
+            //         testDate: '29 Aug 2022',
+            //         buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+            //         onPressed: () {
+            //
+            //         },
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ),
         ),
       ),
