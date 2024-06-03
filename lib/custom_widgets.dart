@@ -3,6 +3,7 @@
 import 'package:dostx/globals.dart%20';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'language_manager.dart';
 import 'palette.dart';
 import 'globals.dart' as global;
@@ -349,10 +350,12 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
 
 class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
   final String question;
+  final String fieldName;
 
   const QuestionWithFiveOptionsSingleLine({
     Key? key,
     required this.question,
+    required this.fieldName
   }) : super(key: key);
 
   @override
@@ -360,7 +363,8 @@ class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
 }
 
 class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOptionsSingleLine> {
-  String? selectedValue;
+  String? selectedValue="Never";
+  var zaritBox = Hive.box('ZaritBox');
 
   @override
   Widget build(BuildContext context) {
@@ -399,6 +403,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Never';
+                              zaritBox.put(widget.fieldName, 0);
                             });
                           },
                           spacing: 3,
@@ -414,6 +419,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Rarely';
+                              zaritBox.put(widget.fieldName, 1);
                             });
                           },
                           spacing: 3,
@@ -429,6 +435,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Sometimes';
+                              zaritBox.put(widget.fieldName, 2);
                             });
                           },
                           spacing: 3,
@@ -455,6 +462,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Frequently';
+                              zaritBox.put(widget.fieldName, 3);
                             });
                           },
                           spacing: 3,
@@ -470,6 +478,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Nearly Always';
+                              zaritBox.put(widget.fieldName, 4);
                             });
                           },
                           spacing: 3,
@@ -600,11 +609,13 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
 class QuestionsWithFourOptions4Lines extends StatefulWidget {
   final String question;
   final Color textColor;
+  final String fieldName;
 
   const QuestionsWithFourOptions4Lines({
     Key? key,
     required this.question,
     this.textColor = Colors.white,
+    required this.fieldName
   }) : super(key: key);
 
   @override

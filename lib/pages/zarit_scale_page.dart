@@ -99,7 +99,10 @@ class _ZaritScalePageState extends State<ZaritScalePage> {
                         ),
                       ),
                       SizedBox(height: (18/869)*screenHeight(context),),
-                      QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_stressed_about_responsibilities']!),
+                      QuestionWithFiveOptionsSingleLine(
+                        question: translations[LanguageManager().currentLanguage]!['feel_stressed_about_responsibilities']!,
+                        fieldName: 'stressed_question',
+                      ),
                       // SizedBox(height: (15/869)*screenHeight(context),),
                       // QuestionWithFiveOptionsSingleLine(question: translations[LanguageManager().currentLanguage]!['feel_embarrassed_of_relative_behavior']!),
                       SizedBox(height: (35/869)*screenHeight(context),),
