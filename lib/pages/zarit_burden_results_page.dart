@@ -24,7 +24,7 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
   int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
-    print(widget.results);
+    //print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: Color(0xFFF8F8F8),

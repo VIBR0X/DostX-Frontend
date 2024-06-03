@@ -53,7 +53,7 @@ class _OtpPageState extends State<OtpPage> {
         FocusScope.of(context).unfocus();
         // Optionally, you can perform an action when all fields are filled
         otp = _controllers.map((controller) => controller.text).join();
-        print("Entered OTP: $otp");
+        //print("Entered OTP: $otp");
         setState(() {
           validOTP = isvalidOTP(otp);
         });
@@ -398,7 +398,7 @@ class _OtpPageState extends State<OtpPage> {
                                             //     );
                                             //
                                             // String jsonRepresentation = jsonEncode(fakeSignInRequest);
-                                            // print(jsonRepresentation);
+                                            // //print(jsonRepresentation);
                                             // // bloc.signInBloc(fakeSignInRequest);
                                             var body = json.encode( {
                                               "phone_number":int.parse(widget.number),
@@ -413,9 +413,9 @@ class _OtpPageState extends State<OtpPage> {
                                             );
                                             if (response.statusCode == 200){
                                               final responseBody = jsonDecode(response.body);
-                                              // print(responseBody);
+                                              // //print(responseBody);
                                               final access_token = responseBody['data']['access'];
-                                              // print(access_token);
+                                              // //print(access_token);
                                               final refresh_token = responseBody['data']['refresh'];
                                               final profile_available = responseBody['data']['user_profile']!=null;
                                               final Map<String,dynamic>? user_profile = responseBody['data']['user_profile'];

@@ -28,7 +28,7 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
   int modeIndex = 0;
   @override
   Widget build(BuildContext context) {
-    print(widget.websiteList);
+    //print(widget.websiteList);
 
     double relFont = fontHelper(context);
     return Scaffold(

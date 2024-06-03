@@ -587,7 +587,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     "ABHA_ID": _abhaIdController.text,
                                   }),
                                 );
-                                print(response.statusCode);
+                                //print(response.statusCode);
                                 if (response.statusCode == 400){
                                   final response = await http.post(
                                     uri,
@@ -602,7 +602,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                       "ABHA_ID": _abhaIdController.text,
                                     }),
                                   );
-                                  print(response.statusCode);
+                                  //print(response.statusCode);
                                 }
                                 widget.updateSubPage("default", true);
 

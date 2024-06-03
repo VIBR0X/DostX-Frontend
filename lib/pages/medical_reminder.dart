@@ -151,7 +151,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                     // String title = _titleController.text;
                     // String doctor = _doctorController.text;
                     // Handle the input text here
-                    print("Time: ${timeNewAdd}, Day Category: $dayCategoryNewAdd");
+                    //print("Time: ${timeNewAdd}, Day Category: $dayCategoryNewAdd");
                     // Navigator.of(context).pop();
                   },
                 ),
@@ -169,7 +169,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
     int nowInMins= now.hour *60 + now.minute;
-    print(widget.reminderList);
+    //print(widget.reminderList);
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),

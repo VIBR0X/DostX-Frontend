@@ -10,6 +10,8 @@ import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
 import '../custom_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -20,12 +22,14 @@ class HomePageFirst extends StatefulWidget {
   final Function() getPrevPageIndex;
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
+  final copingStrategies;
   const HomePageFirst({
     super.key,
     required this.updateHomeIndex,
     required this.getPrevPageIndex,
     required this.updateSubPage,
     required this.getPrevSubPage,
+    required this.copingStrategies
   });
   @override
   State<HomePageFirst> createState() => _HomePageFirstState();
@@ -33,13 +37,14 @@ class HomePageFirst extends StatefulWidget {
 
 class _HomePageFirstState extends State<HomePageFirst> {
   List<bool> feelingSelection = [false, false, false, false];
+  var copeBox = Hive.box('CopeStrategyStateManagementBox');
   Widget _buildRescueSessions(BuildContext context, subPageArray) {
     return Container(
       height: 280 / 869 * screenHeight(context),
       child: RawScrollbar(
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 5,
+          itemCount: widget.copingStrategies.length,
           itemBuilder: (context, index) {
             return Container(
               width: 230 / 414 * screenWidth(context),
@@ -56,9 +61,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: index == 0
-                              ? Image.asset("assets/p1.png")
-                              : Image.asset("assets/p2.png"),
+                          child:  Image.network(
+                            appConfig["serverURL"]+'/'+widget.copingStrategies[index]['image'],
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset("assets/p1.png"
+                              );
+                            },
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
@@ -69,11 +78,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                         10 / 414 * screenWidth(context), 0, 0, 0),
-                    child: Text(
-                      index == 0
-                          ? translations[LanguageManager().currentLanguage]![
-                              'lets_breathe_easy']!
-                          : "Grounding Technique",
+                    child: Text(widget.copingStrategies[index]['title'],
                       style: TextStyle(
                           color: const Color(0xff323736),
                           fontFamily: "SFProMedium",
@@ -85,7 +90,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     padding: EdgeInsets.fromLTRB(
                         10 / 414 * screenWidth(context), 0, 0, 0),
                     child: Text(
-                      index == 0 ? "Breath Work" : "Coping with Anxiety",
+                      "${widget.copingStrategies[index]['expected_time_to_read']} mins read",
                       style: TextStyle(
                           color: const Color(0xff9FA4A4),
                           fontFamily: "SFProText",
@@ -115,16 +120,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                               ),
                             ),
                             child: TextButton(
-                              onPressed: () {
-                                if (index == 0) {
-                                  widget.updateSubPage(subPageArray[0]);
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(builder: (context)=>navigationPageArray[0])
-                                  // );
-                                }
-                                if (index == 1) {}
-                                if (index == 2) {}
+                              onPressed: ()async {
+                                await copeBox.put('title',widget.copingStrategies[index]['title']);
+                                await copeBox.put('imageUrl',widget.copingStrategies[index]['image']);
+                                await copeBox.put('hi',widget.copingStrategies[index]['content_hindi']);
+                                await copeBox.put('en',widget.copingStrategies[index]['content_english']);
+                                await copeBox.put('mr',widget.copingStrategies[index]['content_marathi']);
+                                widget.updateSubPage('individual_cope_strategy_page');
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(

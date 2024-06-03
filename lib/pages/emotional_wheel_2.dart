@@ -45,9 +45,9 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
 
   @override
   Widget build(BuildContext context) {
-    print(emotion1);
-    print(emotion2);
-    print(emotion3);
+    //print(emotion1);
+    //print(emotion2);
+    //print(emotion3);
 
     double relFont = fontHelper(context);
     return Scaffold(

@@ -18,6 +18,7 @@ void main() async {
   await Hive.openBox('FamilyBurdenBox');
   await Hive.openBox('ClientProfileBox');
   await Hive.openBox('CostEffBox');
+  await Hive.openBox('CopeStrategyStateManagementBox');
 
   mainBloc bloc = mainBloc();
     runApp(

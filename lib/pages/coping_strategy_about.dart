@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
 
 class CopingStrategyAboutPage extends StatelessWidget {
-  final String imageUrl;
-  final String description;
-  final String title;
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
   const CopingStrategyAboutPage({
     super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.description,
     required this.updateSubPage, required this.getPrevSubPage
 
   });
 
   @override
   Widget build(BuildContext context) {
+    var copeBox = Hive.box('CopeStrategyStateManagementBox');
+    String lang = LanguageManager().currentLanguage;
+    String description = copeBox.get(lang);
+    String title = copeBox.get('title');
+    String imageUrl = copeBox.get('imageUrl');
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),
@@ -65,9 +66,13 @@ class CopingStrategyAboutPage extends StatelessWidget {
                 padding: const EdgeInsets.all(40.0),
                 child: Row(
                   children: [
-                    Image.asset(
-                        imageUrl,
+                    Image.network(
+                      appConfig["serverURL"]+'/'+imageUrl,
                       width: screenWidth(context)*0.17,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset("assets/image/coping (2).png", width: screenWidth(context)*0.17,
+                        );
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.all(19.0),
@@ -106,6 +111,7 @@ class CopingStrategyAboutPage extends StatelessWidget {
                       children: [
                         Container(
                           height: screenHeight(context)*0.4,
+                          width: screenWidth(context),
                           child: RawScrollbar(
                             thumbColor: Color(0xff1A3858),
                             thickness: 8,

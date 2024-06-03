@@ -234,7 +234,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       testDate:(time == "-")?"-":DateFormat("dd MMM yyyy").format(DateTime.parse(time)),
                       buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                       onPressed: () {
-                        print(widget.results[index]);
+                        //print(widget.results[index]);
                         showDialog(context: context,
                             builder: (context)=> AlertDialog(
                               title: Text('$resultAnchor $result'),

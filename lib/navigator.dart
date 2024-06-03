@@ -49,7 +49,7 @@ class _NavigationControllerState extends State<NavigationController> {
   void _refreshToken()async{
     DateTime? lastRefreshTime = await tokenBox.get('last_access_refresh_time');
     if (lastRefreshTime == null || (DateTime.now().difference(lastRefreshTime).inMinutes >= 30)){
-      print('token is refreshed');
+      //print('token is refreshed');
       var response = await http.post(
           Uri.parse(appConfig["serverURL"]+'/auth/tokenrefresh/'),
           body: json.encode({
@@ -62,7 +62,7 @@ class _NavigationControllerState extends State<NavigationController> {
       );
       var data= jsonDecode(response.body);
       var accessToken = data['access'];
-      print(accessToken);
+      //print(accessToken);
       await tokenBox.put('access_token',accessToken);
       await tokenBox.put('last_access_refresh_time', DateTime.now());
     }
@@ -284,17 +284,17 @@ class _NavigationControllerState extends State<NavigationController> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             // gradient: GradientOptions.backgroundGradient,
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
               colors: <Color>[
                 Color(
-                  0xFFFFFFFF,
+                  (_selectedIndex != 0)? 0xFFFFFFFF:0xffFFF2E3,
                 ),
                 Color(
-                  0xFFFEBEB1,
+                  (_selectedIndex != 0)?0xFFFEBEB1:0xffFFF2E3,
                 ),
               ],
             ),
@@ -311,18 +311,6 @@ class _NavigationControllerState extends State<NavigationController> {
   Widget _buildIconButton(IconData icon, int index) {
     return IconButton(
       onPressed: () {
-        // if(index == 3){
-        //               Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) =>  MedicalReminderPage(),
-        //       ),
-        //     );
-        //               return;
-        // }
-        // setState(() {
-        //   _selectedIndex = index;
-        // });
         _updateNavigation(index);
         _updateSubPage("default");
       },
@@ -344,7 +332,7 @@ class _NavigationControllerState extends State<NavigationController> {
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
-      print(response.statusCode);
+      //print(response.statusCode);
 
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
@@ -359,9 +347,9 @@ class _NavigationControllerState extends State<NavigationController> {
         'Authorization': 'Bearer '+await tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
-      print(response.statusCode);
+      //print(response.statusCode);
       if (response.statusCode == 200) {
-        print(jsonDecode(response.body));
+        //print(jsonDecode(response.body));
         return jsonDecode(response.body);
       } else {
         throw Exception('Failed to load data');
@@ -388,7 +376,7 @@ class _NavigationControllerState extends State<NavigationController> {
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
-      print(response.statusCode);
+      //print(response.statusCode);
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
@@ -402,7 +390,7 @@ class _NavigationControllerState extends State<NavigationController> {
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
-      print(response.statusCode);
+      //print(response.statusCode);
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
@@ -416,7 +404,7 @@ class _NavigationControllerState extends State<NavigationController> {
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
-      print(response.statusCode);
+      //print(response.statusCode);
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
@@ -431,10 +419,10 @@ class _NavigationControllerState extends State<NavigationController> {
         'Authorization': 'Bearer '+tokenBox.get("access_token")
       };
       final response = await http.get(Uri.parse(url), headers: header);
-      print(response.statusCode);
+      //print(response.statusCode);
       if (response.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(response.body);
-        print(data.keys);
+        //print(data.keys);
         List<dynamic> finalData = [];
         for (var key in data.keys){
           for (var item in data[key]){
@@ -443,6 +431,36 @@ class _NavigationControllerState extends State<NavigationController> {
           }
         }
         return finalData;
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchCopingStrategies() async {
+      String url = appConfig["serverURL"]+"/api/coping_strategies/";
+
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchHomePageData() async {
+      String url = appConfig["serverURL"]+"/api/coping_strategies/";
+
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
       } else {
         throw Exception('Failed to load data');
       }
@@ -603,22 +621,34 @@ class _NavigationControllerState extends State<NavigationController> {
               getPrevSubPage: _getPrevSubPage,
             );
 
-          case "cope_strategy_test":
+          case "individual_cope_strategy_page":
             return CopingStrategyAboutPage(
               updateSubPage: _updateSubPage,
               getPrevSubPage: _getPrevSubPage,
-              title: "The Art of Self-Love",
-              imageUrl: "assets/image/coping (2).png",
-              description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
               );
             
           case "default":
-          return HomePageFirst(
-            updateHomeIndex: _updateNavigation,
-            getPrevPageIndex: _getPrevIndex,
-            updateSubPage: _updateSubPage,
-            getPrevSubPage: _getPrevSubPage,
-          );
+            return FutureBuilder<List<dynamic>>(
+              future: fetchHomePageData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return HomePageFirst(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    copingStrategies: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
+            );
 
           default:
             return Center(child: Text("404: Page Not Found!"),);
@@ -666,21 +696,34 @@ class _NavigationControllerState extends State<NavigationController> {
         }
       case 2:
         switch(subPage){
-          case "cope_strategy_test":
+          case "individual_cope_strategy_page":
             return CopingStrategyAboutPage(
               updateSubPage: _updateSubPage,
               getPrevSubPage: _getPrevSubPage,
-              title: "The Art of Self-Love",
-              imageUrl: "assets/image/coping (2).png",
-              description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
-            );
+             );
           default:
-            return CopingStrategiesPage(
-              updateHomeIndex: _updateNavigation,
-              getPrevPageIndex: _getPrevIndex,
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
-            ); //Text('Messenger Page Content');
+            return FutureBuilder<List<dynamic>>(
+              future: fetchCopingStrategies(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return CopingStrategiesPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
+            );
+
         }
       case 3:
         switch(subPage) {

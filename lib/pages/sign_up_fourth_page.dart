@@ -549,10 +549,10 @@ class _SignUpFourthState extends State<SignUpFourth> {
 
 
                               if (profileBox != null) {
-                                // print("All data in 'profileBox':");
+                                // //print("All data in 'profileBox':");
                                 for (int i = 0; i < profileBox.length; i++) {
                                   String key = profileBox.keyAt(i);
-                                  // print('Key: ${key.toString()}, Value: ${profileBox.getAt(i)}');
+                                  // //print('Key: ${key.toString()}, Value: ${profileBox.getAt(i)}');
                                   if (key !="abha_id" && key !="profile_pic_local_path"){
                                     request.fields[key.toString()] = profileBox.getAt(i).toString();
                                   }
@@ -580,8 +580,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               var response = await request.send();
                               var responseData = await response.stream.bytesToString();
                               var decodedResponse = jsonDecode(responseData);
-                              print(decodedResponse);
-                              print(response.statusCode);
+                              //print(decodedResponse);
+                              //print(response.statusCode);
                               if (response.statusCode == 201){
                                 tokenBox.put('profile_available',true);
                                 for (var entry in decodedResponse['user_profile']!.entries){

@@ -1,6 +1,9 @@
 import 'package:dostx/pages/coping_strategy_about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
+import '../config.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
@@ -12,10 +15,11 @@ class CopingStrategiesPage extends StatefulWidget {
   final Function(int) updateHomeIndex;
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
+  final results;
   const CopingStrategiesPage({
     super.key,
     required this.updateHomeIndex,
-    required this.getPrevPageIndex, required this.updateSubPage, required this.getPrevSubPage
+    required this.getPrevPageIndex, required this.updateSubPage, required this.getPrevSubPage, required this.results
   });
 
   @override
@@ -23,10 +27,12 @@ class CopingStrategiesPage extends StatefulWidget {
 }
 
 class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
-  int modeIndex = 0;
+  int modeIndex = 1;
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
+    DateTime now = DateTime.now();
+    int nowInMins= now.hour *60 + now.minute;
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
@@ -150,87 +156,29 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                 ],
               ),            ),
             const SizedBox(height: 15),
-
-            Container(
+            SizedBox(
               height: screenHeight(context)*0.765 - 62,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
+              child: ListView.builder(
+                  itemCount: widget.results.length,
+                  itemBuilder: (context, index){
+                    bool availabile = widget.results[index]['availability'];
+                    return (modeIndex==0 && !availabile)||(modeIndex==1 && availabile)?Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       child: StrategyEntry(
                         updateSubPage: widget.updateSubPage,
                         getPrevSubPage: widget.getPrevSubPage,
-                        imageUrl: "assets/image/coping (1).png",
-                        title:"Grounding yourself",
-                        authorName: "Dr. Vinni",
-                        dateField: "Coming Soon",
-                        readDurationMins: "13",
-                        navigationPage: "cope_strategy_test",
-                        // navigationPage: CopingStrategyAboutPage(
-                        //   updateSubPage: widget.updateSubPage ,
-                        //   getPrevSubPage: widget.getPrevSubPage,
-                        //   title: "The Art of Self-Love",
-                        //   imageUrl: "assets/image/coping (2).png",
-                        //   description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\n Understanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
-                        // ),
+                        imageUrl: widget.results[index]['image'],
+                        title:widget.results[index]['title'],
+                        readDurationMins:widget.results[index]['expected_time_to_read'],
+                        // authorName: "Dr. Gulati, MBBS",
+                        dateField: DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date_added']))??"",
+                        content_english: widget.results[index]['content_english']?? '',
+                        content_hindi:widget.results[index]['content_hindi']?? '',
+                        content_marathi:widget.results[index]['content_marathi']?? '',
+                        navigationPage: 'individual_cope_strategy_page',
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: StrategyEntry(
-                        updateSubPage: widget.updateSubPage,
-                        getPrevSubPage: widget.getPrevSubPage,
-                        imageUrl: "assets/image/coping (2).png",
-                        title:"Take a break!",
-                        authorName: "Dr. Gulati, MBBS",
-                        dateField: "22 Aug 2022",
-                        readDurationMins: "5",
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: StrategyEntry(
-                        updateSubPage: widget.updateSubPage,
-                        getPrevSubPage: widget.getPrevSubPage,
-                        imageUrl: "assets/image/coping (2).png",
-                        title:"Take a break!",
-                        authorName: "Dr. Gulati, MBBS",
-                        dateField: "22 Aug 2022",
-                        readDurationMins: "5",
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: StrategyEntry(
-                        updateSubPage: widget.updateSubPage,
-                        getPrevSubPage: widget.getPrevSubPage,
-                        imageUrl: "assets/image/coping (2).png",
-                        title:"Take a break!",
-                        authorName: "Dr. Gulati, MBBS",
-                        dateField: "22 Aug 2022",
-                        readDurationMins: "5",
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: StrategyEntry(
-                        updateSubPage: widget.updateSubPage,
-                        getPrevSubPage: widget.getPrevSubPage,
-                        imageUrl: "assets/image/coping (2).png",
-                        title:"Take a break!",
-                        authorName: "Dr. Gulati, MBBS",
-                        dateField: "22 Aug 2022",
-                        readDurationMins: "5",
-                      ),
-                    )
-
-
-                    // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
-
-
-                  ],
-                ),
+                    ):Container();
+                  }
               ),
             ),
           ],
@@ -243,27 +191,31 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
 class StrategyEntry extends StatefulWidget {
   final String imageUrl;
   final String title;
-  final String authorName;
+  final String? authorName;
   final String dateField;
-  final String readDurationMins;
+  final int readDurationMins;
   final String? navigationPage;
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
+  final String content_hindi;
+  final String content_english;
+  final String content_marathi;
 
    StrategyEntry({
      super.key,
      required this.imageUrl,
      required this.title,
-     required this.authorName,
+     this.authorName,
      required this.dateField,
      required this.readDurationMins,
-     this.navigationPage, required this.updateSubPage, required this.getPrevSubPage,
+     this.navigationPage, required this.updateSubPage, required this.getPrevSubPage, required this.content_english, required this.content_hindi, required this.content_marathi
    });
   @override
   State<StrategyEntry> createState() => _StrategyEntryState();
 }
 
 class _StrategyEntryState extends State<StrategyEntry> {
+  var copeBox = Hive.box('CopeStrategyStateManagementBox');
   Color bgColor = const Color(0xFFFFFFFF);
   @override
   Widget build(BuildContext context) {
@@ -292,14 +244,13 @@ class _StrategyEntryState extends State<StrategyEntry> {
             ),
           backgroundColor: Colors.transparent,
           elevation: 0,),
-        onPressed: (){
+        onPressed: ()async {
+            await copeBox.put('title',widget.title);
+            await copeBox.put('imageUrl',widget.imageUrl);
+            await copeBox.put('hi',widget.content_hindi);
+            await copeBox.put('en',widget.content_english);
+            await copeBox.put('mr',widget.content_marathi);
             if (widget.navigationPage != null){
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) =>  widget.navigationPage,
-            //   ),
-            // );
               widget.updateSubPage(widget.navigationPage!);
             }
         },
@@ -331,9 +282,14 @@ class _StrategyEntryState extends State<StrategyEntry> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Image.asset(
-                          widget.imageUrl,
+                        child:
+                        Image.network(
+                          appConfig["serverURL"]+'/'+widget.imageUrl,
                           fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset("assets/image/coping (2).png",fit: BoxFit.contain,
+                            );
+                          },
                         ),
                       ),
                       // child: Image.asset(
@@ -357,7 +313,7 @@ class _StrategyEntryState extends State<StrategyEntry> {
                             // textAlign: TextAlign.center,
                           ),
                           // const SizedBox(height: 10,),
-                          Text(
+                          (widget.authorName!=null)?Text(
                             "By ${widget.authorName}",
                             style: TextStyle(
                                 fontSize: relFont * 12.0,
@@ -365,7 +321,7 @@ class _StrategyEntryState extends State<StrategyEntry> {
                                 color: const Color(0xFF9FA4A4),
                                 letterSpacing: 1.1),
                             // textAlign: TextAlign.center,
-                          ),
+                          ):Container(),
                         ],
                       ),
                     ),
