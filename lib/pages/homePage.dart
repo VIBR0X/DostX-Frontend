@@ -11,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../custom_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../language_manager.dart';
+import '../translations.dart';
 import 'coping_strategy_about.dart';
 
 class HomePageFirst extends StatefulWidget {
@@ -169,7 +171,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       0,
                       screenHeight(context) * 30 / 869),
                   child: Text(
-                    "How do you feel today?",
+                    translations[LanguageManager.currentLanguage]!['title_feeling_text']!,
                     style: TextStyle(
                       fontSize: 20 * fontHelper(context),
                       fontFamily: 'SFProTextMedium',
@@ -310,8 +312,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     ],
                   ),
                   ReusableTile(
-                    title: 'Zarit Scale',
-                    author: 'By Dr. Someone Someone',
+                    title: translations[LanguageManager.currentLanguage]!['zarit_scale_form_title']!,
+                    author: 'By Dr. Zarit',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
                     onPressed: () {
@@ -325,8 +327,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                 },
                   ),
                   ReusableTile(
-                    title: 'Emotional Wheel',
-                    author: 'By Dr. Someone Someone',
+                    title: translations[LanguageManager.currentLanguage]!['emotional_wheel_results']!,
+                    author: 'By Dr. Robert Plutchik',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
                     onPressed: () {
@@ -340,8 +342,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     // );
                       },
                   ), ReusableTile(
-                    title: 'Family Burden Scale',
-                    author: 'By Dr. Someone Someone',
+                    title: translations[LanguageManager.currentLanguage]!['family_burden_scale_form_title']!,
+                    author: 'By Dr. Pai and Dr. Kapur',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
                     onPressed: () {
@@ -357,7 +359,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ),
                   ReusableTile(
                     title: 'COPE Scale',
-                    author: 'By Dr. Someone Someone',
+                    author: 'By Dr. Carver and Dr. Scheier',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
                     onPressed: () {
