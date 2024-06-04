@@ -15,11 +15,8 @@ import '../language_manager.dart';
 class CopePage extends StatefulWidget {
   final Function(String, [bool]) updateSubPage;
   final Function() getPrevSubPage;
-  const CopePage({
-    super.key,
-    required this.updateSubPage,
-    required this.getPrevSubPage
-  });
+  const CopePage(
+      {super.key, required this.updateSubPage, required this.getPrevSubPage});
   @override
   State<CopePage> createState() => _SignUpThirdState();
 }
@@ -31,12 +28,11 @@ class _SignUpThirdState extends State<CopePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: screenHeight(context)*0.105,
+        toolbarHeight: screenHeight(context) * 0.105,
         centerTitle: true,
         scrolledUnderElevation: 0,
         elevation: 0,
-
-        backgroundColor:const Color(
+        backgroundColor: const Color(
           0xFFE5A194,
         ),
         title: Image.asset(
@@ -45,9 +41,8 @@ class _SignUpThirdState extends State<CopePage> {
           // height: 27,
           // height: 80,
         ),
-
         leadingWidth: 100,
-        leading:  Stack(
+        leading: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
@@ -73,9 +68,7 @@ class _SignUpThirdState extends State<CopePage> {
                               LanguageManager().setLanguage('en');
                               // Close the dialog
                               Navigator.pop(context);
-                              setState(() {
-
-                              });
+                              setState(() {});
                             },
                           ),
                           ListTile(
@@ -109,7 +102,7 @@ class _SignUpThirdState extends State<CopePage> {
                 );
               },
               child: Ink(
-                decoration: ShapeDecoration(
+                decoration: const ShapeDecoration(
                   color: Colors.transparent,
                   shape: CircleBorder(),
                 ),
@@ -126,7 +119,6 @@ class _SignUpThirdState extends State<CopePage> {
             ),
           ],
         ),
-
       ),
       backgroundColor: const Color(0xFFE5A194),
       body: SingleChildScrollView(
@@ -140,13 +132,10 @@ class _SignUpThirdState extends State<CopePage> {
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(
-                color: ColorOptions.whitish,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30)
-                )
-
-              ),
+                  color: ColorOptions.whitish,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30))),
               child: Column(
                 children: [
                   const SizedBox(
@@ -155,203 +144,228 @@ class _SignUpThirdState extends State<CopePage> {
                   const SizedBox(
                     height: 15,
                   ),
-
-                   BriefCopeQuestions(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_2']!,
-                     fieldName:'brief_cope_question_2' ,
-                   ),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                   BriefCopeQuestions(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_3']!,
-                    fieldName:'brief_cope_question_3' ,
-
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_2']!,
+                    fieldName: 'brief_cope_question_2',
                   ),
                   const SizedBox(
                     height: 14,
                   ),
-                   BriefCopeQuestions(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_4']!,
-                     fieldName:'brief_cope_question_4',
-                   ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_3']!,
+                    fieldName: 'brief_cope_question_3',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-
-                   BriefCopeQuestions(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_5']!,
-                     fieldName:'brief_cope_question_5',
-                   ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_4']!,
+                    fieldName: 'brief_cope_question_4',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                   BriefCopeQuestions(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_6']!,
-                     fieldName:'brief_cope_question_6',
-                   ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_5']!,
+                    fieldName: 'brief_cope_question_5',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                   BriefCopeQuestions(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_7']!,
-                     fieldName:'brief_cope_question_7'
-                   ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_6']!,
+                    fieldName: 'brief_cope_question_6',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                   BriefCopeQuestions(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_8']!,
-                     fieldName:'brief_cope_question_8',
-                   ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_7']!,
+                      fieldName: 'brief_cope_question_7'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_9']!
-                      ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_8']!,
+                    fieldName: 'brief_cope_question_8',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_10']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_9']!,
+                      fieldName: 'brief_cope_question_9'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_11']!
-                      ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_10']!,
+                    fieldName: 'brief_cope_question_10',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_12']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_11']!,
+                      fieldName: 'brief_cope_question_11'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_13']!
-                      ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_12']!,
+                    fieldName: 'brief_cope_question_12',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
-                      textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_14']!
-                      ),
+                  BriefCopeQuestions(
+                    textColor: ColorOptions.skin,
+                    question: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_question_13']!,
+                    fieldName: 'brief_cope_question_13',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_15']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_14']!,
+                      fieldName: 'brief_cope_question_14'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_16']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_15']!,
+                      fieldName: 'brief_cope_question_15'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_17']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_16']!,
+                      fieldName: 'brief_cope_question_16'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_18']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_17']!,
+                      fieldName: 'brief_cope_question_17'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_19']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_18']!,
+                      fieldName: 'brief_cope_question_18'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_20']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_19']!,
+                      fieldName: 'brief_cope_question_19'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_21']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_20']!,
+                      fieldName: 'brief_cope_question_20'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_22']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_21']!,
+                      fieldName: 'brief_cope_question_21'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_23']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_22']!,
+                      fieldName: 'brief_cope_question_22'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_24']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_23']!,
+                      fieldName: 'brief_cope_question_23'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_25']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_24']!,
+                      fieldName: 'brief_cope_question_24'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_26']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_25']!,
+                      fieldName: 'brief_cope_question_25'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_27']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_26']!,
+                      fieldName: 'brief_cope_question_26'),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                  BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question:
-                      translations[LanguageManager().currentLanguage]!['brief_cope_question_28']!
-                      ),
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_27']!,
+                      fieldName: 'brief_cope_question_27'),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  BriefCopeQuestions(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager()
+                          .currentLanguage]!['brief_cope_question_28']!,
+                      fieldName: 'brief_cope_question_28'),
                   const SizedBox(
                     height: 26,
                   ),
@@ -383,18 +397,18 @@ class _SignUpThirdState extends State<CopePage> {
                             headers: {
                               'Content-Type': 'application/json',
                               'Authorization':
-                              'Bearer ' + await tokenBox.get("access_token")
+                                  'Bearer  ${await tokenBox.get("access_token")}'
                             },
                             body: json.encode(data),
                           );
-                          if (response.statusCode ==201){
+                          if (response.statusCode == 201) {
                             widget.updateSubPage("brief_cope_results", true);
                           }
-                          },
-                        child:  Text(
+                        },
+                        child: Text(
                           translations[LanguageManager().currentLanguage]![
-                          'submit']!,
-                          style: TextStyle(
+                              'submit']!,
+                          style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "JostBold",
                             color: Colors.white,
