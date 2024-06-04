@@ -1,6 +1,10 @@
+import 'dart:convert';
+
+import 'package:dostx/config.dart';
 import 'package:dostx/pages/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
 import '../palette.dart';
 import '../custom_widgets.dart';
 import 'sign_up_second_page.dart';
@@ -8,6 +12,7 @@ import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../globals.dart';
+import 'package:http/http.dart' as http;
 
 class ClientDetailsPage extends StatefulWidget {
   final Function(String, [bool]) updateSubPage;
@@ -21,11 +26,28 @@ class ClientDetailsPage extends StatefulWidget {
 }
 
 class _ClientDetailsPageState extends State<ClientDetailsPage> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _abhaIdController = TextEditingController();
+  var clientProfileBox = Hive.box('ClientProfileBox');
   String? selectedGender;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedGender = clientProfileBox.get('gender');
+    _nameController.text = clientProfileBox.get('name')??"";
+    _ageController.text = clientProfileBox.get('age')??"";
+    _phoneController.text = clientProfileBox.get('phone_number')??"";
+    _abhaIdController.text = clientProfileBox.get('ABHA_ID')??"";
+
+  }
+
   @override
   Widget build(BuildContext context) {
     // Get the screen width
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(color: ColorOptions.skin),
@@ -121,6 +143,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                               SizedBox(
                                 height: (37/ 896) * screenHeight(context),
                                 child: TextField(
+                                  controller: _nameController,
                                   inputFormatters: [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
@@ -209,6 +232,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     SizedBox(
                                       height: (37/896)*screenHeight(context),
                                       child: TextField(
+                                        controller: _phoneController,
                                         inputFormatters: [
                                           FilteringTextInputFormatter.digitsOnly,
                                         ],
@@ -298,6 +322,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     SizedBox(
                                       height: (37/896)*screenHeight(context),
                                       child: TextField(
+                                        controller: _ageController,
                                         inputFormatters: [
                                           FilteringTextInputFormatter.digitsOnly,
                                         ],
@@ -393,11 +418,11 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['male']!,
-                                      value: 'Male',
-                                      selected: selectedGender == 'Male',
+                                      value: 'M',
+                                      selected: selectedGender == 'M',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Male';
+                                          selectedGender = 'M';
                                         });
                                       },
                                     ),
@@ -407,11 +432,11 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['female']!,
-                                      value: 'Female',
-                                      selected: selectedGender == 'Female',
+                                      value: 'F',
+                                      selected: selectedGender == 'F',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Female';
+                                          selectedGender = 'F';
                                         });
                                       },
                                     ),
@@ -421,11 +446,11 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['others']!,
-                                      value: 'Other',
-                                      selected: selectedGender == 'Others',
+                                      value: 'O',
+                                      selected: selectedGender == 'O',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'Others';
+                                          selectedGender = 'O';
                                         });
                                       },
                                     ),
@@ -464,6 +489,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                               SizedBox(
                                 height: (37/896)*screenHeight(context),
                                 child: TextField(
+                                  controller: _abhaIdController,
                                   inputFormatters: [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
@@ -540,8 +566,48 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                   ),
                                 ),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                var tokenBox = await Hive.box("TokenBox");
+                                await clientProfileBox.put('name', _nameController.text);
+                                await clientProfileBox.put('age',_ageController.text);
+                                await clientProfileBox.put('phone_number',_phoneController.text);
+                                await clientProfileBox.put('ABHA_ID', _abhaIdController.text);
+                                await clientProfileBox.put('gender',selectedGender);
+                                var uri = Uri.parse(appConfig['serverURL']+'/auth/client_signup/');
+                                final response = await http.post(
+                                  uri,
+                                  headers: {
+                                    'Content-Type':'application/json',
+                                    'Authorization': 'Bearer '+await tokenBox.get("access_token")
+                                  },
+                                  body: json.encode({
+                                    "name": _nameController.text,
+                                    "phone_number": _phoneController.text,
+                                    "age": int.parse(_ageController.text),
+                                    "ABHA_ID": _abhaIdController.text,
+                                  }),
+                                );
+                                //print(response.statusCode);
+                                if (response.statusCode == 400){
+                                  final response = await http.post(
+                                    uri,
+                                    headers: {
+                                      'Content-Type':'application/json',
+                                      'Authorization': 'Bearer '+await tokenBox.get("access_token")
+                                    },
+                                    body: json.encode({
+                                      "name": _nameController.text,
+                                      "phone_number": _phoneController.text,
+                                      "age": int.parse(_ageController.text),
+                                      "ABHA_ID": _abhaIdController.text,
+                                    }),
+                                  );
+                                  //print(response.statusCode);
+                                }
                                 widget.updateSubPage("default", true);
+
+                              //
+
                               //   Navigator.push(
                               //     context,
                               //     MaterialPageRoute(

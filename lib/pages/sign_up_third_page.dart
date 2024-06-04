@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import '../CustomRouteBuilder.dart';
 import '../palette.dart';
 import '../custom_widgets.dart';
@@ -18,6 +20,9 @@ class SignUpThird extends StatefulWidget {
 class _SignUpThirdState extends State<SignUpThird> {
   String? maritalStatus;
   String? relation;
+  final TextEditingController _illnessDurationController = TextEditingController();
+  final TextEditingController _hoursSpentController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -267,13 +272,13 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                             LanguageManager()
                                                                 .currentLanguage]![
                                                         'either_parents']!,
-                                                    value: 'Either parent',
+                                                    value: 'Either Parent',
                                                     selected: relation ==
-                                                        'Either parent',
+                                                        'Either Parent',
                                                     onSelect: () {
                                                       setState(() {
                                                         relation =
-                                                            'Either parent';
+                                                            'Either Parent';
                                                       });
                                                     },
                                                   ),
@@ -373,13 +378,13 @@ class _SignUpThirdState extends State<SignUpThird> {
                                                             LanguageManager()
                                                                 .currentLanguage]![
                                                         'non_relation']!,
-                                                    value: 'Non relations',
+                                                    value: 'Non Relative',
                                                     selected: relation ==
-                                                        'Non relations',
+                                                        'Non Relative',
                                                     onSelect: () {
                                                       setState(() {
                                                         relation =
-                                                            'Non relations';
+                                                            'Non Relative';
                                                       });
                                                     },
                                                   ),
@@ -430,7 +435,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     height: (26 / 896) * screenHeight(context),
                                     width: 94.91,
                                     child: TextField(
-                                      inputFormatters: [],
+                                      controller: _illnessDurationController,
+                                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                       style: TextStyle(
                                         color: Color(
                                           0xFF707070,
@@ -441,7 +447,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                       cursorColor: Color(
                                         0xFF707070,
                                       ),
-                                      keyboardType: TextInputType.text,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         contentPadding:
                                             EdgeInsets.fromLTRB(10, 0, 0, 5),
@@ -524,7 +530,8 @@ class _SignUpThirdState extends State<SignUpThird> {
                                     height: (26 / 896) * screenHeight(context),
                                     width: 94.91,
                                     child: TextField(
-                                      inputFormatters: [],
+                                      controller: _hoursSpentController,
+                                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                       style: TextStyle(
                                         color: Color(
                                           0xFF707070,
@@ -535,7 +542,7 @@ class _SignUpThirdState extends State<SignUpThird> {
                                       cursorColor: Color(
                                         0xFF707070,
                                       ),
-                                      keyboardType: TextInputType.text,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         contentPadding:
                                             EdgeInsets.fromLTRB(10, 0, 0, 5),
@@ -607,6 +614,12 @@ class _SignUpThirdState extends State<SignUpThird> {
                                 ),
                               ),
                               onPressed: () {
+                                var profileBox = Hive.box("ProfileBox");
+                                profileBox.put("mean_duration_of_care", _hoursSpentController.text??"");
+                                profileBox.put("mean_duration_of_illness", _illnessDurationController.text??"");
+                                profileBox.put("marital_status",maritalStatus??"");
+                                profileBox.put("cater_client_relationship", relation??"");
+
                                 Navigator.push(
                                   context,
                                   createCustomPageRoute(const SignUpFourth(), context, transitionType: 'slide-in-left')

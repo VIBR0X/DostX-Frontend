@@ -1,3 +1,4 @@
+import 'package:dostx/language_manager.dart';
 import 'package:dostx/pages/brief_cope_results_page.dart';
 import 'package:dostx/pages/cost_effective_analysis_page.dart';
 import 'package:dostx/pages/emothional_wheeel_reults.dart';
@@ -5,9 +6,12 @@ import 'package:dostx/pages/family_burden_results_page.dart';
 import 'package:dostx/globals.dart%20';
 import 'package:dostx/pages/psychoeducation_page.dart';
 import 'package:dostx/pages/zarit_burden_results_page.dart';
+import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
 import '../custom_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -18,26 +22,29 @@ class HomePageFirst extends StatefulWidget {
   final Function() getPrevPageIndex;
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
+  final copingStrategies;
   const HomePageFirst({
     super.key,
     required this.updateHomeIndex,
     required this.getPrevPageIndex,
     required this.updateSubPage,
     required this.getPrevSubPage,
+    required this.copingStrategies
   });
   @override
   State<HomePageFirst> createState() => _HomePageFirstState();
 }
 
 class _HomePageFirstState extends State<HomePageFirst> {
-  List<bool>feelingSelection=[false,false,false,false];
+  List<bool> feelingSelection = [false, false, false, false];
+  var copeBox = Hive.box('CopeStrategyStateManagementBox');
   Widget _buildRescueSessions(BuildContext context, subPageArray) {
     return Container(
       height: 280 / 869 * screenHeight(context),
       child: RawScrollbar(
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 5,
+          itemCount: widget.copingStrategies.length,
           itemBuilder: (context, index) {
             return Container(
               width: 230 / 414 * screenWidth(context),
@@ -54,9 +61,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: index == 0
-                              ? Image.asset("assets/p1.png")
-                              : Image.asset("assets/p2.png"),
+                          child:  Image.network(
+                            appConfig["serverURL"]+'/'+widget.copingStrategies[index]['image'],
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset("assets/p1.png"
+                              );
+                            },
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
@@ -67,8 +78,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                         10 / 414 * screenWidth(context), 0, 0, 0),
-                    child: Text(
-                      index == 0 ? "Let’s breathe easy!" : "Grounding Technique",
+                    child: Text(widget.copingStrategies[index]['title'],
                       style: TextStyle(
                           color: const Color(0xff323736),
                           fontFamily: "SFProMedium",
@@ -80,7 +90,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     padding: EdgeInsets.fromLTRB(
                         10 / 414 * screenWidth(context), 0, 0, 0),
                     child: Text(
-                      index == 0 ? "Breath Work" : "Coping with Anxiety",
+                      "${widget.copingStrategies[index]['expected_time_to_read']} mins read",
                       style: TextStyle(
                           color: const Color(0xff9FA4A4),
                           fontFamily: "SFProText",
@@ -88,8 +98,11 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(screenWidth(context) * 70 / 414,
-                        10 / 869 * screenHeight(context), 0, 0),
+                    padding: EdgeInsets.fromLTRB(
+                        screenWidth(context) * 70 / 414,
+                        10 / 869 * screenHeight(context),
+                        0,
+                        0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         gradient: GradientOptions.signInGradient,
@@ -107,21 +120,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                               ),
                             ),
                             child: TextButton(
-                              onPressed: () {
-                                if (index == 0) {
-                                  widget.updateSubPage(subPageArray[0]);
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(builder: (context)=>navigationPageArray[0])
-                                  // );
-
-                                }
-                                if (index == 1) {
-
-                                }
-                                if (index == 2) {
-
-                                }
+                              onPressed: ()async {
+                                await copeBox.put('title',widget.copingStrategies[index]['title']);
+                                await copeBox.put('imageUrl',widget.copingStrategies[index]['image']);
+                                await copeBox.put('hi',widget.copingStrategies[index]['content_hindi']);
+                                await copeBox.put('en',widget.copingStrategies[index]['content_english']);
+                                await copeBox.put('mr',widget.copingStrategies[index]['content_marathi']);
+                                widget.updateSubPage('individual_cope_strategy_page');
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -165,74 +170,78 @@ class _HomePageFirstState extends State<HomePageFirst> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(
                       17,
-                      0,//screenHeight(context) * 20 / 869,
+                      0, //screenHeight(context) * 20 / 869,
                       0,
                       screenHeight(context) * 30 / 869),
                   child: Text(
                     "How do you feel today?",
                     style: TextStyle(
-                      fontSize: 20 * fontHelper(context),
-                      fontFamily: 'SFProTextMedium',
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF204267),
-                      letterSpacing: 1.1
-                    ),
+                        fontSize: 20 * fontHelper(context),
+                        fontFamily: 'SFProTextMedium',
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xFF204267),
+                        letterSpacing: 1.1),
                   ),
                 ),
                 Row(
                   children: [
                     const Spacer(),
                     InkWell(
-                      onTap: (){
-                        // feelingSelection=[false,false,false,false];
-                        setState((){
-                          feelingSelection=[true,false,false,false];
-                        });
-                      },
-                      child:SvgPicture.asset(feelingSelection[0]? "assets/smiley-selected.svg":"assets/smiley-unselected.svg",
-                        height: 67.26,
-                        width:67.26,
-                      )
-                    ),
+                        onTap: () {
+                          // feelingSelection=[false,false,false,false];
+                          setState(() {
+                            feelingSelection = [true, false, false, false];
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          feelingSelection[0]
+                              ? "assets/smiley-selected.svg"
+                              : "assets/smiley-unselected.svg",
+                          height: 67.26,
+                          width: 67.26,
+                        )),
                     const Spacer(),
                     InkWell(
-                      onTap: (){
-                        setState((){
-                          feelingSelection=[false,true,false,false];
-                        });
-                      },
-                      child: SvgPicture.asset(
-                        feelingSelection[1]?"assets/sad-selected.svg":"assets/sad-unselected.svg",
-                        height:67.26,
-                        width:67.26,
-                      )
-                    ),
+                        onTap: () {
+                          setState(() {
+                            feelingSelection = [false, true, false, false];
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          feelingSelection[1]
+                              ? "assets/sad-selected.svg"
+                              : "assets/sad-unselected.svg",
+                          height: 67.26,
+                          width: 67.26,
+                        )),
                     const Spacer(),
                     InkWell(
-                      onTap: (){
-                        setState((){
-                          feelingSelection=[false,false,true,false];
-                        });
-                      },
-                      child: SvgPicture.asset(
-                        feelingSelection[2]?"assets/hooo-selected.svg":"assets/hooo-unselected.svg",
-                        height:67.26,
-                        width:67.26,
-                      )
-                    ),
+                        onTap: () {
+                          setState(() {
+                            feelingSelection = [false, false, true, false];
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          feelingSelection[2]
+                              ? "assets/hooo-selected.svg"
+                              : "assets/hooo-unselected.svg",
+                          height: 67.26,
+                          width: 67.26,
+                        )),
                     const Spacer(),
                     InkWell(
-                      onTap: (){
-                        setState((){
-                          feelingSelection=[false,false,false,true];
-                        });
-                      },
-                      child: SvgPicture.asset(
-                        feelingSelection[3]?"assets/angry-selected.svg":"assets/angry-unselected.svg",
-                        height:67.26,
-                        width:67.26,
-                      )
-                    ),
+                        onTap: () {
+                          setState(() {
+                            feelingSelection = [false, false, false, true];
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          feelingSelection[3]
+                              ? "assets/angry-selected.svg"
+                              : "assets/angry-unselected.svg",
+                          height: 67.26,
+                          width: 67.26,
+                        )),
                     const Spacer()
                   ],
                 ),
@@ -271,28 +280,27 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       ),
                       // Spacer(),
                       TextButton(
-                          onPressed: (){
+                          onPressed: () {
                             widget.updateHomeIndex(2);
                           },
                           child: Text(
-                              'See All',
+                            'See All',
                             style: TextStyle(
                               fontFamily: 'SFProText',
                               fontSize: 14 * fontHelper(context),
                               color: const Color(0xFF323736),
                             ),
-                          )
-                      )
+                          ))
                     ],
                   ),
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: _buildRescueSessions(context, [
-                      "cope_strategy_test"
-                    ]),
+                    child:
+                        _buildRescueSessions(context, ["cope_strategy_test"]),
                   ),
                   const SizedBox(height: 10),
+                  SizedBox(height: screenHeight(context) * 30 / 869 - 18),
                   Row(
                     children: [
                       Padding(
@@ -309,6 +317,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
                   ReusableTile(
                     title: 'Zarit Scale',
                     author: 'By Dr. Someone Someone',
@@ -321,8 +330,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       // MaterialPageRoute(
                       //   builder: (context) =>  ZaritBurdenResultsPage(),
                       // ),
-                    // );
-                },
+                      // );
+                    },
                   ),
                   ReusableTile(
                     title: 'Emotional Wheel',
@@ -333,13 +342,14 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       widget.updateSubPage("emotional_wheel_results");
 
                       //   Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>  EmotionalWheelResultsPage(),
-                    //   ),
-                    // );
-                      },
-                  ), ReusableTile(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>  EmotionalWheelResultsPage(),
+                      //   ),
+                      // );
+                    },
+                  ),
+                  ReusableTile(
                     title: 'Family Burden Scale',
                     author: 'By Dr. Someone Someone',
                     testDate: '29 Aug 2022',
@@ -348,12 +358,12 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       widget.updateSubPage("family_burden_results");
 
                       //   Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>  FamilyBurdenResultsPage(),
-                    //   ),
-                    // );
-                      },
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>  FamilyBurdenResultsPage(),
+                      //   ),
+                      // );
+                    },
                   ),
                   ReusableTile(
                     title: 'COPE Scale',
@@ -361,14 +371,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
                     onPressed: () {
-                    //   Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>  BriefCopeResultsPage(),
-                    //   ),
-                    // );
+                      //   Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>  BriefCopeResultsPage(),
+                      //   ),
+                      // );
                       widget.updateSubPage("brief_cope_results");
-
                     },
                   ),
                 ],
@@ -409,7 +418,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
           fontSize: 16.0,
         );
       },
-          (BuildContext context) {
+      (BuildContext context) {
         Fluttertoast.showToast(
           msg: "Feature Coming Soon",
           toastLength: Toast.LENGTH_SHORT,
@@ -468,11 +477,15 @@ class _HomePageFirstState extends State<HomePageFirst> {
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(
                                 0, screenHeight(context) * 12 / 869, 0, 0),
-                            child: index != 2?Image.asset(
-
-                              "assets/image/Icon$index.png",
-                              fit: BoxFit.contain,
-                            ):SvgPicture.asset("assets/svg/DocIcon.svg",fit: BoxFit.contain,),
+                            child: index != 2
+                                ? Image.asset(
+                                    "assets/image/Icon$index.png",
+                                    fit: BoxFit.contain,
+                                  )
+                                : SvgPicture.asset(
+                                    "assets/svg/DocIcon.svg",
+                                    fit: BoxFit.contain,
+                                  ),
                           ),
                         ),
                         SizedBox(
@@ -500,12 +513,12 @@ class _HomePageFirstState extends State<HomePageFirst> {
                                   index == 0
                                       ? 'education'
                                       : index == 1
-                                      ? 'Reminder'
-                                      : index == 2
-                                      ? 'Connect'
-                                      : index == 3
-                                      ? 'Coping'
-                                      : '',
+                                          ? 'Reminder'
+                                          : index == 2
+                                              ? 'Connect'
+                                              : index == 3
+                                                  ? 'Coping'
+                                                  : '',
                                   style: TextStyle(
                                       color: const Color(0xff323736),
                                       fontFamily: "SFProText",
@@ -524,10 +537,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
       ),
     );
   }
-
-
 }
-
 
 //   Widget _buildRescueSessions() {
 //     return Column(
@@ -614,13 +624,15 @@ Widget _buildHistoryCard(
           Row(
             children: [
               Text(doctor,
-                  style: const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+                  style:
+                      const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
             ],
           ),
           Row(
             children: [
               Text(date,
-                  style: const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+                  style:
+                      const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
               const Spacer(),
               SizedBox(
                 height: 43,

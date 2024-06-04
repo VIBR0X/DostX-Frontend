@@ -3,6 +3,7 @@
 import 'package:dostx/globals.dart%20';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'language_manager.dart';
 import 'palette.dart';
 import 'globals.dart' as global;
@@ -347,20 +348,30 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
 
 
 
-class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
+class ZaritTestQuestions extends StatefulWidget {
   final String question;
+  final String fieldName;
 
-  const QuestionWithFiveOptionsSingleLine({
+  const ZaritTestQuestions({
     Key? key,
     required this.question,
+    required this.fieldName
   }) : super(key: key);
 
   @override
-  State<QuestionWithFiveOptionsSingleLine> createState() => _QuestionWithFiveOptionsSingleLineState();
+  State<ZaritTestQuestions> createState() => _ZaritTestQuestionsState();
 }
 
-class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOptionsSingleLine> {
-  String? selectedValue;
+class _ZaritTestQuestionsState extends State<ZaritTestQuestions> {
+  String? selectedValue="Never";
+  var zaritBox = Hive.box('ZaritBox');
+
+  @override
+  void initState() {
+    zaritBox.put(widget.fieldName,0);
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -399,6 +410,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Never';
+                              zaritBox.put(widget.fieldName, 0);
                             });
                           },
                           spacing: 3,
@@ -414,6 +426,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Rarely';
+                              zaritBox.put(widget.fieldName, 1);
                             });
                           },
                           spacing: 3,
@@ -429,6 +442,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Sometimes';
+                              zaritBox.put(widget.fieldName, 2);
                             });
                           },
                           spacing: 3,
@@ -455,6 +469,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Frequently';
+                              zaritBox.put(widget.fieldName, 3);
                             });
                           },
                           spacing: 3,
@@ -470,6 +485,7 @@ class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOpti
                           onSelect: () {
                             setState(() {
                               selectedValue = 'Nearly Always';
+                              zaritBox.put(widget.fieldName, 4);
                             });
                           },
                           spacing: 3,
@@ -597,25 +613,34 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
   }
 }
 
-class QuestionsWithFourOptions4Lines extends StatefulWidget {
+class BriefCopeQuestions extends StatefulWidget {
   final String question;
   final Color textColor;
+  final String fieldName;
 
-  const QuestionsWithFourOptions4Lines({
+  const BriefCopeQuestions({
     Key? key,
     required this.question,
     this.textColor = Colors.white,
+    required this.fieldName
   }) : super(key: key);
 
   @override
-  _QuestionsWithFourOptions4LinesState createState() =>
-      _QuestionsWithFourOptions4LinesState();
+  _BriefCopeQuestionsState createState() =>
+      _BriefCopeQuestionsState();
 }
 
-class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOptions4Lines> {
-  String? selectedValue; // Default value
+class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
+  String? selectedValue='I haven\'t been doing this at all'; // Default value
+  var copeFormBox = Hive.box('CopeFormBox');
 
   @override
+  void initState() {
+    copeFormBox.put(widget.fieldName, 1);
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -647,6 +672,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'I haven\'t been doing this at all';
+                      copeFormBox.put(widget.fieldName, 1);
                     });
                   },
                   spacing: 3,
@@ -662,6 +688,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'A medium amount';
+                      copeFormBox.put(widget.fieldName, 2);
                     });
                   },
                   spacing: 3,
@@ -677,6 +704,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'A little bit';
+                      copeFormBox.put(widget.fieldName, 3);
                     });
                   },
                   spacing: 3,
@@ -692,6 +720,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'I’ve been doing this a lot';
+                      copeFormBox.put(widget.fieldName, 4);
                     });
                   },
                   spacing: 3,
@@ -707,20 +736,30 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
 }
 
 
-class QuestionsWithThreeNumberedOptions extends StatefulWidget {
+class FamilyBurdenQuestions extends StatefulWidget {
   final String question;
+  final String fieldName;
 
-  const QuestionsWithThreeNumberedOptions({
+  const FamilyBurdenQuestions({
     Key? key,
     required this.question,
+    required this.fieldName,
   }) : super(key: key);
 
   @override
-  State<QuestionsWithThreeNumberedOptions> createState() => _QuestionsWithThreeNumberedOptionsState();
+  State<FamilyBurdenQuestions> createState() => _FamilyBurdenQuestionsState();
 }
 
-class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNumberedOptions> {
-  String? selectedValue;
+class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
+  String? selectedValue='No Burden';
+  var familyBurdenBox = Hive.box('FamilyBurdenBox');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    familyBurdenBox.put(widget.fieldName,0);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -753,6 +792,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                       onSelect: () {
                         setState(() {
                           selectedValue = 'No Burden';
+                          familyBurdenBox.put(widget.fieldName,0);
                         });
                       },
                       number: 0,
@@ -775,6 +815,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                       onSelect: () {
                         setState(() {
                           selectedValue = 'Moderate Burden';
+                          familyBurdenBox.put(widget.fieldName,1);
                         });
                       },
                       number: 1,
@@ -801,6 +842,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                         onSelect: () {
                           setState(() {
                             selectedValue = 'Severe Burden';
+                            familyBurdenBox.put(widget.fieldName,2);
                           });
                         },
                         number: 2,
@@ -817,138 +859,6 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
     );
   }
 }
-
-class QuestionWithEmotions extends StatefulWidget {
-  final String question;
-
-  const QuestionWithEmotions({
-    Key? key,
-    required this.question,
-  }) : super(key: key);
-
-  @override
-  State<QuestionWithEmotions> createState() => _QuestionWithEmotionsState();
-}
-
-class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
-  String? emotion;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: (345 / 414) * MediaQuery.of(context).size.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: screenHeight(context) * (25 / 895)),
-          Text(
-            widget.question,
-            style: TextStyle(
-              color: Color(0xffE5A194),
-              fontFamily: 'JostMedium',
-              fontSize: fontHelper(context) * 14,
-            ),
-          ),
-          SizedBox(height: 5),
-          Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                    child: CustomRadioButtonb(
-                      text: translations[LanguageManager().currentLanguage]!['happy']!,
-                      value: 'Happy',
-                      selected: emotion == 'Happy',
-                      onSelect: () {
-                        setState(() {
-                          emotion = 'Happy';
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                    child: CustomRadioButtonb(
-                      text: translations[LanguageManager().currentLanguage]!['surprise']!,
-                      value: 'Surprise',
-                      selected: emotion == 'Surprise',
-                      onSelect: () {
-                        setState(() {
-                          emotion = 'Surprise';
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                    child: CustomRadioButtonb(
-                      text: translations[LanguageManager().currentLanguage]!['disgusted']!,
-                      value: 'Disgusted',
-                      selected: emotion == 'Disgusted',
-                      onSelect: () {
-                        setState(() {
-                          emotion = 'Disgusted';
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(width: screenWidth(context) * 0.1),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-                    child: CustomRadioButtonb(
-                      text: translations[LanguageManager().currentLanguage]!['anxious']!,
-                      value: 'Anxious',
-                      selected: emotion == 'Anxious',
-                      onSelect: () {
-                        setState(() {
-                          emotion = 'Anxious';
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-                    child: CustomRadioButtonb(
-                      text: translations[LanguageManager().currentLanguage]!['angry']!,
-                      value: 'Angry',
-                      selected: emotion == 'Angry',
-                      onSelect: () {
-                        setState(() {
-                          emotion = 'Angry';
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
-                    child: CustomRadioButtonb(
-                      text: translations[LanguageManager().currentLanguage]!['bad']!,
-                      value: 'Bad',
-                      selected: emotion == 'Bad',
-                      onSelect: () {
-                        setState(() {
-                          emotion = 'Bad';
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 
 
 // Define the ReusableTile class

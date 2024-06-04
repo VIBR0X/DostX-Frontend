@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:dostx/pages/brief_cope_results_page.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
 import '../globals.dart';
 
 import '../palette.dart';
@@ -152,53 +156,61 @@ class _SignUpThirdState extends State<CopePage> {
                     height: 15,
                   ),
 
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_2']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_2']!,
+                     fieldName:'brief_cope_question_2' ,
+                   ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_3']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_3']!,
+                    fieldName:'brief_cope_question_3' ,
+
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_4']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_4']!,
+                     fieldName:'brief_cope_question_4',
+                   ),
                   const SizedBox(
                     height: 14,
                   ),
 
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_5']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_5']!,
+                     fieldName:'brief_cope_question_5',
+                   ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_6']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_6']!,
+                     fieldName:'brief_cope_question_6',
+                   ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_7']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_7']!,
+                     fieldName:'brief_cope_question_7'
+                   ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const QuestionsWithFourOptions4Lines(
+                   BriefCopeQuestions(
                       textColor: ColorOptions.skin,
-                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_8']!
-                      ),
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_8']!,
+                     fieldName:'brief_cope_question_8',
+                   ),
                   const SizedBox(
                     height: 14,
                   ),
@@ -360,15 +372,25 @@ class _SignUpThirdState extends State<CopePage> {
                             ),
                           ),
                         ),
-                        onPressed: () {
-                          widget.updateSubPage("brief_cope_results", true);
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>  BriefCopeResultsPage(),
-                          //   ),
-                          // );
-                        },
+                        onPressed: () async {
+                          var copeFormBox = Hive.box('CopeFormBox');
+                          var tokenBox = Hive.box('TokenBox');
+                          Map data = copeFormBox.toMap();
+                          var uri = Uri.parse(
+                              appConfig['serverURL'] + '/api/brief_cope_test/');
+                          final response = await http.post(
+                            uri,
+                            headers: {
+                              'Content-Type': 'application/json',
+                              'Authorization':
+                              'Bearer ' + await tokenBox.get("access_token")
+                            },
+                            body: json.encode(data),
+                          );
+                          if (response.statusCode ==201){
+                            widget.updateSubPage("brief_cope_results", true);
+                          }
+                          },
                         child:  Text(
                           translations[LanguageManager().currentLanguage]![
                           'submit']!,

@@ -1,5 +1,6 @@
 Map<String, Map<String, String>> translations = {
   'en': {
+    'lets_breathe_easy': "Let's Breathe Easy",
     'client_details': 'Client Details',
     'age': 'Age',
     'app_name': 'DostX App',
@@ -39,7 +40,7 @@ Map<String, Map<String, String>> translations = {
     'sibling': 'Sibling',
     'non_relation': 'Non relation',
     'mean_duration_of_illness':
-        'Mean duration of illness of the person living\nwith a disorder',
+        'Mean duration of illness of the person living\nwith a disorder (in days)',
     'mean_hours_spent':
         'Mean hours spent with the person living with a\ndisorder',
     'job_loss': 'Job loss due to caregiving:',
@@ -67,9 +68,9 @@ Map<String, Map<String, String>> translations = {
     'zarit_scale_intro_text':
         'The following is a list of statements that reflect how people sometimes feel when taking care of another person.\n\nAfter reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.',
     'question1': "Do you feel you don’t have enough time for yourself?",
-    'question2':
+    'question2': "Do you feel angry when you are around your relative?",
+    'question3':
         "Do you feel stressed between caring and meeting other responsibilities?",
-    'question3': "Do you feel angry when you are around your relative?",
     'question4':
         "Do you feel your relative affects your relationship with others in a negative way?",
     'question5': "Do you feel strained when are around your relative?",
@@ -106,6 +107,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "Anxious",
     'angry': "Angry",
     'bad': "Bad",
+    'sad': 'Sad',
 
     // burden question options with 3 options
     'no_burden': 'No Burden',
@@ -247,6 +249,7 @@ Map<String, Map<String, String>> translations = {
     "upcoming": "Upcoming",
   },
   'hi': {
+    'lets_breathe_easy': "आइए आराम से सांस लें",
     'client_details': 'ग्राहक का विवरण',
     'age': 'उम्र',
     'app_name': 'दोस्तएक्स ऐप',
@@ -286,7 +289,7 @@ Map<String, Map<String, String>> translations = {
     'sibling': 'भाई-बहन',
     'non_relation': 'गैर संबंध',
     'mean_duration_of_illness':
-        'विकार से प्रभावित व्यक्ति के साथ बीमारी की औसत अवधि',
+        'विकार से प्रभावित व्यक्ति के साथ बीमारी की औसत अवधि (दिनों में)',
     'mean_hours_spent': 'विकार से प्रभावित व्यक्ति के साथ बिताए गए औसत घंटे',
     'job_loss': 'देखभाल के कारण नौकरी का नुकसान:',
     'income_inadequacy': 'देखभाल करने के कारण मान्य आय की कमी:',
@@ -356,6 +359,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "चिंतित",
     'angry': "रोषित",
     'bad': "बुरा",
+    'sad': 'उदास',
 
     // burden question options with 3 options
     'no_burden': 'कोई बोझ नहीं',
@@ -486,6 +490,7 @@ Map<String, Map<String, String>> translations = {
     "upcoming": "आगामी",
   },
   'mr': {
+    'lets_breathe_easy': "सहज श्वास घेऊ द्या",
     'age': 'वय',
     'client_details': 'क्लायंटचे तपशील',
     'app_name': 'दोस्तएक्स अ‍ॅप',
@@ -524,7 +529,8 @@ Map<String, Map<String, String>> translations = {
     'friend': 'मित्र',
     'sibling': 'भाऊ-बहिण',
     'non_relation': 'गैर संबंधी',
-    'mean_duration_of_illness': 'विकृत व्यक्तीसोबत बीमारीची सरासरी अवधी',
+    'mean_duration_of_illness':
+        'विकृत व्यक्तीसोबत बीमारीची सरासरी अवधी (दिवसात)',
     'mean_hours_spent': 'विकृत व्यक्तीसोबत बितालेल्या औसत तास',
     'job_loss': 'देखभाल करण्यासाठी नोकरीचा गम:',
     'income_inadequacy': 'देखभाल करण्यासाठी ओळखलेली उत्पन्न:',
@@ -592,6 +598,7 @@ Map<String, Map<String, String>> translations = {
     'anxious': "चिंतित",
     'angry': "रागावला",
     'bad': "वाईट",
+    'sad': 'दुःखी',
 
 // बोझ प्रश्न पर्यायांसह
     'no_burden': 'कोणतेही बोझ नाही',

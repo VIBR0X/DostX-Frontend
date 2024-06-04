@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import '../CustomRouteBuilder.dart';
 import '../palette.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +20,12 @@ class SignUpSecond extends StatefulWidget {
 
 class _SignUpSecondState extends State<SignUpSecond> {
   late File? _pickedImage=null;
+  late String  _pickedImagePath = "";
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _postalCodeController = TextEditingController();
+  final TextEditingController _stateController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +106,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                           setState(() {
                                             _pickedImage =
                                                 File(pickedFile.path);
+                                            _pickedImagePath = pickedFile.path;
                                           });
                                         } else {}
                                       },
@@ -164,6 +172,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 SizedBox(
                                   height: (81/ 896) * screenHeight(context),
                                   child: TextField(
+                                    controller: _addressController,
                                     maxLines: 5,
                                     style: TextStyle(
                                       color: ColorOptions.skin,
@@ -257,6 +266,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                           height:( 25/ 896) * screenHeight(context),
                                           width: 94.91,
                                           child: TextField(
+                                            controller: _postalCodeController,
                                             inputFormatters: [
                                               LengthLimitingTextInputFormatter(
                                                   6),
@@ -351,6 +361,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 SizedBox(
                                   height: (37/ 896) * screenHeight(context),
                                   child: TextField(
+                                    controller: _stateController,
                                     inputFormatters: const [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
@@ -438,6 +449,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                 SizedBox(
                                   height: (37/ 896) * screenHeight(context),
                                   child: TextField(
+                                    controller: _countryController,
                                     inputFormatters: const [],
                                     style: TextStyle(
                                       color: ColorOptions.skin,
@@ -517,6 +529,12 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   ),
                                 ),
                                 onPressed: () {
+                                  var profileBox = Hive.box("ProfileBox");
+                                  profileBox.put("address", _addressController.text??"");
+                                  profileBox.put("postal_code", _postalCodeController.text??"");
+                                  profileBox.put("state", _stateController.text??"");
+                                  profileBox.put("country", _countryController.text??"");
+                                  profileBox.put("profile_pic_local_path", _pickedImagePath??"");
                                   Navigator.push(
                                     context,
                                     createCustomPageRoute(const SignUpThird(), context, transitionType: 'slide-in-left')

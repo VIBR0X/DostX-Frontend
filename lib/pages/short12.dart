@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:dostx/pages/zarit_burden_results_page.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
 import '../globals.dart';
 
 import '../palette.dart';
@@ -7,15 +11,13 @@ import '../custom_widgets.dart';
 import 'package:flutter/material.dart';
 import '../translations.dart';
 import '../language_manager.dart';
+import 'package:http/http.dart' as http;
 
 class Short12Page extends StatefulWidget {
   final Function(String, [bool]) updateSubPage;
   final Function() getPrevSubPage;
-  const Short12Page({
-    super.key,
-    required this.updateSubPage,
-    required this.getPrevSubPage
-  });
+  const Short12Page(
+      {super.key, required this.updateSubPage, required this.getPrevSubPage});
   @override
   State<Short12Page> createState() => _SignUpThirdState();
 }
@@ -25,14 +27,15 @@ class _SignUpThirdState extends State<Short12Page> {
   String? relation;
   @override
   Widget build(BuildContext context) {
+    var zaritBox = Hive.box('ZaritBox');
+    var tokenBox = Hive.box('TokenBox');
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: screenHeight(context)*0.105,
+        toolbarHeight: screenHeight(context) * 0.105,
         centerTitle: true,
         scrolledUnderElevation: 0,
         elevation: 0,
-
-        backgroundColor:const Color(
+        backgroundColor: const Color(
           0xFFE5A194,
         ),
         title: Image.asset(
@@ -41,9 +44,8 @@ class _SignUpThirdState extends State<Short12Page> {
           // height: 27,
           // height: 80,
         ),
-
         leadingWidth: 100,
-        leading:  Stack(
+        leading: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
@@ -69,9 +71,7 @@ class _SignUpThirdState extends State<Short12Page> {
                               LanguageManager().setLanguage('en');
                               // Close the dialog
                               Navigator.pop(context);
-                              setState(() {
-
-                              });
+                              setState(() {});
                             },
                           ),
                           ListTile(
@@ -122,7 +122,6 @@ class _SignUpThirdState extends State<Short12Page> {
             ),
           ],
         ),
-
       ),
       backgroundColor: const Color(0xFFE5A194),
       body: SingleChildScrollView(
@@ -132,14 +131,14 @@ class _SignUpThirdState extends State<Short12Page> {
             Container(
               height: 0,
               // color: Colors.transparent,
-
             ),
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30), topRight: Radius.circular(30),
-                  ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
                 color: ColorOptions.whitish,
               ),
               child: Column(
@@ -147,15 +146,14 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 29,
                   ),
-
-                  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question1']!),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question1']!,
+                    fieldName: 'time_question',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-<<<<<<< Updated upstream
                   ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question2']!,
@@ -164,46 +162,30 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question3']!),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question3']!,
+                    fieldName: 'stressed_question',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question4']!),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question4']!,
+                    fieldName: 'effect_on_relationship_question',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
                   ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question5']!,
-=======
-
-
-
-                  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question3']!,
-                  fieldName: 'effect_on_relationship_question',),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question4']!,
->>>>>>> Stashed changes
                     fieldName: 'strained_question',
                   ),
                   const SizedBox(
                     height: 14,
                   ),
-<<<<<<< Updated upstream
                   ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question6']!,
@@ -212,74 +194,38 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question7']!),
-                    height: 14,
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question7']!,
+                    fieldName: 'privacy_question',
                   ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question8']!),
                   const SizedBox(
                     height: 14,
                   ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question9']!),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question8']!,
+                    fieldName: 'social_life_question',
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question9']!,
+                    fieldName: 'life_control_question',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
                   ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question10']!,
-=======
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question5']!,
-                  fieldName: 'health_question',),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question6']!,
-                  fieldName: 'privacy_question',),
-                  const SizedBox(
-                    height: 14,
-                  ),
-
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question7']!,
-                  fieldName: 'social_life_question',),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question8']!,
-                  fieldName: 'life_control_question',),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question9']!,
->>>>>>> Stashed changes
                     fieldName: 'uncertaininty_question',
                   ),
                   const SizedBox(
                     height: 14,
                   ),
-<<<<<<< Updated upstream
                   ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question11']!,
@@ -293,29 +239,6 @@ class _SignUpThirdState extends State<Short12Page> {
                         'question12']!,
                     fieldName: 'better_job_question',
                   ),
-=======
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question10']!,
-                  fieldName: 'doing_more_question',),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question11']!,
-                  fieldName: 'better_job_question'),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  const  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question12']!,
-                  fieldName: 'angry_question'),
->>>>>>> Stashed changes
                   const SizedBox(
                     height: 26,
                   ),
@@ -336,16 +259,50 @@ class _SignUpThirdState extends State<Short12Page> {
                             ),
                           ),
                         ),
-                        onPressed: () {
-                          widget.updateSubPage("zarit_burden_results", true);
-                        //   Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     // builder: (context) =>  ZaritBurdenResultsPage(),
-                        //   ),
-                        // );
+                        onPressed: () async {
+                          Map<String, int> data = {
+                            "time_question": zaritBox.get('time_question') ?? 0,
+                            "angry_question":
+                                zaritBox.get("angry_question") ?? 0,
+                            "health_question":
+                                zaritBox.get("health_question") ?? 0,
+                            "privacy_question":
+                                zaritBox.get("privacy_question") ?? 0,
+                            "strained_question":
+                                zaritBox.get("strained_question") ?? 0,
+                            "stressed_question":
+                                zaritBox.get("stressed_question") ?? 0,
+                            "better_job_question":
+                                zaritBox.get("better_job_question") ?? 0,
+                            "doing_more_question":
+                                zaritBox.get("doing_more_question") ?? 0,
+                            "social_life_question":
+                                zaritBox.get("social_life_question") ?? 0,
+                            "life_control_question":
+                                zaritBox.get("life_control_question") ?? 0,
+                            "uncertaininty_question":
+                                zaritBox.get("uncertaininty_question") ?? 0,
+                            "effect_on_relationship_question": zaritBox
+                                    .get("effect_on_relationship_question") ??
+                                0,
+                          };
+                          var uri = Uri.parse(
+                              appConfig['serverURL'] + '/api/zaritscale/');
+                          final response = await http.post(
+                            uri,
+                            headers: {
+                              'Content-Type': 'application/json',
+                              'Authorization':
+                                  'Bearer ' + await tokenBox.get("access_token")
+                            },
+                            body: json.encode(data),
+                          );
+                          print(response.statusCode);
+                          if (response.statusCode == 201) {
+                            widget.updateSubPage("zarit_burden_results", true);
+                          }
                         },
-                        child:  Text(
+                        child: Text(
                           translations[LanguageManager().currentLanguage]![
                               'submit']!,
                           style: TextStyle(

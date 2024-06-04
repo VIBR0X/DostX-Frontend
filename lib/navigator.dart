@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'package:dostx/config.dart';
+import 'package:hive/hive.dart';
+import 'package:http/http.dart' as http;
 import 'package:dostx/pages/brief_cope_page.dart';
 import 'package:dostx/pages/brief_cope_results_page.dart';
 import 'package:dostx/pages/client_details.dart';
@@ -40,14 +44,39 @@ class _NavigationControllerState extends State<NavigationController> {
   String _selectedSubPage = "default";
   String _previousSubPage = "default";
   List<String>_previousSubPageTrack = ["default"];
+  var tokenBox = Hive.box('TokenBox');
 
-  void _updateNavigation(int index){
+  void _refreshToken()async{
+    DateTime? lastRefreshTime = await tokenBox.get('last_access_refresh_time');
+    if (lastRefreshTime == null || (DateTime.now().difference(lastRefreshTime).inMinutes >= 30)){
+      //print('token is refreshed');
+      var response = await http.post(
+          Uri.parse(appConfig["serverURL"]+'/auth/tokenrefresh/'),
+          body: json.encode({
+            "refresh":tokenBox.get('refresh_token')
+          }),
+          headers: {
+            'Content-Type':'application/json',
+          }
+
+      );
+      var data= jsonDecode(response.body);
+      var accessToken = data['access'];
+      //print(accessToken);
+      await tokenBox.put('access_token',accessToken);
+      await tokenBox.put('last_access_refresh_time', DateTime.now());
+    }
+  }
+
+  void _updateNavigation(int index)async{
+    _refreshToken();
     _previousIndex = _selectedIndex;
     setState(() {
       _selectedIndex=index;
     });
   }
   void _updateSubPage(String pageName, [bool overrideTrack = false]){
+    _refreshToken();
     if(overrideTrack){
       _previousSubPageTrack = <String>["default"];
       _previousSubPage = "default";
@@ -255,17 +284,17 @@ class _NavigationControllerState extends State<NavigationController> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             // gradient: GradientOptions.backgroundGradient,
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
               colors: <Color>[
                 Color(
-                  0xFFFFFFFF,
+                  (_selectedIndex != 0)? 0xFFFFFFFF:0xffFFF2E3,
                 ),
                 Color(
-                  0xFFFEBEB1,
+                  (_selectedIndex != 0)?0xFFFEBEB1:0xffFFF2E3,
                 ),
               ],
             ),
@@ -282,18 +311,6 @@ class _NavigationControllerState extends State<NavigationController> {
   Widget _buildIconButton(IconData icon, int index) {
     return IconButton(
       onPressed: () {
-        // if(index == 3){
-        //               Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) =>  MedicalReminderPage(),
-        //       ),
-        //     );
-        //               return;
-        // }
-        // setState(() {
-        //   _selectedIndex = index;
-        // });
         _updateNavigation(index);
         _updateSubPage("default");
       },
@@ -308,19 +325,190 @@ class _NavigationControllerState extends State<NavigationController> {
 
   // Method to build body content based on selected index
   Widget _buildBodyContent(int index, String subPage) {
+
+    Future<List<dynamic>> fetchPsychoEducationData() async {
+      String url = appConfig["serverURL"]+"/api/websites/";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchMedicalReminderData() async {
+      String url = appConfig["serverURL"]+"/api/notifications/";
+      var header={
+        'Authorization': 'Bearer '+await tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        //print(jsonDecode(response.body));
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchEMWheelData() async {
+      String url = appConfig["serverURL"]+"/api/em_test";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchBriefCopeData() async {
+      String url = appConfig["serverURL"]+"/api/brief_cope_test_full/";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchZaritData() async {
+      String url = appConfig["serverURL"]+"/api/zaritscale/";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchFamilyBurdenData() async {
+      String url = appConfig["serverURL"]+"/api/family_burden_scale/";
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchRecentResultsData() async {
+      String url = appConfig["serverURL"]+"/api/combined_results/";
+
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> data = jsonDecode(response.body);
+        //print(data.keys);
+        List<dynamic> finalData = [];
+        for (var key in data.keys){
+          for (var item in data[key]){
+            item['type'] = key;
+            finalData.add(item);
+          }
+        }
+        return finalData;
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchCopingStrategies() async {
+      String url = appConfig["serverURL"]+"/api/coping_strategies/";
+
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
+    Future<List<dynamic>> fetchHomePageData() async {
+      String url = appConfig["serverURL"]+"/api/coping_strategies/";
+
+      var header={
+        'Authorization': 'Bearer '+tokenBox.get("access_token")
+      };
+      final response = await http.get(Uri.parse(url), headers: header);
+      //print(response.statusCode);
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load data');
+      }
+    }
+
     switch (index) {
       case 0:
         switch(subPage) {
           case "psycho_education":
-            return PsychoEducationPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchPsychoEducationData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return PsychoEducationPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    websiteList: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "zarit_burden_results":
-            return ZaritBurdenResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchZaritData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return ZaritBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "zarit_scale_1":
@@ -336,9 +524,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "emotional_wheel_results":
-            return EmotionalWheelResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchEMWheelData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return EmotionalWheelResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "emotional_wheel_1":
@@ -354,9 +557,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "family_burden_results":
-            return FamilyBurdenResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchFamilyBurdenData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return FamilyBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "family_burden_1":
@@ -371,9 +589,24 @@ class _NavigationControllerState extends State<NavigationController> {
             );
 
           case "brief_cope_results":
-            return BriefCopeResultsPage(
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchBriefCopeData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return BriefCopeResultsPage(
+                  updateSubPage: _updateSubPage,
+                  getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
 
           case "brief_cope_1":
@@ -388,22 +621,34 @@ class _NavigationControllerState extends State<NavigationController> {
               getPrevSubPage: _getPrevSubPage,
             );
 
-          case "cope_strategy_test":
+          case "individual_cope_strategy_page":
             return CopingStrategyAboutPage(
               updateSubPage: _updateSubPage,
               getPrevSubPage: _getPrevSubPage,
-              title: "The Art of Self-Love",
-              imageUrl: "assets/image/coping (2).png",
-              description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
               );
             
           case "default":
-          return HomePageFirst(
-            updateHomeIndex: _updateNavigation,
-            getPrevPageIndex: _getPrevIndex,
-            updateSubPage: _updateSubPage,
-            getPrevSubPage: _getPrevSubPage,
-          );
+            return FutureBuilder<List<dynamic>>(
+              future: fetchHomePageData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return HomePageFirst(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    copingStrategies: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
+            );
 
           default:
             return Center(child: Text("404: Page Not Found!"),);
@@ -426,38 +671,83 @@ class _NavigationControllerState extends State<NavigationController> {
 
 
           default:
-            return ProfilePage(
-              updateHomeIndex: _updateNavigation,
-              getPrevPageIndex: _getPrevIndex,
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
+            return FutureBuilder<List<dynamic>>(
+              future: fetchRecentResultsData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return ProfilePage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
             );
+
         }
       case 2:
         switch(subPage){
-          case "cope_strategy_test":
+          case "individual_cope_strategy_page":
             return CopingStrategyAboutPage(
               updateSubPage: _updateSubPage,
               getPrevSubPage: _getPrevSubPage,
-              title: "The Art of Self-Love",
-              imageUrl: "assets/image/coping (2).png",
-              description: "Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.Embracing Yourself Fully:\n Self-love is a journey that many of us embark on but few of us fully understand. It’s about more than just treating yourself or indulging in self-care rituals; it’s about developing a deep, nurturing relationship with yourself that allows you to thrive in all areas of life. Here’s how to cultivate self-love, with insights gathered from various experts and sources.\n\nUnderstanding Self-Love:\n Self-love is the regard for one’s own well-being and happiness. It is not merely a state of feeling good but is a state of appreciation for oneself that grows from actions supporting our physical, psychological, and spiritual growth (Good Therapy). When you love yourself, you are better equipped to make healthier choices, engage in more fulfilling relationships, and navigate the challenges of life with resilience and grace.",
-            );
+             );
           default:
-            return CopingStrategiesPage(
-              updateHomeIndex: _updateNavigation,
-              getPrevPageIndex: _getPrevIndex,
-              updateSubPage: _updateSubPage,
-              getPrevSubPage: _getPrevSubPage,
-            ); //Text('Messenger Page Content');
+            return FutureBuilder<List<dynamic>>(
+              future: fetchCopingStrategies(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return CopingStrategiesPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: snapshot.data!, // Pass the data to the page
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
+            );
+
         }
       case 3:
         switch(subPage) {
           default:
-            return MedicalReminderPage(
-              updateHomeIndex: _updateNavigation,
-              getPrevPageIndex: _getPrevIndex,
-            ); //
+            return FutureBuilder<List<dynamic>>(
+              future: fetchMedicalReminderData(),
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  return MedicalReminderPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    reminderList:snapshot.data!,
+                  );
+                } else {
+                  return Center(child: Text('No data available'));
+                }
+              },
+            );
+
         }// Text('Calendar Page Content');
       default:
         return Container();

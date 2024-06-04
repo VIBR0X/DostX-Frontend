@@ -1,13 +1,23 @@
+// import 'dart:html';
+// import 'dart:convert';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:dostx/CustomRouteBuilder.dart';
+import 'package:dostx/config.dart';
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import '../navigator.dart';
 import 'consent_page.dart';
 import '../translations.dart';
 import '../language_manager.dart';
 import '../globals.dart ';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart'; // For MediaType
+
 
 class SignUpFourth extends StatefulWidget {
   const SignUpFourth({super.key});
@@ -235,11 +245,11 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                       LanguageManager()
                                                           .currentLanguage]![
                                                   'at_home']!,
-                                              value: 'At home',
-                                              selected: status == 'At home',
+                                              value: 'At Home',
+                                              selected: status == 'At Home',
                                               onSelect: () {
                                                 setState(() {
-                                                  status = 'At home';
+                                                  status = 'At Home';
                                                 });
                                               },
                                             ),
@@ -276,13 +286,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                           .currentLanguage]![
                                                   'intermittent_institution']!,
                                               value:
-                                                  'Intermittent Institution and then at home',
+                                                  'Intermittent Institution then at home',
                                               selected: status ==
-                                                  'Intermittent Institution and then at home',
+                                                  'Intermittent Institution then at home',
                                               onSelect: () {
                                                 setState(() {
                                                   status =
-                                                      'Intermittent Institution and then at home';
+                                                      'Intermittent Institution then at home';
                                                 });
                                               },
                                             ),
@@ -355,13 +365,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                                 .currentLanguage]![
                                                         'neurological_disorder']!,
                                                     value:
-                                                        'Neurological disorder',
+                                                        'Neurological Disorder',
                                                     selected: diagnosis ==
-                                                        'Neurological disorder',
+                                                        'Neurological Disorder',
                                                     onSelect: () {
                                                       setState(() {
                                                         diagnosis =
-                                                            'Neurological disorder';
+                                                            'Neurological Disorder';
                                                       });
                                                     },
                                                   ),
@@ -375,13 +385,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                             LanguageManager()
                                                                 .currentLanguage]![
                                                         'substance_abuse']!,
-                                                    value: 'Substance abuse',
+                                                    value: 'Substance Abuse',
                                                     selected: diagnosis ==
-                                                        'Substance abuse',
+                                                        'Substance Abuse',
                                                     onSelect: () {
                                                       setState(() {
                                                         diagnosis =
-                                                            'Substance abuse';
+                                                            'Substance Abuse';
                                                       });
                                                     },
                                                   ),
@@ -394,13 +404,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                                 .currentLanguage]![
                                                         'multiple_disorders']!,
                                                     value:
-                                                        'Multiple disorders',
+                                                        'Multiple Disorders',
                                                     selected: diagnosis ==
-                                                        'Multiple disorders',
+                                                        'Multiple Disorders',
                                                     onSelect: () {
                                                       setState(() {
                                                         diagnosis =
-                                                            'Multiple disorders';
+                                                            'Multiple Disorders';
                                                       });
                                                     },
                                                   ),
@@ -413,13 +423,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                                 .currentLanguage]![
                                                         'chronic_physical_disorders']!,
                                                     value:
-                                                        'Chronic Physical disorders',
+                                                        'Chronic Physical Disorders',
                                                     selected: diagnosis ==
-                                                        'Chronic Physical disorders',
+                                                        'Chronic Physical Disorders',
                                                     onSelect: () {
                                                       setState(() {
                                                         diagnosis =
-                                                            'Chronic Physical disorders';
+                                                            'Chronic Physical Disorders';
                                                       });
                                                     },
                                                   ),
@@ -443,13 +453,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                             LanguageManager()
                                                                 .currentLanguage]![
                                                         'depression']!,
-                                                    value: 'depression',
+                                                    value: 'Depression',
                                                     selected: diagnosis ==
-                                                        'depression',
+                                                        'Depression',
                                                     onSelect: () {
                                                       setState(() {
                                                         diagnosis =
-                                                            'depression';
+                                                            'Depression';
                                                       });
                                                     },
                                                   ),
@@ -479,13 +489,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                             LanguageManager()
                                                                 .currentLanguage]![
                                                         'bipolar_disorder']!,
-                                                    value: 'Bipolar disorder',
+                                                    value: 'Bipolar Disorder',
                                                     selected: diagnosis ==
-                                                        'Bipolar disorder',
+                                                        'Bipolar Disorder',
                                                     onSelect: () {
                                                       setState(() {
                                                         diagnosis =
-                                                            'Bipolar disorder';
+                                                            'Bipolar Disorder';
                                                       });
                                                     },
                                                   ),
@@ -524,14 +534,65 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                createCustomPageRoute(const NavigationController(), context)
-                                // MaterialPageRoute(
-                                //   builder: (context) => const ConsentForm(),
-                                // ),
-                              );
+                            onPressed: () async {
+                              var profileBox = Hive.box('ProfileBox');
+                              var tokenBox = Hive.box('TokenBox');
+                              profileBox.put("job_loss",jobLoss=="Yes"?true:false);
+                              profileBox.put("diagnosis",diagnosis??"");
+                              profileBox.put("percieved_income_loss",income??"");
+                              profileBox.put("status_of_person_with_disorder", status??"");
+                              var uri = Uri.parse(appConfig["serverURL"]+'/auth/signup/');
+                              var request = http.MultipartRequest('POST', uri);
+                              request.headers['Authorization'] = 'Bearer '+tokenBox.get("access_token");
+
+                              request.fields['consent'] = true.toString();
+
+
+                              if (profileBox != null) {
+                                // //print("All data in 'profileBox':");
+                                for (int i = 0; i < profileBox.length; i++) {
+                                  String key = profileBox.keyAt(i);
+                                  // //print('Key: ${key.toString()}, Value: ${profileBox.getAt(i)}');
+                                  if (key !="abha_id" && key !="profile_pic_local_path"){
+                                    request.fields[key.toString()] = profileBox.getAt(i).toString();
+                                  }
+                                  // request.fields[profileBox.keyA]
+                                }
+                              }
+                              String image_path = profileBox.get('profile_pic_local_path');
+                              if(image_path!="") {
+                                final File file = File(image_path);
+                                final Uint8List fileBytes = await file
+                                    .readAsBytes();
+                                request.files.add(
+                                    http.MultipartFile.fromBytes(
+                                      'profile_pic',
+                                      fileBytes,
+                                      filename: profileBox.get('phone_number') +
+                                          '-' + profileBox.get('first_name') +
+                                          ' ' + profileBox.get('last_name') +
+                                          '.' + image_path
+                                          .split('.')
+                                          .last,
+                                      contentType: MediaType(
+                                          'image', 'jpeg'),));
+                              }
+                              var response = await request.send();
+                              var responseData = await response.stream.bytesToString();
+                              var decodedResponse = jsonDecode(responseData);
+                              //print(decodedResponse);
+                              //print(response.statusCode);
+                              if (response.statusCode == 201){
+                                tokenBox.put('profile_available',true);
+                                for (var entry in decodedResponse['user_profile']!.entries){
+                                  profileBox.put(entry.key,entry.value);
+                                }
+                                Navigator.push(
+                                    context,
+                                    createCustomPageRoute(const NavigationController(), context)
+                                );
+                              }
+
                             },
                             child: Text(
                               translations[LanguageManager()

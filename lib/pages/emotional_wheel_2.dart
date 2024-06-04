@@ -1,6 +1,12 @@
+import 'dart:convert';
+
+import 'package:dostx/em_wheel_emotions.dart';
 import 'package:dostx/pages/zarit_burden_results_page.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
+import '../config.dart';
 import '../globals.dart';
+import 'package:http/http.dart' as http;
 
 import '../palette.dart';
 import '../custom_widgets.dart';
@@ -23,9 +29,26 @@ class EmotionalWheel2 extends StatefulWidget {
 class _EmotionalWheel2State extends State<EmotionalWheel2> {
   String? maritalStatus;
   String? relation;
-  String dayCategory = "Morning";
+  var embox = Hive.box('EmotionalWheelBox');
+  String? emotion1;
+  String? emotion2;
+  String? emotion3;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    emotion1 = embox.get("primary_emotion");
+    emotion2 = emotionMap[emotion1]!.keys.toList()[0];
+    emotion3 = emotionMap[emotion1]![emotion2]!.toList()[0];
+  }
+
   @override
   Widget build(BuildContext context) {
+    //print(emotion1);
+    //print(emotion2);
+    //print(emotion3);
+
     double relFont = fontHelper(context);
     return Scaffold(
 
@@ -206,7 +229,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       elevation: 0,
                       // isExpanded: true, // Allow the dropdown to expand to fit the parent
                       underline: SizedBox(), // Remove the default underline
-                      value: dayCategory,
+                      value: emotion2,
                       iconSize: 25,
                       isDense: true,
                       style: TextStyle(
@@ -214,7 +237,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                           fontFamily: 'SFProMedium',
                           color: const Color(0xFF606060),
                           letterSpacing: 1.1),
-                      items: ["Morning","Afternoon","Evenining"].map<DropdownMenuItem<String>>(
+                      items: emotionMap[emotion1]!.keys.map<DropdownMenuItem<String>>(
                               (String value){
                             return DropdownMenuItem<String>(
 
@@ -234,7 +257,9 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       ).toList(),
                       onChanged: (String? value) {
                         setState(() {
-                          dayCategory = value!;
+                          emotion2 = value!;
+                          emotion3 = emotionMap[emotion1]![emotion2]!.toList()[0];
+
                         });
                       },
                     ),
@@ -271,7 +296,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       elevation: 0,
                       // isExpanded: true, // Allow the dropdown to expand to fit the parent
                       underline: SizedBox(), // Remove the default underline
-                      value: dayCategory,
+                      value: emotion3,
                       iconSize: 25,
                       isDense: true,
                       style: TextStyle(
@@ -279,7 +304,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                           fontFamily: 'SFProMedium',
                           color: const Color(0xFF606060),
                           letterSpacing: 1.1),
-                      items: ["Morning","Afternoon","Evenining"].map<DropdownMenuItem<String>>(
+                      items: emotionMap[emotion1]![emotion2]!.map<DropdownMenuItem<String>>(
                               (String value){
                             return DropdownMenuItem<String>(
 
@@ -299,7 +324,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       ).toList(),
                       onChanged: (String? value) {
                         setState(() {
-                          dayCategory = value!;
+                          emotion3 = value!;
                         });
                       },
                     ),
@@ -324,8 +349,23 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                               ),
                             ),
                           ),
-                          onPressed: () {
-                            widget.updateSubPage("default", true);
+                          onPressed: () async {
+                            var tokenBox = Hive.box("TokenBox");
+                            await embox.put("inner_emotion",emotion2);
+                            await embox.put("outer_emotion",emotion3);
+                            var response = await http.post(
+                                Uri.parse(appConfig["serverURL"]+'/api/em_test/'),
+                                body: json.encode(  {
+                                  "result": "$emotion1: $emotion2: $emotion3",
+                                  "inner_wheel": emotion2,
+                                  "outer_wheel": emotion3
+                                }),
+                                headers: {
+                                  'Content-Type':'application/json',
+                                  'Authorization':'Bearer ${await tokenBox.get('access_token')}'
+                                }
+                            );
+                            if (response.statusCode == 201) widget.updateSubPage("default", true);
                             //   Navigator.push(
                             //     context,
                             //     MaterialPageRoute(

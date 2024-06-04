@@ -1,22 +1,32 @@
 import 'package:dostx/pages/brief_cope_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../custom_widgets.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
 
-
-class BriefCopeResultsPage extends StatelessWidget {
+class BriefCopeResultsPage extends StatefulWidget {
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
+  final results;
   const BriefCopeResultsPage({
     super.key,
     required this.updateSubPage,
-    required this.getPrevSubPage
+    required this.getPrevSubPage,
+    required this.results
   });
   @override
+  State<BriefCopeResultsPage> createState() => _BriefCopeResultsPageState();
+}
+
+class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
+  int selectedIndex=-1;
+
+  @override
   Widget build(BuildContext context) {
+    //print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: Color(0xFFF8F8F8),
@@ -34,7 +44,7 @@ class BriefCopeResultsPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            updateSubPage(getPrevSubPage());
+            widget.updateSubPage(widget.getPrevSubPage());
           },
         ),
         title: Text(
@@ -94,18 +104,30 @@ class BriefCopeResultsPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "${translations[LanguageManager().currentLanguage]!['date']!} :",
-                                  style: TextStyle(
-                                      fontSize: relFont * 15.0,
-                                      fontFamily: 'SFProMedium',
-                                      color: Color(0xFF323736),
-                                      letterSpacing: 1.1),
-                                  // textAlign: TextAlign.center,
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${translations[LanguageManager().currentLanguage]!['date']!} :",
+                                      style: TextStyle(
+                                          fontSize: relFont * 15.0,
+                                          fontFamily: 'SFProMedium',
+                                          color: Color(0xFF323736),
+                                          letterSpacing: 1.1),
+                                      // textAlign: TextAlign.center,
+                                    ),
+                                    Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['date'])):"Please select a result",
+                                      style: TextStyle(
+                                          fontSize: relFont * 15.0,
+                                          fontFamily: 'SFProMedium',
+                                          color: Color(0xFF323736),
+                                          letterSpacing: 1.1),
+                                      // textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
                                 SizedBox(height: 10,),
                                 Text(
-                                  translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
+                                    translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
                                   style: TextStyle(
                                       fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
@@ -123,7 +145,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(20.0),
                       child: Center(
                         child: Text(
-                          translations[LanguageManager().currentLanguage]![
+                          (selectedIndex!=-1)?"Your score is: ${widget.results[selectedIndex]['score']}":translations[LanguageManager().currentLanguage]![
                           'assessment-text']!,
                           style: TextStyle(
                               fontSize: relFont * 18.0,
@@ -156,7 +178,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              updateSubPage("brief_cope_1");
+                              widget.updateSubPage("brief_cope_1");
                             //   Navigator.push(
                             //   context,
                             //   MaterialPageRoute(
@@ -165,8 +187,7 @@ class BriefCopeResultsPage extends StatelessWidget {
                             // );
                               },
                             child: Text(
-                              translations[LanguageManager().currentLanguage]![
-                              'retake']!,
+                              (widget.results.length==0)?translations[LanguageManager().currentLanguage]!['proceed']! : translations[LanguageManager().currentLanguage]!['retake']!,
                               style: TextStyle(
                                 fontSize: relFont * 14,
                                 fontFamily: "JostBold",
@@ -184,42 +205,27 @@ class BriefCopeResultsPage extends StatelessWidget {
 
 
             // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
-
-            ReusableTile(
-              title: 'Brief-COPE',
-              author: 'By Dr. Someone Someone',
-              testDate: 'Test taken on 29 Aug 2022',
-              buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-              onPressed: () {
-
-              },
-            ),
-            ReusableTile(
-              title: 'Brief-COPE',
-              author: 'By Dr. Someone Someone',
-              testDate: 'Test taken on 29 Aug 2022',
-              buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-              onPressed: () {
-
-              },
-            ),
-            ReusableTile(
-              title: 'Brief-COPE',
-              author: 'By Dr. Someone Someone',
-              testDate: 'Test taken on 29 Aug 2022',
-              buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-              onPressed: () {
-
-              },
-            ),
-            ReusableTile(
-              title: 'Brief-COPE',
-              author: 'By Dr. Someone Someone',
-              testDate: 'Test taken on 29 Aug 2022',
-              buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-              onPressed: () {
-
-              },
+            SizedBox(
+              height: screenHeight(context)*0.49,
+              width: screenWidth(context),
+              child: ListView.builder(
+                  itemCount: widget.results.length,
+                  itemBuilder: (context, index){
+                    return Container(
+                      child: ReusableTile(
+                        title: 'Brief-COPE',
+                        author: 'By Dr. Someone Someone',
+                        testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date'])),
+                        buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                        onPressed: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                      ),
+                    );
+                  }
+              ),
             ),
           ],
         ),

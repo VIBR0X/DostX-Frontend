@@ -1,11 +1,15 @@
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:dostx/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
+import 'package:http/http.dart' as http;
 
 class CostEffectiveAnalysisPage extends StatefulWidget {
   final String imageUrl="";
@@ -23,6 +27,30 @@ class CostEffectiveAnalysisPage extends StatefulWidget {
 }
 
 class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
+  var costEffectivenessBox = Hive.box('CostEffBox');
+  final TextEditingController _mOPDController = TextEditingController(); // m for money
+  final TextEditingController _nOPDController = TextEditingController(); // n for number or frequency
+  final TextEditingController _mHospitalController = TextEditingController();
+  final TextEditingController _nHospitalController = TextEditingController();
+  final TextEditingController _mEmergencyController = TextEditingController();
+  final TextEditingController _nEmergencyController = TextEditingController();
+  final TextEditingController _mHomeCareController = TextEditingController();
+  final TextEditingController _nHomeCareController = TextEditingController();
+
+  @override
+  void initState() {
+    _mOPDController.text = costEffectivenessBox.get('amount_for_one_OPD')??"";
+    _nOPDController.text = costEffectivenessBox.get('amount_for_one_Hospitalisation')??"";
+    _mHospitalController.text = costEffectivenessBox.get('amount_for_emergency')??"";
+    _nHospitalController.text = costEffectivenessBox.get('amount_for_home_care')??"";
+    _mEmergencyController.text = costEffectivenessBox.get('no_of_OPD')??"";
+    _nEmergencyController.text = costEffectivenessBox.get('no_of_Hospitalisation')??"";
+    _mHomeCareController.text = costEffectivenessBox.get('no_of_emergency')??"";
+    _nHomeCareController.text = costEffectivenessBox.get('no_of_home_care')??"";
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
@@ -175,6 +203,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                 width: min(90, screenWidth(context)*0.3),
                                 child:TextFormField(
+                                  controller: _mOPDController,
                                 // maxLines: 1,
                                   textAlign: TextAlign.start,
                                   textAlignVertical: TextAlignVertical.center,
@@ -239,6 +268,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _nOPDController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -325,6 +355,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _mHospitalController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -389,6 +420,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _nHospitalController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -475,6 +507,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _mEmergencyController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -539,6 +572,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _nEmergencyController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -625,6 +659,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _mHomeCareController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -689,6 +724,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               SizedBox(
                                   width: min(90, screenWidth(context)*0.3),
                                   child:TextFormField(
+                                    controller: _nHomeCareController,
                                     // maxLines: 1,
                                     textAlign: TextAlign.start,
                                     textAlignVertical: TextAlignVertical.center,
@@ -756,7 +792,40 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                           style: TextButton.styleFrom(
                             backgroundColor: null,
                           ),
-                          onPressed: (){},
+                          onPressed: ()async {
+                            var tokenBox = await Hive.box('TokenBox');
+                            costEffectivenessBox.put('amount_for_one_OPD',_mOPDController.text);
+                            costEffectivenessBox.put('amount_for_one_Hospitalisation',_nOPDController.text);
+                            costEffectivenessBox.put('amount_for_emergency',_mHospitalController.text);
+                            costEffectivenessBox.put('amount_for_home_care',_nHospitalController.text);
+                            costEffectivenessBox.put('no_of_OPD',_mEmergencyController.text);
+                            costEffectivenessBox.put('no_of_Hospitalisation',_nEmergencyController.text);
+                            costEffectivenessBox.put('no_of_emergency',_mHomeCareController.text);
+                            costEffectivenessBox.put('no_of_home_care',_nHomeCareController.text);
+
+                            var body=json.encode({
+                              "amount_for_one_OPD":int.parse(_mOPDController.text),
+                            "no_of_OPD":int.parse(_nOPDController.text),
+                            "amount_for_one_Hospitalisation":int.parse(_mHospitalController.text),
+                            "no_of_Hospitalisation":int.parse(_nHospitalController.text),
+                            "amount_for_emergency":int.parse(_mEmergencyController.text),
+                            "no_of_emergency":int.parse(_nEmergencyController.text),
+                            "amount_for_home_care":int.parse(_mHomeCareController.text),
+                              "no_of_home_care":int.parse(_nHomeCareController.text),
+                            });
+
+                            var response = await http.post(
+                              Uri.parse(appConfig['serverURL']+'/api/cost_effectiveness_study/'),
+                              headers: {
+                                'Content-Type':'application/json',
+                                'Authorization': 'Bearer '+await tokenBox.get("access_token")
+                              },
+                              body: body
+                            );
+                            if (response.statusCode == 201){
+                              widget.updateSubPage('default');
+                            }
+                            },
                           child: Text(
                             "SUBMIT",
                             maxLines: 1, // Limiting to 1 line

@@ -93,11 +93,17 @@ class _FamilyBurdenScalePageState extends State<FamilyBurdenScalePage> {
                         ),
                       ),
                       SizedBox(height: (35/869)*screenHeight(context),),
-                      QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_1']!),
+                      FamilyBurdenQuestions(
+                        question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_1']!,
+                        fieldName: 'family_burden_scale_question_1',
+                      ),
                       SizedBox(height: (25/869)*screenHeight(context),),
-                      QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_2']!),
+                      FamilyBurdenQuestions(
+                        question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_2']!,
+                        fieldName: 'family_burden_scale_question_2',
+                      ),
                       SizedBox(height: (15/869)*screenHeight(context),),
-                      // QuestionsWithThreeNumberedOptions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_3']!),
+                      // FamilyBurdenQuestions(question: translations[LanguageManager().currentLanguage]!['family_burden_scale_question_3']!),
                       SizedBox(height: (35/869)*screenHeight(context),),
                       SizedBox(
                         height:(43/869)*screenHeight(context),
