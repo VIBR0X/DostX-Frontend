@@ -1,8 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
+import '../config.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
+import 'package:http/http.dart' as http;
 
 class MedicalReminderPage extends StatefulWidget {
   final Function() getPrevPageIndex;
@@ -22,13 +29,14 @@ class MedicalReminderPage extends StatefulWidget {
 class _MedicalReminderPageState extends State<MedicalReminderPage> {
   int modeIndex = 0;
 
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _doctorController = TextEditingController();
-  TextEditingController _dayxController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _doctorController = TextEditingController();
+  final TextEditingController _dayxController = TextEditingController();
   TimeOfDay timeNewAdd = TimeOfDay.now();
   String dayCategoryNewAdd = "MORNING";
 
   void _showDialog() {
+    int _imagePickerValue = 0;
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -92,7 +100,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                                 fontFamily: 'SFProMedium',
                                 color: const Color(0xFF606060),
                                 letterSpacing: 1.1),
-                            items: ["MORNING", "AFTERNOON", "EVENING"].map<
+                            items: ["MORNING", "NOON", "EVENING","NIGHT"].map<
                                 DropdownMenuItem<String>>(
                                     (String value) {
                                   return DropdownMenuItem<String>(
@@ -133,7 +141,59 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                             ),
                           ),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 5,),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: screenWidth(context) * 0.13,
+                            // height: screenHeight(context) * 0.09,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  side: const BorderSide(color: Color(0xFF707070), width: 1),
+
+                                ),
+                                backgroundColor: Colors.transparent,
+                                elevation: 0,
+
+                              ),
+                              onPressed: (){
+                                setState((){
+                                  _imagePickerValue = (_imagePickerValue + 1)%4;
+                                }
+                                );
+                              },
+                              child: Image.asset(
+                                "assets/image/med (${_imagePickerValue+1}).png",
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            // child: Image.asset(
+                            //   "assets/image/emo_wheel.png",
+                            //   fit: BoxFit.contain,
+                            // ),
+                          ),
+                          const SizedBox(width: 40,),
+                          const Text("Day X:"),
+                          const SizedBox(width: 20,),
+                          Expanded(
+                            child: TextField(
+                              controller: _dayxController,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+
+                                  hintText: "Enter a number"),
+                            ),
+                          ),
+                        ],
+                      ),
+
                     ],
                   ),
                 ),
@@ -147,12 +207,39 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                 ),
                 TextButton(
                   child: Text('Add'),
-                  onPressed: () {
-                    // String title = _titleController.text;
-                    // String doctor = _doctorController.text;
-                    // Handle the input text here
-                    //print("Time: ${timeNewAdd}, Day Category: $dayCategoryNewAdd");
-                    // Navigator.of(context).pop();
+                  onPressed: () async{
+                    var tokenBox = Hive.box('TokenBox');
+                    String title = _titleController.text??"";
+                    String doctor = _doctorController.text??"";
+                    int dayx = (_dayxController.text.isNotEmpty)?int.parse(_dayxController.text):0;
+                    int image = _imagePickerValue + 1;
+                    NumberFormat formatter = NumberFormat("00");
+                    bool passable = _titleController.text.isNotEmpty && _dayxController.text.isNotEmpty;
+                    if(passable){
+                      Map<String, dynamic> data = {
+                        "message": "Your medicine: $title",
+                        "title": title,
+                        "doctor": doctor,
+                        "image_id": image,
+                        "no_of_days": dayx,
+                        "time": "${formatter.format(timeNewAdd.hour)}:${formatter.format(timeNewAdd.minute)}:00",
+                        "time_period": dayCategoryNewAdd
+                      };
+                      print(data);
+                      var uri = Uri.parse(appConfig['serverURL'] + '/api/notifications/');
+                      final response = await http.post(
+                        uri,
+                        headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization':'Bearer ' + await tokenBox.get("access_token")
+                        },
+                        body: json.encode(data),
+                      );
+                      if (response.statusCode == 201){
+                        Navigator.of(context).pop();
+                      }
+                    }
+
                   },
                 ),
               ],
@@ -167,6 +254,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
 
   @override
   Widget build(BuildContext context) {
+    print('state is updated');
     DateTime now = DateTime.now();
     int nowInMins= now.hour *60 + now.minute;
     //print(widget.reminderList);
@@ -482,6 +570,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                           return (modeIndex==0 && nowInMins < reminderTimeInMins)||(modeIndex==1 && nowInMins > reminderTimeInMins)?Padding(
                             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                             child: MedicalEntry(
+                              id: widget.reminderList[index]['id'],
                               title: widget.reminderList[index]['title'],
                               doctor:  widget.reminderList[index]['doctor'],
                               dayx:widget.reminderList[index]['no_of_days'],
@@ -516,6 +605,7 @@ class MedicalEntry extends StatefulWidget {
   final int imageID;
   final String reminderTime;
   final String reminderPeriod;
+  final String id;
   const MedicalEntry({
     super.key,
     required this.title,
@@ -524,6 +614,7 @@ class MedicalEntry extends StatefulWidget {
     required this.imageID,
     required this.reminderPeriod,
     required this.reminderTime,
+    required this.id
   });
 
   @override
@@ -531,6 +622,7 @@ class MedicalEntry extends StatefulWidget {
 }
 
 class _MedicalEntryState extends State<MedicalEntry> {
+  NumberFormat formatter = NumberFormat("00");
 
   TimeOfDay time1 = TimeOfDay.now();
   // TimeOfDay time2 = TimeOfDay.now();
@@ -543,30 +635,51 @@ class _MedicalEntryState extends State<MedicalEntry> {
       helpText: "Select start time"
     )??time1;
 
-    // final TimeOfDay picked2 = await showTimePicker(
-    //     initialEntryMode: TimePickerEntryMode.inputOnly,
-    //     context: context,
-    //     initialTime: time2,
-    //     helpText: "Select end time"
-    // )??time2;
+    headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+    };
+    var req = await http.put(
+      uri,
+      headers: headers,
+      body: json.encode({
+        "message": "Your medicine: ${widget.title}",
+        "title": widget.title,
+        "doctor": widget.doctor,
+        "image_id": widget.imageID,
+        "no_of_days": widget.dayx,
+        "time": "${formatter.format(picked1.hour)}:${formatter.format(picked1.minute)}:00",
+        "time_period": widget.reminderPeriod
+      }),
+    );
 
-      setState(() {
-        time1 = picked1;
-        // time2 =(picked2.hour+picked2.minute/60.0 > picked1.hour+picked2.minute/60.0)?picked2:time1;
-        });
+    setState(() {
+      time1 = picked1;
+    });
   }
   late String dayCategory;
   bool imagePickerOn = false;
 
   // String medicineName = widget.title;
 
+  var uri;
+  var tokenBox = Hive.box('TokenBox');
+  Map<String, String> headers = {};
+
+  int imageid = 0;
+
   @override
   void initState(){
     super.initState();
+    uri = Uri.parse(appConfig['serverURL'] + '/api/notification/'+widget.id+'/');
     dayCategory = widget.reminderPeriod;
     List<String> strTime = widget.reminderTime.split(':');
     time1 = TimeOfDay(hour: int.parse(strTime[0]), minute: int.parse(strTime[1]));
+    imageid = widget.imageID;
+
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -617,7 +730,7 @@ class _MedicalEntryState extends State<MedicalEntry> {
                           });
                         },
                         child: Image.asset(
-                          "assets/image/med (${widget.imageID}).png",
+                          "assets/image/med ($imageid).png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -696,7 +809,7 @@ class _MedicalEntryState extends State<MedicalEntry> {
                                       fontFamily: 'SFProMedium',
                                       color: const Color(0xFF606060),
                                       letterSpacing: 1.1),
-                                  items: ["MORNING","AFTERNOON","EVENING"].map<DropdownMenuItem<String>>(
+                                  items: ["MORNING","NOON","EVENING","NIGHT"].map<DropdownMenuItem<String>>(
                                       (String value){
                                         return DropdownMenuItem<String>(
 
@@ -707,9 +820,27 @@ class _MedicalEntryState extends State<MedicalEntry> {
                                         );
                                       }
                                   ).toList(),
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      dayCategory = value!;
+                                  onChanged: (String? value) async{
+                                    headers = {
+                                      'Content-Type': 'application/json',
+                                      'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+                                    };
+                                    var req = await http.put(
+                                      uri,
+                                      headers: headers,
+                                      body: json.encode({
+                                        "message": "Your medicine: ${widget.title}",
+                                        "title": widget.title,
+                                        "doctor": widget.doctor,
+                                        "image_id": widget.imageID,
+                                        "no_of_days": widget.dayx,
+                                        "time": widget.reminderTime,
+                                        "time_period": value!
+                                      }),
+                                    );
+                                    print(req.body);
+                                    setState(()  {
+                                      dayCategory = value;
                                     });
                                   },
                                 ),
@@ -754,16 +885,81 @@ class _MedicalEntryState extends State<MedicalEntry> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+                      // padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
                       child: Center(
-                        child: Text(
-                          "Day x${widget.dayx}",
-                          style: TextStyle(
-                              fontSize: relFont * 12.0,
-                              fontFamily: 'SFProMedium',
-                              color: const Color(0xFF606060),
-                              letterSpacing: 1.1),
-                          textAlign: TextAlign.center,
+                        child: TextButton(
+                          onPressed: (){
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                TextEditingController _dayxEditController = TextEditingController();
+                                return StatefulBuilder(
+                                  builder: (context, setState) {
+
+                                    return AlertDialog(
+                                      title: const Text('Edit Number of Days'),
+                                      content: SizedBox(
+                                        height: screenHeight(context)*0.2,
+                                        child: Row(
+                                          children: [
+                                            Expanded(child: Text('DAY   X')),
+                                            Expanded(child: TextField(
+                                              controller: _dayxEditController,
+                                              keyboardType: TextInputType.number,
+                                              inputFormatters: [
+                                                FilteringTextInputFormatter.digitsOnly,
+                                              ],
+                                            ))
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: Text('Cancel'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        TextButton(onPressed: ()async{
+
+                                          headers = {
+                                            'Content-Type': 'application/json',
+                                            'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+                                          };
+                                          if(_dayxEditController.text.isNotEmpty){
+                                          var req = await http.put(
+                                            uri,
+                                            headers: headers,
+                                            body: json.encode({
+                                              "message": "Your medicine: ${widget.title}",
+                                              "title": widget.title,
+                                              "doctor": widget.doctor,
+                                              "image_id": widget.imageID,
+                                              "no_of_days": int.parse(_dayxEditController.text),
+                                              "time": widget.reminderTime,
+                                              "time_period": widget.reminderPeriod
+                                            }),
+                                          );
+                                          Navigator.of(context).pop();
+                                          }
+                                        },
+                                            child: Text('Update'))
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                            );
+                          },
+                          child: Text(
+                            "Day x${widget.dayx}",
+                            style: TextStyle(
+                                fontSize: relFont * 12.0,
+                                fontFamily: 'SFProMedium',
+                                color: const Color(0xFF606060),
+                                letterSpacing: 1.1),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),
@@ -804,8 +1000,28 @@ class _MedicalEntryState extends State<MedicalEntry> {
                         elevation: 0,
 
                       ),
-                      onPressed: (){
-                        imagePickerOn = true;
+                      onPressed: ()async{
+                        headers = {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+                        };
+                        var req = await http.put(
+                          uri,
+                          headers: headers,
+                          body: json.encode({
+                            "message": "Your medicine: ${widget.title}",
+                            "title": widget.title,
+                            "doctor": widget.doctor,
+                            "image_id": 1,
+                            "no_of_days": widget.dayx,
+                            "time": widget.reminderTime,
+                            "time_period": widget.reminderPeriod
+                          }),
+                        );
+                        setState(() {
+                          imagePickerOn = false;
+                          imageid = 1;
+                        });
                       },
                       child: Image.asset(
                         "assets/image/med (1).png",
@@ -828,9 +1044,29 @@ class _MedicalEntryState extends State<MedicalEntry> {
                         elevation: 0,
 
                       ),
-                      onPressed: (){
-                        imagePickerOn = true;
-                      },
+                      onPressed: ()async{
+                        headers = {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+                        };
+                        var req = await http.put(
+                          uri,
+                          headers: headers,
+                          body: json.encode({
+                            "message": "Your medicine: ${widget.title}",
+                            "title": widget.title,
+                            "doctor": widget.doctor,
+                            "image_id": 2,
+                            "no_of_days": widget.dayx,
+                            "time": widget.reminderTime,
+                            "time_period": widget.reminderPeriod
+                          }),
+                        );
+                      setState(() {
+                        imagePickerOn = false;
+                        imageid = 2;
+                      });
+                        },
                       child: Image.asset(
                         "assets/image/med (2).png",
                         fit: BoxFit.contain,
@@ -852,8 +1088,28 @@ class _MedicalEntryState extends State<MedicalEntry> {
                         elevation: 0,
 
                       ),
-                      onPressed: (){
-                        imagePickerOn = true;
+                      onPressed: ()async{
+                        headers = {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+                        };
+                        var req = await http.put(
+                          uri,
+                          headers: headers,
+                          body: json.encode({
+                            "message": "Your medicine: ${widget.title}",
+                            "title": widget.title,
+                            "doctor": widget.doctor,
+                            "image_id": 3,
+                            "no_of_days": widget.dayx,
+                            "time": widget.reminderTime,
+                            "time_period": widget.reminderPeriod
+                          }),
+                        );
+                        setState(() {
+                          imagePickerOn = false;
+                          imageid = 3;
+                        });
                       },
                       child: Image.asset(
                         "assets/image/med (3).png",
@@ -876,8 +1132,28 @@ class _MedicalEntryState extends State<MedicalEntry> {
                         elevation: 0,
 
                       ),
-                      onPressed: (){
-                        imagePickerOn = true;
+                      onPressed: ()async{
+                        headers = {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + await tokenBox.get("access_token")
+                        };
+                        var req = await http.put(
+                          uri,
+                          headers: headers,
+                          body: json.encode({
+                            "message": "Your medicine: ${widget.title}",
+                            "title": widget.title,
+                            "doctor": widget.doctor,
+                            "image_id": 4,
+                            "no_of_days": widget.dayx,
+                            "time": widget.reminderTime,
+                            "time_period": widget.reminderPeriod
+                          }),
+                        );
+                        setState(() {
+                          imagePickerOn = false;
+                          imageid = 4;
+                        });
                       },
                       child: Image.asset(
                         "assets/image/med (4).png",
