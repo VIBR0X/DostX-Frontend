@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 
+import '../config.dart';
 import '../globals.dart';
 import 'family_burden_results_page.dart';
 import '../palette.dart';
@@ -151,68 +155,85 @@ class _SignUpThirdState extends State<familyBurden> {
                         height: 29,
                       ),
 
-                      QuestionsWithThreeNumberedOptions(
+                      FamilyBurdenQuestions(
                           question:
-                          translations[LanguageManager().currentLanguage]!['family_burden_scale_question_3']!),
+                          translations[LanguageManager().currentLanguage]!['family_burden_scale_question_3']!,
+                        fieldName: 'family_burden_scale_question_3',
                       ),
-                       SizedBox(
+                       const SizedBox(
                         height: 14,
                       ),
-                      QuestionsWithThreeNumberedOptions(
+                      FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_4']!),
+                          'family_burden_scale_question_4']!,
+                        fieldName: 'family_burden_scale_question_4',
+                      ),
 
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_5']!),
+                          'family_burden_scale_question_5']!,
+                          fieldName: 'family_burden_scale_question_5',
+                        ),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_6']!),
+                          'family_burden_scale_question_6']!,
+                          fieldName: 'family_burden_scale_question_6',
+                        ),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_7']!),
+                          'family_burden_scale_question_7']!,
+                          fieldName: 'family_burden_scale_question_7',
+                        ),
                       const SizedBox(
                         height: 14,
                       ),
 
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_8']!),
+                          'family_burden_scale_question_8']!,
+                          fieldName: 'family_burden_scale_question_8',
+                        ),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_9']!),
+                          'family_burden_scale_question_9']!,
+                          fieldName: 'family_burden_scale_question_9',
+                        ),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_10']!),
+                          'family_burden_scale_question_10']!,
+                          fieldName: 'family_burden_scale_question_10',
+                        ),
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                        FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_11']!),
+                          'family_burden_scale_question_11']!,
+                          fieldName: 'family_burden_scale_question_11',
+                        ),
                       const SizedBox(
                         height: 26,
                       ),
@@ -233,15 +254,25 @@ class _SignUpThirdState extends State<familyBurden> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              widget.updateSubPage("family_burden_results", true);
-                            //   Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>  FamilyBurdenResultsPage(),
-                            //   ),
-                            // );
-                            },
+                                  onPressed: () async {
+                                    var familyBurdenBox = Hive.box('FamilyBurdenBox');
+                                    var tokenBox = Hive.box('TokenBox');
+                                    Map data = familyBurdenBox.toMap();
+                                    var uri = Uri.parse(appConfig['serverURL'] + '/api/family_burden_scale/');
+                                    final response = await http.post(
+                                      uri,
+                                      headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization':'Bearer ' + await tokenBox.get("access_token")
+                                      },
+                                      body: json.encode(data),
+                                    );
+                                    if (response.statusCode ==201){
+                                      // print(data);
+                                      // print(response.body);
+                                    widget.updateSubPage("family_burden_results", true);
+                                    }
+                                  },
                             child:  Text(
                               translations[LanguageManager().currentLanguage]![
                               'submit']!,

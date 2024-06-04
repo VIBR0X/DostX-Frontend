@@ -348,23 +348,30 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
 
 
 
-class QuestionWithFiveOptionsSingleLine extends StatefulWidget {
+class ZaritTestQuestions extends StatefulWidget {
   final String question;
   final String fieldName;
 
-  const QuestionWithFiveOptionsSingleLine({
+  const ZaritTestQuestions({
     Key? key,
     required this.question,
     required this.fieldName
   }) : super(key: key);
 
   @override
-  State<QuestionWithFiveOptionsSingleLine> createState() => _QuestionWithFiveOptionsSingleLineState();
+  State<ZaritTestQuestions> createState() => _ZaritTestQuestionsState();
 }
 
-class _QuestionWithFiveOptionsSingleLineState extends State<QuestionWithFiveOptionsSingleLine> {
+class _ZaritTestQuestionsState extends State<ZaritTestQuestions> {
   String? selectedValue="Never";
   var zaritBox = Hive.box('ZaritBox');
+
+  @override
+  void initState() {
+    zaritBox.put(widget.fieldName,0);
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -606,12 +613,12 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
   }
 }
 
-class QuestionsWithFourOptions4Lines extends StatefulWidget {
+class BriefCopeQuestions extends StatefulWidget {
   final String question;
   final Color textColor;
   final String fieldName;
 
-  const QuestionsWithFourOptions4Lines({
+  const BriefCopeQuestions({
     Key? key,
     required this.question,
     this.textColor = Colors.white,
@@ -619,14 +626,21 @@ class QuestionsWithFourOptions4Lines extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _QuestionsWithFourOptions4LinesState createState() =>
-      _QuestionsWithFourOptions4LinesState();
+  _BriefCopeQuestionsState createState() =>
+      _BriefCopeQuestionsState();
 }
 
-class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOptions4Lines> {
-  String? selectedValue; // Default value
+class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
+  String? selectedValue='I haven\'t been doing this at all'; // Default value
+  var copeFormBox = Hive.box('CopeFormBox');
 
   @override
+  void initState() {
+    copeFormBox.put(widget.fieldName, 1);
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -658,6 +672,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'I haven\'t been doing this at all';
+                      copeFormBox.put(widget.fieldName, 1);
                     });
                   },
                   spacing: 3,
@@ -673,6 +688,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'A medium amount';
+                      copeFormBox.put(widget.fieldName, 2);
                     });
                   },
                   spacing: 3,
@@ -688,6 +704,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'A little bit';
+                      copeFormBox.put(widget.fieldName, 3);
                     });
                   },
                   spacing: 3,
@@ -703,6 +720,7 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
                   onSelect: () {
                     setState(() {
                       selectedValue = 'I’ve been doing this a lot';
+                      copeFormBox.put(widget.fieldName, 4);
                     });
                   },
                   spacing: 3,
@@ -718,20 +736,30 @@ class _QuestionsWithFourOptions4LinesState extends State<QuestionsWithFourOption
 }
 
 
-class QuestionsWithThreeNumberedOptions extends StatefulWidget {
+class FamilyBurdenQuestions extends StatefulWidget {
   final String question;
+  final String fieldName;
 
-  const QuestionsWithThreeNumberedOptions({
+  const FamilyBurdenQuestions({
     Key? key,
     required this.question,
+    required this.fieldName,
   }) : super(key: key);
 
   @override
-  State<QuestionsWithThreeNumberedOptions> createState() => _QuestionsWithThreeNumberedOptionsState();
+  State<FamilyBurdenQuestions> createState() => _FamilyBurdenQuestionsState();
 }
 
-class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNumberedOptions> {
-  String? selectedValue;
+class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
+  String? selectedValue='No Burden';
+  var familyBurdenBox = Hive.box('FamilyBurdenBox');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    familyBurdenBox.put(widget.fieldName,0);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -764,6 +792,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                       onSelect: () {
                         setState(() {
                           selectedValue = 'No Burden';
+                          familyBurdenBox.put(widget.fieldName,0);
                         });
                       },
                       number: 0,
@@ -786,6 +815,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                       onSelect: () {
                         setState(() {
                           selectedValue = 'Moderate Burden';
+                          familyBurdenBox.put(widget.fieldName,1);
                         });
                       },
                       number: 1,
@@ -812,6 +842,7 @@ class _QuestionsWithThreeNumberedOptionsState extends State<QuestionsWithThreeNu
                         onSelect: () {
                           setState(() {
                             selectedValue = 'Severe Burden';
+                            familyBurdenBox.put(widget.fieldName,2);
                           });
                         },
                         number: 2,

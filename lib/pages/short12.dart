@@ -146,7 +146,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 29,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question1']!,
                     fieldName: 'time_question',
@@ -154,7 +154,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question2']!,
                     fieldName: 'angry_question',
@@ -162,7 +162,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question3']!,
                     fieldName: 'stressed_question',
@@ -170,7 +170,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question4']!,
                     fieldName: 'effect_on_relationship_question',
@@ -178,7 +178,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question5']!,
                     fieldName: 'strained_question',
@@ -186,7 +186,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question6']!,
                     fieldName: 'health_question',
@@ -194,7 +194,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question7']!,
                     fieldName: 'privacy_question',
@@ -202,7 +202,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question8']!,
                     fieldName: 'social_life_question',
@@ -210,7 +210,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question9']!,
                     fieldName: 'life_control_question',
@@ -218,7 +218,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question10']!,
                     fieldName: 'uncertaininty_question',
@@ -226,7 +226,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question11']!,
                     fieldName: 'doing_more_question',
@@ -234,7 +234,7 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
                     question: translations[LanguageManager().currentLanguage]![
                         'question12']!,
                     fieldName: 'better_job_question',

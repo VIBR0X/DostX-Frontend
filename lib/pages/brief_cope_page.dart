@@ -92,7 +92,7 @@ class _BriefCopePageState extends State<BriefCopePage> {
                       ),
                     ),
                     SizedBox(height: (30/869)*screenHeight(context),),
-                    QuestionsWithFourOptions4Lines(
+                    BriefCopeQuestions(
                         question: translations[LanguageManager().currentLanguage]!['brief_cope_question_1']!,
                       fieldName:'brief_cope_question_1' ,
                       textColor: ColorOptions.skin,
