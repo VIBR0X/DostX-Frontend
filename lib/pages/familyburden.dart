@@ -209,10 +209,129 @@ class _SignUpThirdState extends State<familyBurden> {
                       const SizedBox(
                         height: 14,
                       ),
-                      const  QuestionsWithThreeNumberedOptions(
+                      FamilyBurdenQuestions(
                           question:
                           translations[LanguageManager().currentLanguage]![
-                          'family_burden_scale_question_11']!),
+                          'family_burden_scale_question_11']!,
+                          fieldName: 'family_burden_scale_question_11',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_12']!,
+                          fieldName: 'family_burden_scale_question_12',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_13']!,
+                          fieldName: 'family_burden_scale_question_13',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_14']!,
+                          fieldName: 'family_burden_scale_question_14',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_15']!,
+                          fieldName: 'family_burden_scale_question_15',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_16']!,
+                          fieldName: 'family_burden_scale_question_16',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_17']!,
+                          fieldName: 'family_burden_scale_question_17',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_18']!,
+                          fieldName: 'family_burden_scale_question_18',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_19']!,
+                          fieldName: 'family_burden_scale_question_19',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_20']!,
+                          fieldName: 'family_burden_scale_question_20',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_21']!,
+                          fieldName: 'family_burden_scale_question_21',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_22']!,
+                          fieldName: 'family_burden_scale_question_22',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_23']!,
+                          fieldName: 'family_burden_scale_question_23',
+                        ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                        FamilyBurdenQuestions(
+                          question:
+                          translations[LanguageManager().currentLanguage]![
+                          'family_burden_scale_question_24']!,
+                          fieldName: 'family_burden_scale_question_24',
+                        ),
                       const SizedBox(
                         height: 26,
                       ),

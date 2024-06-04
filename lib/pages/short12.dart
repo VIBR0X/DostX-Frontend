@@ -155,13 +155,12 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-
-
-
-                  QuestionWithFiveOptionsSingleLine(
-                      question:
-                          translations[LanguageManager().currentLanguage]![
-                              'question2']!),
+<<<<<<< Updated upstream
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question2']!,
+                    fieldName: 'angry_question',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
@@ -179,18 +178,37 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
-                  const  QuestionWithFiveOptionsSingleLine(
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question5']!,
+=======
+
+
+
+                  QuestionWithFiveOptionsSingleLine(
                       question:
                           translations[LanguageManager().currentLanguage]![
-                              'question5']!),
+                              'question3']!,
+                  fieldName: 'effect_on_relationship_question',),
                   const SizedBox(
                     height: 14,
                   ),
-
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
                           translations[LanguageManager().currentLanguage]![
-                              'question6']!),
+                              'question4']!,
+>>>>>>> Stashed changes
+                    fieldName: 'strained_question',
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+<<<<<<< Updated upstream
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question6']!,
+                    fieldName: 'health_question',
+                  ),
                   const SizedBox(
                     height: 14,
                   ),
@@ -214,24 +232,90 @@ class _SignUpThirdState extends State<Short12Page> {
                   const SizedBox(
                     height: 14,
                   ),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question10']!,
+=======
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
                           translations[LanguageManager().currentLanguage]![
-                              'question10']!),
+                              'question5']!,
+                  fieldName: 'health_question',),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
                           translations[LanguageManager().currentLanguage]![
-                              'question11']!),
+                              'question6']!,
+                  fieldName: 'privacy_question',),
+                  const SizedBox(
+                    height: 14,
+                  ),
+
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question7']!,
+                  fieldName: 'social_life_question',),
                   const SizedBox(
                     height: 14,
                   ),
                   const  QuestionWithFiveOptionsSingleLine(
                       question:
                           translations[LanguageManager().currentLanguage]![
-                              'question12']!),
+                              'question8']!,
+                  fieldName: 'life_control_question',),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question9']!,
+>>>>>>> Stashed changes
+                    fieldName: 'uncertaininty_question',
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+<<<<<<< Updated upstream
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question11']!,
+                    fieldName: 'doing_more_question',
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  ZaritTestQuestions(
+                    question: translations[LanguageManager().currentLanguage]![
+                        'question12']!,
+                    fieldName: 'better_job_question',
+                  ),
+=======
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question10']!,
+                  fieldName: 'doing_more_question',),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question11']!,
+                  fieldName: 'better_job_question'),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const  QuestionWithFiveOptionsSingleLine(
+                      question:
+                          translations[LanguageManager().currentLanguage]![
+                              'question12']!,
+                  fieldName: 'angry_question'),
+>>>>>>> Stashed changes
                   const SizedBox(
                     height: 26,
                   ),

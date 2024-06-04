@@ -204,8 +204,141 @@ class _SignUpThirdState extends State<CopePage> {
                   ),
                   const QuestionsWithFourOptions4Lines(
                       textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_9']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_10']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_11']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_12']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_13']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_14']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_15']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_16']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_17']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_18']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_19']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_20']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_21']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_22']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_23']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_24']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_25']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_26']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
+                      question: translations[LanguageManager().currentLanguage]!['brief_cope_question_27']!
+                      ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const QuestionsWithFourOptions4Lines(
+                      textColor: ColorOptions.skin,
                       question:
-                      translations[LanguageManager().currentLanguage]!['brief_cope_question_9']!
+                      translations[LanguageManager().currentLanguage]!['brief_cope_question_28']!
                       ),
                   const SizedBox(
                     height: 26,
