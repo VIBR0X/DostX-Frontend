@@ -397,7 +397,7 @@ class _SignUpThirdState extends State<CopePage> {
                             headers: {
                               'Content-Type': 'application/json',
                               'Authorization':
-                                  'Bearer  ${await tokenBox.get("access_token")}'
+                                  'Bearer ${await tokenBox.get("access_token")}'
                             },
                             body: json.encode(data),
                           );
