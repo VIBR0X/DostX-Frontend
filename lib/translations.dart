@@ -63,6 +63,9 @@ Map<String, Map<String, String>> translations = {
         'This is to request your permission to collect data for screening, triaging, risk assessment and AI based symptom assessment purposes. The aim is to make healthcare navigation easier through digital pathways for mental and physical health problems. The organization collecting data are HIPAA compliant and are updating the provisions in the Digital personal data protection bill 2022. The method that will be used to meet this purpose are completing socio demographic forms , clinical risk scales and AI based tools. Your personal identifiers will remain anonymous and confidential. Your participation might help understand population health, perform analytics and health navigation better. You can withdraw from the screening at any point of time and your data will be anonymized. In the event you choose to withdraw from the screening in between all information you provide will be destroyed and omitted. This would not disturb healthcare you are seeking or providing currently or in future with the healthcare organization. There will be no direct benefits to you. There are no monetary benefits for participating in the screening. There will be no cost to you for participating in this screening but there could be charges for using the AI tool and related services.\n\nThis is to confirm that you are above 18 years of age. The alternative is not to participate in this screening. Any studies published will go through an ethics committee. I understand that if I inform the healthcare digital navigator that myself or someone else is at risk of harm they may have to report this to the relevant authorities - they will discuss this with me first but may be required to report with or without my permission. You might get a further direction to access the healthcare providers through telemedicine route and /or physical connect which would be your responsibility to access after screening information or risk is indicated. You might get reminder for parameters in case they are above range in case after your permission to get a follow up through a customer relationship management system. I am fully aware that my participation is voluntary and that I can withdraw from the study at any time, without giving any reason.',
     'accept_terms': 'By accepting you are agreeing to all terms and conditions',
 
+    // home page
+    'title_feeling_text': "How do you feel today?",
+
     //zarit scale
     'zarit_scale_form_title': "Zarit Scale",
     'zarit_scale_intro_text':
@@ -312,6 +315,9 @@ Map<String, Map<String, String>> translations = {
     'accept_terms':
         'इसे स्वीकार करने के लिए आप सभी नियमों और शर्तों से सहमत हो रहे हैं',
 
+    // home page
+    'title_feeling_text': "आज आप कैसा महसूस कर रहे हैं?",
+
     // zarit scale
     'zarit_scale_form_title': "जारित स्केल",
     'zarit_scale_intro_text':
@@ -551,6 +557,9 @@ Map<String, Map<String, String>> translations = {
     'consent_text':
         'या स्क्रीनिंग, ट्रायजिंग, जोखिम मूल्यांकन आणि एआय आधारित लक्षण मूल्यांकन उद्देश्यांसाठी डेटा संग्रहित करण्याची आपली परवानगी विनंती करण्यात येत आहे. उद्देश आहे कि मानसिक आणि शारीरिक आरोग्य समस्यांसाठी डिजिटल पथीवर मुख्यतः आरोग्य संचार सोपवायांची तयारी करणे. डेटा संग्रहित करणारे संस्था हिपाअ अनुपालनी आहेत आणि 2022 मधील डिजिटल व्यक्तिगत डेटा संरक्षण बिलमधील प्रावधाने अद्यतनित करत आहेत. या उद्देशांना पूर्ण करण्यासाठी वापरला जाणारा पद्धत सामाजिक जातिगत फॉर्म, क्लिनिकल जोखिम स्केल्स आणि एआय आधारित टूल्स आहेत. आपली वैयक्तिक पहचाणकर्ता अनामित आणि गोपनीय राहिली राहील. आपली भागीदारी जनसंख्या आरोग्य, विश्लेषण आणि आरोग्य संचारात चांगली मदत करू शकते. आप कोणत्याही काळात स्क्रीनिंगमधून वापरता येऊ शकता आणि आपला डेटा अनामित होईल. यदि आप स्क्रीनिंगत वापस करण्याचा निवड करता तर स्क्रीनिंगमध्ये दर्शविलेली सर्व माहिती नष्ट होईल आणि नष्ट होईल. यामुळे तुम्ही आत्तापर्यंत किंवा भविष्यात आपण करत असलेल्या कोणत्याही स्वास्थ्य सेवेस आणि प्राप्त करण्याची आपली कोणतीही परिक्षा दिलेली आहे किंवा अडचण करत नाही. तुम्हाला सीधा लाभ नाही. स्क्रीनिंगमध्ये भाग घेण्यासाठी कोणतेही आर्थिक लाभ नाहीत. या स्क्रीनिंगमध्ये भाग घेण्यासाठी तुम्हाला कोणतेही खर्च नाहीत परंतु एआय टूल आणि संबंधित सेवा वापरण्याचे शुल्क असू शकतात. तुम्हाला याचा सत्यापन करण्यात येतो कि तुम्ही 18 वर्षांपेक्षा जास्त वयाचे आहात. वैकल्पिक कार्य की या स्क्रीनिंगमध्ये भाग न घेणे आहे. कोणतेही प्रकाशन केलेले अभ्यास नैतिक समितीमध्ये जाईल. मला समजलं आहे की जर मी स्वास्थ्य डिजिटल नेविगेटरला सूचित करतो की माझे किंवा इतर कोणीतरी धोक्यात आहे तर त्यांना त्यांच्या अधिकाऱ्यांना हे रिपोर्ट करावं लागू शकते - त्यांनी पहिल्यांनी माझ्याशी हे चर्चा करेल परंतु अनुमतीसह किंवा अनुमतीशिवाय रिपोर्ट करावं लागू शकते. स्वास्थ्य सेवा प्रदात्यांच्या संपर्कात जाण्याच्या आणि / किंवा शारीरिक कनेक्ट करण्याच्या अधिक मार्गदर्शन मिळू शकतो जो की तुमची जिम्मेदारी होईल जर स्क्रीनिंगची माहिती किंवा जोखिम इंडिकेट केला जातो. जर त्या पॅरामीटर्सवर आपल्याला जास्तीत जास्त आवडतो तर आपल्याला एक ग्राहक संबंध व्यवस्था प्रणालीतून फॉलोअप मिळू शकतो. मला पूर्णतः जाणे आहे की माझे भागीदारी स्वैच्छिक आहे आणि मी कोणत्याही कारणासह निर्धारित केले बिना कोणत्याही वेळी अभ्यासातून वापस लागू शकतो.',
     'accept_terms': 'सर्व नियम आणि अटींच्या स्वीकारल्यामुळे आपण सहमत आहात',
+
+    //home page
+    'title_feeling_text': "आज तुम्हाला कसे वाटते?",
 
     // zarit scale
     'zarit_scale_form_title': "झारित प्रमाण",
