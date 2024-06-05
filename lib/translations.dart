@@ -112,6 +112,7 @@ Map<String, Map<String, String>> translations = {
     'angry': "Angry",
     'bad': "Bad",
     'sad': 'Sad',
+    'fearful': 'Fearful',
 
     // burden question options with 3 options
     'no_burden': 'No Burden',
@@ -368,6 +369,7 @@ Map<String, Map<String, String>> translations = {
     'angry': "रोषित",
     'bad': "बुरा",
     'sad': 'उदास',
+    'fearful': 'भयभीत',
 
     // burden question options with 3 options
     'no_burden': 'कोई बोझ नहीं',
@@ -431,6 +433,8 @@ Map<String, Map<String, String>> translations = {
     'emotional_wheel_intro':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।\n\nप्रत्येक वाक्यांश को पढ़ने के बाद, इन भावनाओं को आप कितनी बार महसूस करते हैं उसका पता लगाने के लिए, इन भावनाओं की आवधिका को घेर करने के लिए उन्हें गोलाकार करें।',
     'emotional_wheel_question_1': "आज आप कैसा महसूस कर रहे हैं?",
+    'emotional_wheel_question_2': "पहिया 02 से आप कौन सी भावना महसूस कर रहे हैं?",
+    'emotional_wheel_question_3': "पहिया 03 से आप कौन सी भावना महसूस कर रहे हैं?",
 
     //brief cope
     'brief_cope_form_title': "संक्षिप्त - COPE",
@@ -611,6 +615,8 @@ Map<String, Map<String, String>> translations = {
     'angry': "रागावला",
     'bad': "वाईट",
     'sad': 'दुःखी',
+    'fearful': 'भयभीत',
+
 
 // बोझ प्रश्न पर्यायांसह
     'no_burden': 'कोणतेही बोझ नाही',
