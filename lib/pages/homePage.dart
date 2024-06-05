@@ -134,7 +134,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 0, horizontal: 20),
                                 child: Text(
-                                  "BEGIN",
+                                  buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: "SFProText",
@@ -324,7 +324,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
                     author: 'By Dr. Zarit',
                     testDate: '29 Aug 2022',
-                    buttonText: "Begin",
+                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("zarit_burden_results");
                       // Navigator.push(
@@ -339,7 +339,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     title: translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
                     author: 'By Dr. Robert Plutchik',
                     testDate: '29 Aug 2022',
-                    buttonText: "Begin",
+                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("emotional_wheel_results");
 
@@ -354,7 +354,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     title: translations[LanguageManager().currentLanguage]!['family_burden_scale_form_title']!,
                     author: 'By Dr. Pai and Dr. Kapur',
                     testDate: '29 Aug 2022',
-                    buttonText: "Begin",
+                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("family_burden_results");
 
@@ -367,10 +367,10 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     },
                   ),
                   ReusableTile(
-                    title: 'COPE Scale',
+                    title: translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
                     author: 'By Dr. Carver and Dr. Scheier',
                     testDate: '29 Aug 2022',
-                    buttonText: "Begin",
+                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       //   Navigator.push(
                       //   context,
@@ -498,13 +498,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                             children: [
                               Text(
                                   index == 0
-                                      ? 'Psycho-'
+                                      ? translations[LanguageManager().currentLanguage]!['psycho']!
                                       : index == 1
-                                          ? 'Medicine'
+                                          ? translations[LanguageManager().currentLanguage]!['medicine']!
                                           : index == 2
-                                              ? 'Doctor'
+                                              ? translations[LanguageManager().currentLanguage]!['doctor']!
                                               : index == 3
-                                                  ? 'Financial'
+                                                  ? translations[LanguageManager().currentLanguage]!['financial']!
                                                   : '',
                                   style: TextStyle(
                                       color: const Color(0xff323736),
@@ -512,13 +512,13 @@ class _HomePageFirstState extends State<HomePageFirst> {
                                       fontSize: 10 * fontHelper(context))),
                               Text(
                                   index == 0
-                                      ? 'education'
+                                      ? translations[LanguageManager().currentLanguage]!['education']!
                                       : index == 1
-                                          ? 'Reminder'
+                                          ? translations[LanguageManager().currentLanguage]!['reminder']!
                                           : index == 2
-                                              ? 'Connect'
+                                              ? translations[LanguageManager().currentLanguage]!['connect']!
                                               : index == 3
-                                                  ? 'Coping'
+                                                  ? translations[LanguageManager().currentLanguage]!['coping']!
                                                   : '',
                                   style: TextStyle(
                                       color: const Color(0xff323736),

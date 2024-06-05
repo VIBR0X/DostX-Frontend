@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import '../custom_widgets.dart';
 import '../language_manager.dart';
 import '../palette.dart';
+import '../translations.dart';
 import 'cost_effective_analysis_page.dart';
 import 'short12.dart';
 import 'package:http/http.dart' as http;
@@ -58,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
       children: [
         // SizedBox(height: 10),
         Text(
-          "My Profile",
+          translations[LanguageManager().currentLanguage]!['my_profile']!,
           style: TextStyle(
             fontFamily: 'JostBold',
             fontSize: 18,
@@ -112,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: RoundedOptionsToggle(
             onOptionSelected: (selectedOption) {
               setState(() {
-                _showSettings = selectedOption == 'Settings';
+                _showSettings = selectedOption == translations[LanguageManager().currentLanguage]!['settings']!;
               });
             },
           ),
@@ -150,7 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(height: 10),
-                  _buildSettingCard('Personal Details', () {
+                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['personal_details']!, () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -158,7 +159,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     );
                   }),
-                  _buildSettingCard('Client Details', () {
+                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['c_details']!, () {
                     // Navigate to client details page
                     // Navigator.push(
                     //   context,
@@ -169,14 +170,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     // ;
                     widget.updateSubPage("client_details");
                   }),
-                  _buildSettingCard('Cost Effectiveness', () {
+                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['cost_effect']!, () {
                     // Navigate to cost effectiveness page
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context)=>const CostEffectiveAnalysisPage())
                     // );
                     widget.updateSubPage("cost_effectiveness_analysis");
                   }),
-                  _buildSettingCard('Medicine Reminders', () {
+                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['medicine_reminder']!, () {
                     // Navigate to medicine reminders page
                     widget.updateHomeIndex(2);
                   }),
@@ -369,7 +370,7 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
             ),
             SizedBox(height: 5),
             Text(
-              "Click to Edit",
+              translations[LanguageManager().currentLanguage]!['click_edit']!,
               style: TextStyle(
                   fontSize: 12, color: Colors.grey, fontFamily: 'SFProText'),
             ),
@@ -398,9 +399,9 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildOption('Settings', _isProfileSelected),
+        _buildOption(translations[LanguageManager().currentLanguage]!['settings']!, _isProfileSelected),
         SizedBox(width: 2),
-        _buildOption('Assessment', !_isProfileSelected),
+        _buildOption(translations[LanguageManager().currentLanguage]!['assessment']!, !_isProfileSelected),
       ],
     );
   }

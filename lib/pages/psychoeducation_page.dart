@@ -51,7 +51,7 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
           },
         ),
         title: Text(
-          'Psychoeducation',
+          translations[LanguageManager().currentLanguage]!['psychoeducation']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',

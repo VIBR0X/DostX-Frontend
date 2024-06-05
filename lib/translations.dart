@@ -2,6 +2,7 @@ Map<String, Map<String, String>> translations = {
   'en': {
     'lets_breathe_easy': "Let's Breathe Easy",
     'client_details': 'Client Details',
+    'begin': 'Begin',
     'age': 'Age',
     'app_name': 'DostX App',
     'slogan': 'Supporting Carers, Nurturing Lives',
@@ -65,7 +66,27 @@ Map<String, Map<String, String>> translations = {
     'accept_terms': 'By accepting you are agreeing to all terms and conditions',
 
     // home page
+    'my_profile': "My Profile",
     'title_feeling_text': "How do you feel today?",
+    'psycoeducation': 'Psychoeducation',
+    'add_medicine': "Click to add medicine",
+    'psycho': 'Psycho-',
+    'education': 'education',
+    'medicine': 'Medicine',
+    'reminder': 'Reminder',
+    'doctor': 'Doctor',
+    'connect': 'Connect',
+    'financial': 'Financial',
+    'coping': 'Coping',
+
+    // profile page
+    'presonal_details': 'Personal Details',
+    'c_details': 'Client Details',
+    'cost_effect': 'Cost Effectiveness',
+    'medicine_reminder': 'Medicine Reminders',
+    'click_edit': 'Click to Edit',
+    'settings': 'Settings',
+    'assessment': 'Assessment',
 
     //zarit scale
     'zarit_scale_form_title': "Zarit Scale",
@@ -257,6 +278,7 @@ Map<String, Map<String, String>> translations = {
     'lets_breathe_easy': "आइए आराम से सांस लें",
     'client_details': 'ग्राहक का विवरण',
     'age': 'उम्र',
+    'begin': 'शुरू करें',
     'app_name': 'दोस्तएक्स ऐप',
     'slogan': 'सहारा प्रदान करना, जीवन को देखभाल करना',
     'phone_number': 'फोन नंबर',
@@ -320,6 +342,26 @@ Map<String, Map<String, String>> translations = {
 
     // home page
     'title_feeling_text': "आज आप कैसा महसूस कर रहे हैं?",
+    'psycoeducation': 'मानोविज्ञान',
+    "add_medicine": "दवा जोड़ने के लिए क्लिक करें",
+    'psycho': 'साइको-',
+    'education': 'शिक्षा',
+    'medicine': 'चिकित्सा',
+    'reminder': 'अनुस्मारक',
+    'doctor': 'डॉक्टर',
+    'connect': 'कनेक्ट',
+    'financial': 'वित्तीय',
+    'coping': 'मुकाबला',
+
+    // profile page
+    'my_profile': "मेरी प्रोफ़ाइल",
+    'personal_details': 'व्यक्तिगत विवरण',
+    'c_details': 'ग्राहक विवरण',
+    'cost_effect': 'लागत प्रभाव',
+    'medicine_reminder': 'दवा अनुस्मारक',
+    'click_edit': 'संपादित करने के लिए क्लिक करें',
+    'settings': 'सेटिंग्स',
+    'assessment': 'मूल्यांकन',
 
     // zarit scale
     'zarit_scale_form_title': "जारित स्केल",
@@ -433,8 +475,10 @@ Map<String, Map<String, String>> translations = {
     'emotional_wheel_intro':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।\n\nप्रत्येक वाक्यांश को पढ़ने के बाद, इन भावनाओं को आप कितनी बार महसूस करते हैं उसका पता लगाने के लिए, इन भावनाओं की आवधिका को घेर करने के लिए उन्हें गोलाकार करें।',
     'emotional_wheel_question_1': "आज आप कैसा महसूस कर रहे हैं?",
-    'emotional_wheel_question_2': "पहिया 02 से आप कौन सी भावना महसूस कर रहे हैं?",
-    'emotional_wheel_question_3': "पहिया 03 से आप कौन सी भावना महसूस कर रहे हैं?",
+    'emotional_wheel_question_2':
+        "पहिया 02 से आप कौन सी भावना महसूस कर रहे हैं?",
+    'emotional_wheel_question_3':
+        "पहिया 03 से आप कौन सी भावना महसूस कर रहे हैं?",
 
     //brief cope
     'brief_cope_form_title': "संक्षिप्त - COPE",
@@ -509,8 +553,9 @@ Map<String, Map<String, String>> translations = {
     'slogan': 'सहाय्यार्थ देणारे, जीवन पोषण करणारे',
     'phone_number': 'फोन क्रमांक',
     'sign_in': 'साइन इन करा',
+    'begin': 'सुरुवात करा',
     'otp': 'OTP',
-    'resend_otp': 'Resend OTP',
+    'resend_otp': 'OTP पुन्हा पाठवा',
     'verify_otp': 'OTP सत्यापित करा',
     'profile_edit': 'वैयक्तिक तपशील अद्यतनित करा',
     'sign_up': 'साइन अप करा!',
@@ -567,6 +612,26 @@ Map<String, Map<String, String>> translations = {
 
     //home page
     'title_feeling_text': "आज तुम्हाला कसे वाटते?",
+    'psycoeducation': 'मानसिक शिक्षण',
+    "add_medicine": "औषध जोडण्यासाठी क्लिक करा",
+    'psycho': 'सायको-',
+    'education': 'शिक्षण',
+    'medicine': 'औषध',
+    'reminder': 'स्मरणपत्र',
+    'doctor': 'डॉक्टर',
+    'connect': 'कनेक्ट',
+    'financial': 'आर्थिक',
+    'coping': 'coping',
+
+    //profile_page
+    'my_profile': "माझे प्रोफाइल",
+    'presonal_details': 'वैयक्तिक तपशील',
+    'c_details': 'क्लायंट तपशील',
+    'cost_effect': 'खर्च परिणामकारकता',
+    'medicine_reminder': 'औषध स्मरणपत्रे',
+    'click_edit': 'संपादित करण्यासाठी क्लिक करा',
+    'settings': 'सेटिंग्ज',
+    'assessment': 'मूल्यांकन',
 
     // zarit scale
     'zarit_scale_form_title': "झारित प्रमाण",
@@ -616,7 +681,6 @@ Map<String, Map<String, String>> translations = {
     'bad': "वाईट",
     'sad': 'दुःखी',
     'fearful': 'भयभीत',
-
 
 // बोझ प्रश्न पर्यायांसह
     'no_burden': 'कोणतेही बोझ नाही',

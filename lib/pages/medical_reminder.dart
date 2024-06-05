@@ -453,7 +453,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
                                         Text(
-                                          "Click to add medicine",
+                                          translations[LanguageManager().currentLanguage]!['add_medicine']!,
                                           style: TextStyle(
                                               fontSize: relFont * 15.0,
                                               fontFamily: 'SFProMedium',
