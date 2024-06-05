@@ -10,7 +10,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../globals.dart';
 
 class SignUpFirst extends StatefulWidget {
-  const SignUpFirst({Key? key}) : super(key: key);
+  final bool isProfileEdit;
+  const SignUpFirst({Key? key, this.isProfileEdit = false}) : super(key: key);
 
   @override
   State<SignUpFirst> createState() => _SignUpFirstState();
@@ -21,6 +22,19 @@ class _SignUpFirstState extends State<SignUpFirst> {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    var profileBox = Hive.box('ProfileBox');
+    if(widget.isProfileEdit){
+      _firstNameController.text = profileBox.get('first_name');
+      _lastNameController.text = profileBox.get('last_name');
+      selectedGender = profileBox.get('gender');
+      _ageController.text = profileBox.get('age').toString();
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +84,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                         ),
                         Text(
                           translations[LanguageManager().currentLanguage]![
-                              'sign_up']!,
+                              widget.isProfileEdit?'profile_edit':'sign_up']!,
                           style: TextStyle(
                             fontFamily: 'JostBold',
                             fontSize: 28*fontHelper(context),
@@ -296,11 +310,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['male']!,
-                                      value: 'M',
-                                      selected: selectedGender == 'M',
+                                      value: 'Male',
+                                      selected: selectedGender == 'Male',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'M';
+                                          selectedGender = 'Male';
                                         });
                                       },
                                     ),
@@ -310,11 +324,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['female']!,
-                                      value: 'F',
-                                      selected: selectedGender == 'F',
+                                      value: 'Female',
+                                      selected: selectedGender == 'Female',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'F';
+                                          selectedGender = 'Female';
                                         });
                                       },
                                     ),
@@ -324,11 +338,11 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                     CustomRadioButton(
                                       text: translations[LanguageManager()
                                           .currentLanguage]!['others']!,
-                                      value: 'O',
-                                      selected: selectedGender == 'O',
+                                      value: 'Others',
+                                      selected: selectedGender == 'Others',
                                       onSelect: () {
                                         setState(() {
-                                          selectedGender = 'O';
+                                          selectedGender = 'Others';
                                         });
                                       },
                                     ),
@@ -452,7 +466,7 @@ class _SignUpFirstState extends State<SignUpFirst> {
                                 profileBox.put("gender", selectedGender??"");
                                 Navigator.push(
                                   context,
-                                  createCustomPageRoute(const SignUpSecond(), context, transitionType: 'slide-in-left')
+                                  createCustomPageRoute(SignUpSecond(isProfileEdit: widget.isProfileEdit,), context, transitionType: 'slide-in-left')
                                 );
                               },
                               child: Text(

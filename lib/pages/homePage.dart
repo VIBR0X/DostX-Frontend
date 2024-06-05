@@ -176,7 +176,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       0,
                       screenHeight(context) * 30 / 869),
                   child: Text(
-                    translations[LanguageManager.currentLanguage]!['title_feeling_text']!,
+                    translations[LanguageManager().currentLanguage]!['title_feeling_text']!,
                     style: TextStyle(
                         fontSize: 20 * fontHelper(context),
                         fontFamily: 'SFProTextMedium',
@@ -321,7 +321,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ),
                   const SizedBox(height: 10),
                   ReusableTile(
-                    title: translations[LanguageManager.currentLanguage]!['zarit_scale_form_title']!,
+                    title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
                     author: 'By Dr. Zarit',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
@@ -336,7 +336,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     },
                   ),
                   ReusableTile(
-                    title: translations[LanguageManager.currentLanguage]!['emotional_wheel_results']!,
+                    title: translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
                     author: 'By Dr. Robert Plutchik',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",
@@ -351,7 +351,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     // );
                       },
                   ), ReusableTile(
-                    title: translations[LanguageManager.currentLanguage]!['family_burden_scale_form_title']!,
+                    title: translations[LanguageManager().currentLanguage]!['family_burden_scale_form_title']!,
                     author: 'By Dr. Pai and Dr. Kapur',
                     testDate: '29 Aug 2022',
                     buttonText: "Begin",

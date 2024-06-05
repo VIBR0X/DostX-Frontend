@@ -12,7 +12,8 @@ import 'package:dostx/language_manager.dart';
 import '../globals.dart';
 
 class SignUpSecond extends StatefulWidget {
-  const SignUpSecond({super.key});
+  final bool isProfileEdit;
+  const SignUpSecond({super.key, this.isProfileEdit = false});
 
   @override
   State<SignUpSecond> createState() => _SignUpSecondState();
@@ -25,6 +26,19 @@ class _SignUpSecondState extends State<SignUpSecond> {
   final TextEditingController _postalCodeController = TextEditingController();
   final TextEditingController _stateController = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    var profileBox = Hive.box('ProfileBox');
+    if (widget.isProfileEdit){
+      _addressController.text = profileBox.get('address');
+      _postalCodeController.text = profileBox.get('postal_code');
+      _stateController.text = profileBox.get('state');
+      _countryController.text = profileBox.get('country');
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -537,7 +551,7 @@ class _SignUpSecondState extends State<SignUpSecond> {
                                   profileBox.put("profile_pic_local_path", _pickedImagePath??"");
                                   Navigator.push(
                                     context,
-                                    createCustomPageRoute(const SignUpThird(), context, transitionType: 'slide-in-left')
+                                    createCustomPageRoute(SignUpThird(isProfileEdit: widget.isProfileEdit,), context, transitionType: 'slide-in-left')
                                   );
                                 },
                                 child: Text(

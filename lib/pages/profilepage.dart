@@ -89,11 +89,11 @@ class _ProfilePageState extends State<ProfilePage> {
               fontFamily: 'Poppins',
               color: Color(0xff204267)),
         ),
-        Text(
-          profileBox.get('email')??'your.email@example.com',
-          style: TextStyle(
-              fontSize: 14, fontFamily: 'Poppins', color: Color(0xff204267)),
-        ),
+        // Text(
+        //   profileBox.get('email')??'your.email@example.com',
+        //   style: TextStyle(
+        //       fontSize: 14, fontFamily: 'Poppins', color: Color(0xff204267)),
+        // ),
         SizedBox(height: 20),
         Container(
           width: 300,
@@ -154,7 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignUpFirst(),
+                        builder: (context) => const SignUpFirst(isProfileEdit: true),
                       ),
                     );
                   }),

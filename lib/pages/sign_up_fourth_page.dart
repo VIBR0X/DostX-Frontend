@@ -8,6 +8,7 @@ import 'package:dostx/config.dart';
 import 'package:dostx/custom_widgets.dart';
 import 'package:dostx/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
 import '../navigator.dart';
@@ -20,7 +21,8 @@ import 'package:http_parser/http_parser.dart'; // For MediaType
 
 
 class SignUpFourth extends StatefulWidget {
-  const SignUpFourth({super.key});
+  final bool isProfileEdit;
+  const SignUpFourth({super.key, this.isProfileEdit = false});
 
   @override
   State<SignUpFourth> createState() => _SignUpFourthState();
@@ -31,6 +33,20 @@ class _SignUpFourthState extends State<SignUpFourth> {
   String? income;
   String? status;
   String? diagnosis;
+
+  void initState() {
+    // TODO: implement initState
+    var profileBox = Hive.box('ProfileBox');
+    if (widget.isProfileEdit){
+      jobLoss = profileBox.get('job_loss')?'Yes':'No';
+      income = profileBox.get('percieved_income_loss');
+      status = profileBox.get('status_of_person_with_disorder');
+      diagnosis = profileBox.get('diagnosis');
+      print(income);
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final fontSize = (screenHeight(context) / 896) * 13;
@@ -541,8 +557,9 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               profileBox.put("diagnosis",diagnosis??"");
                               profileBox.put("percieved_income_loss",income??"");
                               profileBox.put("status_of_person_with_disorder", status??"");
-                              var uri = Uri.parse(appConfig["serverURL"]+'/auth/signup/');
-                              var request = http.MultipartRequest('POST', uri);
+                              String endPoint = (widget.isProfileEdit)?'/auth/user_profile/':'/auth/signup/';
+                              var uri = Uri.parse(appConfig["serverURL"]+endPoint);
+                              var request = http.MultipartRequest((widget.isProfileEdit)?'PUT':'POST', uri);
                               request.headers['Authorization'] = 'Bearer '+tokenBox.get("access_token");
 
                               request.fields['consent'] = true.toString();
@@ -560,6 +577,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 }
                               }
                               String image_path = profileBox.get('profile_pic_local_path');
+                              request.fields['email'] = profileBox.get('email')??'mock_email@dostx.com';
                               if(image_path!="") {
                                 final File file = File(image_path);
                                 final Uint8List fileBytes = await file
@@ -577,17 +595,34 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                       contentType: MediaType(
                                           'image', 'jpeg'),));
                               }
+                              else{
+                                final Uint8List fileBytes = (await rootBundle.load("assets/profile.png")).buffer.asUint8List();
+
+                                request.files.add(
+                                    http.MultipartFile.fromBytes(
+                                      'profile_pic',
+                                      fileBytes,
+                                      filename: profileBox.get('phone_number').toString() +
+                                          '-' + profileBox.get('first_name') +
+                                          ' ' + profileBox.get('last_name') +
+                                          '.png',
+                                      contentType: MediaType(
+                                          'image', 'jpeg'),));
+
+                              }
+
                               var response = await request.send();
                               var responseData = await response.stream.bytesToString();
                               var decodedResponse = jsonDecode(responseData);
-                              //print(decodedResponse);
-                              //print(response.statusCode);
-                              if (response.statusCode == 201){
+                              // print(decodedResponse);
+
+                              print(response.statusCode);
+                              if (response.statusCode == 201 || response.statusCode == 200){
                                 tokenBox.put('profile_available',true);
                                 for (var entry in decodedResponse['user_profile']!.entries){
                                   profileBox.put(entry.key,entry.value);
                                 }
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     createCustomPageRoute(const NavigationController(), context)
                                 );

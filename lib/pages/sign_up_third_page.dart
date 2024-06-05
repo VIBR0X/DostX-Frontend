@@ -11,7 +11,8 @@ import 'package:dostx/language_manager.dart';
 import '../globals.dart';
 
 class SignUpThird extends StatefulWidget {
-  const SignUpThird({super.key});
+  final bool isProfileEdit;
+  const SignUpThird({super.key, this.isProfileEdit = false});
 
   @override
   State<SignUpThird> createState() => _SignUpThirdState();
@@ -23,6 +24,18 @@ class _SignUpThirdState extends State<SignUpThird> {
   final TextEditingController _illnessDurationController = TextEditingController();
   final TextEditingController _hoursSpentController = TextEditingController();
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    var profileBox = Hive.box('ProfileBox');
+    if (widget.isProfileEdit){
+      _hoursSpentController.text = profileBox.get('mean_duration_of_care');
+      _illnessDurationController.text = profileBox.get('mean_duration_of_illness');
+      maritalStatus = profileBox.get('marital_status');
+      relation = profileBox.get('cater_client_relationship');
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -622,7 +635,7 @@ class _SignUpThirdState extends State<SignUpThird> {
 
                                 Navigator.push(
                                   context,
-                                  createCustomPageRoute(const SignUpFourth(), context, transitionType: 'slide-in-left')
+                                  createCustomPageRoute(SignUpFourth(isProfileEdit: widget.isProfileEdit,), context, transitionType: 'slide-in-left')
 
                                 );
                               },
