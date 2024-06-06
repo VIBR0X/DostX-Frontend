@@ -411,7 +411,7 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
       onTap: () {
         widget.onOptionSelected(text);
         setState(() {
-          _isProfileSelected = text == 'Settings';
+          _isProfileSelected = text == translations[LanguageManager().currentLanguage]!['settings']!;
         });
       },
       child: Container(
