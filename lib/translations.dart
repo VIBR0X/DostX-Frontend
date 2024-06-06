@@ -80,7 +80,7 @@ Map<String, Map<String, String>> translations = {
     'coping': 'Coping',
 
     // profile page
-    'presonal_details': 'Personal Details',
+    'personal_details': 'Personal Details',
     'c_details': 'Client Details',
     'cost_effect': 'Cost Effectiveness',
     'medicine_reminder': 'Medicine Reminders',

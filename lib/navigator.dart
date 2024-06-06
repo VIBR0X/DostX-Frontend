@@ -39,7 +39,7 @@ class NavigationController extends StatefulWidget {
 }
 
 class _NavigationControllerState extends State<NavigationController> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   int _previousIndex = 1;
   String _selectedSubPage = "default";
   String _previousSubPage = "default";

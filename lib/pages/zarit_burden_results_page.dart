@@ -212,8 +212,8 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                 itemBuilder: (context, index){
                   return Container(
                     child: ReusableTile(
-                      title: 'Zarit Scale',
-                      author: 'By Dr. Someone Someone',
+                      title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
+                      author: 'By Dr. Zarit',
                       testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['created_at'])),
                       buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                       onPressed: () {

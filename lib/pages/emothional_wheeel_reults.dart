@@ -214,8 +214,8 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
                 itemBuilder: (context, index){
                   return Container(
                     child: ReusableTile(
-                      title: 'The Emotional Wheel Scale',
-                      author: 'By Dr. Someone Someone',
+                      title: translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
+                      author: 'By Dr. Robert Plutchik',
                       testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['taken_at'])),
                       buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                       onPressed: () {

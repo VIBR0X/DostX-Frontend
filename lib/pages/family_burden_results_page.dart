@@ -202,8 +202,8 @@ class _FamilyBurdenResultsPageState extends State<FamilyBurdenResultsPage> {
                 itemBuilder: (context, index){
                   return Container(
                     child: ReusableTile(
-                      title: 'Family Burden Scale',
-                      author: 'By Dr. Someone Someone',
+                      title: translations[LanguageManager().currentLanguage]!['family_burden_scale_form_title']!,
+                      author: 'By Dr. Pai and Dr. Kapur',
                       testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['updated_at'])),
                       buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                       onPressed: () {

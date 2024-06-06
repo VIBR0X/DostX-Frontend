@@ -213,8 +213,8 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                   itemBuilder: (context, index){
                     return Container(
                       child: ReusableTile(
-                        title: 'Brief-COPE',
-                        author: 'By Dr. Someone Someone',
+                        title: translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
+                        author: 'By Dr. Carver and Dr. Scheier',
                         testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date'])),
                         buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                         onPressed: () {

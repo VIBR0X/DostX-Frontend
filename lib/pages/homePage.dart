@@ -40,6 +40,18 @@ class HomePageFirst extends StatefulWidget {
 class _HomePageFirstState extends State<HomePageFirst> {
   List<bool> feelingSelection = [false, false, false, false];
   var copeBox = Hive.box('CopeStrategyStateManagementBox');
+  var tokenBox = Hive.box('TokenBox');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    int initMood =  tokenBox.get('moodOfUser')??-1;
+    if (initMood !=-1){
+      feelingSelection[initMood] = true;
+    }
+    super.initState();
+  }
+
   Widget _buildRescueSessions(BuildContext context, subPageArray) {
     return Container(
       height: 280 / 869 * screenHeight(context),
@@ -134,7 +146,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 0, horizontal: 20),
                                 child: Text(
-                                  buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
+                                   translations[LanguageManager().currentLanguage]!['begin']!,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: "SFProText",
@@ -193,6 +205,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                           // feelingSelection=[false,false,false,false];
                           setState(() {
                             feelingSelection = [true, false, false, false];
+                            tokenBox.put('moodOfUser',0);
                           });
                         },
                         child: SvgPicture.asset(
@@ -207,6 +220,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                         onTap: () {
                           setState(() {
                             feelingSelection = [false, true, false, false];
+                            tokenBox.put('moodOfUser',1);
                           });
                         },
                         child: SvgPicture.asset(
@@ -221,6 +235,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                         onTap: () {
                           setState(() {
                             feelingSelection = [false, false, true, false];
+                            tokenBox.put('moodOfUser',2);
                           });
                         },
                         child: SvgPicture.asset(
@@ -235,6 +250,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                         onTap: () {
                           setState(() {
                             feelingSelection = [false, false, false, true];
+                            tokenBox.put('moodOfUser',3);
                           });
                         },
                         child: SvgPicture.asset(
@@ -420,15 +436,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
         );
       },
       (BuildContext context) {
-        Fluttertoast.showToast(
-          msg: "Feature Coming Soon",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: const Color(0xAA444444),
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
+        widget.updateHomeIndex(1);
+        widget.updateSubPage("cost_effectiveness_analysis");
       },
     ];
 

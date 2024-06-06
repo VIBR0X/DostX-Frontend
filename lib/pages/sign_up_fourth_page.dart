@@ -621,6 +621,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 tokenBox.put('profile_available',true);
                                 for (var entry in decodedResponse['user_profile']!.entries){
                                   profileBox.put(entry.key,entry.value);
+                                  print(entry.key.toString()+" "+entry.value.toString());
                                 }
                                 Navigator.pushReplacement(
                                     context,

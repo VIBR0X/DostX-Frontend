@@ -230,8 +230,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   return Container(
                     child: ReusableTile(
-                      title: (type=='family_burden_scale')?'Family Burden Scale':(type == 'zarit_scale')?'Zarit Scale':(type=='emotional_wheel')?'The Emotional Wheel Scale':(type=='cost_effectiveness')?'Cost Effectiveness Analysis':'Brief-COPE',
-                      author: 'By Dr. Someone Someone',
+                      title: translations[LanguageManager().currentLanguage]![(type=='family_burden_scale')?'family_burden_scale_form_title':(type == 'zarit_scale')?'zarit_scale_form_title':(type=='emotional_wheel')?'emotional_wheel_form_title':(type=='cost_effectiveness')?'cost_effect':'brief_cope_form_title']!,
+                      author: (type=='family_burden_scale')?'By Dr. Pai and Dr. Kapur':(type == 'zarit_scale')?'By Dr. Zarit':(type=='emotional_wheel')?'By Dr. Robert Plutchik':(type=='cost_effectiveness')?'':'By Dr. Carver and Dr. Scheier',
                       testDate:(time == "-")?"-":DateFormat("dd MMM yyyy").format(DateTime.parse(time)),
                       buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
                       onPressed: () {
