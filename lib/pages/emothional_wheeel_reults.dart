@@ -6,7 +6,6 @@ import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
-import 'emotional_wheel.dart';
 
 class EmotionalWheelResultsPage extends StatefulWidget {
   final Function() getPrevSubPage;
@@ -211,6 +210,7 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
             width: screenWidth(context),
             child: ListView.builder(
                 itemCount: widget.results.length,
+                padding: EdgeInsets.zero,
                 itemBuilder: (context, index){
                   return Container(
                     child: ReusableTile(

@@ -6,7 +6,6 @@ import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
-import 'zarit_scale_page.dart';
 
 class ZaritBurdenResultsPage extends StatefulWidget {
   final Function(String) updateSubPage;
@@ -201,7 +200,6 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
             ),
           ),
 
-
           // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
 
           SizedBox(
@@ -209,19 +207,18 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
             width: screenWidth(context),
             child: ListView.builder(
                 itemCount: widget.results.length,
+                padding: EdgeInsets.zero,
                 itemBuilder: (context, index){
-                  return Container(
-                    child: ReusableTile(
-                      title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
-                      author: 'By Dr. Zarit',
-                      testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['created_at'])),
-                      buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                      onPressed: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                    ),
+                  return ReusableTile(
+                    title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
+                    author: 'By Dr. Zarit',
+                    testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['created_at'])),
+                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
                   );
                 }
             ),

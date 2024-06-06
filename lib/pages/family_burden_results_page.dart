@@ -1,6 +1,4 @@
-import 'package:dostx/pages/family_burden_scale_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import '../custom_widgets.dart';
 import '../language_manager.dart';
@@ -198,6 +196,7 @@ class _FamilyBurdenResultsPageState extends State<FamilyBurdenResultsPage> {
             height: screenHeight(context)*0.47,
             width: screenWidth(context),
             child: ListView.builder(
+                padding: EdgeInsets.zero,
                 itemCount: widget.results.length,
                 itemBuilder: (context, index){
                   return Container(

@@ -1,4 +1,3 @@
-import 'package:dostx/pages/brief_cope_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../custom_widgets.dart';
@@ -209,6 +208,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
               height: screenHeight(context)*0.49,
               width: screenWidth(context),
               child: ListView.builder(
+                  padding: EdgeInsets.zero,
                   itemCount: widget.results.length,
                   itemBuilder: (context, index){
                     return Container(
