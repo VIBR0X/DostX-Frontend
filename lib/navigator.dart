@@ -477,7 +477,20 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return PsychoEducationPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    websiteList: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return PsychoEducationPage(
                     updateSubPage: _updateSubPage,
@@ -485,7 +498,20 @@ class _NavigationControllerState extends State<NavigationController> {
                     websiteList: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return PsychoEducationPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    websiteList: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -498,7 +524,20 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return ZaritBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return ZaritBurdenResultsPage(
                     updateSubPage: _updateSubPage,
@@ -506,7 +545,20 @@ class _NavigationControllerState extends State<NavigationController> {
                     results: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return ZaritBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -531,7 +583,20 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return EmotionalWheelResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return EmotionalWheelResultsPage(
                     updateSubPage: _updateSubPage,
@@ -539,7 +604,20 @@ class _NavigationControllerState extends State<NavigationController> {
                     results: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return EmotionalWheelResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -564,7 +642,20 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return FamilyBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return FamilyBurdenResultsPage(
                     updateSubPage: _updateSubPage,
@@ -572,7 +663,20 @@ class _NavigationControllerState extends State<NavigationController> {
                     results: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return FamilyBurdenResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -596,7 +700,20 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return BriefCopeResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return BriefCopeResultsPage(
                   updateSubPage: _updateSubPage,
@@ -604,7 +721,20 @@ class _NavigationControllerState extends State<NavigationController> {
                     results: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return BriefCopeResultsPage(
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -635,7 +765,22 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return HomePageFirst(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    copingStrategies: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return HomePageFirst(
                     updateHomeIndex: _updateNavigation,
@@ -645,7 +790,22 @@ class _NavigationControllerState extends State<NavigationController> {
                     copingStrategies: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return HomePageFirst(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    copingStrategies: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -678,7 +838,22 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return ProfilePage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return ProfilePage(
                     updateHomeIndex: _updateNavigation,
@@ -688,7 +863,22 @@ class _NavigationControllerState extends State<NavigationController> {
                     results: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return ProfilePage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -709,7 +899,22 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return CopingStrategiesPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 } else if (snapshot.hasData) {
                   return CopingStrategiesPage(
                     updateHomeIndex: _updateNavigation,
@@ -719,7 +924,22 @@ class _NavigationControllerState extends State<NavigationController> {
                     results: snapshot.data!, // Pass the data to the page
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to fetch data",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return CopingStrategiesPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    updateSubPage: _updateSubPage,
+                    getPrevSubPage: _getPrevSubPage,
+                    results: const [], // Pass the data to the page
+                  );
                 }
               },
             );
@@ -735,7 +955,20 @@ class _NavigationControllerState extends State<NavigationController> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return MedicalReminderPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    reminderList: const [],
+                  );
                 } else if (snapshot.hasData) {
                   return MedicalReminderPage(
                     updateHomeIndex: _updateNavigation,
@@ -743,7 +976,20 @@ class _NavigationControllerState extends State<NavigationController> {
                     reminderList:snapshot.data!,
                   );
                 } else {
-                  return Center(child: Text('No data available'));
+                  Fluttertoast.showToast(
+                    msg: "Unable to connect to server",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: const Color(0xAA444444),
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  return MedicalReminderPage(
+                    updateHomeIndex: _updateNavigation,
+                    getPrevPageIndex: _getPrevIndex,
+                    reminderList: const [],
+                  );
                 }
               },
             );
