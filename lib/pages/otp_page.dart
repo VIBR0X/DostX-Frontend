@@ -1,7 +1,5 @@
-import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/globals.dart';
 import 'package:dostx/pages/consent_page.dart';
-import 'package:dostx/pages/sign_up_first_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';

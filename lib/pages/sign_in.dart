@@ -6,10 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../palette.dart';
 import 'package:flutter/services.dart';
-import 'sign_up_first_page.dart';
-import 'package:dostx/bloc/bloc_provider.dart';
-import 'package:dostx/request/signUpRequest.dart';
-import 'package:dostx/request/signInRequest.dart';
 import 'dart:convert';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
@@ -31,7 +27,6 @@ class _SignInState extends State<SignIn> {
   int phoneColor = 0xFFBABABA;
   @override
   Widget build(BuildContext context) {
-    var bloc = BlocProvider.of(context)!.bloc;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
