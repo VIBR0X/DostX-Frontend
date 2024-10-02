@@ -1,11 +1,5 @@
 import 'package:dostx/language_manager.dart';
-import 'package:dostx/pages/brief_cope_results_page.dart';
-import 'package:dostx/pages/cost_effective_analysis_page.dart';
-import 'package:dostx/pages/emothional_wheeel_reults.dart';
-import 'package:dostx/pages/family_burden_results_page.dart';
 import 'package:dostx/globals.dart%20';
-import 'package:dostx/pages/psychoeducation_page.dart';
-import 'package:dostx/pages/zarit_burden_results_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:dostx/palette.dart';
@@ -14,10 +8,6 @@ import 'package:hive/hive.dart';
 import '../config.dart';
 import '../custom_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-import '../language_manager.dart';
-import '../translations.dart';
-import 'coping_strategy_about.dart';
 
 class HomePageFirst extends StatefulWidget {
   final Function(int) updateHomeIndex;
@@ -287,7 +277,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
                         child: Text(
-                          "Rescue Sessions",
+                          translations[LanguageManager().currentLanguage]!['rescue_sessions']!,
                           style: TextStyle(
                             fontSize: 16 * fontHelper(context),
                             fontFamily: 'SFProText',
@@ -302,7 +292,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                             widget.updateHomeIndex(2);
                           },
                           child: Text(
-                            'See All',
+                            translations[LanguageManager().currentLanguage]!['see_all']!,
                             style: TextStyle(
                               fontFamily: 'SFProText',
                               fontSize: 14 * fontHelper(context),
@@ -324,7 +314,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Text(
-                          "Form Screening",
+                          translations[LanguageManager().currentLanguage]!['form_screening']!,
                           style: TextStyle(
                             fontSize: 16 * fontHelper(context),
                             fontFamily: 'SFProText',
@@ -339,7 +329,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ReusableTile(
                     title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
                     author: 'By Dr. Zarit',
-                    testDate: '29 Aug 2022',
+                    testDate: '',
                     buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("zarit_burden_results");
@@ -354,7 +344,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ReusableTile(
                     title: translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
                     author: 'By Dr. Robert Plutchik',
-                    testDate: '29 Aug 2022',
+                    testDate: '',
                     buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("emotional_wheel_results");
@@ -369,7 +359,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ), ReusableTile(
                     title: translations[LanguageManager().currentLanguage]!['family_burden_scale_form_title']!,
                     author: 'By Dr. Pai and Dr. Kapur',
-                    testDate: '29 Aug 2022',
+                    testDate: '',
                     buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("family_burden_results");
@@ -385,7 +375,7 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ReusableTile(
                     title: translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
                     author: 'By Dr. Carver and Dr. Scheier',
-                    testDate: '29 Aug 2022',
+                    testDate: '',
                     buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       //   Navigator.push(

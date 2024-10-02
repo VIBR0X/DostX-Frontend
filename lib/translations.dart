@@ -65,6 +65,20 @@ Map<String, Map<String, String>> translations = {
         'This is to request your permission to collect data for screening, triaging, risk assessment and AI based symptom assessment purposes. The aim is to make healthcare navigation easier through digital pathways for mental and physical health problems. The organization collecting data are HIPAA compliant and are updating the provisions in the Digital personal data protection bill 2022. The method that will be used to meet this purpose are completing socio demographic forms , clinical risk scales and AI based tools. Your personal identifiers will remain anonymous and confidential. Your participation might help understand population health, perform analytics and health navigation better. You can withdraw from the screening at any point of time and your data will be anonymized. In the event you choose to withdraw from the screening in between all information you provide will be destroyed and omitted. This would not disturb healthcare you are seeking or providing currently or in future with the healthcare organization. There will be no direct benefits to you. There are no monetary benefits for participating in the screening. There will be no cost to you for participating in this screening but there could be charges for using the AI tool and related services.\n\nThis is to confirm that you are above 18 years of age. The alternative is not to participate in this screening. Any studies published will go through an ethics committee. I understand that if I inform the healthcare digital navigator that myself or someone else is at risk of harm they may have to report this to the relevant authorities - they will discuss this with me first but may be required to report with or without my permission. You might get a further direction to access the healthcare providers through telemedicine route and /or physical connect which would be your responsibility to access after screening information or risk is indicated. You might get reminder for parameters in case they are above range in case after your permission to get a follow up through a customer relationship management system. I am fully aware that my participation is voluntary and that I can withdraw from the study at any time, without giving any reason.',
     'accept_terms': 'By accepting you are agreeing to all terms and conditions',
 
+    'rescue_sessions':'Rescue Sessions',
+    'form_screening': 'Form Screening',
+    'see_all': 'See All',
+    'create_reminder':'Create Reminder',
+    'select_time':"Select Start Time",
+    'title': 'Title:',
+    'type_title': 'Type Title here',
+    'doctor':'Doctor:',
+    'type_doctor':'Type Doctor Name here',
+    'day_x':'Day X',
+    'enter_number':'Enter Number',
+    'cancel': 'Cancel',
+    'add': 'Add',
+
     // home page
     'my_profile': "My Profile",
     'title_feeling_text': "How do you feel today?",
@@ -274,6 +288,7 @@ Map<String, Map<String, String>> translations = {
     "completed": "Completed",
     "upcoming": "Upcoming",
   },
+
   'hi': {
     'lets_breathe_easy': "आइए आराम से सांस लें",
     'client_details': 'ग्राहक का विवरण',
@@ -339,6 +354,20 @@ Map<String, Map<String, String>> translations = {
         'यह आपकी अनुमति का अनुरोध करने के लिए है कि डेटा को स्क्रीनिंग, ट्रायजिंग, जोखिम मूल्यांकन और एआई आधारित लक्षण मूल्यांकन उद्देश्यों के लिए संग्रहित किया जाए। उद्देश्य है कि मानसिक और शारीरिक स्वास्थ्य समस्याओं के लिए डिजिटल पथ्यों के माध्यम से स्वास्थ्य सेलावारी को आसान बनाना। डेटा संग्रह करने वाला संगठन HIPAA अनुरूप है और 2022 के डिजिटल व्यक्तिगत डेटा संरक्षण विधेयक में प्रावधानों को अपडेट कर रहा है। इस उद्देश्य को पूरा करने के लिए उपयोग किया जाने वाला तरीका सामाजिक जातिगत फॉर्म, क्लिनिकल जोखिम मापक और एआई आधारित उपकरणों को पूरा करना होगा। आपका व्यक्तिगत पहचानकर्ता गुमनाम और गोपनीय रहेगा। आपका योगदान जनसंख्या स्वास्थ्य को समझने, विश्लेषण करने और स्वास्थ्य सेलावारी को बेहतर बनाने में मदद कर सकता है। आप किसी भी समय स्क्रीनिंग से वापसी कर सकते हैं और आपका डेटा गुमनाम हो जाएगा। यदि आप स्क्रीनिंग से वापसी करना चुनते हैं तो आपके द्वारा प्रदान की गई सभी जानकारी को नष्ट किया जाएगा और छोड़ा जाएगा। यह न ही आपके द्वारा वर्तमान में या भविष्य में स्वास्थ्य सेवा प्रदाता के साथ जो आप चाह रहे हैं या प्रदान कर रहे हैं को बाधित करेगा। आपको कोई सीधा लाभ नहीं मिलेगा। स्क्रीनिंग में भाग लेने के लिए कोई मौद्रिक लाभ नहीं है। इस स्क्रीनिंग में भाग लेने के लिए आपको कोई लागत नहीं होगी लेकिन एआई टूल और संबंधित सेवाओं का उपयोग करने के लिए शुल्क हो सकता है। यह सत्यापित करने के लिए है कि आप 18 वर्ष से अधिक आयु के हैं। विकल्प यह है कि इस स्क्रीनिंग में भाग न लें। प्रकाशित कोई भी अध्ययन नैतिक समिति के माध्यम से जाएगा। मुझे समझ में आता है कि यदि मैं स्वास्थ्य डिजिटल नेविगेटर को सूचित करता हूं कि मैं या कोई अन्य व्यक्ति किसी खतरे के खतरे में हैं तो उन्हें संबंधित प्राधिकरणों को इसे रिपोर्ट करना पड़ सकता है - वे पहले मुझसे इस बारे में चर्चा करेंगे लेकिन अनुमति के साथ या बिना चर्चा किए रिपोर्ट करने के लिए आवश्यक हो सकते हैं। आपको स्वास्थ्य सेवा प्रदाताओं के साथ टेलीमेडिसिन रूट और / या फिजिकल कनेक्ट के माध्यम से स्वास्थ्य सेवाओं का पहुंचने के लिए एक और मार्गदर्शन मिल सकता है जो स्क्रीनिंग जानकारी या जोखिम इंडिकेट होने के बाद आपकी जिम्मेदारी होगी। यदि पैरामीटर ऊपरी सीमा के बाद में उनकी याद आती है तो आपको एक फॉलोअप के लिए अनुमति मिलने के बाद एक ग्राहक संबंध व्यवस्था के माध्यम से एक फॉलोअप के लिए अनुमति मिल सकती है। मुझे पूरी तरह से पता है कि मेरी भागीदारी स्वैच्छिक है और मैं किसी भी समय अभ्यास से वापस ले सकता हूं, किसी भी कारण के बिना।',
     'accept_terms':
         'इसे स्वीकार करने के लिए आप सभी नियमों और शर्तों से सहमत हो रहे हैं',
+
+    'rescue_sessions':'बचाव सत्र',
+    'form_screening': 'फॉर्म स्क्रीनिंग',
+    'see_all': 'सभी देखे',
+    'create_reminder':'अनुस्मारक बनाएं',
+    'select_time':"समय चुनें",
+    'title': 'शीर्षक:',
+    'type_title': 'यहाँ शीर्षक टाइप करें',
+    'doctor':'डॉक्टर:',
+    'type_doctor':'यहाँ डॉक्टर का नाम टाइप करें',
+    'day_x':'दिन X',
+    'enter_number':'संख्या दर्ज करें',
+    'cancel': 'रद्द करें',
+    'add': 'जोड़ें',
 
     // home page
     'title_feeling_text': "आज आप कैसा महसूस कर रहे हैं?",
@@ -609,6 +638,20 @@ Map<String, Map<String, String>> translations = {
     'consent_text':
         'या स्क्रीनिंग, ट्रायजिंग, जोखिम मूल्यांकन आणि एआय आधारित लक्षण मूल्यांकन उद्देश्यांसाठी डेटा संग्रहित करण्याची आपली परवानगी विनंती करण्यात येत आहे. उद्देश आहे कि मानसिक आणि शारीरिक आरोग्य समस्यांसाठी डिजिटल पथीवर मुख्यतः आरोग्य संचार सोपवायांची तयारी करणे. डेटा संग्रहित करणारे संस्था हिपाअ अनुपालनी आहेत आणि 2022 मधील डिजिटल व्यक्तिगत डेटा संरक्षण बिलमधील प्रावधाने अद्यतनित करत आहेत. या उद्देशांना पूर्ण करण्यासाठी वापरला जाणारा पद्धत सामाजिक जातिगत फॉर्म, क्लिनिकल जोखिम स्केल्स आणि एआय आधारित टूल्स आहेत. आपली वैयक्तिक पहचाणकर्ता अनामित आणि गोपनीय राहिली राहील. आपली भागीदारी जनसंख्या आरोग्य, विश्लेषण आणि आरोग्य संचारात चांगली मदत करू शकते. आप कोणत्याही काळात स्क्रीनिंगमधून वापरता येऊ शकता आणि आपला डेटा अनामित होईल. यदि आप स्क्रीनिंगत वापस करण्याचा निवड करता तर स्क्रीनिंगमध्ये दर्शविलेली सर्व माहिती नष्ट होईल आणि नष्ट होईल. यामुळे तुम्ही आत्तापर्यंत किंवा भविष्यात आपण करत असलेल्या कोणत्याही स्वास्थ्य सेवेस आणि प्राप्त करण्याची आपली कोणतीही परिक्षा दिलेली आहे किंवा अडचण करत नाही. तुम्हाला सीधा लाभ नाही. स्क्रीनिंगमध्ये भाग घेण्यासाठी कोणतेही आर्थिक लाभ नाहीत. या स्क्रीनिंगमध्ये भाग घेण्यासाठी तुम्हाला कोणतेही खर्च नाहीत परंतु एआय टूल आणि संबंधित सेवा वापरण्याचे शुल्क असू शकतात. तुम्हाला याचा सत्यापन करण्यात येतो कि तुम्ही 18 वर्षांपेक्षा जास्त वयाचे आहात. वैकल्पिक कार्य की या स्क्रीनिंगमध्ये भाग न घेणे आहे. कोणतेही प्रकाशन केलेले अभ्यास नैतिक समितीमध्ये जाईल. मला समजलं आहे की जर मी स्वास्थ्य डिजिटल नेविगेटरला सूचित करतो की माझे किंवा इतर कोणीतरी धोक्यात आहे तर त्यांना त्यांच्या अधिकाऱ्यांना हे रिपोर्ट करावं लागू शकते - त्यांनी पहिल्यांनी माझ्याशी हे चर्चा करेल परंतु अनुमतीसह किंवा अनुमतीशिवाय रिपोर्ट करावं लागू शकते. स्वास्थ्य सेवा प्रदात्यांच्या संपर्कात जाण्याच्या आणि / किंवा शारीरिक कनेक्ट करण्याच्या अधिक मार्गदर्शन मिळू शकतो जो की तुमची जिम्मेदारी होईल जर स्क्रीनिंगची माहिती किंवा जोखिम इंडिकेट केला जातो. जर त्या पॅरामीटर्सवर आपल्याला जास्तीत जास्त आवडतो तर आपल्याला एक ग्राहक संबंध व्यवस्था प्रणालीतून फॉलोअप मिळू शकतो. मला पूर्णतः जाणे आहे की माझे भागीदारी स्वैच्छिक आहे आणि मी कोणत्याही कारणासह निर्धारित केले बिना कोणत्याही वेळी अभ्यासातून वापस लागू शकतो.',
     'accept_terms': 'सर्व नियम आणि अटींच्या स्वीकारल्यामुळे आपण सहमत आहात',
+
+    'rescue_sessions': 'उद्धार सत्र',
+    'form_screening': 'फॉर्म स्क्रीनिंग',
+    'see_all': 'सर्व पहा',
+    'create_reminder': 'स्मरणपत्र तयार करा',
+    'select_time':'प्रारंभ करण्याचा वेळ निवडा',
+    'title': 'शीर्षक:',
+    'type_title': 'येथे शीर्षक टाइप करा',
+    'doctor':'डॉक्टर:',
+    'type_doctor':'येथे डॉक्टरचे नाव टाइप करा',
+    'day_x':'दिवस X',
+    'enter_number':'येथे नंबर प्रविष्ट करा',
+    'cancel':'रद्द करा',
+    'add':'जोडा',
 
     //home page
     'title_feeling_text': "आज तुम्हाला कसे वाटते?",

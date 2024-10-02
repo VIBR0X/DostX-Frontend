@@ -47,15 +47,16 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                 initialEntryMode: TimePickerEntryMode.inputOnly,
                 context: context,
                 initialTime: timeNewAdd,
-                helpText: "Select start time",
+                helpText: translations[LanguageManager().currentLanguage]!['select_time']!,
               ) ?? timeNewAdd;
               setState(() {
                 timeNewAdd = picked;
               });
             }
-
             return AlertDialog(
-              title: const Text('Create Reminder'),
+              title: Text(
+                translations[LanguageManager().currentLanguage]!['create_reminder']!,
+              ),
               content: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: SingleChildScrollView(
@@ -63,29 +64,29 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                     children: [
                       Row(
                         children: [
-                          Expanded(child: Text("Title:")),
+                          Expanded(child: Text(translations[LanguageManager().currentLanguage]!['title']!)),
                           Expanded(
                             child: TextField(
                               controller: _titleController,
                               decoration: InputDecoration(
-                                  hintText: "Type title here"),
+                                  hintText: translations[LanguageManager().currentLanguage]!['type_title']!,
                             ),
-                          ),
+                          ),)
                         ],
                       ),
                       Row(
                         children: [
-                          Expanded(child: Text("Doctor:")),
+                          Expanded(child: Text(translations[LanguageManager().currentLanguage]!['doctor']!)),
                           Expanded(
                             child: TextField(
                               controller: _doctorController,
                               decoration: InputDecoration(
-                                  hintText: "Type doctor's name here"),
+                                  hintText: translations[LanguageManager().currentLanguage]!['type_doctor']!,
                             ),
-                          ),
+                          ),)
                         ],
                       ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Row(
                         children: [
                           DropdownButton<String>(
@@ -95,10 +96,10 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                             value: dayCategoryNewAdd,
                             iconSize: 25,
                             isDense: true,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 14.0,
                                 fontFamily: 'SFProMedium',
-                                color: const Color(0xFF606060),
+                                color:  Color(0xFF606060),
                                 letterSpacing: 1.1),
                             items: ["MORNING", "NOON", "EVENING","NIGHT"].map<
                                 DropdownMenuItem<String>>(
@@ -142,7 +143,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Row(
                         children: [
                           SizedBox(
@@ -177,7 +178,9 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                             // ),
                           ),
                           const SizedBox(width: 40,),
-                          const Text("Day X:"),
+                          Text(
+                            translations[LanguageManager().currentLanguage]!['day_x']!,
+                          ),
                           const SizedBox(width: 20,),
                           Expanded(
                             child: TextField(
@@ -186,11 +189,10 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                                 FilteringTextInputFormatter.digitsOnly,
                               ],
                               keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-
-                                  hintText: "Enter a number"),
+                              decoration:  InputDecoration(
+                                  hintText: translations[LanguageManager().currentLanguage]!['type_days']!,
                             ),
-                          ),
+                          ),)
                         ],
                       ),
 
@@ -200,13 +202,13 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
               ),
               actions: <Widget>[
                 TextButton(
-                  child: Text('Cancel'),
+                  child: Text(translations[LanguageManager().currentLanguage]!['cancel']!),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                 ),
                 TextButton(
-                  child: Text('Add'),
+                  child: Text(translations[LanguageManager().currentLanguage]!['add']!),
                   onPressed: () async{
                     var tokenBox = Hive.box('TokenBox');
                     String title = _titleController.text??"";
@@ -225,7 +227,6 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                         "time": "${formatter.format(timeNewAdd.hour)}:${formatter.format(timeNewAdd.minute)}:00",
                         "time_period": dayCategoryNewAdd
                       };
-                      print(data);
                       var uri = Uri.parse(appConfig['serverURL'] + '/api/notifications/');
                       final response = await http.post(
                         uri,
@@ -254,7 +255,6 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('state is updated');
     DateTime now = DateTime.now();
     int nowInMins= now.hour *60 + now.minute;
     //print(widget.reminderList);
@@ -542,7 +542,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 11),
                                   child: Text(
-                                      "Day x0",
+                                      translations[LanguageManager().currentLanguage]!['day_x']!,
                                     style: TextStyle(
                                         fontSize: relFont * 12.0,
                                         fontFamily: 'SFProMedium',
