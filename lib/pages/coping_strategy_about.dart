@@ -44,7 +44,7 @@ class CopingStrategyAboutPage extends StatelessWidget {
           },
         ),
         title: Text(
-          'Coping Strategies',
+          translations[LanguageManager().currentLanguage]!['coping_strategies']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',

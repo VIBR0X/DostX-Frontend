@@ -935,18 +935,20 @@ class ReusableTile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(screenWidth(context) * (10 / 419)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            testDate,
-                            maxLines: 1, // Limiting to 1 line
-                            overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
-                            style: TextStyle(
+                          padding:  EdgeInsets.all((20 / 896)*screenHeight(context)),
+                            child: Center(
+                            child: Text(
+                              testDate,
+                              maxLines: 1, // Limiting to 1 line
+                              overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
+                              style: TextStyle(
                               fontSize: fontHelper(context) * 11,
                               color: Color(0xFF9FA4A4),
                               fontFamily: 'SFProText',
                               letterSpacing: 0.6,
+                              ),
                             ),
-                          ),
+                            ),
                         ),
                       ),
                     ),

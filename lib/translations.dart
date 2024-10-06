@@ -78,6 +78,8 @@ Map<String, Map<String, String>> translations = {
     'enter_number':'Enter Number',
     'cancel': 'Cancel',
     'add': 'Add',
+    'coping_strategies': 'Coping Strategies',
+    'm_reminders':'Medical Reminders',
 
     // home page
     'my_profile': "My Profile",
@@ -299,7 +301,7 @@ Map<String, Map<String, String>> translations = {
     'phone_number': 'फोन नंबर',
     'sign_in': 'साइन इन करें',
     'otp': 'ओटीपी',
-    'resend_otp': 'Resend OTP',
+    'resend_otp': 'ओटीपी दोबारा भेजें',
     'verify_otp': 'OTP सत्यापित करें',
     'profile_edit': 'व्यक्तिगत विवरण अपडेट करें',
     'sign_up': 'साइन अप करें!',
@@ -368,6 +370,8 @@ Map<String, Map<String, String>> translations = {
     'enter_number':'संख्या दर्ज करें',
     'cancel': 'रद्द करें',
     'add': 'जोड़ें',
+    'coping_strategies':'कॅपिंग स्ट्रॅटेजीज',
+    'm_reminders':'औषधीय अनुस्मारक',
 
     // home page
     'title_feeling_text': "आज आप कैसा महसूस कर रहे हैं?",
@@ -665,6 +669,8 @@ Map<String, Map<String, String>> translations = {
     'connect': 'कनेक्ट',
     'financial': 'आर्थिक',
     'coping': 'coping',
+    'coping_strategies':'कॅपिंग स्ट्रॅटेजीज',
+    'm_reminders':'औषधी स्मरणपत्रे',
 
     //profile_page
     'my_profile': "माझे प्रोफाइल",

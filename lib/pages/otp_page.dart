@@ -123,8 +123,8 @@ class _OtpPageState extends State<OtpPage> {
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                  child: Text(
-                                      translations[LanguageManager().currentLanguage]!['phone_number']!,
+                                  child: Text('l',
+                                      // translations[LanguageManager().currentLanguage]!['phone_number']!,
                                     style: const TextStyle(
                                       fontFamily: 'JostMedium',
                                       color: const Color(0xFFE5A194),
@@ -142,9 +142,10 @@ class _OtpPageState extends State<OtpPage> {
                                 ),
                                 alignment: Alignment.centerLeft,
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "  +91 ${widget.number}",
+                                      '+91 ${widget.number}',
                                       style: TextStyle(
                                             color: Color(
                                               phoneColor,

@@ -281,7 +281,7 @@ class _MedicalReminderPageState extends State<MedicalReminderPage> {
           },
         ),
         title: Text(
-          'Medical Reminders',
+          translations[LanguageManager().currentLanguage]!['m_reminders']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',

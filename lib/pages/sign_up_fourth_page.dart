@@ -577,7 +577,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 }
                               }
                               String image_path = profileBox.get('profile_pic_local_path');
-                              request.fields['email'] = profileBox.get('email')??'mock_email@dostx.com';
+                              request.fields['email'] = profileBox.get('email')??'';
                               if(image_path!="") {
                                 final File file = File(image_path);
                                 final Uint8List fileBytes = await file
