@@ -4,7 +4,6 @@ import 'package:hive/hive.dart';
 import '../globals.dart ';
 import '../palette.dart';
 import '../custom_widgets.dart';
-import 'sign_up_second_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
 
@@ -24,7 +23,7 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5A194) ,
+      backgroundColor: const Color(0xffE5A194) ,
       body: Container(
         decoration: const BoxDecoration(
           color: ColorOptions.skin,
@@ -68,7 +67,7 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                       ),
                         Text(
                           translations[LanguageManager().currentLanguage]!['emotional_wheel_form_title']!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'JostBold',
                           fontSize: 28,
                           color: Color(0xffE5A194),
@@ -168,12 +167,12 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Select Language'),
+                            title: const Text('Select Language'),
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 ListTile(
-                                  title: Text('English'),
+                                  title: const Text('English'),
                                   onTap: () {
                                     // Set English language
                                     LanguageManager().setLanguage('en');
@@ -185,7 +184,7 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Hindi'),
+                                  title: const Text('Hindi'),
                                   onTap: () {
                                     // Set Hindi language
                                     LanguageManager().setLanguage('hi');
@@ -197,7 +196,7 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Marathi'),
+                                  title: const Text('Marathi'),
                                   onTap: () {
                                     // Set Marathi language
                                     LanguageManager().setLanguage('mr');
@@ -215,12 +214,12 @@ class _EmotionalWheelState extends State<EmotionalWheel> {
                       );
                     },
                     child: Ink(
-                      decoration: ShapeDecoration(
+                      decoration: const ShapeDecoration(
                         color: Colors.transparent,
                         shape: CircleBorder(),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(18,25,0,0),
+                        padding: const EdgeInsets.fromLTRB(18,25,0,0),
                         child: SvgPicture.asset(
                           'assets/icons/language_icon.svg',
                           width: 65,
@@ -267,12 +266,12 @@ class _QuestionWithEmotionsState extends State<QuestionWithEmotions> {
           Text(
             widget.question,
             style: TextStyle(
-              color: Color(0xffE5A194),
+              color: const Color(0xffE5A194),
               fontFamily: 'JostMedium',
               fontSize: fontHelper(context) * 14,
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Row(
             children: [
               Column(

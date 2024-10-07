@@ -49,7 +49,7 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
           },
         ),
         title: Text(
-          'Emotional Wheel Results',
+          translations[LanguageManager().currentLanguage]!['emotional_wheel_title']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -116,7 +116,7 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
                                     // textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                      (selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['taken_at'])):"Please select a result",
+                                      (selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['taken_at'])):translations[LanguageManager().currentLanguage]!['select_result']!,
                                     style: TextStyle(
                                         fontSize: relFont * 15.0,
                                         fontFamily: 'SFProMedium',

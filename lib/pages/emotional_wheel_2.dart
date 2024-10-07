@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dostx/em_wheel_emotions.dart';
-import 'package:dostx/pages/zarit_burden_results_page.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
 import '../config.dart';
@@ -9,7 +8,6 @@ import '../globals.dart';
 import 'package:http/http.dart' as http;
 
 import '../palette.dart';
-import '../custom_widgets.dart';
 import 'package:flutter/material.dart';
 import '../translations.dart';
 import '../language_manager.dart';
@@ -84,12 +82,12 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Select Language'),
+                      title: const Text('Select Language'),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           ListTile(
-                            title: Text('English'),
+                            title: const Text('English'),
                             onTap: () {
                               // Set English language
                               LanguageManager().setLanguage('en');
@@ -101,7 +99,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                             },
                           ),
                           ListTile(
-                            title: Text('Hindi'),
+                            title: const Text('Hindi'),
                             onTap: () {
                               // Set Hindi language
                               LanguageManager().setLanguage('hi');
@@ -113,7 +111,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                             },
                           ),
                           ListTile(
-                            title: Text('Marathi'),
+                            title: const Text('Marathi'),
                             onTap: () {
                               // Set Marathi language
                               LanguageManager().setLanguage('mr');
@@ -131,12 +129,12 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                 );
               },
               child: Ink(
-                decoration: ShapeDecoration(
+                decoration: const ShapeDecoration(
                   color: Colors.transparent,
                   shape: CircleBorder(),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
                     'assets/icons/language_icon.svg',
                     width: 24,
@@ -177,7 +175,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       children: [
                         Text(
                           translations[LanguageManager().currentLanguage]!['emotional_wheel_form_title']!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'JostBold',
                             fontSize: 28,
                             color: Color(0xffE5A194),
@@ -208,7 +206,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       fontSize: 14 * fontHelper(context),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Container(
                     // width: 150,
                     decoration:  BoxDecoration(
@@ -228,7 +226,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       iconEnabledColor: const Color(0xFF4D4D4D),
                       elevation: 0,
                       // isExpanded: true, // Allow the dropdown to expand to fit the parent
-                      underline: SizedBox(), // Remove the default underline
+                      underline: const SizedBox(), // Remove the default underline
                       value: emotion2,
                       iconSize: 25,
                       isDense: true,
@@ -275,7 +273,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       fontSize: 14 * fontHelper(context),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Container(
                     // width: 150,
                     decoration:  BoxDecoration(
@@ -295,7 +293,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       iconEnabledColor: const Color(0xFF4D4D4D),
                       elevation: 0,
                       // isExpanded: true, // Allow the dropdown to expand to fit the parent
-                      underline: SizedBox(), // Remove the default underline
+                      underline: const SizedBox(), // Remove the default underline
                       value: emotion3,
                       iconSize: 25,
                       isDense: true,
@@ -329,7 +327,7 @@ class _EmotionalWheel2State extends State<EmotionalWheel2> {
                       },
                     ),
                   ),
-                  SizedBox(height: 200,),
+                  const SizedBox(height: 200,),
                   Center(
                     child:
                     SizedBox(

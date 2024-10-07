@@ -23,6 +23,8 @@ bool isValidNumber(String input) {
 
 class _SignInState extends State<SignIn> {
   bool validNumber = false;
+  bool _isApiCallInProgress = false;
+
   final TextEditingController _phoneController = TextEditingController();
   int phoneColor = 0xFFBABABA;
   @override
@@ -42,7 +44,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 40,),
+                    const SizedBox(height: 40,),
                     SingleChildScrollView(
                       physics: const ClampingScrollPhysics(),
                       child: Padding(
@@ -92,7 +94,7 @@ class _SignInState extends State<SignIn> {
                                       translations[LanguageManager().currentLanguage]!['phone_number']!,
                                     style: const TextStyle(
                                       fontFamily: 'JostMedium',
-                                      color: const Color(0xFFE5A194),
+                                      color: Color(0xFFE5A194),
                                       fontSize: 14,
                                     ),
                                   ),
@@ -143,9 +145,9 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   keyboardType: const TextInputType.numberWithOptions(),
                                   decoration: InputDecoration(
-                                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                                    // alignLabelWithHint: false,
-                                    // isDense:true,
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 3),
+                                    constraints: const BoxConstraints(minWidth: 0, minHeight: 29),
+                                  
                                     prefixIcon:  Text(
                                       '  +91 ',
                                       style: TextStyle(
@@ -159,7 +161,7 @@ class _SignInState extends State<SignIn> {
                                       ),
                                     ),
                                     // constraints: BoxConstraints(minWidth: 0, minHeight: 0),
-                                    prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 29),
+                                    prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 29),
           
                                     suffixIcon: Icon(
                                         Icons.phone_enabled,
@@ -233,8 +235,11 @@ class _SignInState extends State<SignIn> {
                                         ),
                                       ),
                                     ),
-                                    onPressed: validNumber
+                                    onPressed: validNumber && !_isApiCallInProgress
                                         ? () async {
+                                          setState(() {
+                                            _isApiCallInProgress = true;
+                                          });
                                             // SignInRequest fakeSignInRequest = SignInRequest(
                                             //  phoneNumber: _phoneController.text.substring(3)
                                             //     );
@@ -257,8 +262,11 @@ class _SignInState extends State<SignIn> {
                                               context,
                                               createCustomPageRoute(OtpPage(number: _phoneController.text,), context, transitionType: 'no-animation'),
                                             );
+                                          } else {
+                                            setState(() {
+                                              _isApiCallInProgress = false;
+                                            });
                                           }
-
                                           }
                                         : () {},
           
@@ -300,12 +308,12 @@ class _SignInState extends State<SignIn> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Select Language'),
+                            title: const Text('Select Language'),
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 ListTile(
-                                  title: Text('English'),
+                                  title: const Text('English'),
                                   onTap: () {
                                     // Set English language
                                     LanguageManager().setLanguage('en');
@@ -317,7 +325,7 @@ class _SignInState extends State<SignIn> {
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Hindi'),
+                                  title: const Text('Hindi'),
                                   onTap: () {
                                     // Set Hindi language
                                     LanguageManager().setLanguage('hi');
@@ -329,7 +337,7 @@ class _SignInState extends State<SignIn> {
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Marathi'),
+                                  title: const Text('Marathi'),
                                   onTap: () {
                                     // Set Marathi language
                                     LanguageManager().setLanguage('mr');
@@ -347,12 +355,12 @@ class _SignInState extends State<SignIn> {
                       );
                     },
                     child: Ink(
-                      decoration: ShapeDecoration(
+                      decoration: const ShapeDecoration(
                         color: Colors.transparent,
                         shape: CircleBorder(),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(18,25,0,0),
+                        padding: const EdgeInsets.fromLTRB(18,25,0,0),
                         child: SvgPicture.asset(
                           'assets/icons/language_icon.svg',
                           width: 65,

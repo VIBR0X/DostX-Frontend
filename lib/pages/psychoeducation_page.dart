@@ -98,7 +98,7 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
                                   });},
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: modeIndex==0?Color(0xFFFFFFFF):Colors.transparent,
+                                        color: modeIndex==0?const Color(0xFFFFFFFF):Colors.transparent,
                                         borderRadius: BorderRadius.circular(15)
                                     ),
                                     child: Center(
@@ -126,7 +126,7 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
                                   });},
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: modeIndex==1?Color(0xFFFFFFFF):Colors.transparent,
+                                        color: modeIndex==1?const Color(0xFFFFFFFF):Colors.transparent,
                                         borderRadius: BorderRadius.circular(15)
                                     ),
                                     child: Center(
@@ -159,11 +159,11 @@ class _PsychoEducationPageState extends State<PsychoEducationPage> {
                 itemCount: widget.websiteList.length,
                   itemBuilder: (context, index){
                     return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                               child: TextButton(
                                 style: TextButton.styleFrom(
                                     padding: EdgeInsets.zero,
-                                    minimumSize: Size(50, 30),
+                                    minimumSize: const Size(50, 30),
                                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                     alignment: Alignment.centerLeft
                                 ),

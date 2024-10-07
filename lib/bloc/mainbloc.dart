@@ -4,9 +4,8 @@ import 'package:dostx/response/otpResponse.dart';
 
 import '../api/apiclient.dart';
 import 'package:dio/dio.dart';
-import 'package:rxdart/rxdart.dart';
 import '../request/signUpRequest.dart';
-import '../response/signUpResponse.dart';
+
 class mainBloc {
   late final ApiClient client;
   final dio = Dio();

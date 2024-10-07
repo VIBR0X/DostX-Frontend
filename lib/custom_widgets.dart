@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'language_manager.dart';
 import 'palette.dart';
-import 'globals.dart' as global;
 
 
 class CustomRadioButton extends StatelessWidget {
@@ -977,7 +976,7 @@ class ReusableTile extends StatelessWidget {
                               maxLines: 1, // Limiting to 1 line
                               overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
                               style: TextStyle(
-                                fontSize: fontHelper(context) * 11,
+                                fontSize: fontHelper(context) * 9,
                                 color: Colors.white,
                                 fontFamily: 'SFProText',
                               ),

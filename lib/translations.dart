@@ -72,7 +72,7 @@ Map<String, Map<String, String>> translations = {
     'select_time':"Select Start Time",
     'title': 'Title:',
     'type_title': 'Type Title here',
-    'doctor':'Doctor:',
+    'doctor':'Doctor',
     'type_doctor':'Type Doctor Name here',
     'day_x':'Day X',
     'enter_number':'Enter Number',
@@ -90,7 +90,6 @@ Map<String, Map<String, String>> translations = {
     'education': 'education',
     'medicine': 'Medicine',
     'reminder': 'Reminder',
-    'doctor': 'Doctor',
     'connect': 'Connect',
     'financial': 'Financial',
     'coping': 'Coping',
@@ -105,6 +104,7 @@ Map<String, Map<String, String>> translations = {
     'assessment': 'Assessment',
 
     //zarit scale
+    'zarit_scale_title':'Zarit Burden Interview Results',
     'zarit_scale_form_title': "Zarit Scale",
     'zarit_scale_intro_text':
         'The following is a list of statements that reflect how people sometimes feel when taking care of another person.\n\nAfter reading each statement, indicate how often you experience the feelings listed by circling the number that best corresponds to the frequency of these feelings.',
@@ -222,6 +222,7 @@ Map<String, Map<String, String>> translations = {
         "What emotion are you feeling from the wheel 03?",
 
     // brief cope
+    'brief_cope_title':'Brief-COPE Results',
     'brief_cope_form_title': "Brief - COPE",
     'brief_cope_intro':
         'The Brief-COPE is a 28 item self-report questionnaire designed to measure effective and ineffective ways to cope with a stressful life event. “Coping” is defined broadly as an effort used to minimise distress associated with negative life experiences.\nThe following questions ask how you have sought to cope with a hardship in your life. Read the statements and indicate how much you have been using each coping style',
@@ -278,7 +279,23 @@ Map<String, Map<String, String>> translations = {
     'about': 'About',
     'check-result': "Check Result",
 
+    //cost effective analysis
+    'cost_effective_title':'Cost Effective Analysis',
+    'hospital_based_care':"Hospital based Home care service",
+    "versus":"versus",
+    'hospicat_center_care':"Hospital centered care",
+    'cost_effective_text':"Cost-effectiveness in healthcare is a measure used to evaluate the efficiency of different healthcare interventions and services, comparing their costs to their health outcomes, typically measured in terms of quality-adjusted life years (QALYs), life years gained, or other health improvements.",
+    'total_visits':"Total amount spent for one OPD visit",
+    'frequency_of_visits':"No. frequency of visits",
+    'total_amount_spent':"Total amount spent for one Hospitalisation",
+    'total_amount_spent_emg':"Total amount spent for emergency",
+    'total_amount_spent_homecare':"Total amount spent for one Home care visit",
+
+
+
+
     // results
+    'emotional_wheel_title':'Emotional Wheel Results',
     'emotional_wheel_results': "Emotional Wheel",
     'zarit_burden_results':
         "The Zarit Burden Interview Assessing Caregiver Burden",
@@ -289,6 +306,7 @@ Map<String, Map<String, String>> translations = {
     "available": "Available",
     "completed": "Completed",
     "upcoming": "Upcoming",
+    'select_result':"Please select a result",
   },
 
   'hi': {
@@ -364,7 +382,7 @@ Map<String, Map<String, String>> translations = {
     'select_time':"समय चुनें",
     'title': 'शीर्षक:',
     'type_title': 'यहाँ शीर्षक टाइप करें',
-    'doctor':'डॉक्टर:',
+    'doctor':'डॉक्टर',
     'type_doctor':'यहाँ डॉक्टर का नाम टाइप करें',
     'day_x':'दिन X',
     'enter_number':'संख्या दर्ज करें',
@@ -381,7 +399,6 @@ Map<String, Map<String, String>> translations = {
     'education': 'शिक्षा',
     'medicine': 'चिकित्सा',
     'reminder': 'अनुस्मारक',
-    'doctor': 'डॉक्टर',
     'connect': 'कनेक्ट',
     'financial': 'वित्तीय',
     'coping': 'मुकाबला',
@@ -397,6 +414,7 @@ Map<String, Map<String, String>> translations = {
     'assessment': 'मूल्यांकन',
 
     // zarit scale
+    'zarit_scale_title':'ज़रीट बर्डन साक्षात्कार परिणाम',
     'zarit_scale_form_title': "जारित स्केल",
     'zarit_scale_intro_text':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।\n\nप्रत्येक वाक्यांश को पढ़ने के बाद, इन भावनाओं को आप कितनी बार महसूस करते हैं उसका पता लगाने के लिए, इन भावनाओं की आवधिका को घेर करने के लिए उन्हें गोलाकार करें।',
@@ -504,7 +522,8 @@ Map<String, Map<String, String>> translations = {
         'क्या परिवार के किसी अन्य सदस्य की नींद उड़ गई है, वह उदास है, चिड़चिड़ा है',
 
     //emotional wheel
-    'emotional_wheel_form_title': "भावनात्मक चक्र",
+      'emotional_wheel_title':'भावनात्मक पहिया परिणाम',
+    'emotional_wheel_form_title': "भावनात्मक पहिया",
     'emotional_wheel_intro':
         'निम्नलिखित वाक्यांशों की सूची है जो लोग कभी-कभी किसी दूसरे व्यक्ति की देखभाल करते समय कैसा महसूस करते हैं।\n\nप्रत्येक वाक्यांश को पढ़ने के बाद, इन भावनाओं को आप कितनी बार महसूस करते हैं उसका पता लगाने के लिए, इन भावनाओं की आवधिका को घेर करने के लिए उन्हें गोलाकार करें।',
     'emotional_wheel_question_1': "आज आप कैसा महसूस कर रहे हैं?",
@@ -514,6 +533,7 @@ Map<String, Map<String, String>> translations = {
         "पहिया 03 से आप कौन सी भावना महसूस कर रहे हैं?",
 
     //brief cope
+    'brief_cope_title':'संक्षिप्त-COPE परिणाम',
     'brief_cope_form_title': "संक्षिप्त - COPE",
     'brief_cope_intro':
         'संक्षेपित-COPE एक 28 आइटम स्व-रिपोर्ट प्रश्नावली है जो एक तनावपूर्ण जीवन घटना के साथ कैसे समझदारी और असमझदारी के ढंगों को मापने के लिए डिज़ाइन की गई है। “सामना” को व्यापक रूप से एक प्रयास के रूप में परिभाषित किया गया है जो नकारात्मक जीवन अनुभवों के साथ आँखों में पानी भरने का प्रयास करता है।\nनिम्नलिखित प्रश्न आपसे पूछते हैं कि आपने अपने जीवन में किसी कठिनाई का सामना कैसे किया है। वाक्यों को पढ़ें और इस बताएं कि आपने प्रत्येक सहनशीलता के स्टाइल का कितना प्रयोग किया है',
@@ -574,9 +594,24 @@ Map<String, Map<String, String>> translations = {
     'brief_cope_result':
         "संक्षिप्त चिंता समस्याओं के सामने संभावित विवरण असमर्थी इन्वेंट्री (संक्षिप्त-कोप)",
 
+    //cost effective analysis
+    'cost_effective_title':'लागत प्रभावी विश्लेषण',
+    'hospital_based_care':"अस्पताल आधारित गृह देखभाल सेवा",
+    "versus":"बनाम",
+    'hospicat_center_care':"अस्पताल केन्द्रित देखभाल",
+    'cost_effective_text':"स्वास्थ्य देखभाल में लागत-प्रभावशीलता एक उपाय है जिसका उपयोग विभिन्न स्वास्थ्य देखभाल हस्तक्षेपों और सेवाओं की दक्षता का मूल्यांकन करने के लिए किया जाता है, उनकी लागतों की तुलना उनके स्वास्थ्य परिणामों से की जाती है, जिसे आमतौर पर गुणवत्ता-समायोजित जीवन वर्ष (QALYs), प्राप्त जीवन वर्ष, या अन्य स्वास्थ्य के संदर्भ में मापा जाता है। सुधार।",
+    'total_visits':"एक ओपीडी विजिट के लिए खर्च की गई कुल राशि",
+    'frequency_of_visits':"सं. यात्राओं की आवृत्ति",
+    'total_amount_spent':"एक अस्पताल में भर्ती होने पर खर्च की गई कुल राशि",
+    'total_amount_spent_emg':"आपातकाल के लिए खर्च की गई कुल राशि",
+    'total_amount_spent_homecare':"एक गृह देखभाल दौरे के लिए खर्च की गई कुल राशि",
+
+
     "available": "उपलब्ध",
     "completed": "संपूरित",
     "upcoming": "आगामी",
+    'select_result':"कृपया एक परिणाम चुनें",
+
   },
   'mr': {
     'lets_breathe_easy': "सहज श्वास घेऊ द्या",
@@ -650,7 +685,7 @@ Map<String, Map<String, String>> translations = {
     'select_time':'प्रारंभ करण्याचा वेळ निवडा',
     'title': 'शीर्षक:',
     'type_title': 'येथे शीर्षक टाइप करा',
-    'doctor':'डॉक्टर:',
+    'doctor':'डॉक्टर',
     'type_doctor':'येथे डॉक्टरचे नाव टाइप करा',
     'day_x':'दिवस X',
     'enter_number':'येथे नंबर प्रविष्ट करा',
@@ -665,7 +700,6 @@ Map<String, Map<String, String>> translations = {
     'education': 'शिक्षण',
     'medicine': 'औषध',
     'reminder': 'स्मरणपत्र',
-    'doctor': 'डॉक्टर',
     'connect': 'कनेक्ट',
     'financial': 'आर्थिक',
     'coping': 'coping',
@@ -683,6 +717,7 @@ Map<String, Map<String, String>> translations = {
     'assessment': 'मूल्यांकन',
 
     // zarit scale
+    'zarit_scale_title':'झारीट बर्डन मुलाखतीचे निकाल',
     'zarit_scale_form_title': "झारित प्रमाण",
     'zarit_scale_intro_text':
         'खालील वाक्यांची यादी आहे जे माणसांना कधीकधी एका इतर व्यक्तीवर काळजी करताना कसे वाटतात.\n\nप्रत्येक वाक्य वाचताना, तुम्हाला वाटते की आपण आणि आपल्याला या भावनांचा अनुभव कितपत दिला पाहिजे, हे कितपत काय नंबरवर टिपकले त्याचा अर्थ पाठिंबा',
@@ -790,6 +825,7 @@ Map<String, Map<String, String>> translations = {
         'कुटुंबातील इतर सदस्यांची झोप उडाली आहे का, उदासीन, चिडचिड आहे',
 
     //emo_wheel
+    'emotional_wheel_title':"भावनिक चाक परिणाम",
     'emotional_wheel_form_title': "भावनात्मक चक्र",
     'emotional_wheel_intro':
         'खालील वाक्यांची यादी आहे जे माणसांना कधीकधी एका इतर व्यक्तीवर काळजी करताना कसे वाटतात.\n\nप्रत्येक वाक्य वाचताना, तुम्हाला वाटते की आपण आणि आपल्याला या भावनांचा अनुभव कितपत दिला पाहिजे, हे कितपत काय नंबरवर टिपकले त्याचा अर्थ पाठिंबा',
@@ -798,6 +834,7 @@ Map<String, Map<String, String>> translations = {
     'emotional_wheel_question_3': "चाक 03 पासून तुम्हाला कोणती भावना जाणवते?",
 
     //brief_cope
+    'brief_cope_title':'संक्षिप्त-COPE परिणाम',
     'brief_cope_form_title': "लघु - COPE",
     'brief_cope_intro':
         'लघु-COPE हा एक २८ वस्तु आत्म-अहल्याने व्यक्त करणारा प्रश्नपत्र आहे ज्यात ताणावपूर्ण जीवन घडवण्याचा उत्तम आणि अप्रभावी प्रकार आणण्याचे प्रयत्न करण्यासाठी डिझाइन केलेले आहे. "टोंचण" हा नेहमीच्या जीवनाच्या अनुभवांसह आवळणीचा प्रयत्न म्हणजे उत्तमपणे विशेषतः नकारात्मक जीवन अनुभवांसह जुळणारे दु:खामध्ये ताणाव कमी करण्याचा प्रयत्न. खालील प्रश्न आपण आपल्या जीवनातील एक कठीणाईबद्दल कसे टोंचण केले आहे हे विचारून घेतले आहे. विचार आणि नेहमीच्या जीवनाच्या अनुभवांना सूचित करणे, वाक्ये वाचा आणि प्रत्येक टोंचण स्टाइलवर कितपत वापरत आहात कितपत द्या',
@@ -848,6 +885,19 @@ Map<String, Map<String, String>> translations = {
     'about': 'विषयी',
     'check-result': "निकाल तपासा",
 
+    //cost effective analysis
+    'cost_effective_title':'खर्च प्रभावी विश्लेषण',
+    'hospital_based_care':"हॉस्पिटल आधारित होम केअर सेवा",
+    'versus':"विरुद्ध",
+    'hospicat_center_care':"रुग्णालय केंद्रीत काळजी",
+    'cost_effective_text':"आरोग्यसेवेतील खर्च-प्रभावीता हे विविध आरोग्य सेवा हस्तक्षेप आणि सेवांच्या कार्यक्षमतेचे मूल्यांकन करण्यासाठी वापरले जाणारे एक उपाय आहे, त्यांच्या खर्चाची त्यांच्या आरोग्य परिणामांशी तुलना करणे, सामान्यत: गुणवत्ता-समायोजित जीवन वर्ष (QALYs), आयुष्याची वर्षे किंवा इतर आरोग्याच्या दृष्टीने मोजले जाते. सुधारणा.",
+    'total_visits':"एका ओपीडी भेटीसाठी खर्च केलेली एकूण रक्कम",
+    'frequency_of_visits':"संख्या. भेटींची वारंवारता",
+    'total_amount_spent':"एका हॉस्पिटलायझेशनसाठी खर्च केलेली एकूण रक्कम",
+    'total_amount_spent_emg':"आणीबाणीसाठी खर्च केलेली एकूण रक्कम",
+    'total_amount_spent_homecare':"एका होम केअर भेटीसाठी खर्च केलेली एकूण रक्कम",
+    
+
     // results
     'emotional_wheel_results': "भावनात्मक चक्र",
     'zarit_burden_results': "झारित बोझ चिंतामय देखाणी देखावणी",
@@ -858,6 +908,7 @@ Map<String, Map<String, String>> translations = {
     "available": "उपलब्ध",
     "completed": "पूर्ण",
     "upcoming": "आगामी",
+    'select_result':"कृपया निकाल निवडा"
   },
 };
 

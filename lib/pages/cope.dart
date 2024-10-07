@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:dostx/pages/brief_cope_results_page.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
 import '../config.dart';
@@ -57,12 +56,12 @@ class _SignUpThirdState extends State<CopePage> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Select Language'),
+                      title: const Text('Select Language'),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           ListTile(
-                            title: Text('English'),
+                            title: const Text('English'),
                             onTap: () {
                               // Set English language
                               LanguageManager().setLanguage('en');
@@ -72,7 +71,7 @@ class _SignUpThirdState extends State<CopePage> {
                             },
                           ),
                           ListTile(
-                            title: Text('Hindi'),
+                            title: const Text('Hindi'),
                             onTap: () {
                               // Set Hindi language
                               LanguageManager().setLanguage('hi');
@@ -84,7 +83,7 @@ class _SignUpThirdState extends State<CopePage> {
                             },
                           ),
                           ListTile(
-                            title: Text('Marathi'),
+                            title: const Text('Marathi'),
                             onTap: () {
                               // Set Marathi language
                               LanguageManager().setLanguage('mr');
@@ -107,7 +106,7 @@ class _SignUpThirdState extends State<CopePage> {
                   shape: CircleBorder(),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
                     'assets/icons/language_icon.svg',
                     width: 24,

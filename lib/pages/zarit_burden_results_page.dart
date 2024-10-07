@@ -26,7 +26,7 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
     //print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
-      backgroundColor: Color(0xFFF8F8F8),
+      backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         toolbarHeight: screenHeight(context)*0.105,
@@ -46,7 +46,7 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
           },
         ),
         title: Text(
-          'Zarit Burden Interview Results',
+          translations[LanguageManager().currentLanguage]!['zarit_scale_title']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -68,13 +68,13 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
               ),
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.all(15),
             child: Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-                color: Color(0xFFE0EFED),
+                color: const Color(0xFFE0EFED),
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Column(
@@ -96,7 +96,7 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                           //   fit: BoxFit.contain,
                           // ),
                         ),
-                        SizedBox(width: 16.0),
+                        const SizedBox(width: 16.0),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,27 +108,27 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                                     style: TextStyle(
                                         fontSize: relFont * 15.0,
                                         fontFamily: 'SFProMedium',
-                                        color: Color(0xFF323736),
+                                        color: const Color(0xFF323736),
                                         letterSpacing: 1.1),
                                     // textAlign: TextAlign.center,
                                   ),
-                                  Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['updated_at'])):"Please select a result",
+                                  Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['updated_at'])):translations[LanguageManager().currentLanguage]!['select_result']!,
                                     style: TextStyle(
                                         fontSize: relFont * 15.0,
                                         fontFamily: 'SFProMedium',
-                                        color: Color(0xFF323736),
+                                        color: const Color(0xFF323736),
                                         letterSpacing: 1.1),
                                     // textAlign: TextAlign.center,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
                               Text(
                                 translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
                                 style: TextStyle(
                                     fontSize: relFont * 15.0,
                                     fontFamily: 'SFProMedium',
-                                    color: Color(0xFF323736),
+                                    color: const Color(0xFF323736),
                                     letterSpacing: 1.1),
                                 // textAlign: TextAlign.center,
                               ),
@@ -148,14 +148,14 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                             fontSize: relFont * 18.0,
                             fontFamily: 'SFProText',
                             fontWeight: FontWeight.w500,
-                            color: Color(0xFF323736),
+                            color: const Color(0xFF323736),
                             letterSpacing: 1.3
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Center(
                     child: SizedBox(
                       height: screenHeight(context) * (38 / 895),

@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:dostx/config.dart';
+import 'package:dostx/language_manager.dart';
+import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import '../language_manager.dart';
 import '../palette.dart';
-import '../translations.dart';
 import '../globals.dart';
 import 'package:http/http.dart' as http;
 
@@ -76,7 +76,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
         ),
 
         title: Text(
-          'Cost Effective Analysis',
+          translations[LanguageManager().currentLanguage]!['cost_effective_title']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -99,7 +99,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "Hospital based Home care service",
+                    translations[LanguageManager().currentLanguage]!['hospital_based_care']!,
                     style: TextStyle(
                       fontSize: relFont * 19,
                       fontFamily: 'JostBold',
@@ -112,7 +112,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "versus",
+                    translations[LanguageManager().currentLanguage]!["versus"]!,
                     style: TextStyle(
                       fontSize: relFont * 19,
                       fontFamily: 'JostBold',
@@ -125,7 +125,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "Hospital centered care",
+                    translations[LanguageManager().currentLanguage]!['hospicat_center_care']!,
                     style: TextStyle(
                       fontSize: relFont * 19,
                       fontFamily: 'JostBold',
@@ -154,7 +154,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 48.0),
                     child: Text(
-                      "Cost-effectiveness in healthcare is a measure used to evaluate the efficiency of different healthcare interventions and services, comparing their costs to their health outcomes, typically measured in terms of quality-adjusted life years (QALYs), life years gained, or other health improvements.",
+                      translations[LanguageManager().currentLanguage]!['cost_effective_text']!,
                       style: TextStyle(
                         fontSize: relFont * 13,
                         fontFamily: 'SFProTextMedium',
@@ -172,7 +172,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                     width: screenWidth(context),
                     height: 90,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF),
+                      color: const Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: const [
                         BoxShadow(color: Color(0x0A000000), offset: Offset(0,2), blurRadius: 48, spreadRadius: 100)
@@ -190,7 +190,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "Total amount spent for one OPD visit",
+                                  translations[LanguageManager().currentLanguage]!['total_visits']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -218,18 +218,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                   ),
                                   decoration:  InputDecoration(
                                     isDense:true,
-                                    contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                     // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                     // alignLabelWithHint: true,
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                      borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                       ),
                                       borderRadius: BorderRadius.circular(13),
                                     ),
                                     border: OutlineInputBorder(
-                                      borderSide:  BorderSide(
-                                        color: const Color(0xFFDEDEDF), width: 1.2,
+                                      borderSide:  const BorderSide(
+                                        color: Color(0xFFDEDEDF), width: 1.2,
                                       ),
                                       borderRadius: BorderRadius.circular(13),
                                     ),
@@ -248,14 +248,14 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               )
                             ],
                           ),
-                          SizedBox(height: 7,),
+                          const SizedBox(height: 7,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "No. frequency of visits",
+                                  translations[LanguageManager().currentLanguage]!['frequency_of_visits']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -283,18 +283,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -324,7 +324,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                     width: screenWidth(context),
                     height: 90,
                     decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
+                        color: const Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: const [
                           BoxShadow(color: Color(0x0A000000), offset: Offset(0,2), blurRadius: 48, spreadRadius: 100)
@@ -342,7 +342,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "Total amount spent for one Hospitalisation",
+                                  translations[LanguageManager().currentLanguage]!['total_amount_spent']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -370,18 +370,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -407,7 +407,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "No. frequency of visits",
+                                  translations[LanguageManager().currentLanguage]!['frequency_of_visits']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -435,18 +435,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -476,7 +476,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                     width: screenWidth(context),
                     height: 90,
                     decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
+                        color: const Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: const [
                           BoxShadow(color: Color(0x0A000000), offset: Offset(0,2), blurRadius: 48, spreadRadius: 100)
@@ -494,7 +494,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "Total amount spent for emergency",
+                                  translations[LanguageManager().currentLanguage]!['total_amount_spent_emg']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -522,18 +522,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -559,7 +559,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "No. frequency of visits",
+                                  translations[LanguageManager().currentLanguage]!['frequency_of_visits']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -587,18 +587,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -628,7 +628,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                     width: screenWidth(context),
                     height: 90,
                     decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
+                        color: const Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: const [
                           BoxShadow(color: Color(0x0A000000), offset: Offset(0,2), blurRadius: 48, spreadRadius: 100)
@@ -646,7 +646,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "Total amount spent for one Home care visit",
+                                  translations[LanguageManager().currentLanguage]!['total_amount_spent_homecare']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -674,18 +674,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -711,7 +711,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                               Container(
                                 width: min(230, screenWidth(context)*0.5),
                                 child: Text(
-                                  "No. frequency of visits",
+                                  translations[LanguageManager().currentLanguage]!['frequency_of_visits']!,
                                   style: TextStyle(
                                     fontSize: relFont * 13,
                                     fontFamily: 'JostMedium',
@@ -739,18 +739,18 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                                     ),
                                     decoration:  InputDecoration(
                                       isDense:true,
-                                      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
+                                      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12), // Adjust internal padding
                                       // constraints: BoxConstraints(maxHeight: 0, minWidth: 0),
                                       // alignLabelWithHint: true,
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
                                       border: OutlineInputBorder(
-                                        borderSide:  BorderSide(
-                                          color: const Color(0xFFDEDEDF), width: 1.2,
+                                        borderSide:  const BorderSide(
+                                          color: Color(0xFFDEDEDF), width: 1.2,
                                         ),
                                         borderRadius: BorderRadius.circular(13),
                                       ),
@@ -827,7 +827,7 @@ class _CostEffectiveAnalysisPageState extends State<CostEffectiveAnalysisPage> {
                             }
                             },
                           child: Text(
-                            "SUBMIT",
+                            translations[LanguageManager().currentLanguage]!['submit']!,
                             maxLines: 1, // Limiting to 1 line
                             overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
                             style: TextStyle(

@@ -1,6 +1,4 @@
-import 'package:dostx/pages/coping_strategy_about.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import '../config.dart';
@@ -8,7 +6,6 @@ import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
 import '../globals.dart';
-import 'zarit_scale_page.dart';
 
 class CopingStrategiesPage extends StatefulWidget {
   final Function() getPrevPageIndex;
@@ -31,8 +28,6 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
   @override
   Widget build(BuildContext context) {
     double relFont = fontHelper(context);
-    DateTime now = DateTime.now();
-    int nowInMins= now.hour *60 + now.minute;
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
@@ -55,7 +50,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
           },
         ),
         title: Text(
-          'Coping Strategies',
+          translations[LanguageManager().currentLanguage]!['coping_strategies']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -102,7 +97,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                                   });},
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: modeIndex==0?Color(0xFFFFFFFF):Colors.transparent,
+                                        color: modeIndex==0?const Color(0xFFFFFFFF):Colors.transparent,
                                         borderRadius: BorderRadius.circular(15)
                                     ),
                                     child: Center(
@@ -130,7 +125,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                                   });},
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: modeIndex==1?Color(0xFFFFFFFF):Colors.transparent,
+                                        color: modeIndex==1?const Color(0xFFFFFFFF):Colors.transparent,
                                         borderRadius: BorderRadius.circular(15)
                                     ),
                                     child: Center(
@@ -171,7 +166,7 @@ class _CopingStrategiesPageState extends State<CopingStrategiesPage> {
                         title:widget.results[index]['title'],
                         readDurationMins:widget.results[index]['expected_time_to_read'],
                         // authorName: "Dr. Gulati, MBBS",
-                        dateField: DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date_added']))??"",
+                        dateField: DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date_added'])),
                         content_english: widget.results[index]['content_english']?? '',
                         content_hindi:widget.results[index]['content_hindi']?? '',
                         content_marathi:widget.results[index]['content_marathi']?? '',
@@ -335,7 +330,7 @@ class _StrategyEntryState extends State<StrategyEntry> {
                   Container(
                     width: screenWidth(context)*0.65,
                     decoration: BoxDecoration(
-                      color: Color(0xFFF8FBFB),
+                      color: const Color(0xFFF8FBFB),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(

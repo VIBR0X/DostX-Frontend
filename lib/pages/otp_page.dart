@@ -123,8 +123,8 @@ class _OtpPageState extends State<OtpPage> {
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                  child: Text('l',
-                                      // translations[LanguageManager().currentLanguage]!['phone_number']!,
+                                  child: Text(
+                                      translations[LanguageManager().currentLanguage]!['phone_number']!,
                                     style: const TextStyle(
                                       fontFamily: 'JostMedium',
                                       color: const Color(0xFFE5A194),
@@ -292,8 +292,6 @@ class _OtpPageState extends State<OtpPage> {
                               SizedBox(
                                 height: 25,
                                 width: 265.96,
-          
-                                child: Container(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: List.generate(6, (index) {
@@ -302,6 +300,7 @@ class _OtpPageState extends State<OtpPage> {
                                         child: SizedBox(
                                           width: 14,
                                           child: TextFormField(
+                                            cursorHeight: 16,
                                             style: const TextStyle(
                                               fontFamily: 'JostMedium',
                                               color:  Color(0xFFE5A194),
@@ -320,6 +319,7 @@ class _OtpPageState extends State<OtpPage> {
                                               focusedBorder: UnderlineInputBorder(
                                                 borderSide: BorderSide(color: Colors.blue, width: 2.0),
                                               ),
+                                              contentPadding: EdgeInsets.only(bottom: 16),
                                             ),
                                             onChanged: (value) => _onOTPChanged(value, index),
                                           ),
@@ -327,7 +327,6 @@ class _OtpPageState extends State<OtpPage> {
                                       );
                                     }),
                                 ) ,
-                              ),
                               ),
                               // SizedBox(height: ,),
                               Container(

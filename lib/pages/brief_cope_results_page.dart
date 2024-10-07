@@ -47,7 +47,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
           },
         ),
         title: Text(
-          'Brief-COPE Results',
+          translations[LanguageManager().currentLanguage]!['brief_cope_title']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -114,7 +114,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                                           letterSpacing: 1.1),
                                       // textAlign: TextAlign.center,
                                     ),
-                                    Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['date'])):"Please select a result",
+                                    Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['date'])):translations[LanguageManager().currentLanguage]!['select_result']!,
                                       style: TextStyle(
                                           fontSize: relFont * 15.0,
                                           fontFamily: 'SFProMedium',
