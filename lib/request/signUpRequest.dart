@@ -8,8 +8,6 @@ class SignUpRequest {
   String? firstName;
   @JsonKey(name: "last_name")
   String? lastName;
-  @JsonKey(name: "email")
-  String? email;
   @JsonKey(name: "phone_number")
   String? phoneNumber;
   @JsonKey(name: "password")
@@ -22,7 +20,6 @@ class SignUpRequest {
   SignUpRequest({
     this.firstName,
     this.lastName,
-    this.email,
     this.phoneNumber,
     this.password,
     this.gender,

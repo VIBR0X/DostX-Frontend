@@ -1,15 +1,17 @@
+import 'dart:convert';
+
 import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/config.dart';
 import 'package:dostx/globals.dart';
-import 'package:dostx/pages/otp_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../palette.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
-import 'package:dostx/translations.dart';
 import 'package:dostx/language_manager.dart';
+import 'package:dostx/pages/otp_page.dart';
+import 'package:dostx/translations.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
+
+import '../palette.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -44,7 +46,9 @@ class _SignInState extends State<SignIn> {
                 ),
                 child: Column(
                   children: [
-                    const SizedBox(height: 40,),
+                    const SizedBox(
+                      height: 40,
+                    ),
                     SingleChildScrollView(
                       physics: const ClampingScrollPhysics(),
                       child: Padding(
@@ -55,12 +59,14 @@ class _SignInState extends State<SignIn> {
                               Stack(
                                 children: [
                                   Image.asset(
-                                      "assets/image/02-image.png",
+                                    "assets/image/02-image.png",
                                     fit: BoxFit.fitHeight,
                                     width: MediaQuery.of(context).size.width,
                                   ),
                                   Positioned(
-                                    left: MediaQuery.of(context).size.width/2-62.5,
+                                    left:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            62.5,
                                     top: 27,
                                     child: Image.asset(
                                       'assets/image/logo.png',
@@ -69,17 +75,17 @@ class _SignInState extends State<SignIn> {
                                   ),
                                 ],
                               ),
-                               SizedBox(
-                                 height: screenHeight(context)*0.027,
-                               ),
-                               Text(
-                                translations[LanguageManager().currentLanguage]!['slogan']!,
+                              SizedBox(
+                                height: screenHeight(context) * 0.027,
+                              ),
+                              Text(
+                                translations[LanguageManager()
+                                    .currentLanguage]!['slogan']!,
                                 style: const TextStyle(
                                   color: Color(0xFF204267),
                                   fontSize: 15,
                                   fontFamily: 'JostMedium',
                                   fontStyle: FontStyle.italic,
-          
                                 ),
                               ),
                               const SizedBox(
@@ -89,9 +95,11 @@ class _SignInState extends State<SignIn> {
                                 width: 265.96,
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
                                   child: Text(
-                                      translations[LanguageManager().currentLanguage]!['phone_number']!,
+                                    translations[LanguageManager()
+                                        .currentLanguage]!['phone_number']!,
                                     style: const TextStyle(
                                       fontFamily: 'JostMedium',
                                       color: Color(0xFFE5A194),
@@ -114,9 +122,9 @@ class _SignInState extends State<SignIn> {
                                   onTap: () {
                                     setState(() {
                                       phoneColor = 0xFF707070;
-                                    //   if (_phoneController.text.isEmpty) {
-                                    //     _phoneController.text = "+91";
-                                    //   }
+                                      //   if (_phoneController.text.isEmpty) {
+                                      //     _phoneController.text = "+91";
+                                      //   }
                                     });
                                   },
                                   controller: _phoneController,
@@ -139,36 +147,36 @@ class _SignInState extends State<SignIn> {
                                     fontWeight: FontWeight.w300,
                                     fontSize: 18,
                                   ),
-          
                                   cursorColor: const Color(
                                     0xFF707070,
                                   ),
-                                  keyboardType: const TextInputType.numberWithOptions(),
+                                  keyboardType:
+                                      const TextInputType.numberWithOptions(),
                                   decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.symmetric(vertical: 3),
-                                    constraints: const BoxConstraints(minWidth: 0, minHeight: 29),
-                                  
-                                    prefixIcon:  Text(
+                                    contentPadding:
+                                        const EdgeInsets.symmetric(vertical: 3),
+                                    constraints: const BoxConstraints(
+                                        minWidth: 0, minHeight: 29),
+
+                                    prefixIcon: Text(
                                       '  +91 ',
                                       style: TextStyle(
-          
-                                        color: Color(
-                                          phoneColor
-                                        ),
+                                        color: Color(phoneColor),
                                         fontFamily: "Quicksand",
                                         fontWeight: FontWeight.w300,
                                         fontSize: 18,
                                       ),
                                     ),
                                     // constraints: BoxConstraints(minWidth: 0, minHeight: 0),
-                                    prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 29),
-          
+                                    prefixIconConstraints: const BoxConstraints(
+                                        minWidth: 0, minHeight: 29),
+
                                     suffixIcon: Icon(
-                                        Icons.phone_enabled,
+                                      Icons.phone_enabled,
                                       weight: 500,
                                       color: Color(phoneColor),
                                       size: 19,
-                                    ) ,
+                                    ),
                                     filled: true,
                                     fillColor: Colors.white,
                                     hintMaxLines: 1,
@@ -176,18 +184,14 @@ class _SignInState extends State<SignIn> {
                                       borderRadius: BorderRadius.circular(8),
                                       borderSide: const BorderSide(
                                         color: Colors.transparent,
-          
                                       ),
                                       gapPadding: 4,
-          
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),
                                       borderSide: const BorderSide(
-                                        color: Colors.transparent
-                                      ),
+                                          color: Colors.transparent),
                                       gapPadding: 4,
-          
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),
@@ -197,7 +201,6 @@ class _SignInState extends State<SignIn> {
                                         ),
                                       ),
                                       gapPadding: 4,
-          
                                     ),
                                     // hintText: translations[LanguageManager().currentLanguage]!['phone_number']!,
                                     // hintStyle: const TextStyle(
@@ -208,7 +211,6 @@ class _SignInState extends State<SignIn> {
                                   ),
                                 ),
                               ),
-          
                               const SizedBox(
                                 height: 100,
                               ),
@@ -235,51 +237,58 @@ class _SignInState extends State<SignIn> {
                                         ),
                                       ),
                                     ),
-                                    onPressed: validNumber && !_isApiCallInProgress
+                                    onPressed: validNumber &&
+                                            !_isApiCallInProgress
                                         ? () async {
-                                          setState(() {
-                                            _isApiCallInProgress = true;
-                                          });
-                                            // SignInRequest fakeSignInRequest = SignInRequest(
-                                            //  phoneNumber: _phoneController.text.substring(3)
-                                            //     );
-                                            //
-                                            // String jsonRepresentation = jsonEncode(fakeSignInRequest);
-                                            // //print(jsonRepresentation);
-                                            // bloc.signInBloc(fakeSignInRequest);
-                                          var body = json.encode( {
-                                            "phone_number":int.parse(_phoneController.text)
-                                          });
-                                          final url=appConfig["serverURL"]+'/auth/register_phone/';
-                                          final uri = Uri.parse(url);
-                                          final response = await http.post(
-                                            uri,
-                                            headers: {"Content-Type": "application/json"},
-                                            body: body,
-                                          );
-                                          if (response.statusCode == 200){
-                                            Navigator.push(
-                                              context,
-                                              createCustomPageRoute(OtpPage(number: _phoneController.text,), context, transitionType: 'no-animation'),
-                                            );
-                                          } else {
                                             setState(() {
-                                              _isApiCallInProgress = false;
+                                              _isApiCallInProgress = true;
                                             });
-                                          }
+                                            var body = json.encode({
+                                              "phone_number": int.parse(
+                                                  _phoneController.text)
+                                            });
+                                            final url = appConfig["serverURL"] +
+                                                '/auth/register_phone/';
+                                            final uri = Uri.parse(url);
+                                            final response = await http.post(
+                                              uri,
+                                              headers: {
+                                                "Content-Type":
+                                                    "application/json"
+                                              },
+                                              body: body,
+                                            );
+                                            if (response.statusCode == 200) {
+                                              Navigator.push(
+                                                context,
+                                                createCustomPageRoute(
+                                                    OtpPage(
+                                                      number:
+                                                          _phoneController.text,
+                                                    ),
+                                                    context,
+                                                    transitionType:
+                                                        'no-animation'),
+                                              );
+                                            } else {
+                                              setState(() {
+                                                _isApiCallInProgress = false;
+                                              });
+                                            }
                                           }
                                         : () {},
-          
                                     child: Text(
-                                      translations[LanguageManager().currentLanguage]!['submit']!,
+                                      translations[LanguageManager()
+                                          .currentLanguage]!['submit']!,
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontFamily: "JostBold",
-                                        color: validNumber
-                                            ? const Color(
-                                                0xFFFBFBFB,
-                                              )
-                                            : ColorOptions.lightblue,
+                                        color:
+                                            validNumber && !_isApiCallInProgress
+                                                ? const Color(
+                                                    0xFFFBFBFB,
+                                                  )
+                                                : ColorOptions.lightblue,
                                       ),
                                     ),
                                   ),
@@ -319,9 +328,7 @@ class _SignInState extends State<SignIn> {
                                     LanguageManager().setLanguage('en');
                                     // Close the dialog
                                     Navigator.pop(context);
-                                    setState(() {
-          
-                                    });
+                                    setState(() {});
                                   },
                                 ),
                                 ListTile(
@@ -360,7 +367,7 @@ class _SignInState extends State<SignIn> {
                         shape: CircleBorder(),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(18,25,0,0),
+                        padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
                         child: SvgPicture.asset(
                           'assets/icons/language_icon.svg',
                           width: 65,
@@ -379,6 +386,3 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
-
-
-

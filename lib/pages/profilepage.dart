@@ -1,18 +1,13 @@
 import 'package:dostx/config.dart';
 import 'package:dostx/pages/sign_up_first_page.dart';
-import 'package:dostx/pages/sign_up_third_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+
 import '../custom_widgets.dart';
 import '../language_manager.dart';
 import '../palette.dart';
-import '../translations.dart';
-import 'cost_effective_analysis_page.dart';
-import 'short12.dart';
-import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
   final Function(int) updateHomeIndex;
@@ -20,15 +15,13 @@ class ProfilePage extends StatefulWidget {
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
   final results;
-  const ProfilePage({
-    super.key,
-    required this.updateHomeIndex,
-    required this.getPrevPageIndex,
-    required this.updateSubPage,
-    required this.getPrevSubPage,
-    required this.results
-
-  });
+  const ProfilePage(
+      {super.key,
+      required this.updateHomeIndex,
+      required this.getPrevPageIndex,
+      required this.updateSubPage,
+      required this.getPrevSubPage,
+      required this.results});
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -44,11 +37,10 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    try{
-      profile_pic_endpoint= profileBox.get('profile_pic')??"/no-image";
-    }
-    catch (e) {
-      profile_pic_endpoint="/no-image";
+    try {
+      profile_pic_endpoint = profileBox.get('profile_pic') ?? "/no-image";
+    } catch (e) {
+      profile_pic_endpoint = "/no-image";
     }
   }
 
@@ -73,28 +65,22 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 100,
             width: 100,
             child: Image.network(
-                appConfig["serverURL"]+profile_pic_endpoint,
+              appConfig["serverURL"] + profile_pic_endpoint,
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset("assets/profile.png");
               },
-
             ),
           ),
         ),
         SizedBox(height: 10),
         Text(
-          profileBox.get('full_name')??'joe',
+          profileBox.get('full_name') ?? 'joe',
           style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w800,
               fontFamily: 'Poppins',
               color: Color(0xff204267)),
         ),
-        // Text(
-        //   profileBox.get('email')??'your.email@example.com',
-        //   style: TextStyle(
-        //       fontSize: 14, fontFamily: 'Poppins', color: Color(0xff204267)),
-        // ),
         SizedBox(height: 20),
         Container(
           width: 300,
@@ -113,7 +99,9 @@ class _ProfilePageState extends State<ProfilePage> {
           child: RoundedOptionsToggle(
             onOptionSelected: (selectedOption) {
               setState(() {
-                _showSettings = selectedOption == translations[LanguageManager().currentLanguage]!['settings']!;
+                _showSettings = selectedOption ==
+                    translations[LanguageManager().currentLanguage]![
+                        'settings']!;
               });
             },
           ),
@@ -151,15 +139,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(height: 10),
-                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['personal_details']!, () {
+                  _buildSettingCard(
+                      translations[LanguageManager().currentLanguage]![
+                          'personal_details']!, () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignUpFirst(isProfileEdit: true),
+                        builder: (context) =>
+                            const SignUpFirst(isProfileEdit: true),
                       ),
                     );
                   }),
-                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['c_details']!, () {
+                  _buildSettingCard(
+                      translations[LanguageManager().currentLanguage]![
+                          'c_details']!, () {
                     // Navigate to client details page
                     // Navigator.push(
                     //   context,
@@ -170,14 +163,18 @@ class _ProfilePageState extends State<ProfilePage> {
                     // ;
                     widget.updateSubPage("client_details");
                   }),
-                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['cost_effect']!, () {
+                  _buildSettingCard(
+                      translations[LanguageManager().currentLanguage]![
+                          'cost_effect']!, () {
                     // Navigate to cost effectiveness page
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context)=>const CostEffectiveAnalysisPage())
                     // );
                     widget.updateSubPage("cost_effectiveness_analysis");
                   }),
-                  _buildSettingCard(translations[LanguageManager().currentLanguage]!['medicine_reminder']!, () {
+                  _buildSettingCard(
+                      translations[LanguageManager().currentLanguage]![
+                          'coping_strategies']!, () {
                     // Navigate to medicine reminders page
                     widget.updateHomeIndex(2);
                   }),
@@ -210,17 +207,24 @@ class _ProfilePageState extends State<ProfilePage> {
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(5,0,28,0),
+            padding: const EdgeInsets.fromLTRB(5, 0, 28, 0),
             child: ListView.builder(
                 itemCount: widget.results.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   String type = widget.results[index]['type'];
-                  var time =  widget.results[index]['updated_at']??widget.results[index]['created_at']??widget.results[index]['taken_at']??"-";
-                  var result = widget.results[index]['score']??widget.results[index]['result']??widget.results[index]['cost_effectiveness']??"No Result Found";
+                  var time = widget.results[index]['updated_at'] ??
+                      widget.results[index]['created_at'] ??
+                      widget.results[index]['taken_at'] ??
+                      "-";
+                  var result = widget.results[index]['score'] ??
+                      widget.results[index]['result'] ??
+                      widget.results[index]['cost_effectiveness'] ??
+                      "No Result Found";
                   late String resultAnchor;
                   if (widget.results[index].keys.contains('score')) {
                     resultAnchor = 'Score:';
-                  } else if (widget.results[index].keys.contains('cost_effectiveness')) {
+                  } else if (widget.results[index].keys
+                      .contains('cost_effectiveness')) {
                     resultAnchor = 'Cost Effectiveness:';
                   } else if (widget.results[index].keys.contains('result')) {
                     resultAnchor = 'Result:';
@@ -230,24 +234,44 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   return Container(
                     child: ReusableTile(
-                      title: translations[LanguageManager().currentLanguage]![(type=='family_burden_scale')?'family_burden_scale_form_title':(type == 'zarit_scale')?'zarit_scale_form_title':(type=='emotional_wheel')?'emotional_wheel_form_title':(type=='cost_effectiveness')?'cost_effect':'brief_cope_form_title']!,
-                      author: (type=='family_burden_scale')?'By Dr. Pai and Dr. Kapur':(type == 'zarit_scale')?'By Dr. Zarit':(type=='emotional_wheel')?'By Dr. Robert Plutchik':(type=='cost_effectiveness')?'':'By Dr. Carver and Dr. Scheier',
-                      testDate:(time == "-")?"-":DateFormat("dd MMM yyyy").format(DateTime.parse(time)),
-                      buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                      title: translations[LanguageManager().currentLanguage]![
+                          (type == 'family_burden_scale')
+                              ? 'family_burden_scale_form_title'
+                              : (type == 'zarit_scale')
+                                  ? 'zarit_scale_form_title'
+                                  : (type == 'emotional_wheel')
+                                      ? 'emotional_wheel_form_title'
+                                      : (type == 'cost_effectiveness')
+                                          ? 'cost_effect'
+                                          : 'brief_cope_form_title']!,
+                      author: (type == 'family_burden_scale')
+                          ? 'By Dr. Pai and Dr. Kapur'
+                          : (type == 'zarit_scale')
+                              ? 'By Dr. Zarit'
+                              : (type == 'emotional_wheel')
+                                  ? 'By Dr. Robert Plutchik'
+                                  : (type == 'cost_effectiveness')
+                                      ? ''
+                                      : 'By Dr. Carver and Dr. Scheier',
+                      testDate: (time == "-")
+                          ? "-"
+                          : DateFormat("dd MMM yyyy")
+                              .format(DateTime.parse(time)),
+                      buttonText: translations[
+                          LanguageManager().currentLanguage]!['check-result']!,
                       onPressed: () {
                         //print(widget.results[index]);
-                        showDialog(context: context,
-                            builder: (context)=> AlertDialog(
-                              title: Text('$resultAnchor $result'),
-                            )
-                        );
+                        showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                  title: Text('$resultAnchor $result'),
+                                ));
                         // setState(() {
                         // });
                       },
                     ),
                   );
-                }
-            ),
+                }),
             // ListView(
             //   children: [
             //
@@ -359,7 +383,6 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -399,9 +422,13 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildOption(translations[LanguageManager().currentLanguage]!['settings']!, _isProfileSelected),
+        _buildOption(
+            translations[LanguageManager().currentLanguage]!['settings']!,
+            _isProfileSelected),
         SizedBox(width: 2),
-        _buildOption(translations[LanguageManager().currentLanguage]!['assessment']!, !_isProfileSelected),
+        _buildOption(
+            translations[LanguageManager().currentLanguage]!['assessment']!,
+            !_isProfileSelected),
       ],
     );
   }
@@ -411,7 +438,8 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
       onTap: () {
         widget.onOptionSelected(text);
         setState(() {
-          _isProfileSelected = text == translations[LanguageManager().currentLanguage]!['settings']!;
+          _isProfileSelected = text ==
+              translations[LanguageManager().currentLanguage]!['settings']!;
         });
       },
       child: Container(

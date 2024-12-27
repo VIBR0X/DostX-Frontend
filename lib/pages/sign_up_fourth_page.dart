@@ -2,7 +2,7 @@
 // import 'dart:convert';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
+
 import 'package:dostx/CustomRouteBuilder.dart';
 import 'package:dostx/config.dart';
 import 'package:dostx/custom_widgets.dart';
@@ -11,14 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
-import '../navigator.dart';
-import 'consent_page.dart';
-import '../translations.dart';
-import '../language_manager.dart';
-import '../globals.dart ';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart'; // For MediaType
 
+import '../globals.dart ';
+import '../language_manager.dart';
+import '../navigator.dart';
+import '../translations.dart';
 
 class SignUpFourth extends StatefulWidget {
   final bool isProfileEdit;
@@ -37,8 +36,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
   void initState() {
     // TODO: implement initState
     var profileBox = Hive.box('ProfileBox');
-    if (widget.isProfileEdit){
-      jobLoss = profileBox.get('job_loss')?'Yes':'No';
+    if (widget.isProfileEdit) {
+      jobLoss = profileBox.get('job_loss') ? 'Yes' : 'No';
       income = profileBox.get('percieved_income_loss');
       status = profileBox.get('status_of_person_with_disorder');
       diagnosis = profileBox.get('diagnosis');
@@ -58,12 +57,19 @@ class _SignUpFourthState extends State<SignUpFourth> {
         child: Stack(
           children: [
             Column(
-              children: [SizedBox(height: (0.03+0.011)* screenHeight(context,),),
+              children: [
+                SizedBox(
+                  height: (0.03 + 0.011) *
+                      screenHeight(
+                        context,
+                      ),
+                ),
                 Center(
                   child: SvgPicture.asset(
                     "assets/svg/grandfather.svg",
                     height: 0.33 * screenHeight(context),
-                  ),),
+                  ),
+                ),
               ],
             ),
             Column(
@@ -100,7 +106,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                               children: [
                                 Text(
                                   translations[LanguageManager()
-                                          .currentLanguage]!['job_loss']!,
+                                      .currentLanguage]!['job_loss']!,
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: 'JostMedium',
@@ -165,9 +171,9 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                 Container(
                                   width: 299,
                                   child: Text(
-                                    translations[LanguageManager()
-                                                .currentLanguage]![
-                                            'income_inadequacy']!,
+                                    translations[
+                                            LanguageManager().currentLanguage]![
+                                        'income_inadequacy']!,
                                     style: TextStyle(
                                         color: ColorOptions.skin,
                                         fontFamily: 'JostMedium',
@@ -234,22 +240,21 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                     children: [
                                       Text(
                                         translations[LanguageManager()
-                                                    .currentLanguage]![
-                                                'status_of_person']!,
+                                                .currentLanguage]![
+                                            'status_of_person']!,
                                         style: TextStyle(
                                             color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
-                                            fontSize: fontHelper(context) * (14)),
+                                            fontSize:
+                                                fontHelper(context) * (14)),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
-                                    height:
-                                        (5 / 869) * screenHeight(context),
+                                    height: (5 / 869) * screenHeight(context),
                                   ),
                                   SizedBox(
-                                    height:
-                                        (55 / 869) * screenHeight(context),
+                                    height: (55 / 869) * screenHeight(context),
                                     width: 299,
                                     child: Column(
                                       children: [
@@ -279,8 +284,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                           .currentLanguage]![
                                                   'institution']!,
                                               value: 'Institution',
-                                              selected:
-                                                  status == 'Institution',
+                                              selected: status == 'Institution',
                                               onSelect: () {
                                                 setState(() {
                                                   status = 'Institution';
@@ -290,8 +294,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                           ],
                                         ),
                                         SizedBox(
-                                          height: (8 / 869) *
-                                              screenHeight(context),
+                                          height:
+                                              (8 / 869) * screenHeight(context),
                                         ),
                                         Row(
                                           children: [
@@ -342,12 +346,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                       children: [
                                         Text(
                                           translations[LanguageManager()
-                                                      .currentLanguage]![
-                                                  'diagnosis_of_person']!,
+                                                  .currentLanguage]![
+                                              'diagnosis_of_person']!,
                                           style: TextStyle(
                                               color: ColorOptions.skin,
                                               fontFamily: 'JostMedium',
-                                              fontSize: fontHelper(context) * (14)),
+                                              fontSize:
+                                                  fontHelper(context) * (14)),
                                         ),
                                       ],
                                     ),
@@ -374,8 +379,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -395,8 +400,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                     height: 5,
                                                   ),
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -413,14 +418,13 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   ),
                                                   const SizedBox(height: 5),
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
                                                         'multiple_disorders']!,
-                                                    value:
-                                                        'Multiple Disorders',
+                                                    value: 'Multiple Disorders',
                                                     selected: diagnosis ==
                                                         'Multiple Disorders',
                                                     onSelect: () {
@@ -432,8 +436,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   ),
                                                   const SizedBox(height: 5),
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -463,8 +467,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -481,8 +485,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   ),
                                                   SizedBox(height: 5),
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -499,8 +503,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                                   ),
                                                   SizedBox(height: 5),
                                                   CustomRadioButton(
-                                                    font:
-                                                        fontHelper(context) * (14),
+                                                    font: fontHelper(context) *
+                                                        (14),
                                                     text: translations[
                                                             LanguageManager()
                                                                 .currentLanguage]![
@@ -532,9 +536,12 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             ],
                           ),
                         ),
-                      ),SizedBox(height:(10/ 869) * screenHeight(context),),
+                      ),
                       SizedBox(
-                        height: (43/ 869) * screenHeight(context),
+                        height: (10 / 869) * screenHeight(context),
+                      ),
+                      SizedBox(
+                        height: (43 / 869) * screenHeight(context),
                         width: 261,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
@@ -553,86 +560,103 @@ class _SignUpFourthState extends State<SignUpFourth> {
                             onPressed: () async {
                               var profileBox = Hive.box('ProfileBox');
                               var tokenBox = Hive.box('TokenBox');
-                              profileBox.put("job_loss",jobLoss=="Yes"?true:false);
-                              profileBox.put("diagnosis",diagnosis??"");
-                              profileBox.put("percieved_income_loss",income??"");
-                              profileBox.put("status_of_person_with_disorder", status??"");
-                              String endPoint = (widget.isProfileEdit)?'/auth/user_profile/':'/auth/signup/';
-                              var uri = Uri.parse(appConfig["serverURL"]+endPoint);
-                              var request = http.MultipartRequest((widget.isProfileEdit)?'PUT':'POST', uri);
-                              request.headers['Authorization'] = 'Bearer '+tokenBox.get("access_token");
+                              profileBox.put(
+                                  "job_loss", jobLoss == "Yes" ? true : false);
+                              profileBox.put("diagnosis", diagnosis ?? "");
+                              profileBox.put(
+                                  "percieved_income_loss", income ?? "");
+                              profileBox.put("status_of_person_with_disorder",
+                                  status ?? "");
+                              String endPoint = (widget.isProfileEdit)
+                                  ? '/auth/user_profile/'
+                                  : '/auth/signup/';
+                              var uri =
+                                  Uri.parse(appConfig["serverURL"] + endPoint);
+                              var request = http.MultipartRequest(
+                                  (widget.isProfileEdit) ? 'PUT' : 'POST', uri);
+                              request.headers['Authorization'] =
+                                  'Bearer ' + tokenBox.get("access_token");
 
                               request.fields['consent'] = true.toString();
 
-
                               if (profileBox != null) {
-                                // //print("All data in 'profileBox':");
                                 for (int i = 0; i < profileBox.length; i++) {
                                   String key = profileBox.keyAt(i);
-                                  // //print('Key: ${key.toString()}, Value: ${profileBox.getAt(i)}');
-                                  if (key !="abha_id" && key !="profile_pic_local_path"){
-                                    request.fields[key.toString()] = profileBox.getAt(i).toString();
+                                  if (key != "abha_id" &&
+                                      key != "profile_pic_local_path") {
+                                    request.fields[key.toString()] =
+                                        profileBox.getAt(i).toString();
                                   }
-                                  // request.fields[profileBox.keyA]
-                                }
-                              }
-                              String image_path = profileBox.get('profile_pic_local_path');
-                              request.fields['email'] = profileBox.get('email')??'';
-                              if(image_path!="") {
-                                final File file = File(image_path);
-                                final Uint8List fileBytes = await file
-                                    .readAsBytes();
-                                request.files.add(
-                                    http.MultipartFile.fromBytes(
-                                      'profile_pic',
-                                      fileBytes,
-                                      filename: profileBox.get('phone_number') +
-                                          '-' + profileBox.get('first_name') +
-                                          ' ' + profileBox.get('last_name') +
-                                          '.' + image_path
-                                          .split('.')
-                                          .last,
-                                      contentType: MediaType(
-                                          'image', 'jpeg'),));
-                              }
-                              else{
-                                final Uint8List fileBytes = (await rootBundle.load("assets/profile.png")).buffer.asUint8List();
-
-                                request.files.add(
-                                    http.MultipartFile.fromBytes(
-                                      'profile_pic',
-                                      fileBytes,
-                                      filename: profileBox.get('phone_number').toString() +
-                                          '-' + profileBox.get('first_name') +
-                                          ' ' + profileBox.get('last_name') +
-                                          '.png',
-                                      contentType: MediaType(
-                                          'image', 'jpeg'),));
-
-                              }
-
-                              var response = await request.send();
-                              var responseData = await response.stream.bytesToString();
-                              var decodedResponse = jsonDecode(responseData);
-                              // print(decodedResponse);
-
-                              print(response.statusCode);
-                              if (response.statusCode == 201 || response.statusCode == 200){
-                                tokenBox.put('profile_available',true);
-                                for (var entry in decodedResponse['user_profile']!.entries){
-                                  profileBox.put(entry.key,entry.value);
-                                  print(entry.key.toString()+" "+entry.value.toString());
                                 }
                                 Navigator.pushReplacement(
                                     context,
-                                    createCustomPageRoute(const NavigationController(), context)
-                                );
+                                    createCustomPageRoute(
+                                        const NavigationController(), context));
+                              }
+                              String image_path =
+                                  profileBox.get('profile_pic_local_path');
+                              if (image_path != "") {
+                                final File file = File(image_path);
+                                final Uint8List fileBytes =
+                                    await file.readAsBytes();
+                                request.files.add(http.MultipartFile.fromBytes(
+                                  'profile_pic',
+                                  fileBytes,
+                                  filename: profileBox.get('phone_number') +
+                                      '-' +
+                                      profileBox.get('first_name') +
+                                      ' ' +
+                                      profileBox.get('last_name') +
+                                      '.' +
+                                      image_path.split('.').last,
+                                  contentType: MediaType('image', 'jpeg'),
+                                ));
+                              } else {
+                                final Uint8List fileBytes = (await rootBundle
+                                        .load("assets/profile.png"))
+                                    .buffer
+                                    .asUint8List();
+
+                                request.files.add(http.MultipartFile.fromBytes(
+                                  'profile_pic',
+                                  fileBytes,
+                                  filename: profileBox
+                                          .get('phone_number')
+                                          .toString() +
+                                      '-' +
+                                      profileBox.get('first_name') +
+                                      ' ' +
+                                      profileBox.get('last_name') +
+                                      '.png',
+                                  contentType: MediaType('image', 'jpeg'),
+                                ));
                               }
 
+                              var response = await request.send();
+                              var responseData =
+                                  await response.stream.bytesToString();
+                              var decodedResponse = jsonDecode(responseData);
+                              if (response.statusCode == 201 ||
+                                  response.statusCode == 200) {
+                                tokenBox.put('profile_available', true);
+                                for (var entry
+                                    in decodedResponse['user_profile']!
+                                        .entries) {
+                                  profileBox.put(entry.key, entry.value);
+                                  print(entry.key.toString() +
+                                      " " +
+                                      entry.value.toString());
+                                }
+
+                                Navigator.pushReplacement(
+                                    context,
+                                    createCustomPageRoute(
+                                        const NavigationController(), context));
+                              }
                             },
                             child: Text(
-                              translations[LanguageManager()
-                                  .currentLanguage]!['proceed']!,
+                              translations[LanguageManager().currentLanguage]![
+                                  'proceed']!,
                               style: TextStyle(
                                 fontSize: (fontSize / 13) * 14,
                                 fontFamily: "JostBold",
@@ -646,7 +670,8 @@ class _SignUpFourthState extends State<SignUpFourth> {
                   ),
                 ),
               ],
-            ),Stack(
+            ),
+            Stack(
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
@@ -672,9 +697,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                                   LanguageManager().setLanguage('en');
                                   // Close the dialog
                                   Navigator.pop(context);
-                                  setState(() {
-
-                                  });
+                                  setState(() {});
                                 },
                               ),
                               ListTile(
@@ -713,7 +736,7 @@ class _SignUpFourthState extends State<SignUpFourth> {
                       shape: CircleBorder(),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(18,25,0,0),
+                      padding: EdgeInsets.fromLTRB(18, 25, 0, 0),
                       child: SvgPicture.asset(
                         'assets/icons/language_icon.svg',
                         width: 65,

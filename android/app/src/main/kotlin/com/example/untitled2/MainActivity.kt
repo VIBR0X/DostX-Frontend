@@ -1,4 +1,4 @@
-package app.upayaa.dostx
+package app.upayaa.edostx
 
 import io.flutter.embedding.android.FlutterActivity
 
