@@ -1,4 +1,3 @@
-import 'package:dostx/config.dart';
 import 'package:dostx/pages/sign_up_first_page.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
@@ -35,13 +34,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    try {
-      profile_pic_endpoint = profileBox.get('profile_pic') ?? "/no-image";
-    } catch (e) {
-      profile_pic_endpoint = "/no-image";
-    }
+    profile_pic_endpoint = "/no-image";
+    // try {
+    //   profile_pic_endpoint = profileBox.get('profile_pic') ?? "/no-image";
+    // } catch (e) {
+    //   profile_pic_endpoint = "/no-image";
+    // }
   }
 
   @override
@@ -52,30 +51,31 @@ class _ProfilePageState extends State<ProfilePage> {
         // SizedBox(height: 10),
         Text(
           translations[LanguageManager().currentLanguage]!['my_profile']!,
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'JostBold',
             fontSize: 18,
             color: Color(0xff204267),
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Container(
             height: 100,
             width: 100,
-            child: Image.network(
-              appConfig["serverURL"] + profile_pic_endpoint,
-              errorBuilder: (context, error, stackTrace) {
-                return Image.asset("assets/profile.png");
-              },
-            ),
+            child: Image.asset("assets/profile.png"),
+            // Image.network(
+            //   appConfig["serverURL"] + profile_pic_endpoint,
+            //   errorBuilder: (context, error, stackTrace) {
+            //     return Image.asset("assets/profile.png");
+            //   },
+            // ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           profileBox.get('full_name') ?? 'joe',
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w800,
               fontFamily: 'Poppins',
@@ -124,11 +124,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 15, 28.5, 0),
+        padding: const EdgeInsets.fromLTRB(2.5, 15, 2.5, 0),
         child: RawScrollbar(
           thumbColor: Color(0xff1A3858),
-          thickness: 19.78,
-          thumbVisibility: true,
+          thickness: 12,
+          thumbVisibility: false,
           radius: Radius.circular(20),
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
@@ -190,7 +190,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildHistory() {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xffFFF2E3),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40),
@@ -198,16 +198,16 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 25, 0),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
         child: RawScrollbar(
           thumbColor: Color(0xff1A3858),
-          thickness: 19.78,
+          thickness: 12,
           thumbVisibility: true,
           radius: Radius.circular(20),
           scrollbarOrientation: ScrollbarOrientation.right,
           interactive: true,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(5, 0, 28, 0),
+            padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
             child: ListView.builder(
                 itemCount: widget.results.length,
                 itemBuilder: (context, index) {
@@ -272,23 +272,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   );
                 }),
-            // ListView(
-            //   children: [
-            //
-            //     Padding(
-            //       padding: const EdgeInsets.fromLTRB(5,0,28,0),
-            //       child: ReusableTile(
-            //         title: 'Zarit Scale',
-            //         author: 'By Dr. Someone Someone',
-            //         testDate: '29 Aug 2022',
-            //         buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-            //         onPressed: () {
-            //
-            //         },
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ),
         ),
       ),
@@ -327,13 +310,15 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               children: [
                 Text(doctor,
-                    style: TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+                    style:
+                        const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
               ],
             ),
             Row(
               children: [
                 Text(date,
-                    style: TextStyle(fontSize: 14, fontFamily: 'SFProText')),
+                    style:
+                        const TextStyle(fontSize: 14, fontFamily: 'SFProText')),
                 Spacer(),
                 SizedBox(
                   height: 43,
@@ -353,7 +338,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       onPressed: tap,
-                      child: Text(
+                      child: const Text(
                         "Check Result",
                         style: TextStyle(
                             color: Colors.white,
@@ -376,10 +361,10 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
   return GestureDetector(
     onTap: onTap,
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8),
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -389,12 +374,12 @@ Widget _buildSettingCard(String text, VoidCallback onTap) {
           children: [
             Text(
               text,
-              style: TextStyle(fontSize: 14, fontFamily: 'SFProMedium'),
+              style: const TextStyle(fontSize: 14, fontFamily: 'SFProMedium'),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               translations[LanguageManager().currentLanguage]!['click_edit']!,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 12, color: Colors.grey, fontFamily: 'SFProText'),
             ),
           ],
@@ -425,7 +410,7 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
         _buildOption(
             translations[LanguageManager().currentLanguage]!['settings']!,
             _isProfileSelected),
-        SizedBox(width: 2),
+        const SizedBox(width: 2),
         _buildOption(
             translations[LanguageManager().currentLanguage]!['assessment']!,
             !_isProfileSelected),
@@ -443,8 +428,8 @@ class _RoundedOptionsToggleState extends State<RoundedOptionsToggle> {
         });
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 41),
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 41),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
         decoration: BoxDecoration(
           gradient: isSelected ? GradientOptions.signInGradient : null,
           borderRadius: BorderRadius.circular(10),

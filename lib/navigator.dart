@@ -199,7 +199,7 @@ class _NavigationControllerState extends State<NavigationController> {
                         );
                       },
                       child: Ink(
-                        decoration: ShapeDecoration(
+                        decoration: const ShapeDecoration(
                           color: Colors.transparent,
                           shape: CircleBorder(),
                         ),
@@ -403,7 +403,7 @@ class _NavigationControllerState extends State<NavigationController> {
     }
 
     Future<List<dynamic>> fetchRecentResultsData() async {
-      String url = appConfig["serverURL"] + "/api/combined_results/";
+      String url = appConfig["serverURL"] + "/api/combined_results_user/";
 
       var header = {'Authorization': 'Bearer ' + tokenBox.get("access_token")};
       final response = await http.get(Uri.parse(url), headers: header);

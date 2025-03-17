@@ -4,9 +4,9 @@ import 'package:dostx/globals.dart%20';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+
 import 'language_manager.dart';
 import 'palette.dart';
-
 
 class CustomRadioButton extends StatelessWidget {
   final String text;
@@ -17,7 +17,7 @@ class CustomRadioButton extends StatelessWidget {
   final Color color;
   final double spacing;
 
-   CustomRadioButton({
+  CustomRadioButton({
     super.key,
     required this.text,
     required this.value,
@@ -35,7 +35,7 @@ class CustomRadioButton extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,0,5,0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
             child: Container(
               height: 17,
               width: 17,
@@ -56,19 +56,18 @@ class CustomRadioButton extends StatelessWidget {
             ),
           ),
           Text(
-              text,
-              style: TextStyle(
-                color: this.color,
-                fontFamily: 'JostMedium',
-                fontSize: font * fontHelper(context),
-              ),
+            text,
+            style: TextStyle(
+              color: this.color,
+              fontFamily: 'JostMedium',
+              fontSize: font * fontHelper(context),
             ),
+          ),
         ],
       ),
     );
   }
 }
-
 
 class CustomRadioButtonb extends StatelessWidget {
   final String text;
@@ -127,8 +126,6 @@ class CustomRadioButtonb extends StatelessWidget {
   }
 }
 
-
-
 class CustomNumberedRadioButton extends StatelessWidget {
   final String text;
   final String value;
@@ -175,8 +172,7 @@ class CustomNumberedRadioButton extends StatelessWidget {
                 style: TextStyle(
                     color: !selected ? const Color(0xFFD4D4D5) : numberColor,
                     fontSize: 13 * fontHelper(context),
-                    fontFamily: "LatoBold"
-                ),
+                    fontFamily: "LatoBold"),
               ),
             ),
           ),
@@ -231,7 +227,7 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'JostMedium',
-                        fontSize: 13* fontHelper(context),
+                        fontSize: 13 * fontHelper(context),
                       ),
                     ),
                     const Spacer(),
@@ -248,7 +244,7 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                       Row(
                         children: [
                           CustomRadioButton(
-                            font: screenWidth(context)*(14/414),
+                            font: screenWidth(context) * (14 / 414),
                             color: Colors.white,
                             text: 'Never',
                             value: 'Never',
@@ -259,11 +255,11 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                               });
                             },
                           ),
-                           SizedBox(
-                            width: 56/414*screenWidth(context),
+                          SizedBox(
+                            width: 56 / 414 * screenWidth(context),
                           ),
                           CustomRadioButton(
-                            font: screenWidth(context)*(14/414),
+                            font: screenWidth(context) * (14 / 414),
                             color: Colors.white,
                             text: 'Rarely',
                             value: 'Rarely',
@@ -276,13 +272,13 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                           ),
                         ],
                       ),
-                       SizedBox(
-                        height: 10/896*screenHeight(context),
+                      SizedBox(
+                        height: 10 / 896 * screenHeight(context),
                       ),
                       Row(
                         children: [
                           CustomRadioButton(
-                            font: screenWidth(context)*(14/414),
+                            font: screenWidth(context) * (14 / 414),
                             color: Colors.white,
                             text: 'Sometimes',
                             value: 'Sometimes',
@@ -293,11 +289,11 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                               });
                             },
                           ),
-                           SizedBox(
-                            width: 28/414*screenWidth(context),
+                          SizedBox(
+                            width: 28 / 414 * screenWidth(context),
                           ),
                           CustomRadioButton(
-                            font: screenWidth(context)*(14/414),
+                            font: screenWidth(context) * (14 / 414),
                             color: Colors.white,
                             text: 'Frequently',
                             value: 'Frequently',
@@ -310,13 +306,13 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
                           ),
                         ],
                       ),
-                       SizedBox(
-                        height: 10/896*screenHeight(context),
+                      SizedBox(
+                        height: 10 / 896 * screenHeight(context),
                       ),
                       Row(
                         children: [
                           CustomRadioButton(
-                            font: screenWidth(context)*(14/414),
+                            font: screenWidth(context) * (14 / 414),
                             color: Colors.white,
                             text: 'Nearly Always',
                             value: 'Nearly Always',
@@ -345,30 +341,25 @@ class _QuestionsWithFiveOptionsState extends State<QuestionsWithFiveOptions> {
   }
 }
 
-
-
 class ZaritTestQuestions extends StatefulWidget {
   final String question;
   final String fieldName;
 
-  const ZaritTestQuestions({
-    Key? key,
-    required this.question,
-    required this.fieldName
-  }) : super(key: key);
+  const ZaritTestQuestions(
+      {Key? key, required this.question, required this.fieldName})
+      : super(key: key);
 
   @override
   State<ZaritTestQuestions> createState() => _ZaritTestQuestionsState();
 }
 
 class _ZaritTestQuestionsState extends State<ZaritTestQuestions> {
-  String? selectedValue="Never";
+  String? selectedValue = "";
   var zaritBox = Hive.box('ZaritBox');
 
   @override
   void initState() {
-    zaritBox.put(widget.fieldName,0);
-    // TODO: implement initState
+    zaritBox.put(widget.fieldName, 0);
     super.initState();
   }
 
@@ -381,119 +372,126 @@ class _ZaritTestQuestionsState extends State<ZaritTestQuestions> {
         children: [
           Text(
             widget.question,
-            style: TextStyle(
+            style: const TextStyle(
               color: ColorOptions.skin,
               fontFamily: 'JostMedium',
               fontSize: 13,
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,  // Align items from the top
+            crossAxisAlignment:
+                CrossAxisAlignment.start, // Align items from the top
             children: [
-
-                Container(
-                  width: 300,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
-                        child: CustomRadioButton(
-                          font: 13,
-                          text: translations[LanguageManager().currentLanguage]!['never']!,
-                          value: 'Never',
-                          selected: selectedValue == 'Never',
-                          onSelect: () {
-                            setState(() {
-                              selectedValue = 'Never';
-                              zaritBox.put(widget.fieldName, 0);
-                            });
-                          },
-                          spacing: 3,
-                        ),
+              SizedBox(
+                width: 300,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                          0, 0, 10, 0), // Adjust top padding to align from top
+                      child: CustomRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]![
+                            'never']!,
+                        value: 'Never',
+                        selected: selectedValue == 'Never',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Never';
+                            zaritBox.put(widget.fieldName, 0);
+                          });
+                        },
+                        spacing: 3,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                        child: CustomRadioButton(
-                          font: 13,
-                          text: translations[LanguageManager().currentLanguage]!['rarely']!,
-                          value: 'Rarely',
-                          selected: selectedValue == 'Rarely',
-                          onSelect: () {
-                            setState(() {
-                              selectedValue = 'Rarely';
-                              zaritBox.put(widget.fieldName, 1);
-                            });
-                          },
-                          spacing: 3,
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: CustomRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]![
+                            'rarely']!,
+                        value: 'Rarely',
+                        selected: selectedValue == 'Rarely',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Rarely';
+                            zaritBox.put(widget.fieldName, 1);
+                          });
+                        },
+                        spacing: 3,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                        child: CustomRadioButton(
-                          font: 13,
-                          text: translations[LanguageManager().currentLanguage]!['sometimes']!,
-                          value: 'Sometimes',
-                          selected: selectedValue == 'Sometimes',
-                          onSelect: () {
-                            setState(() {
-                              selectedValue = 'Sometimes';
-                              zaritBox.put(widget.fieldName, 2);
-                            });
-                          },
-                          spacing: 3,
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: CustomRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]![
+                            'sometimes']!,
+                        value: 'Sometimes',
+                        selected: selectedValue == 'Sometimes',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Sometimes';
+                            zaritBox.put(widget.fieldName, 2);
+                          });
+                        },
+                        spacing: 3,
                       ),
-                    ],
-                  ),
-                ),SizedBox(height: 10,),
-
-              Container(
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
                 width: 300,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-
                   crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),  // Adjust top padding to align from top
-                        child: CustomRadioButton(
-                          font: 13,
-                          text: translations[LanguageManager().currentLanguage]!['frequently']!,
-                          value: 'Frequently',
-                          selected: selectedValue == 'Frequently',
-                          onSelect: () {
-                            setState(() {
-                              selectedValue = 'Frequently';
-                              zaritBox.put(widget.fieldName, 3);
-                            });
-                          },
-                          spacing: 3,
-                        ),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                          0, 0, 10, 0), // Adjust top padding to align from top
+                      child: CustomRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]![
+                            'frequently']!,
+                        value: 'Frequently',
+                        selected: selectedValue == 'Frequently',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Frequently';
+                            zaritBox.put(widget.fieldName, 3);
+                          });
+                        },
+                        spacing: 3,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                        child: CustomRadioButton(
-                          font: 13,
-                          text: translations[LanguageManager().currentLanguage]!['nearly_always']!,
-                          value: 'Nearly Always',
-                          selected: selectedValue == 'Nearly Always',
-                          onSelect: () {
-                            setState(() {
-                              selectedValue = 'Nearly Always';
-                              zaritBox.put(widget.fieldName, 4);
-                            });
-                          },
-                          spacing: 3,
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: CustomRadioButton(
+                        font: 13,
+                        text: translations[LanguageManager().currentLanguage]![
+                            'nearly_always']!,
+                        value: 'Nearly Always',
+                        selected: selectedValue == 'Nearly Always',
+                        onSelect: () {
+                          setState(() {
+                            selectedValue = 'Nearly Always';
+                            zaritBox.put(widget.fieldName, 4);
+                          });
+                        },
+                        spacing: 3,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
               ),
-
             ],
           ),
         ],
@@ -501,7 +499,6 @@ class _ZaritTestQuestionsState extends State<ZaritTestQuestions> {
     );
   }
 }
-
 
 class QuestionsWithFourOptions extends StatefulWidget {
   final String question;
@@ -524,9 +521,10 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: screenWidth(context)*(350/414),
+      width: screenWidth(context) * (350 / 414),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Stretch children to fill the width
+        crossAxisAlignment:
+            CrossAxisAlignment.start, // Stretch children to fill the width
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 11),
@@ -543,10 +541,12 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 10,),
+              const SizedBox(
+                width: 10,
+              ),
               CustomRadioButton(
                 color: Colors.white,
-                font: screenWidth(context)*(12/414),
+                font: screenWidth(context) * (12 / 414),
                 text: 'I haven\'t been\ndoing this at all',
                 value: 'I haven\'t been doing this at all',
                 selected: selectedValue == 'I haven\'t been doing this at all',
@@ -559,7 +559,7 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
               Spacer(),
               CustomRadioButton(
                 color: Colors.white,
-                font: screenWidth(context)*(12/414),
+                font: screenWidth(context) * (12 / 414),
                 text: 'A medium amount',
                 value: 'A medium amount',
                 selected: selectedValue == 'A medium amount',
@@ -576,10 +576,12 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 10,),
+              const SizedBox(
+                width: 10,
+              ),
               CustomRadioButton(
                 color: Colors.white,
-                font: screenWidth(context)*(12/414),
+                font: screenWidth(context) * (12 / 414),
                 text: 'A little bit',
                 value: 'A little bit',
                 selected: selectedValue == 'A little bit',
@@ -589,9 +591,11 @@ class _QuestionsWithFourOptionsState extends State<QuestionsWithFourOptions> {
                   });
                 },
               ),
-              SizedBox(width: screenWidth(context)*(73/414),),
+              SizedBox(
+                width: screenWidth(context) * (73 / 414),
+              ),
               CustomRadioButton(
-                font: screenWidth(context)*(12/414),
+                font: screenWidth(context) * (12 / 414),
                 color: Colors.white,
                 text: 'I’ve been doing this a lot',
                 value: 'I’ve been doing this a lot',
@@ -617,26 +621,24 @@ class BriefCopeQuestions extends StatefulWidget {
   final Color textColor;
   final String fieldName;
 
-  const BriefCopeQuestions({
-    Key? key,
-    required this.question,
-    this.textColor = Colors.white,
-    required this.fieldName
-  }) : super(key: key);
+  const BriefCopeQuestions(
+      {Key? key,
+      required this.question,
+      this.textColor = Colors.white,
+      required this.fieldName})
+      : super(key: key);
 
   @override
-  _BriefCopeQuestionsState createState() =>
-      _BriefCopeQuestionsState();
+  _BriefCopeQuestionsState createState() => _BriefCopeQuestionsState();
 }
 
 class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
-  String? selectedValue='I haven\'t been doing this at all'; // Default value
+  String? selectedValue = ''; // Default value
   var copeFormBox = Hive.box('CopeFormBox');
 
   @override
   void initState() {
-    copeFormBox.put(widget.fieldName, 1);
-    // TODO: implement initState
+    copeFormBox.put(widget.fieldName, 0);
     super.initState();
   }
 
@@ -645,10 +647,11 @@ class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
     return SizedBox(
       width: screenWidth(context) * (350 / 414),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Stretch children to fill the width
+        crossAxisAlignment:
+            CrossAxisAlignment.start, // Stretch children to fill the width
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 11),
+            padding: const EdgeInsets.only(bottom: 10),
             child: Text(
               widget.question,
               style: TextStyle(
@@ -665,9 +668,11 @@ class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
                 padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
-                  text: translations[LanguageManager().currentLanguage]!['not_at_all']!,
+                  text: translations[LanguageManager().currentLanguage]![
+                      'not_at_all']!,
                   value: 'I haven\'t been doing this at all',
-                  selected: selectedValue == 'I haven\'t been doing this at all',
+                  selected:
+                      selectedValue == 'I haven\'t been doing this at all',
                   onSelect: () {
                     setState(() {
                       selectedValue = 'I haven\'t been doing this at all';
@@ -681,7 +686,8 @@ class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
                 padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
-                  text: translations[LanguageManager().currentLanguage]!['medium_amount']!,
+                  text: translations[LanguageManager().currentLanguage]![
+                      'medium_amount']!,
                   value: 'A medium amount',
                   selected: selectedValue == 'A medium amount',
                   onSelect: () {
@@ -697,7 +703,8 @@ class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
                 padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
-                  text: translations[LanguageManager().currentLanguage]!['little_bit']!,
+                  text: translations[LanguageManager().currentLanguage]![
+                      'little_bit']!,
                   value: 'A little bit',
                   selected: selectedValue == 'A little bit',
                   onSelect: () {
@@ -713,7 +720,8 @@ class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
                 padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: CustomRadioButton(
                   font: 13,
-                  text: translations[LanguageManager().currentLanguage]!['doing_a_lot']!,
+                  text: translations[LanguageManager().currentLanguage]![
+                      'doing_a_lot']!,
                   value: 'I’ve been doing this a lot',
                   selected: selectedValue == 'I’ve been doing this a lot',
                   onSelect: () {
@@ -734,7 +742,6 @@ class _BriefCopeQuestionsState extends State<BriefCopeQuestions> {
   }
 }
 
-
 class FamilyBurdenQuestions extends StatefulWidget {
   final String question;
   final String fieldName;
@@ -750,13 +757,12 @@ class FamilyBurdenQuestions extends StatefulWidget {
 }
 
 class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
-  String? selectedValue='No Burden';
+  String? selectedValue = '';
   var familyBurdenBox = Hive.box('FamilyBurdenBox');
 
   @override
   void initState() {
-    // TODO: implement initState
-    familyBurdenBox.put(widget.fieldName,0);
+    familyBurdenBox.put(widget.fieldName, 0);
     super.initState();
   }
 
@@ -772,7 +778,7 @@ class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
             style: TextStyle(
               color: ColorOptions.skin, // Original color
               fontFamily: 'JostMedium',
-              fontSize: 13*fontHelper(context), // Original font size
+              fontSize: 13 * fontHelper(context), // Original font size
             ),
           ),
           SizedBox(height: 11),
@@ -785,13 +791,14 @@ class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
                     padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                     child: CustomNumberedRadioButton(
                       font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['no_burden']!,
+                      text: translations[LanguageManager().currentLanguage]![
+                          'no_burden']!,
                       value: 'No Burden',
                       selected: selectedValue == 'No Burden',
                       onSelect: () {
                         setState(() {
                           selectedValue = 'No Burden';
-                          familyBurdenBox.put(widget.fieldName,0);
+                          familyBurdenBox.put(widget.fieldName, 0);
                         });
                       },
                       number: 0,
@@ -800,7 +807,9 @@ class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
                   ),
                 ],
               ),
-              SizedBox(width: screenWidth(context) * 0.09), // Adjust spacing between rows as needed
+              SizedBox(
+                  width: screenWidth(context) *
+                      0.09), // Adjust spacing between rows as needed
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -808,13 +817,14 @@ class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
                     padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                     child: CustomNumberedRadioButton(
                       font: 13,
-                      text: translations[LanguageManager().currentLanguage]!['moderate_burden']!,
+                      text: translations[LanguageManager().currentLanguage]![
+                          'moderate_burden']!,
                       value: 'Moderate Burden',
                       selected: selectedValue == 'Moderate Burden',
                       onSelect: () {
                         setState(() {
                           selectedValue = 'Moderate Burden';
-                          familyBurdenBox.put(widget.fieldName,1);
+                          familyBurdenBox.put(widget.fieldName, 1);
                         });
                       },
                       number: 1,
@@ -835,13 +845,14 @@ class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
                       padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                       child: CustomNumberedRadioButton(
                         font: 13,
-                        text: translations[LanguageManager().currentLanguage]!['severe_burden']!,
+                        text: translations[LanguageManager().currentLanguage]![
+                            'severe_burden']!,
                         value: 'Severe Burden',
                         selected: selectedValue == 'Severe Burden',
                         onSelect: () {
                           setState(() {
                             selectedValue = 'Severe Burden';
-                            familyBurdenBox.put(widget.fieldName,2);
+                            familyBurdenBox.put(widget.fieldName, 2);
                           });
                         },
                         number: 2,
@@ -859,7 +870,6 @@ class _FamilyBurdenQuestionsState extends State<FamilyBurdenQuestions> {
   }
 }
 
-
 // Define the ReusableTile class
 class ReusableTile extends StatelessWidget {
   final String title;
@@ -868,14 +878,12 @@ class ReusableTile extends StatelessWidget {
   final VoidCallback onPressed;
   final String buttonText;
 
-
-  ReusableTile({
-    required this.title,
-    required this.author,
-    required this.testDate,
-    required this.onPressed,
-    required this.buttonText
-  });
+  ReusableTile(
+      {required this.title,
+      required this.author,
+      required this.testDate,
+      required this.onPressed,
+      required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -893,18 +901,19 @@ class ReusableTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB((35/419) * screenWidth(context), 10, 16, 8),
+                padding: EdgeInsets.fromLTRB(
+                    (35 / 419) * screenWidth(context), 10, 16, 8),
                 child: Text(
                   title,
                   style: TextStyle(
                       fontSize: relFont * 16,
                       fontFamily: 'SFProMedium',
-                      fontWeight: FontWeight.w600
-                  ),
+                      fontWeight: FontWeight.w600),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * (35 / 419)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: screenWidth(context) * (35 / 419)),
                 child: Text(
                   author,
                   style: TextStyle(
@@ -927,27 +936,32 @@ class ReusableTile extends StatelessWidget {
                   children: [
                     // Container for testDate taking up 60% of tile width
                     Expanded(
-                      flex: 6,
+                      flex: 5,
                       child: Container(
+                        height: screenHeight(context) * (32 / 896),
                         decoration: BoxDecoration(
-                          color: Color(0xFFF8FBFB),
-                          borderRadius: BorderRadius.circular(screenWidth(context) * (10 / 419)),
+                          color: testDate.isNotEmpty
+                              ? const Color(0xFFF8FBFB)
+                              : null,
+                          borderRadius: BorderRadius.circular(
+                              screenWidth(context) * (10 / 419)),
                         ),
                         child: Padding(
-                          padding:  EdgeInsets.all((20 / 896)*screenHeight(context)),
-                            child: Center(
+                          padding: EdgeInsets.zero,
+                          child: Center(
                             child: Text(
                               testDate,
                               maxLines: 1, // Limiting to 1 line
-                              overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
+                              overflow: TextOverflow
+                                  .ellipsis, // Using ellipsis for overflow
                               style: TextStyle(
-                              fontSize: fontHelper(context) * 11,
-                              color: Color(0xFF9FA4A4),
-                              fontFamily: 'SFProText',
-                              letterSpacing: 0.6,
+                                fontSize: fontHelper(context) * 11,
+                                color: Color(0xFF9FA4A4),
+                                fontFamily: 'SFProText',
+                                letterSpacing: 0.6,
                               ),
                             ),
-                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -955,40 +969,39 @@ class ReusableTile extends StatelessWidget {
                     // SizedBox(width: 10),
                     // Button taking up 40% of tile width
                     Expanded(
-                      flex: 4,
+                      flex: 3,
                       child: Container(
                         height: screenHeight(context) * (32 / 896),
-
-                          decoration: BoxDecoration(
-                            gradient: GradientOptions.signInGradient,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: null,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed: onPressed,
-                            child: Text(
-                              buttonText,
-                              maxLines: 1, // Limiting to 1 line
-                              overflow: TextOverflow.ellipsis, // Using ellipsis for overflow
-                              style: TextStyle(
-                                fontSize: fontHelper(context) * 9,
-                                color: Colors.white,
-                                fontFamily: 'SFProText',
-                              ),
+                        decoration: BoxDecoration(
+                          gradient: GradientOptions.signInGradient,
+                          borderRadius: BorderRadius.circular(
+                              screenWidth(context) * (10 / 419)),
+                        ),
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: null,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-
+                          onPressed: onPressed,
+                          child: Text(
+                            buttonText,
+                            maxLines: 1, // Limiting to 1 line
+                            overflow: TextOverflow
+                                .ellipsis, // Using ellipsis for overflow
+                            style: TextStyle(
+                              fontSize: fontHelper(context) * 9,
+                              color: Colors.white,
+                              fontFamily: 'SFProText',
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-
             ],
           ),
         ),

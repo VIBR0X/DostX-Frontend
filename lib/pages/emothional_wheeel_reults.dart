@@ -1,38 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
+
 import '../custom_widgets.dart';
+import '../globals.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
-import '../globals.dart';
 
 class EmotionalWheelResultsPage extends StatefulWidget {
   final Function() getPrevSubPage;
   final Function(String, [bool]) updateSubPage;
-  final results;
-  const EmotionalWheelResultsPage({
-    super.key,
-    required this.updateSubPage,
-    required this.getPrevSubPage,
-    required this.results
-  });
+  final List<dynamic> results;
+  const EmotionalWheelResultsPage(
+      {super.key,
+      required this.updateSubPage,
+      required this.getPrevSubPage,
+      required this.results});
   @override
-  State<EmotionalWheelResultsPage> createState() => _EmotionalWheelResultsPageState();
+  State<EmotionalWheelResultsPage> createState() =>
+      _EmotionalWheelResultsPageState();
 }
 
 class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
   int selectedIndex = -1;
 
   @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.results.isNotEmpty ? 0 : -1;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    //print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: screenHeight(context)*0.105,
+        toolbarHeight: screenHeight(context) * 0.105,
         centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: const Color(0xFFFFF2E3),
@@ -49,7 +54,8 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
           },
         ),
         title: Text(
-          translations[LanguageManager().currentLanguage]!['emotional_wheel_title']!,
+          translations[LanguageManager().currentLanguage]![
+              'emotional_wheel_title']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -107,7 +113,11 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
                               Row(
                                 children: [
                                   Text(
-                                    "${translations[LanguageManager().currentLanguage]!['date']!}: ",
+                                    (selectedIndex >= 0)
+                                        ? "${translations[LanguageManager().currentLanguage]!['date']!}: ${DateFormat('dd MMM yyyy').format(DateTime.parse(widget.results[selectedIndex]['taken_at']))}"
+                                        : translations[LanguageManager()
+                                                .currentLanguage]![
+                                            'select_result']!,
                                     style: TextStyle(
                                         fontSize: relFont * 15.0,
                                         fontFamily: 'SFProMedium',
@@ -115,21 +125,15 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
                                         letterSpacing: 1.1),
                                     // textAlign: TextAlign.center,
                                   ),
-                                  Text(
-                                      (selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['taken_at'])):translations[LanguageManager().currentLanguage]!['select_result']!,
-                                    style: TextStyle(
-                                        fontSize: relFont * 15.0,
-                                        fontFamily: 'SFProMedium',
-                                        color: Color(0xFF323736),
-                                        letterSpacing: 1.1),
-                                    // textAlign: TextAlign.center,
-                                  ),
-
                                 ],
                               ),
-                              SizedBox(height: 10,),
+                              const SizedBox(
+                                height: 10,
+                              ),
                               Text(
-                                  translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
+                                translations[
+                                        LanguageManager().currentLanguage]![
+                                    'emotional_wheel_results']!,
                                 style: TextStyle(
                                     fontSize: relFont * 15.0,
                                     fontFamily: 'SFProMedium',
@@ -147,15 +151,16 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: Center(
                       child: Text(
-                        (selectedIndex>=0)?widget.results[selectedIndex]['result']:translations[LanguageManager().currentLanguage]![
-                        'assessment-text']!,
+                        (selectedIndex >= 0)
+                            ? "${translations[LanguageManager().currentLanguage]!['score']!}: ${widget.results[selectedIndex]['result']}"
+                            : translations[LanguageManager().currentLanguage]![
+                                'assessment-text']!,
                         style: TextStyle(
                             fontSize: relFont * 18.0,
                             fontFamily: 'SFProText',
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF323736),
-                            letterSpacing: 1.3
-                        ),
+                            letterSpacing: 1.3),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -180,16 +185,20 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
                             ),
                           ),
                           onPressed: () {
-                          //   Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>  EmotionalWheel(),
-                          //   ),
-                          // );
+                            //   Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>  EmotionalWheel(),
+                            //   ),
+                            // );
                             widget.updateSubPage('emotional_wheel_1');
-                            },
+                          },
                           child: Text(
-                              (widget.results.length==0)?translations[LanguageManager().currentLanguage]!['proceed']! : translations[LanguageManager().currentLanguage]!['retake']!,
+                            (widget.results.length == 0)
+                                ? translations[LanguageManager()
+                                    .currentLanguage]!['proceed']!
+                                : translations[LanguageManager()
+                                    .currentLanguage]!['retake']!,
                             style: TextStyle(
                               fontSize: relFont * 14,
                               fontFamily: "JostBold",
@@ -206,31 +215,32 @@ class _EmotionalWheelResultsPageState extends State<EmotionalWheelResultsPage> {
           ),
           // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
           SizedBox(
-            height: screenHeight(context)*0.49,
+            height: screenHeight(context) * 0.49,
             width: screenWidth(context),
             child: ListView.builder(
                 itemCount: widget.results.length,
                 padding: EdgeInsets.zero,
-                itemBuilder: (context, index){
-                  return Container(
-                    child: ReusableTile(
-                      title: translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
-                      author: 'By Dr. Robert Plutchik',
-                      testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['taken_at'])),
-                      buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                      onPressed: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                    ),
+                itemBuilder: (context, index) {
+                  // Reverse the index to display in reverse order
+                  final reversedIndex = widget.results.length - 1 - index;
+                  return ReusableTile(
+                    title: translations[LanguageManager().currentLanguage]![
+                        'emotional_wheel_results']!,
+                    author: 'By Dr. Robert Plutchik',
+                    testDate: DateFormat("dd MMM yyyy").format(DateTime.parse(
+                        widget.results[reversedIndex]['taken_at'])),
+                    buttonText: translations[
+                        LanguageManager().currentLanguage]!['check-result']!,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = reversedIndex;
+                      });
+                    },
                   );
-                }
-            ),
+                }),
           ),
         ],
       ),
     );
   }
 }
-

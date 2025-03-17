@@ -1,35 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+
 import '../custom_widgets.dart';
+import '../globals.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
-import '../globals.dart';
 
 class ZaritBurdenResultsPage extends StatefulWidget {
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
-  final results;
-  const ZaritBurdenResultsPage({
-    super.key,
-    required this.updateSubPage, required this.getPrevSubPage, required this.results
-  });
+  final List<dynamic> results;
+  const ZaritBurdenResultsPage(
+      {super.key,
+      required this.updateSubPage,
+      required this.getPrevSubPage,
+      required this.results});
   @override
   State<ZaritBurdenResultsPage> createState() => _ZaritBurdenResultsPageState();
 }
 
 class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
   int selectedIndex = -1;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.results.isNotEmpty ? 0 : -1;
+  }
+
   @override
   Widget build(BuildContext context) {
-    //print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: screenHeight(context)*0.105,
+        toolbarHeight: screenHeight(context) * 0.105,
         centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: const Color(0xFFFFF2E3),
@@ -46,7 +54,8 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
           },
         ),
         title: Text(
-          translations[LanguageManager().currentLanguage]!['zarit_scale_title']!,
+          translations[LanguageManager().currentLanguage]![
+              'zarit_scale_title']!,
           style: TextStyle(
             fontSize: relFont * 17,
             fontFamily: 'SFProSemiBold',
@@ -104,15 +113,11 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                               Row(
                                 children: [
                                   Text(
-                                    "${translations[LanguageManager().currentLanguage]!['date']!} :",
-                                    style: TextStyle(
-                                        fontSize: relFont * 15.0,
-                                        fontFamily: 'SFProMedium',
-                                        color: const Color(0xFF323736),
-                                        letterSpacing: 1.1),
-                                    // textAlign: TextAlign.center,
-                                  ),
-                                  Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['updated_at'])):translations[LanguageManager().currentLanguage]!['select_result']!,
+                                    (selectedIndex >= 0)
+                                        ? "${translations[LanguageManager().currentLanguage]!['date']!}: ${DateFormat('dd MMM yyyy').format(DateTime.parse(widget.results[selectedIndex]['updated_at']))}"
+                                        : translations[LanguageManager()
+                                                .currentLanguage]![
+                                            'select_result']!,
                                     style: TextStyle(
                                         fontSize: relFont * 15.0,
                                         fontFamily: 'SFProMedium',
@@ -122,9 +127,12 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10,),
+                              const SizedBox(
+                                height: 10,
+                              ),
                               Text(
-                                translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
+                                translations[LanguageManager()
+                                    .currentLanguage]!['zarit_burden_results']!,
                                 style: TextStyle(
                                     fontSize: relFont * 15.0,
                                     fontFamily: 'SFProMedium',
@@ -142,15 +150,16 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: Center(
                       child: Text(
-                        (selectedIndex>=0)?"Your Score: ${widget.results[selectedIndex]['score']}":translations[LanguageManager().currentLanguage]![
-                        'assessment-text']!,
+                        (selectedIndex >= 0)
+                            ? "${translations[LanguageManager().currentLanguage]!['score']!}: ${widget.results[selectedIndex]['score']}"
+                            : translations[LanguageManager().currentLanguage]![
+                                'assessment-text']!,
                         style: TextStyle(
                             fontSize: relFont * 18.0,
                             fontFamily: 'SFProText',
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF323736),
-                            letterSpacing: 1.3
-                        ),
+                            letterSpacing: 1.3),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -176,15 +185,19 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
                           ),
                           onPressed: () {
                             widget.updateSubPage("zarit_scale_1");
-                          //   Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>  ZaritScalePage(),
-                          //   ),
-                          // );
-                            },
+                            //   Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>  ZaritScalePage(),
+                            //   ),
+                            // );
+                          },
                           child: Text(
-                            (widget.results.length==0)?translations[LanguageManager().currentLanguage]!['proceed']! : translations[LanguageManager().currentLanguage]!['retake']!,
+                            (widget.results.isEmpty)
+                                ? translations[LanguageManager()
+                                    .currentLanguage]!['proceed']!
+                                : translations[LanguageManager()
+                                    .currentLanguage]!['retake']!,
                             style: TextStyle(
                               fontSize: relFont * 14,
                               fontFamily: "JostBold",
@@ -203,25 +216,29 @@ class _ZaritBurdenResultsPageState extends State<ZaritBurdenResultsPage> {
           // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
 
           SizedBox(
-            height: screenHeight(context)*0.49,
+            height: screenHeight(context) * 0.49,
             width: screenWidth(context),
             child: ListView.builder(
                 itemCount: widget.results.length,
                 padding: EdgeInsets.zero,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
+                  // Reverse the index to show newest first
+                  final reversedIndex = widget.results.length - 1 - index;
                   return ReusableTile(
-                    title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
+                    title: translations[LanguageManager().currentLanguage]![
+                        'zarit_scale_form_title']!,
                     author: 'By Dr. Zarit',
-                    testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['created_at'])),
-                    buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
+                    testDate: DateFormat("dd MMM yyyy").format(DateTime.parse(
+                        widget.results[reversedIndex]['created_at'])),
+                    buttonText: translations[
+                        LanguageManager().currentLanguage]!['check-result']!,
                     onPressed: () {
                       setState(() {
-                        selectedIndex = index;
+                        selectedIndex = reversedIndex;
                       });
                     },
                   );
-                }
-            ),
+                }),
           ),
         ],
       ),

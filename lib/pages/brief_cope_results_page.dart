@@ -1,37 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../custom_widgets.dart';
+import '../globals.dart';
 import '../language_manager.dart';
 import '../palette.dart';
 import '../translations.dart';
-import '../globals.dart';
 
 class BriefCopeResultsPage extends StatefulWidget {
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
-  final results;
-  const BriefCopeResultsPage({
-    super.key,
-    required this.updateSubPage,
-    required this.getPrevSubPage,
-    required this.results
-  });
+  final List<dynamic> results;
+  const BriefCopeResultsPage(
+      {super.key,
+      required this.updateSubPage,
+      required this.getPrevSubPage,
+      required this.results});
   @override
   State<BriefCopeResultsPage> createState() => _BriefCopeResultsPageState();
 }
 
 class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
-  int selectedIndex=-1;
+  int selectedIndex = -1;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.results.isNotEmpty ? 0 : -1;
+  }
 
   @override
   Widget build(BuildContext context) {
-    //print(widget.results);
     double relFont = fontHelper(context);
     return Scaffold(
-      backgroundColor: Color(0xFFF8F8F8),
+      backgroundColor: const Color(0xFFF8F8F8),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: screenHeight(context)*0.105,
+        toolbarHeight: screenHeight(context) * 0.105,
         centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: const Color(0xFFFFF2E3),
@@ -70,13 +75,13 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.all(15),
               child: Container(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: Color(0xFFE0EFED),
+                  color: const Color(0xFFE0EFED),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Column(
@@ -87,7 +92,8 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                       child: Row(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
+                            borderRadius: BorderRadius.circular(
+                                20), // Adjust the radius as needed
                             child: SizedBox(
                               width: screenWidth(context) * 0.19,
                               // height: screenHeight(context) * 0.066,
@@ -97,8 +103,7 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                               ),
                             ),
                           ),
-
-                          SizedBox(width: 16.0),
+                          const SizedBox(width: 16.0),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,31 +111,31 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                                 Row(
                                   children: [
                                     Text(
-                                      "${translations[LanguageManager().currentLanguage]!['date']!} :",
+                                      (selectedIndex >= 0)
+                                          ? "${translations[LanguageManager().currentLanguage]!['date']!}: ${DateFormat('dd MMM yyyy').format(DateTime.parse(widget.results[selectedIndex]['date']))}"
+                                          : translations[LanguageManager()
+                                                  .currentLanguage]![
+                                              'select_result']!,
                                       style: TextStyle(
                                           fontSize: relFont * 15.0,
                                           fontFamily: 'SFProMedium',
-                                          color: Color(0xFF323736),
-                                          letterSpacing: 1.1),
-                                      // textAlign: TextAlign.center,
-                                    ),
-                                    Text((selectedIndex>=0)?DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[selectedIndex]['date'])):translations[LanguageManager().currentLanguage]!['select_result']!,
-                                      style: TextStyle(
-                                          fontSize: relFont * 15.0,
-                                          fontFamily: 'SFProMedium',
-                                          color: Color(0xFF323736),
+                                          color: const Color(0xFF323736),
                                           letterSpacing: 1.1),
                                       // textAlign: TextAlign.center,
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10,),
+                                const SizedBox(
+                                  height: 10,
+                                ),
                                 Text(
-                                    translations[LanguageManager().currentLanguage]!['zarit_burden_results']!,
+                                  translations[
+                                          LanguageManager().currentLanguage]![
+                                      'brief_cope_form_title']!,
                                   style: TextStyle(
                                       fontSize: relFont * 15.0,
                                       fontFamily: 'SFProMedium',
-                                      color: Color(0xFF323736),
+                                      color: const Color(0xFF323736),
                                       letterSpacing: 1.1),
                                   // textAlign: TextAlign.center,
                                 ),
@@ -144,15 +149,16 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                       padding: const EdgeInsets.all(20.0),
                       child: Center(
                         child: Text(
-                          (selectedIndex!=-1)?"Your score is: ${widget.results[selectedIndex]['score']}":translations[LanguageManager().currentLanguage]![
-                          'assessment-text']!,
+                          (selectedIndex >= 0)
+                              ? "${translations[LanguageManager().currentLanguage]!['score']!}: ${widget.results[selectedIndex]['score']}"
+                              : translations[LanguageManager()
+                                  .currentLanguage]!['assessment-text']!,
                           style: TextStyle(
                               fontSize: relFont * 18.0,
                               fontFamily: 'SFProText',
                               fontWeight: FontWeight.w500,
                               color: Color(0xFF323736),
-                              letterSpacing: 1.3
-                          ),
+                              letterSpacing: 1.3),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -178,15 +184,19 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
                             ),
                             onPressed: () {
                               widget.updateSubPage("brief_cope_1");
-                            //   Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>  BriefCopePage(),
-                            //   ),
-                            // );
-                              },
+                              //   Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) =>  BriefCopePage(),
+                              //   ),
+                              // );
+                            },
                             child: Text(
-                              (widget.results.length==0)?translations[LanguageManager().currentLanguage]!['proceed']! : translations[LanguageManager().currentLanguage]!['retake']!,
+                              (widget.results.isEmpty)
+                                  ? translations[LanguageManager()
+                                      .currentLanguage]!['proceed']!
+                                  : translations[LanguageManager()
+                                      .currentLanguage]!['retake']!,
                               style: TextStyle(
                                 fontSize: relFont * 14,
                                 fontFamily: "JostBold",
@@ -202,30 +212,31 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
               ),
             ),
 
-
             // USE LIST VIEW BUILDER BY USING AN ARRAY OF DATA TO DISPLAY THE DATA INTO TILES LATER
             SizedBox(
-              height: screenHeight(context)*0.49,
+              height: screenHeight(context) * 0.49,
               width: screenWidth(context),
               child: ListView.builder(
                   padding: EdgeInsets.zero,
                   itemCount: widget.results.length,
-                  itemBuilder: (context, index){
-                    return Container(
-                      child: ReusableTile(
-                        title: translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
-                        author: 'By Dr. Carver and Dr. Scheier',
-                        testDate:DateFormat("dd MMM yyyy").format(DateTime.parse(widget.results[index]['date'])),
-                        buttonText: translations[LanguageManager().currentLanguage]!['check-result']!,
-                        onPressed: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                      ),
+                  itemBuilder: (context, index) {
+                    // Create a reversed index to show items in reverse order
+                    final reversedIndex = widget.results.length - 1 - index;
+                    return ReusableTile(
+                      title: translations[LanguageManager().currentLanguage]![
+                          'brief_cope_form_title']!,
+                      author: 'By Dr. Carver and Dr. Scheier',
+                      testDate: DateFormat("dd MMM yyyy").format(DateTime.parse(
+                          widget.results[reversedIndex]['date'])),
+                      buttonText: translations[
+                          LanguageManager().currentLanguage]!['check-result']!,
+                      onPressed: () {
+                        setState(() {
+                          selectedIndex = reversedIndex;
+                        });
+                      },
                     );
-                  }
-              ),
+                  }),
             ),
           ],
         ),
@@ -233,4 +244,3 @@ class _BriefCopeResultsPageState extends State<BriefCopeResultsPage> {
     );
   }
 }
-

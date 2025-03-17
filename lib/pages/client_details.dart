@@ -1,26 +1,23 @@
 import 'dart:convert';
 
 import 'package:dostx/config.dart';
-import 'package:dostx/pages/sign_in.dart';
+import 'package:dostx/language_manager.dart';
+import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
-import '../palette.dart';
-import '../custom_widgets.dart';
-import 'sign_up_second_page.dart';
-import 'package:dostx/translations.dart';
-import 'package:dostx/language_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../globals.dart';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+
+import '../custom_widgets.dart';
+import '../globals.dart';
+import '../palette.dart';
 
 class ClientDetailsPage extends StatefulWidget {
   final Function(String, [bool]) updateSubPage;
   final Function() getPrevSubPage;
-  const ClientDetailsPage({
-    super.key,
-    required this.updateSubPage, required this.getPrevSubPage
-  });
+  const ClientDetailsPage(
+      {super.key, required this.updateSubPage, required this.getPrevSubPage});
   @override
   State<ClientDetailsPage> createState() => _ClientDetailsPageState();
 }
@@ -38,11 +35,10 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
     // TODO: implement initState
     super.initState();
     selectedGender = clientProfileBox.get('gender');
-    _nameController.text = clientProfileBox.get('name')??"";
-    _ageController.text = clientProfileBox.get('age')??"";
-    _phoneController.text = clientProfileBox.get('phone_number')??"";
-    _abhaIdController.text = clientProfileBox.get('ABHA_ID')??"";
-
+    _nameController.text = clientProfileBox.get('name') ?? "";
+    _ageController.text = clientProfileBox.get('age') ?? "";
+    _phoneController.text = clientProfileBox.get('phone_number') ?? "";
+    _abhaIdController.text = clientProfileBox.get('ABHA_ID') ?? "";
   }
 
   @override
@@ -54,12 +50,19 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
         child: Stack(
           children: [
             Column(
-              children: [SizedBox(height: (0.03+0.011)* screenHeight(context,),),
+              children: [
+                SizedBox(
+                  height: (0.03 + 0.011) *
+                      screenHeight(
+                        context,
+                      ),
+                ),
                 Center(
                   child: SvgPicture.asset(
                     "assets/svg/grandfather.svg",
                     height: 0.33 * screenHeight(context),
-                  ),),
+                  ),
+                ),
               ],
             ),
             SingleChildScrollView(
@@ -73,8 +76,9 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                     // color: Colors.amber,
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height -
-                        (0.36) * screenHeight(context)-64,
-              
+                        (0.36) * screenHeight(context) -
+                        64,
+
                     decoration: BoxDecoration(
                       color: ColorOptions.whitish,
                       borderRadius: BorderRadius.only(
@@ -96,7 +100,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                               'client_details']!,
                           style: TextStyle(
                             fontFamily: 'JostBold',
-                            fontSize: 28*fontHelper(context),
+                            fontSize: 28 * fontHelper(context),
                             color: ColorOptions.skin,
                           ),
                         ),
@@ -108,10 +112,8 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                           height: 4,
                           decoration: BoxDecoration(
                             color: ColorOptions.skin,
-                            border: Border.all(
-                                color: ColorOptions.skin,
-                                width: 1
-                            ),
+                            border:
+                                Border.all(color: ColorOptions.skin, width: 1),
                           ),
                         ),
                         SizedBox(
@@ -119,7 +121,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                         ),
                         SizedBox(
                           width: 265.96,
-                          height:( 61/ 896) * screenHeight(context),
+                          height: (61 / 896) * screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -131,7 +133,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13*fontHelper(context),
+                                      fontSize: 13 * fontHelper(context),
                                     ),
                                   ),
                                   Spacer(),
@@ -141,18 +143,18 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                 height: (4 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (37/ 896) * screenHeight(context),
+                                height: (37 / 896) * screenHeight(context),
                                 child: TextField(
                                   controller: _nameController,
                                   inputFormatters: [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: "JostMedium",
-                                    fontSize: 18*fontHelper(context),
+                                    fontSize: 18 * fontHelper(context),
                                   ),
                                   cursorColor: ColorOptions.skin,
                                   keyboardType: TextInputType.name,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.fromLTRB(10, 0, 0, 5),
                                     filled: true,
@@ -205,7 +207,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                         ),
                         SizedBox(
                           width: 265.96,
-                          height: (61/896)*screenHeight(context),
+                          height: (61 / 896) * screenHeight(context),
                           child: Row(
                             children: [
                               Expanded(
@@ -217,11 +219,12 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                       children: [
                                         Text(
                                           translations[LanguageManager()
-                                              .currentLanguage]!['phone_number']!,
+                                                  .currentLanguage]![
+                                              'phone_number']!,
                                           style: TextStyle(
                                             color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
-                                            fontSize: 13*fontHelper(context),
+                                            fontSize: 13 * fontHelper(context),
                                           ),
                                         ),
                                       ],
@@ -230,28 +233,34 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                       height: (4 / 896) * screenHeight(context),
                                     ),
                                     SizedBox(
-                                      height: (37/896)*screenHeight(context),
+                                      height:
+                                          (37 / 896) * screenHeight(context),
                                       child: TextField(
                                         controller: _phoneController,
                                         inputFormatters: [
-                                          FilteringTextInputFormatter.digitsOnly,
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
                                         ],
                                         style: TextStyle(
                                           color: ColorOptions.skin,
                                           fontFamily: "JostMedium",
-                                          fontSize: 18*fontHelper(context),
+                                          fontSize: 18 * fontHelper(context),
                                         ),
                                         cursorColor: ColorOptions.skin,
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
-                                          prefix: Text('(+91) ',
+                                          prefix: Text(
+                                            '(+91) ',
                                             style: TextStyle(
                                               color: ColorOptions.skin,
                                               fontFamily: "JostMedium",
-                                              fontSize: 18*fontHelper(context),
-                                            ),),
+                                              fontSize:
+                                                  18 * fontHelper(context),
+                                            ),
+                                          ),
                                           contentPadding:
-                                              EdgeInsets.fromLTRB(10, 0, 0, 5),
+                                              const EdgeInsets.fromLTRB(
+                                                  10, 0, 0, 5),
                                           filled: true,
                                           fillColor: Colors.white,
                                           hintMaxLines: 1,
@@ -267,7 +276,8 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                               ),
                                             ),
                                           ),
-                                          enabledBorder: const OutlineInputBorder(
+                                          enabledBorder:
+                                              const OutlineInputBorder(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(
                                                 13,
@@ -279,7 +289,8 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                               ),
                                             ),
                                           ),
-                                          focusedBorder: const OutlineInputBorder(
+                                          focusedBorder:
+                                              const OutlineInputBorder(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(
                                                 13,
@@ -297,7 +308,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                   ],
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Expanded(
                                 flex: 1,
                                 child: Column(
@@ -311,7 +322,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                           style: TextStyle(
                                             color: ColorOptions.skin,
                                             fontFamily: 'JostMedium',
-                                            fontSize: 13*fontHelper(context),
+                                            fontSize: 13 * fontHelper(context),
                                           ),
                                         ),
                                       ],
@@ -320,22 +331,24 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                       height: (4 / 896) * screenHeight(context),
                                     ),
                                     SizedBox(
-                                      height: (37/896)*screenHeight(context),
+                                      height:
+                                          (37 / 896) * screenHeight(context),
                                       child: TextField(
                                         controller: _ageController,
                                         inputFormatters: [
-                                          FilteringTextInputFormatter.digitsOnly,
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
                                         ],
                                         style: TextStyle(
                                           color: ColorOptions.skin,
                                           fontFamily: "JostMedium",
-                                          fontSize: 18*fontHelper(context),
+                                          fontSize: 18 * fontHelper(context),
                                         ),
                                         cursorColor: ColorOptions.skin,
                                         keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           contentPadding:
-                                          EdgeInsets.fromLTRB(10, 0, 0, 5),
+                                              EdgeInsets.fromLTRB(10, 0, 0, 5),
                                           filled: true,
                                           fillColor: Colors.white,
                                           hintMaxLines: 1,
@@ -381,7 +394,6 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                   ],
                                 ),
                               ),
-              
                             ],
                           ),
                         ),
@@ -390,7 +402,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                         ),
                         SizedBox(
                           width: 265.96,
-                          height: (41/896)*screenHeight(context),
+                          height: (41 / 896) * screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -402,7 +414,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13*fontHelper(context),
+                                      fontSize: 13 * fontHelper(context),
                                     ),
                                   ),
                                   Spacer(),
@@ -412,7 +424,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                 height: (5 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (16/896)*screenHeight(context),
+                                height: (16 / 896) * screenHeight(context),
                                 child: Row(
                                   children: [
                                     CustomRadioButton(
@@ -465,7 +477,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                         ),
                         SizedBox(
                           width: 265.96,
-                          height:( 61/896)*screenHeight(context),
+                          height: (61 / 896) * screenHeight(context),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -477,7 +489,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                     style: TextStyle(
                                       color: ColorOptions.skin,
                                       fontFamily: 'JostMedium',
-                                      fontSize: 13*fontHelper(context),
+                                      fontSize: 13 * fontHelper(context),
                                     ),
                                   ),
                                   Spacer(),
@@ -487,18 +499,18 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                 height: (4 / 896) * screenHeight(context),
                               ),
                               SizedBox(
-                                height: (37/896)*screenHeight(context),
+                                height: (37 / 896) * screenHeight(context),
                                 child: TextField(
                                   controller: _abhaIdController,
                                   inputFormatters: [],
                                   style: TextStyle(
                                     color: ColorOptions.skin,
                                     fontFamily: "JostMedium",
-                                    fontSize: 18*fontHelper(context),
+                                    fontSize: 18 * fontHelper(context),
                                   ),
                                   cursorColor: ColorOptions.skin,
                                   keyboardType: TextInputType.text,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.fromLTRB(10, 0, 0, 5),
                                     filled: true,
@@ -547,10 +559,10 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                           ),
                         ),
                         Container(
-                          height: (23/ 896) * screenHeight(context),
+                          height: (23 / 896) * screenHeight(context),
                         ),
                         SizedBox(
-                          height: (43/896)*screenHeight(context),
+                          height: (43 / 896) * screenHeight(context),
                           width: 261,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -568,17 +580,24 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                               ),
                               onPressed: () async {
                                 var tokenBox = await Hive.box("TokenBox");
-                                await clientProfileBox.put('name', _nameController.text);
-                                await clientProfileBox.put('age',_ageController.text);
-                                await clientProfileBox.put('phone_number',_phoneController.text);
-                                await clientProfileBox.put('ABHA_ID', _abhaIdController.text);
-                                await clientProfileBox.put('gender',selectedGender);
-                                var uri = Uri.parse(appConfig['serverURL']+'/auth/client_signup/');
+                                await clientProfileBox.put(
+                                    'name', _nameController.text);
+                                await clientProfileBox.put(
+                                    'age', _ageController.text);
+                                await clientProfileBox.put(
+                                    'phone_number', _phoneController.text);
+                                await clientProfileBox.put(
+                                    'ABHA_ID', _abhaIdController.text);
+                                await clientProfileBox.put(
+                                    'gender', selectedGender);
+                                var uri = Uri.parse(appConfig['serverURL'] +
+                                    '/auth/client_signup/');
                                 final response = await http.post(
                                   uri,
                                   headers: {
-                                    'Content-Type':'application/json',
-                                    'Authorization': 'Bearer '+await tokenBox.get("access_token")
+                                    'Content-Type': 'application/json',
+                                    'Authorization': 'Bearer ' +
+                                        await tokenBox.get("access_token")
                                   },
                                   body: json.encode({
                                     "name": _nameController.text,
@@ -588,12 +607,13 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                   }),
                                 );
                                 //print(response.statusCode);
-                                if (response.statusCode == 400){
+                                if (response.statusCode == 400) {
                                   final response = await http.post(
                                     uri,
                                     headers: {
-                                      'Content-Type':'application/json',
-                                      'Authorization': 'Bearer '+await tokenBox.get("access_token")
+                                      'Content-Type': 'application/json',
+                                      'Authorization': 'Bearer ' +
+                                          await tokenBox.get("access_token")
                                     },
                                     body: json.encode({
                                       "name": _nameController.text,
@@ -606,21 +626,21 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                 }
                                 widget.updateSubPage("default", true);
 
-                              //
+                                //
 
-                              //   Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //       builder: (context) =>
-                              //           const SignUpSecond(),
-                              //     ),
-                              //   );
+                                //   Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           const SignUpSecond(),
+                                //     ),
+                                //   );
                               },
                               child: Text(
                                 translations[LanguageManager()
                                     .currentLanguage]!['submit']!,
                                 style: TextStyle(
-                                  fontSize: 14*fontHelper(context),
+                                  fontSize: 14 * fontHelper(context),
                                   fontFamily: "JostBold",
                                   color: Colors.white,
                                 ),
@@ -649,24 +669,22 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Select Language'),
+                          title: const Text('Select Language'),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               ListTile(
-                                title: Text('English'),
+                                title: const Text('English'),
                                 onTap: () {
                                   // Set English language
                                   LanguageManager().setLanguage('en');
                                   // Close the dialog
                                   Navigator.pop(context);
-                                  setState(() {
-
-                                  });
+                                  setState(() {});
                                 },
                               ),
                               ListTile(
-                                title: Text('Hindi'),
+                                title: const Text('Hindi'),
                                 onTap: () {
                                   // Set Hindi language
                                   LanguageManager().setLanguage('hi');
@@ -678,7 +696,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                                 },
                               ),
                               ListTile(
-                                title: Text('Marathi'),
+                                title: const Text('Marathi'),
                                 onTap: () {
                                   // Set Marathi language
                                   LanguageManager().setLanguage('mr');
@@ -696,12 +714,12 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
                     );
                   },
                   child: Ink(
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       color: Colors.transparent,
                       shape: CircleBorder(),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(18,25,0,0),
+                      padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
                       child: SvgPicture.asset(
                         'assets/icons/language_icon.svg',
                         width: 65,
@@ -715,7 +733,7 @@ class _ClientDetailsPageState extends State<ClientDetailsPage> {
             ),
           ],
         ),
-        ),
-      );
+      ),
+    );
   }
 }

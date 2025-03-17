@@ -1,13 +1,14 @@
-import 'package:dostx/language_manager.dart';
 import 'package:dostx/globals.dart%20';
+import 'package:dostx/language_manager.dart';
+import 'package:dostx/palette.dart';
 import 'package:dostx/translations.dart';
 import 'package:flutter/material.dart';
-import 'package:dostx/palette.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
+
 import '../config.dart';
 import '../custom_widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePageFirst extends StatefulWidget {
   final Function(int) updateHomeIndex;
@@ -15,14 +16,13 @@ class HomePageFirst extends StatefulWidget {
   final Function(String) updateSubPage;
   final Function() getPrevSubPage;
   final copingStrategies;
-  const HomePageFirst({
-    super.key,
-    required this.updateHomeIndex,
-    required this.getPrevPageIndex,
-    required this.updateSubPage,
-    required this.getPrevSubPage,
-    required this.copingStrategies
-  });
+  const HomePageFirst(
+      {super.key,
+      required this.updateHomeIndex,
+      required this.getPrevPageIndex,
+      required this.updateSubPage,
+      required this.getPrevSubPage,
+      required this.copingStrategies});
   @override
   State<HomePageFirst> createState() => _HomePageFirstState();
 }
@@ -34,11 +34,6 @@ class _HomePageFirstState extends State<HomePageFirst> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    int initMood =  tokenBox.get('moodOfUser')??-1;
-    if (initMood !=-1){
-      feelingSelection[initMood] = true;
-    }
     super.initState();
   }
 
@@ -65,11 +60,12 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child:  Image.network(
-                            appConfig["serverURL"]+'/'+widget.copingStrategies[index]['image'],
+                          child: Image.network(
+                            appConfig["serverURL"] +
+                                '/' +
+                                widget.copingStrategies[index]['image'],
                             errorBuilder: (context, error, stackTrace) {
-                              return Image.asset("assets/p1.png"
-                              );
+                              return Image.asset("assets/p1.png");
                             },
                           ),
                         ),
@@ -82,7 +78,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                         10 / 414 * screenWidth(context), 0, 0, 0),
-                    child: Text(widget.copingStrategies[index]['title'],
+                    child: Text(
+                      widget.copingStrategies[index]['title'],
                       style: TextStyle(
                           color: const Color(0xff323736),
                           fontFamily: "SFProMedium",
@@ -124,19 +121,32 @@ class _HomePageFirstState extends State<HomePageFirst> {
                               ),
                             ),
                             child: TextButton(
-                              onPressed: ()async {
-                                await copeBox.put('title',widget.copingStrategies[index]['title']);
-                                await copeBox.put('imageUrl',widget.copingStrategies[index]['image']);
-                                await copeBox.put('hi',widget.copingStrategies[index]['content_hindi']);
-                                await copeBox.put('en',widget.copingStrategies[index]['content_english']);
-                                await copeBox.put('mr',widget.copingStrategies[index]['content_marathi']);
-                                widget.updateSubPage('individual_cope_strategy_page');
+                              onPressed: () async {
+                                await copeBox.put('title',
+                                    widget.copingStrategies[index]['title']);
+                                await copeBox.put('imageUrl',
+                                    widget.copingStrategies[index]['image']);
+                                await copeBox.put(
+                                    'hi',
+                                    widget.copingStrategies[index]
+                                        ['content_hindi']);
+                                await copeBox.put(
+                                    'en',
+                                    widget.copingStrategies[index]
+                                        ['content_english']);
+                                await copeBox.put(
+                                    'mr',
+                                    widget.copingStrategies[index]
+                                        ['content_marathi']);
+                                widget.updateSubPage(
+                                    'individual_cope_strategy_page');
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 0, horizontal: 20),
                                 child: Text(
-                                   translations[LanguageManager().currentLanguage]!['begin']!,
+                                  translations[LanguageManager()
+                                      .currentLanguage]!['begin']!,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: "SFProText",
@@ -178,7 +188,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       0,
                       screenHeight(context) * 30 / 869),
                   child: Text(
-                    translations[LanguageManager().currentLanguage]!['title_feeling_text']!,
+                    translations[LanguageManager().currentLanguage]![
+                        'title_feeling_text']!,
                     style: TextStyle(
                         fontSize: 20 * fontHelper(context),
                         fontFamily: 'SFProTextMedium',
@@ -192,10 +203,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     const Spacer(),
                     InkWell(
                         onTap: () {
-                          // feelingSelection=[false,false,false,false];
                           setState(() {
                             feelingSelection = [true, false, false, false];
-                            tokenBox.put('moodOfUser',0);
                           });
                         },
                         child: SvgPicture.asset(
@@ -210,7 +219,6 @@ class _HomePageFirstState extends State<HomePageFirst> {
                         onTap: () {
                           setState(() {
                             feelingSelection = [false, true, false, false];
-                            tokenBox.put('moodOfUser',1);
                           });
                         },
                         child: SvgPicture.asset(
@@ -225,7 +233,6 @@ class _HomePageFirstState extends State<HomePageFirst> {
                         onTap: () {
                           setState(() {
                             feelingSelection = [false, false, true, false];
-                            tokenBox.put('moodOfUser',2);
                           });
                         },
                         child: SvgPicture.asset(
@@ -240,7 +247,6 @@ class _HomePageFirstState extends State<HomePageFirst> {
                         onTap: () {
                           setState(() {
                             feelingSelection = [false, false, false, true];
-                            tokenBox.put('moodOfUser',3);
                           });
                         },
                         child: SvgPicture.asset(
@@ -277,7 +283,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
                         child: Text(
-                          translations[LanguageManager().currentLanguage]!['rescue_sessions']!,
+                          translations[LanguageManager().currentLanguage]![
+                              'rescue_sessions']!,
                           style: TextStyle(
                             fontSize: 16 * fontHelper(context),
                             fontFamily: 'SFProText',
@@ -292,7 +299,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                             widget.updateHomeIndex(2);
                           },
                           child: Text(
-                            translations[LanguageManager().currentLanguage]!['see_all']!,
+                            translations[LanguageManager().currentLanguage]![
+                                'see_all']!,
                             style: TextStyle(
                               fontFamily: 'SFProText',
                               fontSize: 14 * fontHelper(context),
@@ -314,7 +322,8 @@ class _HomePageFirstState extends State<HomePageFirst> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Text(
-                          translations[LanguageManager().currentLanguage]!['form_screening']!,
+                          translations[LanguageManager().currentLanguage]![
+                              'form_screening']!,
                           style: TextStyle(
                             fontSize: 16 * fontHelper(context),
                             fontFamily: 'SFProText',
@@ -327,10 +336,12 @@ class _HomePageFirstState extends State<HomePageFirst> {
                   ),
                   const SizedBox(height: 10),
                   ReusableTile(
-                    title: translations[LanguageManager().currentLanguage]!['zarit_scale_form_title']!,
+                    title: translations[LanguageManager().currentLanguage]![
+                        'zarit_scale_form_title']!,
                     author: 'By Dr. Zarit',
                     testDate: '',
-                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
+                    buttonText: translations[
+                        LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("zarit_burden_results");
                       // Navigator.push(
@@ -342,25 +353,30 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     },
                   ),
                   ReusableTile(
-                    title: translations[LanguageManager().currentLanguage]!['emotional_wheel_results']!,
+                    title: translations[LanguageManager().currentLanguage]![
+                        'emotional_wheel_results']!,
                     author: 'By Dr. Robert Plutchik',
                     testDate: '',
-                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
+                    buttonText: translations[
+                        LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("emotional_wheel_results");
 
                       //   Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>  EmotionalWheelResultsPage(),
-                    //   ),
-                    // );
-                      },
-                  ), ReusableTile(
-                    title: translations[LanguageManager().currentLanguage]!['family_burden_scale_form_title']!,
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>  EmotionalWheelResultsPage(),
+                      //   ),
+                      // );
+                    },
+                  ),
+                  ReusableTile(
+                    title: translations[LanguageManager().currentLanguage]![
+                        'family_burden_scale_form_title']!,
                     author: 'By Dr. Pai and Dr. Kapur',
                     testDate: '',
-                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
+                    buttonText: translations[
+                        LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       widget.updateSubPage("family_burden_results");
 
@@ -373,10 +389,12 @@ class _HomePageFirstState extends State<HomePageFirst> {
                     },
                   ),
                   ReusableTile(
-                    title: translations[LanguageManager().currentLanguage]!['brief_cope_form_title']!,
+                    title: translations[LanguageManager().currentLanguage]![
+                        'brief_cope_form_title']!,
                     author: 'By Dr. Carver and Dr. Scheier',
                     testDate: '',
-                    buttonText: translations[LanguageManager().currentLanguage]!['begin']!,
+                    buttonText: translations[
+                        LanguageManager().currentLanguage]!['begin']!,
                     onPressed: () {
                       //   Navigator.push(
                       //   context,
@@ -497,13 +515,19 @@ class _HomePageFirstState extends State<HomePageFirst> {
                             children: [
                               Text(
                                   index == 0
-                                      ? translations[LanguageManager().currentLanguage]!['psycho']!
+                                      ? translations[LanguageManager()
+                                          .currentLanguage]!['psycho']!
                                       : index == 1
-                                          ? translations[LanguageManager().currentLanguage]!['medicine']!
+                                          ? translations[LanguageManager()
+                                              .currentLanguage]!['medicine']!
                                           : index == 2
-                                              ? translations[LanguageManager().currentLanguage]!['doctor']!
+                                              ? translations[LanguageManager()
+                                                  .currentLanguage]!['doctor']!
                                               : index == 3
-                                                  ? translations[LanguageManager().currentLanguage]!['financial']!
+                                                  ? translations[
+                                                          LanguageManager()
+                                                              .currentLanguage]![
+                                                      'financial']!
                                                   : '',
                                   style: TextStyle(
                                       color: const Color(0xff323736),
@@ -511,13 +535,19 @@ class _HomePageFirstState extends State<HomePageFirst> {
                                       fontSize: 10 * fontHelper(context))),
                               Text(
                                   index == 0
-                                      ? translations[LanguageManager().currentLanguage]!['education']!
+                                      ? translations[LanguageManager()
+                                          .currentLanguage]!['education']!
                                       : index == 1
-                                          ? translations[LanguageManager().currentLanguage]!['reminder']!
+                                          ? translations[LanguageManager()
+                                              .currentLanguage]!['reminder']!
                                           : index == 2
-                                              ? translations[LanguageManager().currentLanguage]!['connect']!
+                                              ? translations[LanguageManager()
+                                                  .currentLanguage]!['connect']!
                                               : index == 3
-                                                  ? translations[LanguageManager().currentLanguage]!['coping']!
+                                                  ? translations[
+                                                          LanguageManager()
+                                                              .currentLanguage]![
+                                                      'coping']!
                                                   : '',
                                   style: TextStyle(
                                       color: const Color(0xff323736),
